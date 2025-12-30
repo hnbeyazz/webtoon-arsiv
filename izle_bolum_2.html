@@ -2,14 +2,73 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bölüm 2</title>
     <style>
-        body { margin: 0; background: #000; display: flex; flex-direction: column; align-items: center; }
-        .container { width: 100%; max-width: 900px; }
-        img { width: 100%; height: auto; display: block; }
-        /* Butonları yan yana ve ortalı yapmak için ekleme */
-        .nav { padding: 50px; text-align: center; display: flex; gap: 20px; justify-content: center; }
-        .btn { padding: 15px 30px; background: #fff; color: #000; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: sans-serif; }
+        /* 1. FONTU TANIMLAMA */
+        @font-face {
+            font-family: 'KomikaFont';
+            src: url('komika-text.italic.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* 2. GENEL SAYFA AYARLARI */
+        body { 
+            margin: 0; 
+            background: #000; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            font-family: 'KomikaFont', sans-serif; /* Fontu buraya ekledik */
+        }
+
+        .container { 
+            width: 100%; 
+            max-width: 900px; 
+        }
+
+        img { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+        }
+
+        /* 3. NAVİGASYON VE BUTONLAR */
+        .nav { 
+            padding: 60px 20px; 
+            text-align: center; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 20px; 
+            background: #000;
+        }
+
+        .btn { 
+            padding: 15px 40px; 
+            background-color: #ffffff; 
+            color: #000000; 
+            text-decoration: none; 
+            border-radius: 50px; /* Daha yuvarlak ve modern bir buton */
+            font-weight: bold; 
+            display: inline-block; 
+            border: 2px solid #ffffff;
+            font-family: 'KomikaFont', sans-serif;
+            transition: 0.3s; /* Geçiş efekti */
+        }
+
+        .btn:hover {
+            background-color: #ffde00; /* Üzerine gelince sarı olsun (Çizgi roman tarzı) */
+            border-color: #ffde00;
+        }
+
+        .uyari-metni {
+            color: #888888; 
+            font-size: 14px;
+            font-style: italic;
+            font-family: 'KomikaFont', sans-serif;
+        }
     </style>
 </head>
 <body>
@@ -25,53 +84,14 @@
         <img src="bolum_2/9.jpg">
         <img src="bolum_2/10.jpg">
 
-       <div class="nav">
-    <a href="index.html" class="btn">← Önceki Bölüm</a>
-    <p class="uyari-metni">Şu an son bölümdesiniz. Yeni bölümler yakında gelecektir!</p>
-    </div>
-
-<style>
-    .nav { 
-        padding: 50px; 
-        text-align: center; 
-        display: flex; 
-        gap: 20px; 
-        justify-content: center; 
-        background: #000; /* Arka planın siyah olduğundan emin olalım */
-    }
-    .btn { 
-        padding: 15px 30px; 
-        background-color: #ffffff !important; /* Butonun rengi beyaz */
-        color: #000000 !important; /* Yazı rengi siyah */
-        text-decoration: none; 
-        border-radius: 8px; 
-        font-weight: bold; 
-        font-family: sans-serif; 
-        display: inline-block; /* Görünür olması için şart */
-        border: 2px solid #ffffff;
-    }
-    .btn:hover {
-        background-color: #cccccc !important; /* Üzerine gelince gri olsun */
-    }
-    .nav { 
-    display: flex; 
-    flex-direction: column; /* Buton ve yazıyı alt alta dizer */
-    align-items: center; 
-    gap: 15px; 
-    padding: 50px; 
-}
-
-.uyari-metni {
-    color: #FFFFFF; /* Yazıyı biraz gri yaparak göz yormamasını sağlıyoruz */
-    font-family: sans-serif;
-    font-size: 14px;
-    margin-top: 10px;
-    font-style: italic;
-}
-</style>
+        <div class="nav">
+            <a href="index.html" class="btn">← Önceki Bölüm</a>
+            <p class="uyari-metni">Şu an son bölümdesiniz. Yeni bölümler yakında gelecektir!</p>
+        </div>
     </div>
 </body>
 </html>
+
 
 
 
