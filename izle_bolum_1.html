@@ -1,79 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bölüm 1 - Merry Marbling</title>
     <style>
-        body { margin: 0; background: #000; display: flex; flex-direction: column; align-items: center; }
-        
-/* Header Alanı - İki Logoyu Uçlara Dağıtır */
-.site-header {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.9); 
-    padding: 30px 0; 
-    display: flex;
-    justify-content: space-between; /* EN ÖNEMLİ KISIM: Birini sola, birini sağa iter */
-    align-items: center;
-    position: absolute; 
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
+        /* Sayfa Genel Ayarları */
+        body { 
+            margin: 0; 
+            background-color: #000; /* Arka planı tamamen siyah yapıyoruz */
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh;
+        }
 
-/* Genel Logo Ayarları */
-.site-logo {
-    height: 200px; /* Logoların büyüklüğü */
-    width: auto;
-    display: block;
-    transition: transform 0.3s ease;
-}
+        /* Üst Logo Alanı (Header) */
+        .site-header {
+            width: 100%;
+            background: #000; /* Şeffaflığı kaldırdık, tam siyah yaptık */
+            padding: 40px 0; /* Alanı dikeyde büyüttük */
+            display: flex;
+            justify-content: space-between; /* Bir logo sola, diğeri sağa */
+            align-items: center;
+            position: relative; /* Sayfa akışına dahil ettik ki alttaki gri boşluk kapansın */
+            z-index: 1000;
+        }
 
-/* Sol Logo Boşluğu */
-.logo-sol {
-    margin-left: 50px;
-}
+        /* Logo Ayarları */
+        .site-logo {
+            height: 200px; /* İstediğin gibi büyük logolar */
+            width: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
 
-/* Sağ Logo Boşluğu */
-.logo-sag {
-    margin-right: 50px;
-}
+        .site-logo:hover {
+            transform: scale(1.05);
+        }
 
-/* Mobilde Logolar Sıkışmasın Diye Ayar */
-@media (max-width: 600px) {
-    .site-logo {
-        height: 60px; /* Mobilde biraz küçültüyoruz */
-    }
-    .logo-sol { margin-left: 15px; }
-    .logo-sag { margin-right: 15px; }
-}
+        .logo-sol { margin-left: 50px; }
+        .logo-sag { margin-right: 50px; }
 
-/* Mobilde Logonun Çok Kenarda Kalmaması İçin */
-@media (max-width: 600px) {
-    .site-logo {
-        margin-left: 20px; /* Telefondan girince boşluğu azaltır */
-        height: 70px; /* Mobilde biraz küçülttük ki ekranı kaplamasın */
-    }
-}
+        /* İçerik Konteynırı (Webtoon Resimleri) */
+        .container { 
+            width: 100%; 
+            max-width: 800px; 
+            background: #000; /* Resimlerin arkası da tam siyah */
+            margin-top: 0; /* Header ile aradaki boşluğu tamamen sıfırladık */
+        }
 
-/* Resimlerin Header Altında Kalmaması İçin */
-.container { 
-    margin-top: 180px; 
-    width: 100%; 
-    max-width: 800px; 
-}
+        img { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+        }
+
+        /* Alt Buton Alanı */
+        .nav { 
+            padding: 70px; 
+            text-align: center; 
+            background: #000;
+        }
+
+        .btn { 
+            padding: 20px 50px; 
+            background: #fff; 
+            color: #000; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            font-family: sans-serif;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #ccc;
+        }
+
+        /* Mobil Düzenlemeleri */
+        @media (max-width: 600px) {
+            .site-header { padding: 20px 0; }
+            .site-logo { height: 80px; }
+            .logo-sol { margin-left: 15px; }
+            .logo-sag { margin-right: 15px; }
+            .btn { padding: 15px 30px; font-size: 0.9em; }
+        }
     </style>
 </head>
 <body>
-<header class="site-header">
-    <a href="index.html" class="logo-konteyner">
-        <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol">
-    </a>
 
-    <div class="logo-konteyner">
-        <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag">
-    </div>
-</header>
+    <header class="site-header">
+        <a href="index.html">
+            <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol">
+        </a>
+
+        <div class="logo-konteyner">
+            <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag">
+        </div>
+    </header>
 
     <div class="container">                
         <img src="bolum_1/1.jpg">
@@ -92,14 +117,13 @@
         <img src="bolum_1/14.jpg">
         <img src="bolum_1/15.jpg">
 
-                <div class="nav">
-                    <a href="izle_bolum_2.html" class="btn">Sonraki Bölüm</a>
-                </div>
-            </div>
-        </body>
+        <div class="nav">
+            <a href="izle_bolum_2.html" class="btn">Sonraki Bölüm</a>
+        </div>
+    </div>
 
-        </html>
-
+</body>
+</html>
 
 
 
