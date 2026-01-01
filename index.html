@@ -11,40 +11,55 @@
 
     <style>
         :root {
-            --ana-mavi: #001d3d; /* Dokunulmadı */
-            --baslik-mavi: #90e0ef; /* Dokunulmadı */
-            --altin-sarisi: #ffde00; /* Dokunulmadı */
-            --arka-plan: #FFFFFF
+            --ana-mavi: #001d3d;
+            --baslik-mavi: #90e0ef;
+            --altin-sarisi: #ffde00;
+            --arka-plan: #FFFFFF;
+            --siyah-kart: rgba(10, 10, 10, 0.8);
         }
 
-body { 
-    margin: 0; 
-    background-image: linear-gradient(rgba(0,0,0,4), rgba(0,0,0,0.4)), url('867320b5e436c545505d605d1a7c5481.jpg');
-    
-    background-size: 100% auto; 
-    background-position: center top; 
-    background-repeat: no-repeat;
-    background-color: #000; 
-    background-attachment: fixed;
-    
-    color: #fff; 
-    font-family: 'Tinos', serif; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    min-height: 100vh;
-}
-
-        @media (max-width: 600px) {
-            body {
-                background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('yatay.jpg');
-                background-attachment: scroll;
-            }
+        body { 
+            margin: 0; 
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('867320b5e436c545505d605d1a7c5481.jpg');
+            background-size: 100% auto; 
+            background-position: center top; 
+            background-repeat: no-repeat;
+            background-color: #000; 
+            background-attachment: fixed;
+            color: #fff; 
+            font-family: 'Tinos', serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh;
         }
 
+        /* --- ÜST LOGO ALANI --- */
+        .site-header {
+            width: 100%;
+            background: #000;
+            padding: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .site-logo {
+            height: 120px;
+            width: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-sol { margin-left: 50px; }
+        .logo-sag { margin-right: 50px; }
+
+        /* --- TANITIM ALANI --- */
         .tanitim-alani {
             display: flex; flex-wrap: wrap; gap: 40px;
-            max-width: 1000px; padding: 60px 20px;
+            max-width: 1000px; padding: 40px 20px;
             align-items: flex-start; justify-content: center;
         }
 
@@ -61,9 +76,6 @@ body {
             font-size: 4.5em; margin: 0; color: var(--arka-plan); 
         }
 
-
-        .ozet-konteynir { position: relative; }
-
         .konu-metni { 
             font-family: 'Cormorant Garamond', serif; 
             line-height: 1.6; color: var(--arka-plan); 
@@ -79,46 +91,85 @@ body {
             background: none; border: none; color: var(--arka-plan);
             font-family: 'Shadows Into Light', cursive;
             font-size: 1.3em; cursor: pointer; padding: 0;
-            display: block;
         }
 
+        /* --- BÖLÜM LİSTESİ TASARIMI (GÜNCEL) --- */
         .liste-baslik { 
             width: 100%; max-width: 900px; padding-left: 20px; 
             color: var(--arka-plan); font-family: 'Shadows Into Light', cursive;
             font-size: 2.5em; border-bottom: 1px solid #222;
-            padding-bottom: 10px;
+            padding-bottom: 10px; margin-top: 40px;
         }
 
         .bolum-listesi { 
             width: 100%; max-width: 900px; padding: 20px 20px 100px 20px; 
+            display: flex; flex-direction: column; gap: 5px;
         }
 
-        .bolum-satiri {
-            display: flex; justify-content: center; align-items: center;
-            background: #0a0a0a; 
-            margin-bottom: 15px;
-            padding: 20px 25px; border-radius: 12px;
-            text-decoration: none; color: #fff;
-            border: 1px solid #1a1a1a; 
+        .bolum-kart {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 20px 25px;
+            text-decoration: none;
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             transition: 0.3s;
-            font-size: 1.5em;
-            font-weight: bold;
         }
 
-        .bolum-satiri:hover {
-            background: #111; 
-            border-color: var(--arka-plan); 
-            transform: translateX(10px);
+        .bolum-kart:hover {
+            background: rgba(144, 224, 239, 0.08);
+            padding-left: 35px;
+        }
+
+        .bolum-bilgi { display: flex; flex-direction: column; }
+
+        .bolum-no {
+            font-size: 1.4em;
+            font-weight: bold;
+            font-family: 'Tinos', serif;
+        }
+
+        .bolum-tarih {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        .izlendi-ikon {
+            width: 24px;
+            height: 24px;
+            opacity: 0; /* Normalde gizli */
+            transition: 0.3s;
+            filter: invert(1); /* İkonu beyaz yapar */
+        }
+
+        /* JavaScript ile aktif edilen simge */
+        .izlendi-ikon.aktif {
+            opacity: 0.6;
         }
 
         @media (max-width: 600px) {
             h1 { font-size: 3em; text-align: center; }
+            .site-logo { height: 60px; }
+            .logo-sol { margin-left: 15px; }
+            .logo-sag { margin-right: 15px; }
             .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
             .detaylar { text-align: center; min-width: 100%; }
         }
     </style>
 </head>
 <body>
+
+    <header class="site-header">
+        <a href="index.html">
+            <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol">
+        </a>
+        <div class="logo-konteyner">
+            <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag">
+        </div>
+    </header>
 
     <div class="tanitim-alani">
         <img src="tall.jpg" class="kapak" alt="Merry Marbling">
@@ -127,7 +178,7 @@ body {
             <h1>Merry Marbling</h1>
             <div class="ozet-konteynir">
                 <p class="konu-metni" id="ozetMetin">
-Ha Ian, görünüşte kusursuz bir lise öğrencisidir: son derece nazik, sıcak, güvenilir ve üstüne üstlük yakışıklıdır. Ire-dong kasabasında herkesin gözünde bir idol hâline gelmiştir; hatta çocukken yaptığı masum bir iyilik sayesinde hakkında dillerden düşmeyen “Noel Meleği” olarak anılmaktadır. Beş yıl önce, sokakta baygın hâlde yatan bir yabancının yanında bulduğu yüklü miktarda parayı polise teslim ettiği söylenir… ya da en azından haberlerde anlatılan hikâye budur.Bu yüzden Baek Yugeon, dönem başladıktan bir hafta sonra Ian’ın okuluna transfer olup bir anda kendini bu “meleğin” ilgi alanında bulduğunda kimse Ian’ın ona gösterdiği olağanüstü nezakete şaşırmaz — Yugeon’un onu ve çevresindeki herkesi kendinden uzak tutmak için yaptığı her şeye rağmen.Oysa Yugeon, çocukluğundan beri zayıf bünyeli ve sürekli hastalanan biridir. Bu da onu arkadaşlık kurma konusunda son derece temkinli hâle getirmiştir; hatta en temel beklentileri bile karşılamakta zorlanan bedeni yüzünden, yaşıtlarının temposuna ayak uydurması neredeyse imkansızdır. Doğal olarak herkese karşı küstah, dikenli ve asabi davranır; sanki bu tavır, neden hiç arkadaşı olamayacağına dair kendi kendine bulduğu bir mazerettir. Peki ya kader bu ikisini nasıl bir araya getirecektir? (bok gibi özet metni ama wikiden aldım yapacak bişey yok idare et)
+                    Ha Ian, görünüşte kusursuz bir lise öğrencisidir... (Özet metnin buraya gelecek)
                 </p>
                 <button class="devamini-oku-btn" id="btnOku" onclick="ozetiAc()">Devamını Oku...</button>
             </div>
@@ -137,15 +188,28 @@ Ha Ian, görünüşte kusursuz bir lise öğrencisidir: son derece nazik, sıcak
     <h2 class="liste-baslik">Bölümler</h2>
 
     <div class="bolum-listesi">
-        <a href="izle_bolum_1.html" class="bolum-satiri">Bölüm 1</a>
-        <a href="izle_bolum_2.html" class="bolum-satiri">Bölüm 2</a>
+        <a href="izle_bolum_2.html" class="bolum-kart" onclick="kaydet('bolum2')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">2. Bölüm</span>
+                <span class="bolum-tarih">2 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum2">
+        </a>
+
+        <a href="izle_bolum_1.html" class="bolum-kart" onclick="kaydet('bolum1')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">1. Bölüm</span>
+                <span class="bolum-tarih">1 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum1">
+        </a>
     </div>
 
     <script>
+        // Özet Açma Fonksiyonu
         function ozetiAc() {
             var metin = document.getElementById("ozetMetin");
             var buton = document.getElementById("btnOku");
-
             if (metin.classList.contains("acik")) {
                 metin.classList.remove("acik");
                 buton.innerHTML = "Devamını Oku...";
@@ -154,7 +218,19 @@ Ha Ian, görünüşte kusursuz bir lise öğrencisidir: son derece nazik, sıcak
                 buton.innerHTML = "Daha Az Göster";
             }
         }
+
+        // --- İZLEME TAKİBİ SCRİPTİ ---
+        window.onload = function() {
+            const sonBolum = localStorage.getItem('sonOkunan');
+            if (sonBolum) {
+                const ikon = document.getElementById('icon-' + sonBolum);
+                if (ikon) ikon.classList.add('aktif');
+            }
+        };
+
+        function kaydet(id) {
+            localStorage.setItem('sonOkunan', id);
+        }
     </script>
 </body>
 </html>
-
