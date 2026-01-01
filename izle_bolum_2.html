@@ -56,19 +56,26 @@
             display: block; 
         }
 
-        /* Alt Buton Alanı */
+/* Alt Buton Alanı Ayarları */
         .nav { 
-            padding: 70px; 
+            padding: 70px 20px; 
             text-align: center; 
             background: #000;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
+        }
+
+        .buton-grubu {
+            display: flex;
+            gap: 15px; /* Butonlar arasındaki boşluk */
+            flex-wrap: wrap; /* Mobilde sığmazsa alt alta geçerler */
+            justify-content: center;
         }
 
         .btn { 
-            padding: 20px 50px; 
+            padding: 15px 35px; 
             background: #fff; 
             color: #000; 
             text-decoration: none; 
@@ -76,10 +83,12 @@
             font-weight: bold; 
             font-family: sans-serif;
             transition: 0.3s;
+            min-width: 160px; /* Butonların genişliğini eşitlemek için */
         }
 
         .btn:hover {
             background: #ccc;
+            transform: translateY(-3px); /* Hafif yukarı kalkma efekti */
         }
 
         .uyari-metni {
@@ -132,6 +141,7 @@
 
 </body>
 </html>
+
 
 
 
