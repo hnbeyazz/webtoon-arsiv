@@ -7,14 +7,13 @@
     <style>
         body { margin: 0; background: #000; display: flex; flex-direction: column; align-items: center; }
         
-/* Header Alanı - Büyütüldü ve Sabitlik Kaldırıldı */
-/* Header Alanı - Sola Hizalama ve Büyük Tasarım */
+/* Header Alanı - İki Logoyu Uçlara Dağıtır */
 .site-header {
     width: 100%;
     background: rgba(0, 0, 0, 0.9); 
-    padding: 30px 0; /* Üst ve alt boşluk */
+    padding: 30px 0; 
     display: flex;
-    justify-content: flex-start; /* Logoyu SOLA dayar */
+    justify-content: space-between; /* EN ÖNEMLİ KISIM: Birini sola, birini sağa iter */
     align-items: center;
     position: absolute; 
     top: 0;
@@ -22,13 +21,31 @@
     z-index: 1000;
 }
 
-/* Logo Ayarları */
+/* Genel Logo Ayarları */
 .site-logo {
-    height: 100px; /* İstediğin büyüklük */
+    height: 100px; /* Logoların büyüklüğü */
     width: auto;
-    margin-left: 50px; /* Sol kenardan biraz boşluk bırakır, göze hoş gelir */
     display: block;
     transition: transform 0.3s ease;
+}
+
+/* Sol Logo Boşluğu */
+.logo-sol {
+    margin-left: 50px;
+}
+
+/* Sağ Logo Boşluğu */
+.logo-sag {
+    margin-right: 50px;
+}
+
+/* Mobilde Logolar Sıkışmasın Diye Ayar */
+@media (max-width: 600px) {
+    .site-logo {
+        height: 60px; /* Mobilde biraz küçültüyoruz */
+    }
+    .logo-sol { margin-left: 15px; }
+    .logo-sag { margin-right: 15px; }
 }
 
 /* Mobilde Logonun Çok Kenarda Kalmaması İçin */
@@ -48,12 +65,15 @@
     </style>
 </head>
 <body>
+<header class="site-header">
+    <a href="index.html" class="logo-konteyner">
+        <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol">
+    </a>
 
-    <header class="site-header">
-        <a href="index.html">
-            <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Merry Marbling Logo" class="site-logo">
-        </a>
-    </header>
+    <div class="logo-konteyner">
+        <img src="logo_sag.jpg" alt="Sağ Logo" class="site-logo logo-sag">
+    </div>
+</header>
 
     <div class="container">                
         <img src="bolum_1/1.jpg">
@@ -79,6 +99,7 @@
         </body>
 
         </html>
+
 
 
 
