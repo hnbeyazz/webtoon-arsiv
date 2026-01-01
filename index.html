@@ -17,19 +17,24 @@
             --arka-plan: #FFFFFF
         }
 
-        body { 
-            margin: 0; 
-            background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('867320b5e436c545505d605d1a7c5481.jpg');
-            background-size: cover;
-            background-position: center;           
-            background-attachment: fixed;
-            color: #fff; 
-            font-family: 'Tinos', serif; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            min-height: 100vh;
-        }
+body { 
+    margin: 0; 
+    /* Karartma oranını 0.7'den 0.85'e çıkardım */
+    background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('867320b5e436c545505d605d1a7c5481.jpg');
+    
+    background-size: 100% auto; 
+    background-position: center top; 
+    background-repeat: no-repeat;
+    background-color: #000; 
+    background-attachment: fixed;
+    
+    color: #fff; 
+    font-family: 'Tinos', serif; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    min-height: 100vh;
+}
 
         @media (max-width: 600px) {
             body {
