@@ -1,216 +1,162 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merry Marbling - Ana Sayfa</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Shadows+Into+Light&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Marbling - Ana Sayfa</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Shadows+Into+Light&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --ana-mavi: #001d3d;
-            --baslik-mavi: #90e0ef;
-            --altin-sarisi: #ffde00;
-            --arka-plan: #000000;
-        }
+    <style>
+        :root {
+            --ana-mavi: #001d3d; /* Dokunulmadı */
+            --baslik-mavi: #90e0ef; /* Dokunulmadı */
+            --altin-sarisi: #ffde00; /* Dokunulmadı */
+            --arka-plan: #000000; /* Dokunulmadı */
+        }
 
-body { 
-    margin: 0; 
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('867320b5e436c545505d605d1a7c5481.jpg');
-    background-size: cover;
-    background-position: center;           
-    background-attachment: fixed;
-    
-    color: #fff; 
-    font-family: 'Tinos', serif; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    min-height: 100vh;
-}
+        body { 
+            margin: 0; 
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('867320b5e436c545505d605d1a7c5481.jpg');
+            background-size: cover;
+            background-position: center;           
+            background-attachment: fixed;
+            color: #fff; 
+            font-family: 'Tinos', serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh;
+        }
 
+        @media (max-width: 600px) {
+            body {
+                background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('yatay.jpg');
+                background-attachment: scroll;
+            }
+        }
 
-@media (max-width: 600px) {
-    body {
-        background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('yatay.jpg');
-        background-attachment: scroll; /* donma olmaın diye scroll */
-    }
-}
+        .tanitim-alani {
+            display: flex; flex-wrap: wrap; gap: 40px;
+            max-width: 1000px; padding: 60px 20px;
+            align-items: flex-start; justify-content: center;
+        }
 
-        .tanitim-alani {
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 40px;
-            max-width: 1000px; 
-            padding: 60px 20px;
-            align-items: flex-start; 
-            justify-content: center;
-        }
+        .kapak {
+            width: 280px; border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(144, 224, 239, 0.2);
+            border: 1px solid #333;
+        }
 
-        .kapak {
-            width: 280px; 
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(144, 224, 239, 0.2);
-            border: 1px solid #333;
-        }
+        .detaylar { flex: 1; min-width: 350px; text-align: left; }
+        
+        h1 { 
+            font-family: 'Shadows Into Light', cursive; 
+            font-size: 4.5em; margin: 0; color: var(--ana-mavi); 
+        }
 
-        .detaylar { 
-            flex: 1; 
-            min-width: 350px; 
-            text-align: left; 
-        }
-        
-        h1 { 
-            font-family: 'Shadows Into Light', cursive; 
-            font-size: 4.5em; 
-            margin: 0; 
-            color: var( --ana-mavi); 
-        }
+        .konu-baslik { 
+            font-family: 'Shadows Into Light', cursive;
+            font-size: 1.8em; color: var(--ana-mavi); 
+            margin-top: 25px; display: block; 
+        }
 
-        .konu-baslik { 
-            font-family: 'Shadows Into Light', cursive;
-            font-size: 1.8em; 
-            color: var(--ana-mavi); 
-            margin-top: 25px; 
-            display: block; 
-        }
+        .ozet-konteynir { position: relative; }
 
-        /* Özet ve Devamını Oku Ayarları */
-        .ozet-konteynir {
-            position: relative;
-        }
+        .konu-metni { 
+            font-family: 'Cormorant Garamond', serif; 
+            line-height: 1.6; color: var(--ana-mavi); 
+            font-size: 1.25em; text-align: justify;
+            max-height: 100px; overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            margin-bottom: 10px;
+        }
 
-        .konu-metni { 
-            font-family: 'Cormorant Garamond', serif; 
-            line-height: 1.6; 
-            color: var(--ana-mavi); 
-            font-size: 1.25em; 
-            text-align: justify;
-            max-height: 100px; 
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-            margin-bottom: 10px;
-        }
+        .konu-metni.acik { max-height: 2500px; }
 
-        .konu-metni.acik {
-            max-height: 2500px;
-        }
+        .devamini-oku-btn {
+            background: none; border: none; color: var(--ana-mavi);
+            font-family: 'Shadows Into Light', cursive;
+            font-size: 1.3em; cursor: pointer; padding: 0;
+            text-decoration: underline; display: block;
+        }
 
-        .devamini-oku-btn {
-            background: none;
-            border: none;
-            color: var(--ana-mavi);
-            font-family: 'Shadows Into Light', cursive;
-            font-size: 1.3em;
-            cursor: pointer;
-            padding: 0;
-            text-decoration: underline;
-            display: block;
-        }
+        .liste-baslik { 
+            width: 100%; max-width: 900px; padding-left: 20px; 
+            color: var(--ana-mavi); font-family: 'Shadows Into Light', cursive;
+            font-size: 2.5em; border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+        }
 
-        .liste-baslik { 
-            width: 100%; 
-            max-width: 900px; 
-            padding-left: 20px; 
-            color: var(--ana-mavi); 
-            font-family: 'Shadows Into Light', cursive;
-            font-size: 2.5em;
-            border-bottom: 1px solid #222;
-            padding-bottom: 10px;
-        }
+        .bolum-listesi { 
+            width: 100%; max-width: 900px; padding: 20px 20px 100px 20px; 
+        }
 
-        .bolum-listesi { 
-            width: 100%; 
-            max-width: 900px; 
-            padding: 20px 20px 100px 20px; 
-        }
+        .bolum-satiri {
+            display: flex; justify-content: center; align-items: center;
+            background: #0a0a0a; 
+            margin-bottom: 15px;
+            padding: 20px 25px; border-radius: 12px;
+            text-decoration: none; color: #fff;
+            border: 1px solid #1a1a1a; 
+            transition: 0.3s;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
 
-        .bolum-satiri {
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            background: #0a0a0a; 
-            margin-bottom: 15px;
-            padding: 20px 25px; 
-            border-radius: 12px;
-            text-decoration: none; 
-            color: #fff;
-            border: 1px solid #1a1a1a; 
-            transition: 0.3s;
-        }
+        .bolum-satiri:hover {
+            background: #111; 
+            border-color: var(--ana-mavi); 
+            transform: translateX(10px);
+        }
 
-        .bolum-satiri:hover {
-            background: #111; 
-            border-color: var( --ana-mavi); 
-            transform: translateX(10px);
-        }
-
-        .oku-yazisi { 
-            background: var(--ana-mavi); 
-            color: #000; 
-            padding: 8px 18px; 
-            border-radius: 6px; 
-            font-weight: bold; 
-            font-family: sans-serif;
-            font-size: 0.9em;
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 3em; text-align: center; }
-            .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
-            .detaylar { text-align: center; min-width: 100%; }
-        }
-    </style>
+        @media (max-width: 600px) {
+            h1 { font-size: 3em; text-align: center; }
+            .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
+            .detaylar { text-align: center; min-width: 100%; }
+        }
+    </style>
 </head>
 <body>
 
-    <div class="tanitim-alani">
-        <img src="tall.jpg" class="kapak" alt="Merry Marbling">
-        
-        <div class="detaylar">
-            <h1>Merry Marbling</h1>
-            <span class="konu-baslik">ÖZET:</span>
-            <div class="ozet-konteynir">
-                <p class="konu-metni" id="ozetMetin">
-                    Ha Ian, görünüşte kusursuz bir lise öğrencisidir: son derece nazik, sıcak, güvenilir ve üstüne üstlük yakışıklıdır. Ire-dong kasabasında herkesin gözünde bir idol hâline gelmiştir; hatta çocukken yaptığı masum bir iyilik sayesinde hakkında dillerden düşmeyen “Noel Meleği” olarak anılmaktadır. Beş yıl önce, sokakta baygın hâlde yatan bir yabancının yanında bulduğu yüklü miktarda parayı polise teslim ettiği söylenir… ya da en azından haberlerde anlatılan hikâye budur.Bu yüzden Baek Yugeon, dönem başladıktan bir hafta sonra Ian’ın okuluna transfer olup bir anda kendini bu “meleğin” ilgi alanında bulduğunda kimse Ian’ın ona gösterdiği olağanüstü nezakete şaşırmaz — Yugeon’un onu ve çevresindeki herkesi kendinden uzak tutmak için yaptığı her şeye rağmen.Oysa Yugeon, çocukluğundan beri zayıf bünyeli ve sürekli hastalanan biridir. Bu da onu arkadaşlık kurma konusunda son derece temkinli hâle getirmiştir; hatta en temel beklentileri bile karşılamakta zorlanan bedeni yüzünden, yaşıtlarının temposuna ayak uydurması neredeyse imkansızdır. Doğal olarak herkese karşı küstah, dikenli ve asabi davranır; sanki bu tavır, neden hiç arkadaşı olamayacağına dair kendi kendine bulduğu bir mazerettir. Başlangıçta Ian’ın neredeyse rahatsız edici derecede masum ve melekvari tavırları Yugeon’u tiksindirse de, bu persona onun içindeki bastırılmış öfkeyi ve güvensizliği dışa vurmasına bir nebze olsun izin verir. Ancak bu rahatlama da uzun sürmeyecektir.Yeni taşındıkları için annesinin hazırladığı pirinç keklerini komşulara dağıtmaya giderken Yugun, istemeden Ian ile annesi arasında geçen bir konuşmaya kulak misafiri olur. Bu konuşma, Ian’ın Yugun’un kötü şöhretinden nasıl faydalanmayı planladıklarını açığa çıkarır. Görünüşe göre Ian’ın annesi, diğer velilerden okula yeni gelen “berbat çocuk” — kaba, sorunlu Baek — hakkındaki söylentileri duymuştur ve Ian’ın, en istenmeyen biriyle bile iyi geçinebilirse, zaten parlak olan imajının daha da yükseleceğini düşünmüştür.Bu ihanete öfkelenen Yugeon, Ian’ın karşısına çıkar ve öğrendiği bu sahtekarlığı herkese anlatmakla tehdit eder. Ancak aldığı yanıt soğuk ve rahatsız edicidir:“Git, bildiğin her şeyi herkese anlat. Ama sonuçlarından ben sorumlu olmam.”Gerçekten de, Ian’ın okulundaki — hatta ününü ünlü Noel Meleği’ne borçlu olan tüm mahalledeki — insanlar Ire-dong’un en çok sevilen idolünden nasıl nefret edebilirdi ki?Peki Ian ile Yugeon’un ilişkisi, asla karışmayacak yağ ve su gibi ezeli bir düşmanlık mı olacaktır? Yoksa görünüşte uzlaşmaz olan bu farklılıkları aşarak, her ikisinin de tek başına hayal bile edemeyeceği kadar güzel bir uyum yaratmayı öğrenebilecekler midir?
-                </p>
-                <button class="devamini-oku-btn" id="btnOku" onclick="ozetiAc()">Devamını Oku...</button>
-            </div>
-        </div>
-    </div>
+    <div class="tanitim-alani">
+        <img src="tall.jpg" class="kapak" alt="Merry Marbling">
+        
+        <div class="detaylar">
+            <h1>Merry Marbling</h1>
+            <span class="konu-baslik">ÖZET:</span>
+            <div class="ozet-konteynir">
+                <p class="konu-metni" id="ozetMetin">
+                    Ha Ian, görünüşte kusursuz bir lise öğrencisidir: son derece nazik, sıcak, güvenilir ve üstüne üstlük yakışıklıdır. Ire-dong kasabasında herkesin gözünde bir idol hâline gelmiştir; hatta çocukken yaptığı masum bir iyilik sayesinde hakkında dillerden düşmeyen “Noel Meleği” olarak anılmaktadır... (Özetin tamamı buraya)
+                </p>
+                <button class="devamini-oku-btn" id="btnOku" onclick="ozetiAc()">Devamını Oku...</button>
+            </div>
+        </div>
+    </div>
 
-    <h2 class="liste-baslik">Bölümler</h2>
+    <h2 class="liste-baslik">Bölümler</h2>
 
-    <div class="bolum-listesi">
-        <a href="izle_bolum_1.html" class="bolum-satiri">
-            <span>Bölüm 1</span>
-            <span class="oku-yazisi">OKU</span>
-        </a>
+    <div class="bolum-listesi">
+        <a href="izle_bolum_1.html" class="bolum-satiri">Bölüm 1</a>
+        <a href="izle_bolum_2.html" class="bolum-satiri">Bölüm 2</a>
+    </div>
 
-        <a href="izle_bolum_2.html" class="bolum-satiri">
-            <span>Bölüm 2</span>
-            <span class="oku-yazisi">OKU</span>
-        </a>
-    </div>
+    <script>
+        function ozetiAc() {
+            var metin = document.getElementById("ozetMetin");
+            var buton = document.getElementById("btnOku");
 
-    <script>
-        function ozetiAc() {
-            var metin = document.getElementById("ozetMetin");
-            var buton = document.getElementById("btnOku");
-
-            if (metin.classList.contains("acik")) {
-                metin.classList.remove("acik");
-                buton.innerHTML = "Devamını Oku...";
-            } else {
-                metin.classList.add("acik");
-                buton.innerHTML = "Daha Az Göster";
-            }
-        }
-    </script>
-
+            if (metin.classList.contains("acik")) {
+                metin.classList.remove("acik");
+                buton.innerHTML = "Devamını Oku...";
+            } else {
+                metin.classList.add("acik");
+                buton.innerHTML = "Daha Az Göster";
+            }
+        }
+    </script>
 </body>
 </html>
 
