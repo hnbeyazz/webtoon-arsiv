@@ -56,40 +56,53 @@
             display: block; 
         }
 
-/* Alt Buton Alanı Ayarları */
-        .nav { 
-            padding: 70px 20px; 
-            text-align: center; 
-            background: #000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px;
-        }
+/* Alt Buton Alanı */
+.nav { 
+    padding: 70px 20px; 
+    text-align: center; 
+    background: #000;
+    display: flex;
+    flex-direction: column; /* Genel yapı (butonlar ve yazı) hala alt alta */
+    align-items: center;
+    gap: 25px;
+}
 
-        .buton-grubu {
-            display: flex;
-            gap: 15px; /* Butonlar arasındaki boşluk */
-            flex-wrap: wrap; /* Mobilde sığmazsa alt alta geçerler */
-            justify-content: center;
-        }
+/* Butonları yan yana getiren özel ayar */
+.buton-siralamasi {
+    display: flex;
+    flex-direction: row; /* YAN YANA DİZ */
+    justify-content: center;
+    gap: 20px; /* Butonlar arasındaki boşluk */
+    width: 100%;
+}
 
-        .btn { 
-            padding: 15px 35px; 
-            background: #fff; 
-            color: #000; 
-            text-decoration: none; 
-            border-radius: 8px; 
-            font-weight: bold; 
-            font-family: sans-serif;
-            transition: 0.3s;
-            min-width: 160px; /* Butonların genişliğini eşitlemek için */
-        }
+.btn { 
+    padding: 15px 30px; 
+    background: #fff; 
+    color: #000; 
+    text-decoration: none; 
+    border-radius: 8px; 
+    font-weight: bold; 
+    font-family: sans-serif;
+    transition: 0.3s;
+    white-space: nowrap; /* Yazıların buton içinde kırılmasını engeller */
+}
 
-        .btn:hover {
-            background: #ccc;
-            transform: translateY(-3px); /* Hafif yukarı kalkma efekti */
-        }
+.btn:hover {
+    background: #ccc;
+    transform: scale(1.05);
+}
+
+/* MOBİL AYARI: Telefon ekranı çok daralırsa butonlar birbirine çarpmasın diye alt alta döner */
+@media (max-width: 500px) {
+    .buton-siralamasi {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn {
+        width: 80%; /* Mobilde butonlar daha geniş durur */
+    }
+}
 
         .uyari-metni {
             color: #888888; 
@@ -132,15 +145,18 @@
         <img src="bolum_2/9.jpg">
         <img src="bolum_2/10.jpg">
 
-        <div class="nav">
-            <a href="index.html" class="btn">Ana Sayfaya Dön</a>
-            <a href="izle_bolum_1.html" class="btn">Önceki Bölüm</a>
-            <p class="uyari-metni">yeni bölümü bekle 🫵😘</p>
-        </div>
+<div class="nav">
+    <div class="buton-siralamasi">
+        <a href="izle_bolum_1.html" class="btn">← Önceki Bölüm</a>
+        <a href="index.html" class="btn">Ana Sayfaya Dön</a>
+    </div>
+    <p class="uyari-metni">yeni bölümü bekle 🫵😘</p>
+</div>
     </div>
 
 </body>
 </html>
+
 
 
 
