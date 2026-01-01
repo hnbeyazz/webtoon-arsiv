@@ -7,34 +7,35 @@
     <style>
         body { margin: 0; background: #000; display: flex; flex-direction: column; align-items: center; }
         
-        /* --- LOGO ALANI CSS --- */
-        .site-header {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.8); /* Şeffaf siyah */
-            backdrop-filter: blur(10px); /* Arka planı hafif bulanıklaştırır */
-            padding: 15px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: sticky; /* Sayfayı kaydırdıkça üstte kalır */
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .site-logo {
-            height: 60px; /* Logonun boyutu */
-            width: auto;
-            transition: transform 0.3s;
-        }
-        .site-logo:hover {
-            transform: scale(1.05); /* Üzerine gelince hafif büyüme */
-        }
-        /* ----------------------- */
+/* Header Alanı - Büyütüldü ve Sabitlik Kaldırıldı */
+.site-header {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Daha koyu ve belirgin bir siyah */
+    padding: 40px 0; /* Burayı artırarak siyah alanı dikeyde büyüttüm */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Kaydırdıkça üstte kalmaz, sayfanın en başında durur */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.05); /* Altına çok hafif bir çizgi */
+}
 
-        .container { width: 100%; max-width: 800px; } /* Webtoonlar için 800px idealdir */
-        img { width: 100%; height: auto; display: block; }
-        .nav { padding: 70px; text-align: center; }
-        .btn { padding: 40px 70px; background: #fff; color: #000; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: sans-serif; }
+/* Logo Boyutu - Büyütüldü */
+.site-logo {
+    height: 120px; /* Logoyu 60px'den 120px'e çıkardım, iki kat büyüdü */
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* Header yüzünden içeriğin üstü kapanmasın diye konteynere pay veriyoruz */
+.container { 
+    margin-top: 200px; /* Header büyük olduğu için resimler aşağıdan başlasın */
+    width: 100%; 
+    max-width: 800px; 
+}
     </style>
 </head>
 <body>
@@ -69,6 +70,7 @@
         </body>
 
         </html>
+
 
 
 
