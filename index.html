@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webtoon Adı - Ana Sayfa</title>
+    <style>
+        @font-face {
+            font-family: 'ThinkSmart';
+            src: url('Think Smart .ttf') format('truetype');
+        }
+
+        body { 
+            margin: 0; background: #000; color: #fff; 
+            font-family: 'ThinkSmart', sans-serif; 
+            display: flex; flex-direction: column; align-items: center; 
+        }
+
+        .tanitim-alani {
+            display: flex; flex-wrap: wrap; gap: 30px;
+            max-width: 900px; padding: 60px 20px;
+            align-items: center; justify-content: center;
+        }
+
+        .kapak {
+            width: 280px; border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 222, 0, 0.2);
+            border: 2px solid #333;
+        }
+
+        .detaylar { flex: 1; min-width: 300px; text-align: left; }
+        
+        h1 { font-size: 3.5em; margin: 0; color: #ffde00; text-transform: uppercase; }
+        .konu-baslik { font-size: 1.2em; color: #ffde00; margin-top: 20px; display: block; }
+        .konu-metni { line-height: 1.6; color: #eee; font-size: 1.1em; }
+
+        .liste-baslik { width: 100%; max-width: 900px; padding-left: 20px; color: #ffde00; }
+
+        .bolum-listesi { width: 100%; max-width: 900px; padding: 0 20px 50px 20px; }
+
+        .bolum-satiri {
+            display: flex; justify-content: space-between; align-items: center;
+            background: #111; margin-bottom: 12px;
+            padding: 20px; border-radius: 12px;
+            text-decoration: none; color: #fff;
+            border: 1px solid #222; transition: 0.3s;
+        }
+
+        .bolum-satiri:hover {
+            background: #222; border-color: #ffde00; transform: scale(1.02);
+        }
+
+        .oku-yazisi { background: #ffde00; color: #000; padding: 5px 15px; border-radius: 5px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="tanitim-alani">
+        <img src="kapak.jpg" class="kapak" alt="Kapak">
+        <div class="detaylar">
+            <h1>SERİNİN ADI</h1>
+            <span class="konu-baslik">ÖZET:</span>
+            <p class="konu-metni">Buraya hikayenin heyecan verici kısa özetini yaz. "Kaderin sille vurduğu bir kahramanın..." gibi.</p>
+        </div>
+    </div>
+
+    <h2 class="liste-baslik">Bölümler</h2>
+
+    <div class="bolum-listesi">
+        <a href="izle_bolum_1.html" class="bolum-satiri">
+            <span>Bölüm 1: Başlangıç</span>
+            <span class="oku-yazisi">OKU</span>
+        </a>
+
+        <a href="izle_bolum_2.html" class="bolum-satiri">
+            <span>Bölüm 2: Macera</span>
+            <span class="oku-yazisi">OKU</span>
+        </a>
+    </div>
+
+</body>
+</html>
