@@ -1,33 +1,66 @@
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>bolum_1</title>
-            <style>
-                body { margin: 0; background: #000; display: flex; flex-direction: column; align-items: center; }
-                .container { width: 100%; max-width: 10000px; }
-                img { width: 100%; height: auto; display: block; }
-                .nav { padding: 70px; text-align: center; }
-                .btn { padding: 40px 70px; background: #fff; color: #000; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: sans-serif; }
-            </style>
-        </head>
-        <body>
-            <div class="container">                
-                <img src="bolum_1/1.jpg">
-                <img src="bolum_1/2.jpg">
-                <img src="bolum_1/3.jpg">
-                <img src="bolum_1/4.jpg">
-                <img src="bolum_1/5.jpg">
-                <img src="bolum_1/6.jpg">
-                <img src="bolum_1/7.png">
-                <img src="bolum_1/8.png">
-                <img src="bolum_1/9.png">
-                <img src="bolum_1/10.png">
-                <img src="bolum_1/11.png">
-                <img src="bolum_1/12.png">
-                <img src="bolum_1/13.png">
-                <img src="bolum_1/14.jpg">
-                <img src="bolum_1/15.jpg">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bölüm 1 - Merry Marbling</title>
+    <style>
+        body { margin: 0; background: #000; display: flex; flex-direction: column; align-items: center; }
+        
+        /* --- LOGO ALANI CSS --- */
+        .site-header {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8); /* Şeffaf siyah */
+            backdrop-filter: blur(10px); /* Arka planı hafif bulanıklaştırır */
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky; /* Sayfayı kaydırdıkça üstte kalır */
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .site-logo {
+            height: 60px; /* Logonun boyutu */
+            width: auto;
+            transition: transform 0.3s;
+        }
+        .site-logo:hover {
+            transform: scale(1.05); /* Üzerine gelince hafif büyüme */
+        }
+        /* ----------------------- */
+
+        .container { width: 100%; max-width: 800px; } /* Webtoonlar için 800px idealdir */
+        img { width: 100%; height: auto; display: block; }
+        .nav { padding: 70px; text-align: center; }
+        .btn { padding: 40px 70px; background: #fff; color: #000; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: sans-serif; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="index.html">
+            <img src="logo.png" alt="Merry Marbling Logo" class="site-logo">
+        </a>
+    </header>
+
+    <div class="container">                
+        <img src="bolum_1/1.jpg">
+        <img src="bolum_1/2.jpg">
+        <img src="bolum_1/3.jpg">
+        <img src="bolum_1/4.jpg">
+        <img src="bolum_1/5.jpg">
+        <img src="bolum_1/6.jpg">
+        <img src="bolum_1/7.png">
+        <img src="bolum_1/8.png">
+        <img src="bolum_1/9.png">
+        <img src="bolum_1/10.png">
+        <img src="bolum_1/11.png">
+        <img src="bolum_1/12.png">
+        <img src="bolum_1/13.png">
+        <img src="bolum_1/14.jpg">
+        <img src="bolum_1/15.jpg">
 
                 <div class="nav">
                     <a href="izle_bolum_2.html" class="btn">Sonraki Bölüm</a>
