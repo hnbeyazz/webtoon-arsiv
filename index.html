@@ -122,20 +122,19 @@
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
     <script>
       window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(function(OneSignal) {
-    OneSignal.init({
-      appId: "8a54f0c4-0516-4662-8287-e8c68a669922",
-      // Dosyanın yerini tarayıcıya açıkça tarif ediyoruz:
-      serviceWorkerParam: { scope: "/" },
-      serviceWorkerPath: "OneSignalSDKWorker.js",
-      notifyButton: {
-        enable: true,
-        size: 'medium',
-        theme: 'default',
-        position: 'bottom-right',
-      },
-    });
+  OOneSignalDeferred.push(function(OneSignal) {
+  OneSignal.init({
+    appId: "8a54f0c4-0516-4662-8287-e8c68a669922",
+    // Tarayıcıya dosyanın ana dizinde olduğunu açıkça söylüyoruz
+    serviceWorkerPath: 'OneSignalSDKWorker.js', 
+    serviceWorkerParam: { scope: '/' },
+    notifyButton: {
+      enable: true,
+      size: 'medium',
+      position: 'bottom-right',
+    },
   });
+});
     </script>
 </head>
 <body>
