@@ -119,6 +119,15 @@
         }
     </style>
 </head>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "8a54f0c4-0516-4662-8287-e8c68a669922",
+    });
+  });
+</script>
 <body>
 
     <div class="tanitim-alani">
