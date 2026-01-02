@@ -118,34 +118,40 @@
             .detaylar { text-align: center; min-width: 100%; }
         }
     </style>
+
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(function(OneSignal) {
+        OneSignal.init({
+          appId: "8a54f0c4-0516-4662-8287-e8c68a669922",
+          notifyButton: {
+            enable: true,
+            size: 'medium',
+            theme: 'default',
+            position: 'bottom-right',
+            offset: { bottom: '20px', right: '20px' },
+            text: {
+                'tip.state.unsubscribed': 'Bildirimleri aç',
+                'tip.state.subscribed': 'Bildirimler açık',
+                'tip.state.blocked': 'Bildirimleri engellediniz',
+                'message.prenotify': 'Yeni bölüm geldiğinde haberdar olmak için tıklayın',
+                'action.subscribe': 'ABONE OL',
+                'action.unsubscribe': 'ABONELİKTEN ÇIK'
+            }
+          },
+          promptOptions: {
+            slidedown: {
+              enabled: true,
+              autoPrompt: true,
+              timeDelay: 5,
+              pageViews: 1
+            }
+          }
+        });
+      });
+    </script>
 </head>
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(function(OneSignal) {
-    OneSignal.init({
-      appId: "8a54f0c4-0516-4662-8287-e8c68a669922",
-      notifyButton: {
-        enable: true, /* Zil simgesini aktif eder */
-        size: 'medium', /* 'small', 'medium', or 'large' */
-        theme: 'default', /* 'default' or 'dark' */
-        position: 'bottom-right', /* Konum */
-        offset: {
-            bottom: '20px',
-            right: '20px'
-        },
-        text: {
-            'tip.state.unsubscribed': 'Bildirimleri aç',
-            'tip.state.subscribed': 'Bildirimler açık',
-            'tip.state.blocked': 'Bildirimleri engellediniz',
-            'message.prenotify': 'Yeni bölüm geldiğinde haberdar olmak için tıklayın',
-            'action.subscribe': 'ABONE OL',
-            'action.unsubscribe': 'ABONELİKTEN ÇIK'
-        }
-      },
-    });
-  });
-</script>
 <body>
 
     <div class="tanitim-alani">
@@ -162,33 +168,34 @@
         </div>
     </div>
 
-<h2 class="liste-baslik">Bölümler</h2>
+    <h2 class="liste-baslik">Bölümler</h2>
 
-<div class="bolum-listesi">
-    <a href="izle_bolum_3.html" class="bolum-kart" onclick="kaydet('bolum3')">
-        <div class="bolum-bilgi">
-            <span class="bolum-no">3. Bölüm</span>
-            <span class="bolum-tarih">2 Ocak 2026</span>
-        </div>
-        <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum3">
-    </a>
+    <div class="bolum-listesi">
+        <a href="izle_bolum_3.html" class="bolum-kart" onclick="kaydet('bolum3')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">3. Bölüm</span>
+                <span class="bolum-tarih">2 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum3">
+        </a>
 
-    <a href="izle_bolum_2.html" class="bolum-kart" onclick="kaydet('bolum2')">
-        <div class="bolum-bilgi">
-            <span class="bolum-no">2. Bölüm</span>
-            <span class="bolum-tarih">2 Ocak 2026</span>
-        </div>
-        <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum2">
-    </a>
+        <a href="izle_bolum_2.html" class="bolum-kart" onclick="kaydet('bolum2')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">2. Bölüm</span>
+                <span class="bolum-tarih">2 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum2">
+        </a>
 
-    <a href="izle_bolum_1.html" class="bolum-kart" onclick="kaydet('bolum1')">
-        <div class="bolum-bilgi">
-            <span class="bolum-no">1. Bölüm</span>
-            <span class="bolum-tarih">1 Ocak 2026</span>
-        </div>
-        <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum1">
-    </a>
-</div>
+        <a href="izle_bolum_1.html" class="bolum-kart" onclick="kaydet('bolum1')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">1. Bölüm</span>
+                <span class="bolum-tarih">1 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum1">
+        </a>
+    </div>
+
     <script>
         function ozetiAc() {
             var metin = document.getElementById("ozetMetin");
