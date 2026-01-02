@@ -122,34 +122,20 @@
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
     <script>
       window.OneSignalDeferred = window.OneSignalDeferred || [];
-      OneSignalDeferred.push(function(OneSignal) {
-        OneSignal.init({
-          appId: "8a54f0c4-0516-4662-8287-e8c68a669922",
-          notifyButton: {
-            enable: true,
-            size: 'medium',
-            theme: 'default',
-            position: 'bottom-right',
-            offset: { bottom: '20px', right: '20px' },
-            text: {
-                'tip.state.unsubscribed': 'Bildirimleri aç',
-                'tip.state.subscribed': 'Bildirimler açık',
-                'tip.state.blocked': 'Bildirimleri engellediniz',
-                'message.prenotify': 'Yeni bölüm geldiğinde haberdar olmak için tıklayın',
-                'action.subscribe': 'ABONE OL',
-                'action.unsubscribe': 'ABONELİKTEN ÇIK'
-            }
-          },
-          promptOptions: {
-            slidedown: {
-              enabled: true,
-              autoPrompt: true,
-              timeDelay: 5,
-              pageViews: 1
-            }
-          }
-        });
-      });
+  OneSignalDeferred.push(function(OneSignal) {
+    OneSignal.init({
+      appId: "8a54f0c4-0516-4662-8287-e8c68a669922",
+      // Dosyanın yerini tarayıcıya açıkça tarif ediyoruz:
+      serviceWorkerParam: { scope: "/" },
+      serviceWorkerPath: "OneSignalSDKWorker.js",
+      notifyButton: {
+        enable: true,
+        size: 'medium',
+        theme: 'default',
+        position: 'bottom-right',
+      },
+    });
+  });
     </script>
 </head>
 <body>
