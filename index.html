@@ -33,7 +33,6 @@
             min-height: 100vh;
         }
 
-        /* --- TANITIM ALANI --- */
         .tanitim-alani {
             display: flex; flex-wrap: wrap; gap: 40px;
             max-width: 1000px; padding: 60px 20px;
@@ -71,7 +70,6 @@
             display: block;
         }
 
-        /* --- BÖLÜM LİSTESİ TASARIMI --- */
         .liste-baslik { 
             width: 100%; max-width: 900px; padding-left: 20px; 
             color: var(--arka-plan); font-family: 'Shadows Into Light', cursive;
@@ -80,7 +78,7 @@
         }
 
         .bolum-listesi { 
-            width: 100%; max-width: 900px; padding: 20px 20px 100px 20px; 
+            width: 100%; max-width: 900px; padding: 20px 20px 40px 20px; 
             display: flex; flex-direction: column; gap: 5px;
         }
 
@@ -112,26 +110,22 @@
 
         .izlendi-ikon.aktif { opacity: 0.6; }
 
+        /* Yorum Alanı Konteynırı */
+        .yorum-alani {
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            margin-bottom: 50px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+        }
+
         @media (max-width: 600px) {
             h1 { font-size: 3em; text-align: center; }
             .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
             .detaylar { text-align: center; min-width: 100%; }
         }
     </style>
-
-    <script>
-        (function(w,d, s, id) {
-            if(typeof(w.webpushr)!=='undefined') return;
-            w.webpushr=w.webpushr||function(){(w.webpushr.q=w.webpushr.q||[]).push(arguments)};
-            var js, fjs = d.getElementsByTagName(s)[0];
-            js = d.createElement(s); js.id = id; js.async=1;
-            js.src = "https://cdn.webpushr.com/app.min.js";
-            fjs.parentNode.appendChild(js);
-        }(window,document, 'script', 'webpushr-jssdk'));
-        webpushr('setup',{'key':'BCa-psyK4y3t1FiJNv_-FjvKY_prryGSdA-9GKDVClVk1ZzSrLDIb3bjdBBuQOJcmEwesIdQhjikZ_J6CtTWZT4' });
-    </script>
-
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
 <body>
 
@@ -157,7 +151,7 @@
                 <span class="bolum-no">4. Bölüm</span>
                 <span class="bolum-tarih">5 Ocak 2026</span>
             </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum3">
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum4">
       </a>
       <a href="izle_bolum_3.html" class="bolum-kart" onclick="kaydet('bolum3')">
             <div class="bolum-bilgi">
@@ -166,7 +160,6 @@
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum3">
         </a>
-
         <a href="izle_bolum_2.html" class="bolum-kart" onclick="kaydet('bolum2')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">2. Bölüm</span>
@@ -174,7 +167,6 @@
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum2">
         </a>
-
         <a href="izle_bolum_1.html" class="bolum-kart" onclick="kaydet('bolum1')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">1. Bölüm</span>
@@ -184,6 +176,30 @@
         </a>
     </div>
 
+    <div class="yorum-alani">
+        <h3 style="font-family: 'Shadows Into Light', cursive; font-size: 2em; margin-bottom: 20px;">Yorumlar</h3>
+        <div id="cusdis_thread"
+          data-host="https://cusdis.com"
+          data-app-id="4d3dedb5-2dc5-43dc-a5be-3e245a74538d"
+          data-page-id="ana_sayfa"
+          data-page-url="https://hnbeyazz.github.io/webtoon-arsiv/"
+          data-page-title="Merry Marbling Ana Sayfa"
+        ></div>
+    </div>
+
+    <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+    <script>
+        window.CUSDIS_LOCALE = {
+            "powered_by": "Sistem: ",
+            "post_comment": "Gönder",
+            "placeholder": "Bir şeyler yaz...",
+            "email": "E-posta (Zorunlu değil)",
+            "nickname": "İsim",
+            "reply": "Yanıtla",
+            "mod_badge": "Yazar",
+            "load_more": "Daha fazla"
+        }
+    </script>
     <script>
         function ozetiAc() {
             var metin = document.getElementById("ozetMetin");
