@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bölüm 2 - Merry Marbling</title>
     <style>
-        /* Sayfa Genel Ayarları - Bölüm 1 ile Birebir Aynı */
+        /* Sayfa Genel Ayarları */
         body { 
             margin: 0; 
             background-color: #000; 
@@ -15,7 +15,7 @@
             min-height: 100vh;
         }
 
-        /* Üst Logo Alanı (Header) - Bölüm 1 ile Birebir Aynı */
+        /* Üst Logo Alanı */
         .site-header {
             width: 100%;
             background: #000; 
@@ -27,7 +27,6 @@
             z-index: 1000;
         }
 
-        /* Logo Ayarları */
         .site-logo {
             height: 200px; 
             width: auto;
@@ -35,17 +34,14 @@
             transition: transform 0.3s ease;
         }
 
-        .site-logo:hover {
-            transform: scale(1.05);
-        }
-
+        .site-logo:hover { transform: scale(1.05); }
         .logo-sol { margin-left: 50px; }
         .logo-sag { margin-right: 50px; }
 
-        /* İçerik Konteynırı (Webtoon Resimleri) */
+        /* İçerik Konteynırı */
         .container { 
             width: 100%; 
-            max-width: 800px; /* Bölüm 1'deki gibi 800px yapıldı */
+            max-width: 800px; 
             background: #000; 
             margin-top: 0; 
         }
@@ -56,68 +52,58 @@
             display: block; 
         }
 
-/* Alt Buton Alanı */
-.nav { 
-    padding: 70px 20px; 
-    text-align: center; 
-    background: #000;
-    display: flex;
-    flex-direction: column; /* Genel yapı (butonlar ve yazı) hala alt alta */
-    align-items: center;
-    gap: 25px;
-}
-
-/* Butonları yan yana getiren özel ayar */
-.buton-siralamasi {
-    display: flex;
-    flex-direction: row; /* YAN YANA DİZ */
-    justify-content: center;
-    gap: 20px; /* Butonlar arasındaki boşluk */
-    width: 100%;
-}
-
-.btn { 
-    padding: 15px 30px; 
-    background: #fff; 
-    color: #000; 
-    text-decoration: none; 
-    border-radius: 8px; 
-    font-weight: bold; 
-    font-family: sans-serif;
-    transition: 0.3s;
-    white-space: nowrap; /* Yazıların buton içinde kırılmasını engeller */
-}
-
-.btn:hover {
-    background: #ccc;
-    transform: scale(1.05);
-}
-
-/* MOBİL AYARI: Telefon ekranı çok daralırsa butonlar birbirine çarpmasın diye alt alta döner */
-@media (max-width: 500px) {
-    .buton-siralamasi {
-        flex-direction: column;
-        align-items: center;
-    }
-    .btn {
-        width: 80%; /* Mobilde butonlar daha geniş durur */
-    }
-}
-
-        .uyari-metni {
-            color: #888888; 
-            font-size: 14px;
-            font-style: italic;
-            font-family: sans-serif;
+        /* Alt Buton Alanı */
+        .nav { 
+            padding: 70px 20px 30px 20px; 
+            text-align: center; 
+            background: #000;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            gap: 25px;
         }
 
-        /* Mobil Düzenlemeleri */
-        @media (max-width: 600px) {
+        .buton-siralamasi {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .btn { 
+            padding: 15px 30px; 
+            background: #fff; 
+            color: #000; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            font-family: sans-serif;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            background: #ccc;
+            transform: scale(1.05);
+        }
+
+        /* YORUM ALANI STİLİ */
+        .yorum-konteynir {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            margin: 20px 10px 100px 10px;
+            color: white;
+        }
+
+        @media (max-width: 500px) {
+            .buton-siralamasi { flex-direction: column; align-items: center; }
+            .btn { width: 80%; }
             .site-header { padding: 20px 0; }
             .site-logo { height: 80px; }
             .logo-sol { margin-left: 15px; }
             .logo-sag { margin-right: 15px; }
-            .btn { padding: 15px 30px; font-size: 0.9em; }
         }
     </style>
 </head>
@@ -127,7 +113,6 @@
         <a href="index.html">
             <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol">
         </a>
-
         <div class="logo-konteyner">
             <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag">
         </div>
@@ -145,14 +130,37 @@
         <img src="bolum_2/9.jpg">
         <img src="bolum_2/10.jpg">
 
-<div class="nav">
-    <div class="buton-siralamasi">
-        <a href="izle_bolum_1.html" class="btn">← Önceki Bölüm</a>
-        <a href="izle_bolum_3.html" class="btn">Sonraki Bölüm </a>
-    </div>
-    <p class="uyari-metni"></p>
-</div>
-    </div>
+        <div class="nav">
+            <div class="buton-siralamasi">
+                <a href="izle_bolum_1.html" class="btn">← Önceki Bölüm</a>
+                <a href="izle_bolum_3.html" class="btn">Sonraki Bölüm </a>
+            </div>
+        </div>
+
+        <div class="yorum-konteynir">
+            <h3 style="font-family: sans-serif; margin-bottom: 20px; text-align: center;">Bölüm Hakkında Yorum Yap</h3>
+            <div id="cusdis_thread"
+              data-host="https://cusdis.com"
+              data-app-id="4d3dedb5-2dc5-43dc-a5be-3e245a74538d"
+              data-page-id="bolum_2"
+              data-page-url="https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_2.html"
+              data-page-title="Merry Marbling - Bölüm 2"
+            ></div>
+            <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+            <script>
+                window.CUSDIS_LOCALE = {
+                    "powered_by": "Sistem: ",
+                    "post_comment": "Yorumu Gönder",
+                    "placeholder": "Bölüm nasıldı? Buraya yazabilirsin...",
+                    "email": "E-posta (İsteğe bağlı)",
+                    "nickname": "İsim",
+                    "reply": "Yanıtla",
+                    "mod_badge": "Yazar",
+                    "load_more": "Devamını Gör"
+                }
+            </script>
+        </div>
+        </div>
 
 </body>
 </html>
