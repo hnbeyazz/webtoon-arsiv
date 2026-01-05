@@ -13,8 +13,6 @@
             flex-direction: column; 
             align-items: center; 
             min-height: 100vh;
-            color: #fff;
-            font-family: sans-serif;
         }
 
         /* Üst Logo Alanı */
@@ -40,11 +38,12 @@
         .logo-sol { margin-left: 50px; }
         .logo-sag { margin-right: 50px; }
 
-        /* İçerik Konteynırı (Webtoon Resimleri) */
+        /* İçerik Konteynırı */
         .container { 
             width: 100%; 
             max-width: 800px; 
             background: #000; 
+            margin-top: 0; 
         }
 
         img { 
@@ -53,9 +52,9 @@
             display: block; 
         }
 
-        /* Navigasyon Butonları */
+        /* ALT BUTON ALANI (SENİN ORİJİNAL TASARIMIN) */
         .nav { 
-            padding: 50px 20px; 
+            padding: 70px 20px; 
             text-align: center; 
             background: #000;
             display: flex;
@@ -66,56 +65,47 @@
 
         .buton-siralamasi {
             display: flex;
-            flex-direction: row;
+            flex-direction: row; 
             justify-content: center;
-            gap: 20px;
+            gap: 20px; 
             width: 100%;
         }
 
         .btn { 
-            padding: 12px 25px; 
-            background: #1a1a1a; 
-            color: #fff; 
+            padding: 15px 30px; 
+            background: #fff; 
+            color: #000; 
             text-decoration: none; 
-            border-radius: 5px; 
+            border-radius: 8px; 
             font-weight: bold; 
+            font-family: sans-serif;
             transition: 0.3s;
-            border: 1px solid #333;
-            white-space: nowrap;
+            white-space: nowrap; 
         }
 
         .btn:hover {
-            background: #fff;
-            color: #000;
+            background: #ccc;
+            transform: scale(1.05);
         }
 
-        /* --- ÖZELLEŞTİRİLMİŞ YORUM ALANI --- */
+        /* YORUM ALANI STİLİ */
         .yorum-konteynir {
-            padding: 30px;
-            background: #0a0a0a; /* Çok koyu arka plan */
-            border-radius: 8px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
             margin: 20px 10px 100px 10px;
-            border: 1px solid #222;
-        }
-
-        .yorum-baslik {
-            font-size: 1.1em;
-            margin-bottom: 20px;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 1px solid #222;
-            padding-bottom: 10px;
-        }
-
-        /* Cusdis Iframe Ayarı */
-        #cusdis_thread {
-            min-height: 200px;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         @media (max-width: 500px) {
-            .buton-siralamasi { flex-direction: column; align-items: center; }
-            .btn { width: 90%; }
+            .buton-siralamasi {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 80%; 
+            }
             .site-header { padding: 20px 0; }
             .site-logo { height: 80px; }
             .logo-sol { margin-left: 15px; }
@@ -129,6 +119,7 @@
         <a href="index.html">
             <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol">
         </a>
+
         <div class="logo-konteyner">
             <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag">
         </div>
@@ -151,11 +142,11 @@
                 <a href="izle_bolum_1.html" class="btn">← Önceki Bölüm</a>
                 <a href="izle_bolum_3.html" class="btn">Sonraki Bölüm </a>
             </div>
+            <p class="uyari-metni"></p>
         </div>
 
         <div class="yorum-konteynir">
-            <div class="yorum-baslik">Tartışma</div>
-            
+            <h3 style="font-family: sans-serif; margin-bottom: 20px; text-align: center;">Yorumlar</h3>
             <div id="cusdis_thread"
               data-host="https://cusdis.com"
               data-app-id="4d3dedb5-2dc5-43dc-a5be-3e245a74538d"
@@ -164,18 +155,17 @@
               data-page-title="Merry Marbling - Bölüm 2"
               data-theme="dark"
             ></div>
-
             <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
             <script>
                 window.CUSDIS_LOCALE = {
-                    "powered_by": "", 
-                    "post_comment": "Yorum Yap",
-                    "placeholder": "Sence bölüm nasıldı?...", 
+                    "powered_by": "",
+                    "post_comment": "Yorumu Gönder",
+                    "placeholder": "Sence bölüm nasıldı?...",
                     "email": " ", 
-                    "nickname": "İsim", 
+                    "nickname": "İsim",
                     "reply": "", 
                     "mod_badge": "Yazar",
-                    "load_more": "Daha Fazla"
+                    "load_more": "Daha fazla"
                 }
             </script>
         </div>
