@@ -14,6 +14,7 @@
             align-items: center; 
             min-height: 100vh;
             color: #fff;
+            font-family: sans-serif;
         }
 
         /* Üst Logo Alanı */
@@ -39,12 +40,11 @@
         .logo-sol { margin-left: 50px; }
         .logo-sag { margin-right: 50px; }
 
-        /* İçerik Konteynırı */
+        /* İçerik Konteynırı (Webtoon Resimleri) */
         .container { 
             width: 100%; 
             max-width: 800px; 
             background: #000; 
-            margin-top: 0; 
         }
 
         img { 
@@ -53,7 +53,7 @@
             display: block; 
         }
 
-        /* Alt Buton Alanı */
+        /* Navigasyon Butonları */
         .nav { 
             padding: 50px 20px; 
             text-align: center; 
@@ -74,14 +74,13 @@
 
         .btn { 
             padding: 12px 25px; 
-            background: #222; 
+            background: #1a1a1a; 
             color: #fff; 
             text-decoration: none; 
             border-radius: 5px; 
             font-weight: bold; 
-            font-family: sans-serif;
             transition: 0.3s;
-            border: 1px solid #444;
+            border: 1px solid #333;
             white-space: nowrap;
         }
 
@@ -90,31 +89,28 @@
             color: #000;
         }
 
-        /* --- YENİLENMİŞ YORUM ALANI STİLİ --- */
+        /* --- ÖZELLEŞTİRİLMİŞ YORUM ALANI --- */
         .yorum-konteynir {
             padding: 30px;
-            background: #121212; /* Görseldeki gibi çok koyu gri */
-            border-radius: 4px;
+            background: #0a0a0a; /* Çok koyu arka plan */
+            border-radius: 8px;
             margin: 20px 10px 100px 10px;
-            border-top: 2px solid #333;
+            border: 1px solid #222;
         }
 
-        .yorum-ust-baslik {
-            font-family: sans-serif;
-            font-size: 1.2em;
-            margin-bottom: 25px;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .yorum-baslik {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             border-bottom: 1px solid #222;
-            padding-bottom: 15px;
+            padding-bottom: 10px;
         }
 
-        /* Cusdis kutusunun içindeki öğelerin birbirine girmemesi için */
+        /* Cusdis Iframe Ayarı */
         #cusdis_thread {
             min-height: 200px;
-            color-scheme: dark; /* Tarayıcıya karanlık mod olduğunu bildirir */
         }
 
         @media (max-width: 500px) {
@@ -158,9 +154,7 @@
         </div>
 
         <div class="yorum-konteynir">
-            <div class="yorum-ust-baslik">
-                <span>💬 Yorumlar</span>
-            </div>
+            <div class="yorum-baslik">Tartışma</div>
             
             <div id="cusdis_thread"
               data-host="https://cusdis.com"
@@ -174,14 +168,14 @@
             <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
             <script>
                 window.CUSDIS_LOCALE = {
-                    "powered_by": "Altyapı: ",
-                    "post_comment": "Yorumu Yayınla",
-                    "placeholder": "Sence bölüm nasıldı? Buraya yazabilirsin...",
-                    "email": "E-posta (İsteğe bağlı)",
-                    "nickname": "İsim / Takma Ad",
-                    "reply": "Yanıtla",
+                    "powered_by": "", 
+                    "post_comment": "Yorum Yap",
+                    "placeholder": "Sence bölüm nasıldı?...", 
+                    "email": " ", 
+                    "nickname": "İsim", 
+                    "reply": "", 
                     "mod_badge": "Yazar",
-                    "load_more": "Daha Fazlasını Yükle"
+                    "load_more": "Daha Fazla"
                 }
             </script>
         </div>
