@@ -121,13 +121,23 @@
         }
 
         @media (max-width: 600px) {
-            h1 { font-size: 3em; text-align: center; }
-            .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
-            .detaylar { text-align: center; min-width: 100%; }
-             background-image: url('yatay.jpg');
-        }
+    body { 
+        /* Mobil cihazlar 600px ve altı olduğunda bu body stili uygulanır */
+        background-image: url('yatay.jpg'); 
+        /* Bu altındaki iki özellik, arka planın mobil ekrana tam oturması için önemlidir */
+        background-size: cover; /* veya 100% 100% */
+        background-attachment: scroll; /* Mobil cihazlarda fixed performansı kötüleştirebilir */
+    }
+    /* Diğer mobil stilleriniz */
+    h1 { font-size: 3em; text-align: center; }
+    .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
+    .detaylar { text-align: center; min-width: 100%; }
+}
+
     </style>
 </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <body>
 
     <div class="tanitim-alani">
