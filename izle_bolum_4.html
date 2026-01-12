@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -23,21 +24,16 @@
             display: flex;
             justify-content: space-between; 
             align-items: center;
-            position: relative; 
             z-index: 1000;
         }
 
         .site-logo {
             height: 200px; 
             width: auto;
-            display: block;
             transition: transform 0.3s ease;
         }
 
-        .site-logo:hover {
-            transform: scale(1.05);
-        }
-
+        .site-logo:hover { transform: scale(1.05); }
         .logo-sol { margin-left: 50px; }
         .logo-sag { margin-right: 50px; }
 
@@ -45,15 +41,6 @@
             width: 100%; 
             max-width: 800px; 
             background: #000; 
-            margin-top: 0; 
-        }
-
-        /* Yorum Alanı Stili - Eklendi */
-        .yorum-konteynir {
-            width: 100%;
-            max-width: 800px;
-            padding: 40px 20px 60px 20px;
-            box-sizing: border-box; /* Padding'in genişliği bozulmaması için */
         }
 
         img { 
@@ -65,7 +52,6 @@
         .nav { 
             padding: 70px 20px; 
             text-align: center; 
-            background: #000;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -74,7 +60,6 @@
 
         .buton-siralamasi {
             display: flex;
-            flex-direction: row; 
             justify-content: center;
             gap: 20px; 
             width: 100%;
@@ -89,12 +74,16 @@
             font-weight: bold; 
             font-family: sans-serif;
             transition: 0.3s;
-            white-space: nowrap;
         }
 
-        .btn:hover {
-            background: #ccc;
-            transform: scale(1.05);
+        /* YORUM ALANI AYARI: Garip görünümü çözen kısım */
+        .yorum-konteynir {
+            width: 95%; /* Mobilde kenarlara yapışmaması için */
+            max-width: 800px; /* Resimlerle aynı genişlikte */
+            margin: 20px auto 80px auto; /* Üstten ve alttan boşluk, ortalı */
+            padding: 20px;
+            background: transparent; /* Arka planı siyah tutar */
+            box-sizing: border-box;
         }
 
         @media (max-width: 600px) {
@@ -161,7 +150,7 @@
             (d.head || d.body).appendChild(s);
         })();
     </script>
-    <noscript>Lütfen yorumları görmek için JavaScript'i etkinleştirin.</noscript>
+    <noscript>Yorumları görmek için JavaScript'i etkinleştirin.</noscript>
     
     <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 
