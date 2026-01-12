@@ -25,26 +25,27 @@
         .btn:hover { background: #ccc; }
 
         /* YENİ: Disqus Arkaplan Görsel Alanı */
-        .yorum-arkaplan-paneli {
+                .yorum-arkaplan-paneli {
             width: 100%;
             max-width: 800px;
-            margin: 40px 0;
+            margin: 40px auto; /* auto ekleyerek ortaladık */
             padding: 40px 20px;
             box-sizing: border-box;
             border-radius: 15px;
             
             /* GÖRSEL AYARLARI */
-            background-image: url('yorum.jpeg'); /* BURAYA KENDİ RESİM ADINI YAZ */
+            background-image: url('yorum.jpeg'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             
-            /* Yazıların okunması için hafif karartma */
-            background-blend-mode: darken;
+            /* Karartma katmanı için bu sırayı kullan */
             background-color: rgba(0, 0, 0, 0.6); 
+            background-blend-mode: darken;
             
             border: 1px solid #333;
         }
+
 
         @media (max-width: 600px) {
             .site-header { padding: 20px 0; }
@@ -95,6 +96,7 @@
     <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 </body>
 </html>
+
 
 
 
