@@ -145,36 +145,37 @@
             <p class="uyari-metni"></p>
         </div>
 
-<div class="yorum-konteynir">
-            <div class="yorum-baslik">Tartışma</div>
-            
-            <div id="cusdis_thread"
-              data-host="https://cusdis.com"
-              data-app-id="4d3dedb5-2dc5-43dc-a5be-3e245a74538d"
-              data-page-id="bolum_2"
-              data-page-url="https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_2.html"
-              data-page-title="Merry Marbling - Bölüm 2"
-              data-theme="dark"
-            ></div>
-
-            <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-            <script>
-                window.CUSDIS_LOCALE = {
-                    "powered_by": "", 
-                    "post_comment": "Yorum Yap",
-                    "placeholder": "Sence bölüm nasıldı?...", 
-                    "email": " ", 
-                    "nickname": "İsim", 
-                    "reply": "", 
-                    "mod_badge": "Yazar",
-                    "load_more": "Daha Fazla"
-                }
-            </script>
-        </div>
+    <div class="container" style="padding-top: 40px; padding-bottom: 50px;">
+        <div id="disqus_thread"></div>
     </div>
 
+    <script>
+        /**
+        * BÖLÜM 1 İÇİN BENZERSİZ AYARLAR
+        */
+        var disqus_config = function () {
+            // Bölüm 1'in TAM URL adresi
+            this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_2.html'; 
+            
+            // Bu sayfa için BENZERSİZ KİMLİK (Her bölüm için farklı olmalı)
+            this.page.identifier = 'merry-marbling-bolum-2'; 
+        };
+    
+        (function() { 
+        var d = document, s = d.createElement('script');
+        // Sizin onayladığınız Shortname'li yükleyici adresi
+        s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Lütfen Disqus tarafından desteklenen yorumları görmek için JavaScript'i etkinleştirin. <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+    <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 </body>
 </html>
+
 
 
 
