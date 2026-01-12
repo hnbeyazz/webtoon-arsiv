@@ -19,12 +19,13 @@
 
         body { 
             margin: 0; 
+            /* ARKA PLAN AYARLARI */
             background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('867320b5e436c545505d605d1a7c5481.jpg');
             background-size: 100% auto; 
             background-position: center top; 
             background-repeat: no-repeat;
             background-color: #000; 
-            background-attachment: fixed;
+            background-attachment: fixed; /* SABİT ARKA PLAN */
             color: #fff; 
             font-family: 'Tinos', serif; 
             display: flex; 
@@ -110,7 +111,7 @@
 
         .izlendi-ikon.aktif { opacity: 0.6; }
 
-        /* Yorum Alanı Konteynırı */
+        /* Yorum Alanı Konteynırı - Disqus için düzenlenmiş stil */
         .yorum-alani {
             width: 100%;
             max-width: 900px;
@@ -121,26 +122,18 @@
         }
 
         @media (max-width: 600px) {
-    body { 
-        /* Mobil cihazlar 600px ve altı olduğunda bu body stili uygulanır */
-        background-image: url('yatay.jpg'); 
-        /* Bu altındaki iki özellik, arka planın mobil ekrana tam oturması için önemlidir */
-        background-size: center; /* veya 100% 100% */
-        background-attachment: fixed; /* Mobil cihazlarda fixed performansı kötüleştirebilir */
-        background-size: 70% auto; 
-        background-position: center center;
-        
-
-    }
-    /* Diğer mobil stilleriniz */
-    h1 { font-size: 3em; text-align: center; }
-    .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
-    .detaylar { text-align: center; min-width: 100%; }
-}
-
+            body { 
+                background-image: url('yatay.jpg'); /* Mobil arka plan görselinizi kontrol edin */
+                background-size: cover; /* İyileştirildi: Görselin ekranı kaplaması için */
+                background-position: center center;
+                background-attachment: fixed; 
+            }
+            h1 { font-size: 3em; text-align: center; }
+            .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
+            .detaylar { text-align: center; min-width: 100%; }
+        }
     </style>
 </head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <body>
 
@@ -166,7 +159,7 @@
                 <span class="bolum-no">5. Bölüm</span>
                 <span class="bolum-tarih">9 Ocak 2026</span>
             </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum4">
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum5">
         </a>
       <a href="izle_bolum_4.html" class="bolum-kart" onclick="kaydet('bolum4')">
             <div class="bolum-bilgi">
@@ -199,29 +192,8 @@
     </div>
 
     <div class="yorum-alani">
-        <h3 style="font-family: 'Shadows Into Light', cursive; font-size: 2em; margin-bottom: 20px;">Yorumlar</h3>
-        <div id="cusdis_thread"
-          data-host="https://cusdis.com"
-          data-app-id="4d3dedb5-2dc5-43dc-a5be-3e245a74538d"
-          data-page-id="ana_sayfa"
-          data-page-url="https://hnbeyazz.github.io/webtoon-arsiv/"
-          data-page-title="Merry Marbling Ana Sayfa"
-        ></div>
+        <div id="disqus_thread"></div>
     </div>
-
-    <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-    <script>
-        window.CUSDIS_LOCALE = {
-            "powered_by": "Sistem: ",
-            "post_comment": "Gönder",
-            "placeholder": "Bir şeyler yaz...",
-            "email": "E-posta (Zorunlu değil)",
-            "nickname": "İsim",
-            "reply": "Yanıtla",
-            "mod_badge": "Yazar",
-            "load_more": "Daha fazla"
-        }
-    </script>
     <script>
         function ozetiAc() {
             var metin = document.getElementById("ozetMetin");
@@ -247,5 +219,29 @@
             localStorage.setItem('sonOkunan', id);
         }
     </script>
+    
+    <script>
+        /**
+        * KRİTİK: BU İKİ SATIRI SİTENİZİN GERÇEK BİLGİLERİYLE DEĞİŞTİRİN!
+        */
+        var disqus_config = function () {
+            // Sitenizin yayınlandığı tam URL adresi
+            this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/'; 
+            // Bu sayfa (ana sayfa) için benzersiz kimlik
+            this.page.identifier = 'merry-marbling-ana-sayfa'; 
+        };
+    
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        // Kendi Disqus kısa adınızı (shortname) kontrol edin
+        s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+    <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
+
 </body>
 </html>
