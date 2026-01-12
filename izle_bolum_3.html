@@ -153,7 +153,34 @@
     </div>
     <p class="uyari-metni"></p>
 </div>
+        <div class="container" style="padding-top: 40px; padding-bottom: 50px;">
+        <div id="disqus_thread"></div>
     </div>
+
+    <script>
+        /**
+        * BÖLÜM 1 İÇİN BENZERSİZ AYARLAR
+        */
+        var disqus_config = function () {
+            // Bölüm 1'in TAM URL adresi
+            this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_3.html'; 
+            
+            // Bu sayfa için BENZERSİZ KİMLİK (Her bölüm için farklı olmalı)
+            this.page.identifier = 'merry-marbling-bolum-3'; 
+        };
+    
+        (function() { 
+        var d = document, s = d.createElement('script');
+        // Sizin onayladığınız Shortname'li yükleyici adresi
+        s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Lütfen Disqus tarafından desteklenen yorumları görmek için JavaScript'i etkinleştirin. <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+    <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 
 </body>
 </html>
