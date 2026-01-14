@@ -19,13 +19,12 @@
 
         body { 
             margin: 0; 
-            /* ARKA PLAN AYARLARI */
             background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('867320b5e436c545505d605d1a7c5481.jpg');
             background-size: 100% auto; 
             background-position: center top; 
             background-repeat: no-repeat;
             background-color: #000; 
-            background-attachment: fixed; /* SABİT ARKA PLAN */
+            background-attachment: fixed; 
             color: #fff; 
             font-family: 'Tinos', serif; 
             display: flex; 
@@ -111,7 +110,6 @@
 
         .izlendi-ikon.aktif { opacity: 0.6; }
 
-        /* Yorum Alanı Konteynırı - Disqus için düzenlenmiş stil */
         .yorum-alani {
             width: 100%;
             max-width: 900px;
@@ -123,8 +121,8 @@
 
         @media (max-width: 600px) {
             body { 
-                background-image: url('yatay.jpg'); /* Mobil arka plan görselinizi kontrol edin */
-                background-size: cover; /* İyileştirildi: Görselin ekranı kaplaması için */
+                background-image: url('yatay.jpg'); 
+                background-size: cover; 
                 background-position: center center;
                 background-attachment: fixed; 
             }
@@ -159,8 +157,9 @@
                 <span class="bolum-no">6. Bölüm</span>
                 <span class="bolum-tarih">14 Ocak 2026</span>
             </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum5">
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum6">
         </a>
+
         <a href="izle_bolum_5.html" class="bolum-kart" onclick="kaydet('bolum5')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">5. Bölüm</span>
@@ -168,20 +167,23 @@
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum5">
         </a>
-      <a href="izle_bolum_4.html" class="bolum-kart" onclick="kaydet('bolum4')">
+
+        <a href="izle_bolum_4.html" class="bolum-kart" onclick="kaydet('bolum4')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">4. Bölüm</span>
                 <span class="bolum-tarih">5 Ocak 2026</span>
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum4">
-      </a>
-      <a href="izle_bolum_3.html" class="bolum-kart" onclick="kaydet('bolum3')">
+        </a>
+
+        <a href="izle_bolum_3.html" class="bolum-kart" onclick="kaydet('bolum3')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">3. Bölüm</span>
                 <span class="bolum-tarih">2 Ocak 2026</span>
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum3">
         </a>
+
         <a href="izle_bolum_2.html" class="bolum-kart" onclick="kaydet('bolum2')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">2. Bölüm</span>
@@ -189,6 +191,7 @@
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum2">
         </a>
+
         <a href="izle_bolum_1.html" class="bolum-kart" onclick="kaydet('bolum1')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">1. Bölüm</span>
@@ -201,6 +204,7 @@
     <div class="yorum-alani">
         <div id="disqus_thread"></div>
     </div>
+
     <script>
         function ozetiAc() {
             var metin = document.getElementById("ozetMetin");
@@ -227,31 +231,20 @@
         }
     </script>
     
-<script>
-    /**
-    * DİKKAT: Bu blokta SADECE Shortname URL'si düzeltilmiştir.
-    * (s.src adresi artık hatasızdır).
-    */
-    var disqus_config = function () {
-        // Ana sayfanın tam URL adresi (Doğru)
-        this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/'; 
-        // Ana sayfa için benzersiz kimlik (Doğru)
-        this.page.identifier = 'merry-marbling-ana-sayfa'; 
-    };
+    <script>
+        var disqus_config = function () {
+            this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/'; 
+            this.page.identifier = 'merry-marbling-ana-sayfa'; 
+        };
 
-    (function() { 
-    var d = document, s = d.createElement('script');
-    
-    // DÜZELTİLDİ: Sizin Shortname'iniz ile başlayan doğru URL
-    s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js'; // Bu satırda hata yok, Shortname tam olarak böyleymiş.
-    
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-<script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
+        (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 
 </body>
 </html>
