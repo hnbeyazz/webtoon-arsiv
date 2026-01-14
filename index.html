@@ -32,6 +32,36 @@
             align-items: center; 
             min-height: 100vh;
         }
+        /* Yeni Bölüm Etiketi Stili */
+.yeni-etiketi {
+    background-color: #ff3e3e; /* Canlı kırmızı */
+    color: white;
+    font-size: 0.6em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-left: 15px;
+    display: inline-block;
+    font-family: sans-serif;
+    font-weight: bold;
+    vertical-align: middle;
+    /* Animasyonlar */
+    animation: yanip-son 1.5s infinite, hafif-don 3s infinite linear;
+}
+
+/* Yanıp sönme efekti */
+@keyframes yanip-son {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Hafif dönme (sallanma) efekti */
+@keyframes hafif-don {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
 
         .tanitim-alani {
             display: flex; flex-wrap: wrap; gap: 40px;
