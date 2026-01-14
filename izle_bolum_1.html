@@ -11,19 +11,51 @@
         .logo-sol { margin-left: 50px; }
         .logo-sag { margin-right: 50px; }
 
-        /* Bölüm Başlığı - Sans-Serif ve Modern Stil */
+        /* Üst Navigasyon Yolu (Breadcrumb) */
+        .ust-navigasyon {
+            width: 100%;
+            color: #666;
+            font-size: 0.9em;
+            font-family: 'Segoe UI', sans-serif;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .ust-navigasyon a { color: #888; text-decoration: none; transition: 0.3s; }
+        .ust-navigasyon a:hover { color: #fff; }
+
+        /* Seçici Butonlar (Dropdowns) */
+        .secici-konteyner {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+        .secici-buton {
+            background: #1a1d22; /* Görseldeki koyu gri tonu */
+            color: #ccc;
+            border: 1px solid #333;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.95em;
+            cursor: pointer;
+            outline: none;
+            flex: 1; /* Butonların yan yana eşit dağılması için */
+            max-width: 200px;
+        }
+        .secici-buton:hover { border-color: #555; color: #fff; }
+
         .bolum-basligi {
             width: 100%;
             text-align: left;
-            padding: 20px 0 10px 0;
-            /* Sans-serif font ailesi buraya eklendi */
+            padding: 10px 0 10px 0;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             font-size: 1.8em;
             font-weight: bold;
             color: #fff;
             border-bottom: 1px solid #333;
             margin-bottom: 25px;
-            letter-spacing: 1px; /* Harf aralarını biraz açarak daha şık gösterir */
+            letter-spacing: 1px;
         }
 
         .container { width: 100%; max-width: 800px; background: #000; margin-top: 0; }
@@ -39,7 +71,8 @@
             .logo-sol { margin-left: 15px; }
             .logo-sag { margin-right: 15px; }
             .btn { padding: 15px 30px; font-size: 0.9em; }
-            .bolum-basligi { font-size: 1.4em; padding-left: 10px; } 
+            .bolum-basligi { font-size: 1.4em; padding-left: 10px; }
+            .ust-navigasyon, .secici-konteyner { padding-left: 10px; }
         }
     </style>
 </head>
@@ -49,7 +82,26 @@
         <div class="logo-konteyner"> <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag"> </div>
       </header>
 
-    <div class="container">      
+    <div class="container">
+        <nav class="ust-navigasyon">
+            <a href="index.html">Ana Sayfa</a> / <a href="index.html">Merry Marbling</a> / <span>Bölüm 1</span>
+        </nav>
+
+        <div class="secici-konteyner">
+            <select class="secici-buton" onchange="location = this.value;">
+                <option value="izle_bolum_1.html" selected>Bölüm 1</option>
+                <option value="izle_bolum_2.html">Bölüm 2</option>
+                <option value="izle_bolum_3.html">Bölüm 3</option>
+                <option value="izle_bolum_4.html">Bölüm 4</option>
+                <option value="izle_bolum_5.html">Bölüm 5</option>
+                <option value="izle_bolum_6.html">Bölüm 6</option>
+            </select>
+
+            <select class="secici-buton">
+                <option>Alt Alta</option>
+            </select>
+        </div>
+
         <div class="bolum-basligi">1. Bölüm</div>
 
         <img src="bolum_1/1.jpg"> 
