@@ -19,7 +19,7 @@
 
         body { 
             margin: 0; 
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('media7.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('867320b5e436c545505d605d1a7c5481.jpg');
             background-size: 100% auto; 
             background-position: center top; 
             background-repeat: no-repeat;
@@ -150,12 +150,14 @@
         }
 
         @media (max-width: 600px) {
-            body { 
-                background-image: url('yatay.jpg'); 
-                background-size: cover; 
-                background-position: center center;
-                background-attachment: fixed; 
-            }
+body { 
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), /* Karartma katmanı */
+        url('media7.jpg'); 
+    background-size: cover; 
+    background-position: center center;
+    background-attachment: fixed; 
+}
             h1 { font-size: 3em; text-align: center; }
             .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
             .detaylar { text-align: center; min-width: 100%; }
