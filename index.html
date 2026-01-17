@@ -152,18 +152,19 @@
     body { 
         background-image: 
             linear-gradient(to bottom, 
-                rgba(0, 0, 30, 1) 0px,      /* En üst: Tam lacivert */
-                rgba(0, 0, 30, 1) 150px,    /* 150px'e kadar lacivert devam eder */
-                rgba(0, 0, 30, 0) 300px,    /* 300px (Resmin başlangıcı): Mavilik TAMAMEN biter */
-                rgba(0, 0, 0, 0.6) 500px    /* 300px'den sonra: Sadece hafif siyah karartma başlar */
+                rgba(0, 0, 0, 1) 0px,       /* En üst: Tam karanlık */
+                rgba(0, 0, 30, 1) 150px,    /* 150px'e kadar yavaşça maviye dönen karanlık */
+                rgba(0, 0, 30, 0.5) 250px,  /* 250px'de mavi azalmaya başlar (Resim görünür) */
+                rgba(0, 0, 0, 0) 350px,     /* 350px'e kadar tamamen şeffaflaşır (Keskin hat biter) */
+                rgba(0, 0, 0, 0.7) 600px    /* Sayfanın devamında hafif bir karartma kalır */
             ),
             url('media7.jpg'); 
 
-        background-position: center 300px; /* Resim 300px'de başlıyor */
+        background-position: center 300px; 
         background-attachment: scroll; 
         background-size: 100% auto;
         background-repeat: no-repeat;
-        background-color: #000; /* Resmin bittiği yer zifiri siyah olsun */
+        background-color: #000; 
     }
 }
             h1 { font-size: 3em; text-align: center; }
