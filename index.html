@@ -63,11 +63,17 @@
     100% { transform: rotate(0deg); }
 }
 
-        .tanitim-alani {
-            display: flex; flex-wrap: wrap; gap: 40px;
-            max-width: 1000px; padding: 60px 20px;
-            align-items: flex-start; justify-content: flex-start;
-        }
+.tanitim-alani {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1000px;
+    width: 100%; /* Bunu ekle: Kutunun tüm satırı kaplamasını sağlar */
+    padding: 60px 20px;
+    align-items: flex-start;
+    justify-content: flex-start; /* Sola yaslar */
+    margin-left: 0; /* Eğer dışarıdan bir ortalama varsa iptal eder */
+}
 
         .kapak {
             width: 280px; border-radius: 15px;
