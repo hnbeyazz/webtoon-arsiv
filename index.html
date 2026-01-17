@@ -152,11 +152,17 @@
     body { 
         background-image: 
             linear-gradient(to bottom, 
-                rgba(0, 0, 0, 1) 0px,       /* En üst: Tam karanlık */
-                rgba(0, 0, 30, 1) 150px,    /* 150px'e kadar yavaşça maviye dönen karanlık */
-                rgba(0, 0, 30, 0.5) 250px,  /* 250px'de mavi azalmaya başlar (Resim görünür) */
-                rgba(0, 0, 0, 0) 350px,     /* 350px'e kadar tamamen şeffaflaşır (Keskin hat biter) */
-                rgba(0, 0, 0, 0.7) 600px    /* Sayfanın devamında hafif bir karartma kalır */
+                /* ÜST GEÇİŞ (Zaten yaptığımız kısım) */
+                rgba(0, 0, 0, 1) 0px,       
+                rgba(0, 0, 30, 1) 150px,    
+                rgba(0, 0, 30, 0.5) 250px,  
+                rgba(0, 0, 0, 0) 350px,     
+
+                /* ALT GEÇİŞ (Yeni eklediğimiz simetrik kısım) */
+                rgba(0, 0, 0, 0) 700px,     /* Resim burada net kalmaya devam eder */
+                rgba(0, 0, 30, 0.5) 850px,  /* Alttan mavi sis yükselmeye başlar */
+                rgba(0, 0, 30, 1) 950px,    /* Resmin bittiği yerlere doğru tam maviye döner */
+                rgba(0, 0, 0, 1) 1100px     /* Ve sayfanın kalanı tekrar tam siyah olur */
             ),
             url('media7.jpg'); 
 
