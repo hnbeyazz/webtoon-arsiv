@@ -17,10 +17,35 @@
     background-position: center;
     background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('media6.jpg');
 }
-        .site-header { width: 100%; background: transparent; padding: 40px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
-        .site-logo { height: 200px; width: auto; display: block; transition: transform 0.3s ease; }
-        .logo-sol { margin-left: 50px; }
-        .logo-sag { margin-right: 50px; }
+/* En Üstteki Yatay Şerit */
+.site-header { 
+    width: 100%; 
+    background: transparent; 
+    padding: 30px 0; 
+    display: flex; 
+    justify-content: center; /* Logoları sayfanın ortasında toplar */
+    align-items: center; 
+    gap: 30px; /* Logoların arasındaki yatay mesafe */
+    flex-wrap: nowrap; /* Logoların alt satıra geçmesini engeller */
+}
+
+.site-logo { 
+    height: 120px; /* 5 logo yan yana olacağı için bu boyut idealdir */
+    width: auto; 
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); /* Logolara derinlik katar */
+}
+
+.site-logo:hover {
+    transform: scale(1.1) translateY(-10px); /* Üzerine gelince büyür ve yükselir */
+    filter: drop-shadow(0 10px 20px rgba(144, 224, 239, 0.4));
+}
+
+/* Mobil Ayarı: Ekran daralınca logoların birbirine girmemesi için */
+@media (max-width: 768px) {
+    .site-header { gap: 10px; padding: 20px 5px; }
+    .site-logo { height: 60px; } 
+}
 
         .ust-navigasyon {    /*breadcrumpyolu*/
             width: 100%;
@@ -89,14 +114,11 @@
 </head>
 <body>
 <header class="site-header">
-    <a href="index.html"> 
-        <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol"> 
-    </a>
-    <div class="logo-konteyner"> 
-        <a href="index.html">
-            <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag"> 
-        </a>
-    </div>
+    <a href="index.html"><img src="scara1.png" alt="Logo 1" class="site-logo"></a>
+    <a href="index.html"><img src="xielian2.png" alt="Logo 2" class="site-logo"></a>
+    <a href="index.html"><img src="huacheng1.png" alt="Logo 3" class="site-logo"></a>
+    <a href="index.html"><img src="logo4.png" alt="Logo 4" class="site-logo"></a>
+    <a href="index.html"><img src="logo5.png" alt="Logo 5" class="site-logo"></a>
 </header>
 
     <div class="container">
@@ -158,6 +180,7 @@
     <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 </body>
 </html>
+
 
 
 
