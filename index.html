@@ -149,14 +149,16 @@
             border-radius: 15px;
         }
 
-        @media (max-width: 600px) {
-body { 
-    background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), /* Karartma katmanı */
-        url('media7.jpg'); 
-    background-size: cover; 
-    background-position: center center;
-    background-attachment: fixed; 
+@media (max-width: 600px) {
+    body { 
+        background-image: 
+            linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+            url('media7.jpg'); 
+        background-size: cover; 
+        background-position: center top; /* Fotoğrafın en üstten başlamasını sağlar */
+        /* DEĞİŞEN KISIM BURASI: */
+        background-attachment: scroll; 
+    }
 }
             h1 { font-size: 3em; text-align: center; }
             .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
