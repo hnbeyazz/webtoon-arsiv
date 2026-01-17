@@ -19,7 +19,7 @@
 
         body { 
             margin: 0; 
-            /* MASAÜSTÜ İÇİN ARKA PLAN (Siyah Karartmalı) */
+            /* MASAÜSTÜ İÇİN ARKA PLAN (Sadece Siyah Karartma) */
             background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('867320b5e436c545505d605d1a7c5481.jpg');
             background-size: 100% auto; 
             background-position: center top; 
@@ -30,12 +30,10 @@
             font-family: 'Tinos', serif; 
             display: flex; 
             flex-direction: column; 
-            /* SOLA YASLAMA BURADA YAPILDI */
-            align-items: flex-start; 
+            align-items: flex-start; /* SOLA YASLAMA */
             min-height: 100vh;
         }
 
-        /* Yeni Bölüm Etiketi Stili */
         .yeni-etiketi {
             background-color: #ff3e3e;
             color: white;
@@ -144,7 +142,7 @@
             border-radius: 15px;
         }
 
-        /* TELEFON AYARLARI */
+        /* MOBİL ÖZEL AYARLAR (Mavi Geçişli) */
         @media (max-width: 600px) {
             body { 
                 background-image: 
@@ -160,12 +158,12 @@
                     ),
                     url('media7.jpg'); 
 
-                background-position: center 300px; /* Resim 300px aşağı itildi */
+                background-position: center 300px;
                 background-attachment: scroll; 
                 background-size: 100% auto;
                 background-repeat: no-repeat;
                 background-color: #000; 
-                align-items: flex-start; /* Mobilde de sola yaslı */
+                align-items: flex-start;
             }
             h1 { font-size: 3em; text-align: left; }
             .kapak { width: 100%; max-width: 250px; margin: 0; display: block; }
@@ -200,7 +198,47 @@
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum6">
         </a>
-        </div>
+
+        <a href="izle_bolum_5.html" class="bolum-kart" onclick="kaydet('bolum5')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">5. Bölüm</span>
+                <span class="bolum-tarih">9 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum5">
+        </a>
+
+        <a href="izle_bolum_4.html" class="bolum-kart" onclick="kaydet('bolum4')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">4. Bölüm</span>
+                <span class="bolum-tarih">5 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum4">
+        </a>
+
+        <a href="izle_bolum_3.html" class="bolum-kart" onclick="kaydet('bolum3')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">3. Bölüm</span>
+                <span class="bolum-tarih">2 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum3">
+        </a>
+
+        <a href="izle_bolum_2.html" class="bolum-kart" onclick="kaydet('bolum2')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">2. Bölüm</span>
+                <span class="bolum-tarih">2 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum2">
+        </a>
+
+        <a href="izle_bolum_1.html" class="bolum-kart" onclick="kaydet('bolum1')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">1. Bölüm</span>
+                <span class="bolum-tarih">1 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum1">
+        </a>
+    </div>
 
     <div class="yorum-alani">
         <div id="disqus_thread"></div>
