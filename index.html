@@ -118,6 +118,17 @@
             background: rgba(255, 255, 255, 0.03);
             border-radius: 15px;
         }
+        .yeni-etiketi {
+            background-color: #ff3e3e; color: white; font-size: 0.8em; padding: 4px 9px;
+            border-radius: 4px; margin-left: 15px; display: inline-block;
+            font-family: sans-serif; font-weight: bold; vertical-align: middle;
+            animation: yanip-son 1.5s infinite, hafif-don 3s infinite linear;
+        }
+
+        @keyframes yanip-son { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        @keyframes hafif-don { 0% { transform: rotate(0deg); } 25% { transform: rotate(5deg); } 75% { transform: rotate(-5deg); } 100% { transform: rotate(0deg); } }
+
+        @media (max-width: 600px) {
 
         @media (max-width: 600px) {
             body { 
@@ -155,7 +166,7 @@
         <a href="izle_bolum_6.html" class="bolum-kart" onclick="kaydet('bolum6')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">6. Bölüm</span>
-                <span class="bolum-tarih">14 Ocak 2026</span>
+                <span class="yeni-etiketi">YENİ</span> <span class="bolum-tarih">14 Ocak 2026</span>
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum6">
         </a>
