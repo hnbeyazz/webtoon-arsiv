@@ -19,6 +19,7 @@
 
         body { 
             margin: 0; 
+            /* MASAÜSTÜ İÇİN ARKA PLAN (Siyah Karartmalı) */
             background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('867320b5e436c545505d605d1a7c5481.jpg');
             background-size: 100% auto; 
             background-position: center top; 
@@ -29,51 +30,39 @@
             font-family: 'Tinos', serif; 
             display: flex; 
             flex-direction: column; 
-            align-items: center; 
+            /* SOLA YASLAMA BURADA YAPILDI */
+            align-items: flex-start; 
             min-height: 100vh;
         }
+
         /* Yeni Bölüm Etiketi Stili */
-.yeni-etiketi {
-    background-color: #ff3e3e; /* Canlı kırmızı */
-    color: white;
-    font-size: 0.8em;
-    padding: 4px 9px;
-    border-radius: 4px;
-    margin-left: 15px;
-    display: inline-block;
-    font-family: sans-serif;
-    font-weight: bold;
-    vertical-align: middle;
-    /* Animasyonlar */
-    animation: yanip-son 1.5s infinite, hafif-don 3s infinite linear;
-}
+        .yeni-etiketi {
+            background-color: #ff3e3e;
+            color: white;
+            font-size: 0.8em;
+            padding: 4px 9px;
+            border-radius: 4px;
+            margin-left: 15px;
+            display: inline-block;
+            font-family: sans-serif;
+            font-weight: bold;
+            vertical-align: middle;
+            animation: yanip-son 1.5s infinite, hafif-don 3s infinite linear;
+        }
 
-/* Yanıp sönme efekti */
-@keyframes yanip-son {
-    0% { opacity: 1; }
-    50% { opacity: 0.3; }
-    100% { opacity: 1; }
-}
+        @keyframes yanip-son { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        @keyframes hafif-don { 0% { transform: rotate(0deg); } 25% { transform: rotate(5deg); } 75% { transform: rotate(-5deg); } 100% { transform: rotate(0deg); } }
 
-/* Hafif dönme (sallanma) efekti */
-@keyframes hafif-don {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(5deg); }
-    75% { transform: rotate(-5deg); }
-    100% { transform: rotate(0deg); }
-}
-
-.tanitim-alani {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    max-width: 1000px;
-    width: 100%; /* Bunu ekle: Kutunun tüm satırı kaplamasını sağlar */
-    padding: 60px 20px;
-    align-items: flex-start;
-    justify-content: flex-start; /* Sola yaslar */
-    margin-left: 0; /* Eğer dışarıdan bir ortalama varsa iptal eder */
-}
+        .tanitim-alani {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            max-width: 1000px;
+            width: 100%; 
+            padding: 60px 20px;
+            align-items: flex-start;
+            justify-content: flex-start; 
+        }
 
         .kapak {
             width: 280px; border-radius: 15px;
@@ -114,7 +103,7 @@
         }
 
         .bolum-listesi { 
-            width: 100%; max-width: 900px; padding: 20px 20px 40px 20px; 
+            width: 100%; max-width: 900px; padding: 20px; 
             display: flex; flex-direction: column; gap: 5px;
         }
 
@@ -154,34 +143,33 @@
             background: rgba(255, 255, 255, 0.03);
             border-radius: 15px;
         }
-@media (max-width: 600px) {
-    body { 
-        background-image: 
-            linear-gradient(to bottom, 
-                /* ÜST GEÇİŞ (Zaten yaptığımız kısım) */
-                rgba(0, 0, 0, 1) 0px,       
-                rgba(0, 0, 30, 1) 150px,    
-                rgba(0, 0, 30, 0.5) 250px,  
-                rgba(0, 0, 0, 0) 350px,     
 
-                /* ALT GEÇİŞ (Yeni eklediğimiz simetrik kısım) */
-                rgba(0, 0, 0, 0) 700px,     /* Resim burada net kalmaya devam eder */
-                rgba(0, 0, 30, 0.5) 850px,  /* Alttan mavi sis yükselmeye başlar */
-                rgba(0, 0, 30, 1) 950px,    /* Resmin bittiği yerlere doğru tam maviye döner */
-                rgba(0, 0, 0, 1) 1100px     /* Ve sayfanın kalanı tekrar tam siyah olur */
-            ),
-            url('media7.jpg'); 
+        /* TELEFON AYARLARI */
+        @media (max-width: 600px) {
+            body { 
+                background-image: 
+                    linear-gradient(to bottom, 
+                        rgba(0, 0, 0, 1) 0px,       
+                        rgba(0, 0, 30, 1) 150px,    
+                        rgba(0, 0, 30, 0.5) 250px,  
+                        rgba(0, 0, 0, 0) 350px,     
+                        rgba(0, 0, 0, 0) 700px,     
+                        rgba(0, 0, 30, 0.5) 850px,  
+                        rgba(0, 0, 30, 1) 950px,    
+                        rgba(0, 0, 0, 1) 1100px     
+                    ),
+                    url('media7.jpg'); 
 
-        background-position: center 300px; 
-        background-attachment: scroll; 
-        background-size: 100% auto;
-        background-repeat: no-repeat;
-        background-color: #000; 
-    }
-}
-            h1 { font-size: 3em; text-align: center; }
-            .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
-            .detaylar { text-align: center; min-width: 100%; }
+                background-position: center 300px; /* Resim 300px aşağı itildi */
+                background-attachment: scroll; 
+                background-size: 100% auto;
+                background-repeat: no-repeat;
+                background-color: #000; 
+                align-items: flex-start; /* Mobilde de sola yaslı */
+            }
+            h1 { font-size: 3em; text-align: left; }
+            .kapak { width: 100%; max-width: 250px; margin: 0; display: block; }
+            .detaylar { text-align: left; min-width: 100%; }
         }
     </style>
 </head>
@@ -205,54 +193,14 @@
     <h2 class="liste-baslik">Bölümler</h2>
 
     <div class="bolum-listesi">
-<a href="izle_bolum_6.html" class="bolum-kart" onclick="kaydet('bolum6')">
+        <a href="izle_bolum_6.html" class="bolum-kart" onclick="kaydet('bolum6')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">6. Bölüm</span>
                 <span class="yeni-etiketi">YENİ</span> <span class="bolum-tarih">14 Ocak 2026</span>
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum6">
         </a>
-
-        <a href="izle_bolum_5.html" class="bolum-kart" onclick="kaydet('bolum5')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">5. Bölüm</span>
-                <span class="bolum-tarih">9 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum5">
-        </a>
-
-        <a href="izle_bolum_4.html" class="bolum-kart" onclick="kaydet('bolum4')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">4. Bölüm</span>
-                <span class="bolum-tarih">5 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum4">
-        </a>
-
-        <a href="izle_bolum_3.html" class="bolum-kart" onclick="kaydet('bolum3')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">3. Bölüm</span>
-                <span class="bolum-tarih">2 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum3">
-        </a>
-
-        <a href="izle_bolum_2.html" class="bolum-kart" onclick="kaydet('bolum2')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">2. Bölüm</span>
-                <span class="bolum-tarih">2 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum2">
-        </a>
-
-        <a href="izle_bolum_1.html" class="bolum-kart" onclick="kaydet('bolum1')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">1. Bölüm</span>
-                <span class="bolum-tarih">1 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum1">
-        </a>
-    </div>
+        </div>
 
     <div class="yorum-alani">
         <div id="disqus_thread"></div>
@@ -283,21 +231,5 @@
             localStorage.setItem('sonOkunan', id);
         }
     </script>
-    
-    <script>
-        var disqus_config = function () {
-            this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/'; 
-            this.page.identifier = 'merry-marbling-ana-sayfa'; 
-        };
-
-        (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
-
 </body>
 </html>
