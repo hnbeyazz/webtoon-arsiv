@@ -29,24 +29,14 @@
             font-family: 'Tinos', serif; 
             display: flex; 
             flex-direction: column; 
-            align-items: center; /* Sayfa genelini ortalar */
+            align-items: center; 
             min-height: 100vh;
         }
 
-        /* Tüm içeriğin hizalanacağı ana genişlik kontrolü */
-        .tanitim-alani, .liste-baslik, .bolum-listesi, .yorum-alani {
-            width: 100%;
-            max-width: 900px; /* Hepsi aynı hizada olması için genişliği eşitledik */
-            box-sizing: border-box;
-        }
-
         .tanitim-alani {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            padding: 60px 0; /* Sol padding'i kaldırdık ki çizgi şaşmasın */
-            align-items: flex-start;
-            justify-content: flex-start;
+            display: flex; flex-wrap: wrap; gap: 40px;
+            max-width: 1000px; padding: 60px 20px;
+            align-items: flex-start; justify-content: center;
         }
 
         .kapak {
@@ -55,12 +45,11 @@
             border: 1px solid #333;
         }
 
-        .detaylar { flex: 1; min-width: 300px; text-align: left; }
+        .detaylar { flex: 1; min-width: 350px; text-align: left; }
         
         h1 { 
             font-family: 'Shadows Into Light', cursive; 
             font-size: 4.5em; margin: 0; color: var(--arka-plan); 
-            line-height: 1; margin-bottom: 20px;
         }
 
         .konu-metni { 
@@ -80,7 +69,8 @@
             font-size: 1.3em; cursor: pointer; padding: 0;
             display: block;
         }
-.liste-baslik { 
+
+        .liste-baslik { 
             width: 100%; max-width: 900px; padding-left: 20px; 
             color: var(--arka-plan); font-family: 'Shadows Into Light', cursive;
             font-size: 2.5em; border-bottom: 1px solid #222;
@@ -108,31 +98,37 @@
             background: rgba(144, 224, 239, 0.08);
             padding-left: 35px;
         }
+
         .bolum-no { font-size: 1.4em; font-weight: bold; }
         .bolum-tarih { font-size: 0.85em; color: #888; margin-top: 4px; }
 
-        .yorum-alani { padding: 20px; margin-bottom: 50px; background: rgba(255, 255, 255, 0.03); border-radius: 15px; }
-
-        .yeni-etiketi {
-            background-color: #ff3e3e; color: white; font-size: 0.8em; padding: 4px 9px;
-            border-radius: 4px; margin-left: 15px; display: inline-block;
-            font-family: sans-serif; font-weight: bold; vertical-align: middle;
-            animation: yanip-son 1.5s infinite, hafif-don 3s infinite linear;
+        .izlendi-ikon {
+            width: 24px; height: 24px;
+            opacity: 0; transition: 0.3s;
+            filter: invert(1);
         }
 
-        @keyframes yanip-son { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-        @keyframes hafif-don { 0% { transform: rotate(0deg); } 25% { transform: rotate(5deg); } 75% { transform: rotate(-5deg); } 100% { transform: rotate(0deg); } }
+        .izlendi-ikon.aktif { opacity: 0.6; }
+
+        .yorum-alani {
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            margin-bottom: 50px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+        }
 
         @media (max-width: 600px) {
             body { 
-                background-image: linear-gradient(to bottom, rgba(0,0,0,1) 0px, rgba(0,0,30,1) 150px, rgba(0,0,30,0.5) 250px, rgba(0,0,0,0) 350px, rgba(0,0,0,0) 700px, rgba(0,0,30,0.5) 850px, rgba(0,0,30,1) 950px, rgba(0,0,0,1) 1100px), url('media7.jpg'); 
-                background-position: center 300px; background-attachment: scroll; background-size: 100% auto;
+                background-image: url('yatay.jpg'); 
+                background-size: cover; 
+                background-position: center center;
+                background-attachment: fixed; 
             }
-            .tanitim-alani { justify-content: center; text-align: center; padding: 40px 20px; }
-            .detaylar { text-align: center; }
-            h1 { font-size: 3em; }
-            .kapak { margin: 0 auto; width: 220px; }
-            .liste-baslik { text-align: center; padding-left: 0; }
+            h1 { font-size: 3em; text-align: center; }
+            .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
+            .detaylar { text-align: center; min-width: 100%; }
         }
     </style>
 </head>
@@ -141,6 +137,7 @@
 
     <div class="tanitim-alani">
         <img src="tall.jpg" class="kapak" alt="Merry Marbling">
+        
         <div class="detaylar">
             <h1>Merry Marbling</h1>
             <div class="ozet-konteynir">
@@ -154,11 +151,11 @@
 
     <h2 class="liste-baslik">Bölümler</h2>
 
-<div class="bolum-listesi">
+    <div class="bolum-listesi">
         <a href="izle_bolum_6.html" class="bolum-kart" onclick="kaydet('bolum6')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">6. Bölüm</span>
-                <span class="yeni-etiketi">YENİ</span> <span class="bolum-tarih">14 Ocak 2026</span>
+                <span class="bolum-tarih">14 Ocak 2026</span>
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum6">
         </a>
@@ -220,6 +217,7 @@
                 buton.innerHTML = "Daha Az Göster";
             }
         }
+
         window.onload = function() {
             const sonBolum = localStorage.getItem('sonOkunan');
             if (sonBolum) {
@@ -227,12 +225,18 @@
                 if (ikon) ikon.classList.add('aktif');
             }
         };
-        function kaydet(id) { localStorage.setItem('sonOkunan', id); }
 
+        function kaydet(id) {
+            localStorage.setItem('sonOkunan', id);
+        }
+    </script>
+    
+    <script>
         var disqus_config = function () {
             this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/'; 
             this.page.identifier = 'merry-marbling-ana-sayfa'; 
         };
+
         (function() { 
             var d = document, s = d.createElement('script');
             s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
@@ -240,5 +244,7 @@
             (d.head || d.body).appendChild(s);
         })();
     </script>
+    <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
+
 </body>
 </html>
