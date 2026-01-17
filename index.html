@@ -29,21 +29,24 @@
             font-family: 'Tinos', serif; 
             display: flex; 
             flex-direction: column; 
-            align-items: center; /* GENELİ TEKRAR ORTALADIK */
+            align-items: center; /* Sayfa genelini ortalar */
             min-height: 100vh;
         }
 
-        /* TANITIM ALANI - SOLA YASLI */
+        /* Tüm içeriğin hizalanacağı ana genişlik kontrolü */
+        .tanitim-alani, .liste-baslik, .bolum-listesi, .yorum-alani {
+            width: 100%;
+            max-width: 900px; /* Hepsi aynı hizada olması için genişliği eşitledik */
+            box-sizing: border-box;
+        }
+
         .tanitim-alani {
             display: flex;
             flex-wrap: wrap;
             gap: 40px;
-            max-width: 1000px;
-            width: 100%; 
-            padding: 60px 20px;
+            padding: 60px 0; /* Sol padding'i kaldırdık ki çizgi şaşmasın */
             align-items: flex-start;
-            justify-content: flex-start; /* İÇERİĞİ SOLA YASLAR */
-            align-self: flex-start; /* KUTUYU SOLA YASLAR */
+            justify-content: flex-start;
         }
 
         .kapak {
@@ -52,11 +55,12 @@
             border: 1px solid #333;
         }
 
-        .detaylar { flex: 1; min-width: 350px; text-align: left; }
+        .detaylar { flex: 1; min-width: 300px; text-align: left; }
         
         h1 { 
             font-family: 'Shadows Into Light', cursive; 
             font-size: 4.5em; margin: 0; color: var(--arka-plan); 
+            line-height: 1; margin-bottom: 20px;
         }
 
         .konu-metni { 
@@ -77,19 +81,14 @@
             display: block;
         }
 
-        /* BÖLÜMLER VE YORUMLAR - ORTALI DURACAK */
         .liste-baslik { 
-            width: 100%; max-width: 900px; 
             color: var(--arka-plan); font-family: 'Shadows Into Light', cursive;
             font-size: 2.5em; border-bottom: 1px solid #222;
             padding-bottom: 10px; margin-top: 40px;
-            text-align: left; /* Başlık kendi içinde sola baksın ama kutu ortada olsun */
+            text-align: left;
         }
 
-        .bolum-listesi { 
-            width: 100%; max-width: 900px; padding: 20px 0;
-            display: flex; flex-direction: column; gap: 5px;
-        }
+        .bolum-listesi { padding: 20px 0; display: flex; flex-direction: column; gap: 5px; }
 
         .bolum-kart {
             display: flex; justify-content: space-between; align-items: center;
@@ -101,13 +100,8 @@
         .bolum-kart:hover { background: rgba(144, 224, 239, 0.08); padding-left: 35px; }
         .bolum-no { font-size: 1.4em; font-weight: bold; }
         .bolum-tarih { font-size: 0.85em; color: #888; margin-top: 4px; }
-        .izlendi-ikon { width: 24px; height: 24px; opacity: 0; transition: 0.3s; filter: invert(1); }
-        .izlendi-ikon.aktif { opacity: 0.6; }
 
-        .yorum-alani {
-            width: 100%; max-width: 900px; padding: 20px; margin-bottom: 50px;
-            background: rgba(255, 255, 255, 0.03); border-radius: 15px;
-        }
+        .yorum-alani { padding: 20px; margin-bottom: 50px; background: rgba(255, 255, 255, 0.03); border-radius: 15px; }
 
         .yeni-etiketi {
             background-color: #ff3e3e; color: white; font-size: 0.8em; padding: 4px 9px;
@@ -115,27 +109,20 @@
             font-family: sans-serif; font-weight: bold; vertical-align: middle;
             animation: yanip-son 1.5s infinite, hafif-don 3s infinite linear;
         }
+
         @keyframes yanip-son { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
         @keyframes hafif-don { 0% { transform: rotate(0deg); } 25% { transform: rotate(5deg); } 75% { transform: rotate(-5deg); } 100% { transform: rotate(0deg); } }
 
-        /* MOBİL ÖZEL AYARLAR */
         @media (max-width: 600px) {
             body { 
-                background-image: 
-                    linear-gradient(to bottom, 
-                        rgba(0, 0, 0, 1) 0px, rgba(0, 0, 30, 1) 150px, rgba(0, 0, 30, 0.5) 250px, rgba(0, 0, 0, 0) 350px,     
-                        rgba(0, 0, 0, 0) 700px, rgba(0, 0, 30, 0.5) 850px, rgba(0, 0, 30, 1) 950px, rgba(0, 0, 0, 1) 1100px     
-                    ),
-                    url('media7.jpg'); 
-                background-position: center 300px;
-                background-attachment: scroll; background-size: 100% auto;
-                background-repeat: no-repeat; background-color: #000; 
-                align-items: center; /* Sayfa genelini ortada tut */
+                background-image: linear-gradient(to bottom, rgba(0,0,0,1) 0px, rgba(0,0,30,1) 150px, rgba(0,0,30,0.5) 250px, rgba(0,0,0,0) 350px, rgba(0,0,0,0) 700px, rgba(0,0,30,0.5) 850px, rgba(0,0,30,1) 950px, rgba(0,0,0,1) 1100px), url('media7.jpg'); 
+                background-position: center 300px; background-attachment: scroll; background-size: 100% auto;
             }
-            .tanitim-alani { align-self: center; justify-content: center; text-align: center; }
-            .detaylar { text-align: center; min-width: 100%; }
+            .tanitim-alani { justify-content: center; text-align: center; padding: 40px 20px; }
+            .detaylar { text-align: center; }
             h1 { font-size: 3em; }
-            .kapak { margin: 0 auto; }
+            .kapak { margin: 0 auto; width: 220px; }
+            .liste-baslik { text-align: center; padding-left: 0; }
         }
     </style>
 </head>
@@ -148,7 +135,7 @@
             <h1>Merry Marbling</h1>
             <div class="ozet-konteynir">
                 <p class="konu-metni" id="ozetMetin"> 
-                    Ha Ian, görünüşte kusursuz bir lise öğrencisidir... (Metin devamı)
+                    Ha Ian, görünüşte kusursuz bir lise öğrencisidir: son derece nazik, sıcak, güvenilir ve üstüne üstlük yakışıklıdır. Ire-dong kasabasında herkesin gözünde bir idol hâline gelmiştir; hatta çocukken yaptığı masum bir iyilik sayesinde hakkında dillerden düşmeyen “Noel Meleği” olarak anılmaktadır...
                 </p>
                 <button class="devamini-oku-btn" id="btnOku" onclick="ozetiAc()">Devamını Oku...</button>
             </div>
@@ -157,7 +144,7 @@
 
     <h2 class="liste-baslik">Bölümler</h2>
 
-    <div class="bolum-listesi">
+<div class="bolum-listesi">
         <a href="izle_bolum_6.html" class="bolum-kart" onclick="kaydet('bolum6')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">6. Bölüm</span>
@@ -165,7 +152,47 @@
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum6">
         </a>
-        </div>
+
+        <a href="izle_bolum_5.html" class="bolum-kart" onclick="kaydet('bolum5')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">5. Bölüm</span>
+                <span class="bolum-tarih">9 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum5">
+        </a>
+
+        <a href="izle_bolum_4.html" class="bolum-kart" onclick="kaydet('bolum4')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">4. Bölüm</span>
+                <span class="bolum-tarih">5 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum4">
+        </a>
+
+        <a href="izle_bolum_3.html" class="bolum-kart" onclick="kaydet('bolum3')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">3. Bölüm</span>
+                <span class="bolum-tarih">2 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum3">
+        </a>
+
+        <a href="izle_bolum_2.html" class="bolum-kart" onclick="kaydet('bolum2')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">2. Bölüm</span>
+                <span class="bolum-tarih">2 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum2">
+        </a>
+
+        <a href="izle_bolum_1.html" class="bolum-kart" onclick="kaydet('bolum1')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">1. Bölüm</span>
+                <span class="bolum-tarih">1 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum1">
+        </a>
+    </div>
 
     <div class="yorum-alani">
         <div id="disqus_thread"></div>
