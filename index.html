@@ -152,22 +152,21 @@
 @media (max-width: 600px) {
     body { 
         background-image: 
-            /* 1. KATMAN: En üstten aşağı doğru kademeli karartma */
+            /* KADEMELİ KARARTMA AYARI */
             linear-gradient(to bottom, 
-                rgba(0,0,0,1) 0%,    /* En üst tam siyah */
-                rgba(0,0,0,1) 5%,    /* %5'lik mesafeye kadar tam siyah (Burayı değiştirebilirsin) */
-                rgba(0,0,0,0.85) 15%, /* %15'e kadar kademeli açılma */
-                rgba(0,0,0,0.85) 100% /* Geri kalanı senin istediğin sabit karartma */
+                rgba(0,0,0,1) 0px,      /* En üst: Tam siyah */
+                rgba(0,0,0,1) 100px,    /* 100px'e kadar: Tam siyah devam eder */
+                rgba(0,0,0,0) 250px,    /* 250px'e kadar: Yavaşça açılır ve resmi gösterir */
+                rgba(0,0,0,0.85) 400px  /* Sonrasında: Sabit %85 karartmaya döner */
             ),
             url('media7.jpg'); 
+
+        /* RESMİ AŞAĞI İTME AYARI */
+        background-position: center 200px; /* Resmi en üstten 150px aşağı indirir */
         
         background-attachment: scroll; 
         background-size: 100% auto;
         background-repeat: no-repeat;
-        
-        /* RESMİN ÜSTTEN UZAKLIĞI (50px yazan yeri dilediğin gibi artır/azalt) */
-        background-position: center 40px; 
-        
         background-color: #000; 
     }
 }
