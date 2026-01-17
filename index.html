@@ -152,12 +152,14 @@
 @media (max-width: 600px) {
     body { 
         background-image: 
-            linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+            linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
             url('media7.jpg'); 
-        background-size: cover; 
-        background-position: center top; /* Fotoğrafın en üstten başlamasını sağlar */
-        /* DEĞİŞEN KISIM BURASI: */
+        
+        /* ÖNEMLİ DEĞİŞİKLİKLER: */
         background-attachment: scroll; 
+        background-size: 100% auto; /* Resmi genişliğe tam sığdır, boyunu serbest bırak */
+        background-repeat: no-repeat; /* Resmin bitince tekrar etmesini engelle */
+        background-position: center top; 
     }
 }
             h1 { font-size: 3em; text-align: center; }
