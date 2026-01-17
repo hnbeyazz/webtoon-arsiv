@@ -152,15 +152,23 @@
 @media (max-width: 600px) {
     body { 
         background-image: 
-            /* Üstten, alttan ve yanlardan siyahlığa geçiş sağlayan katman */
-            radial-gradient(circle, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.9) 80%, rgba(0,0,0,1) 100%),
+            /* 1. KATMAN: En üstten aşağı doğru kademeli karartma */
+            linear-gradient(to bottom, 
+                rgba(0,0,0,1) 0%,    /* En üst tam siyah */
+                rgba(0,0,0,1) 5%,    /* %5'lik mesafeye kadar tam siyah (Burayı değiştirebilirsin) */
+                rgba(0,0,0,0.85) 15%, /* %15'e kadar kademeli açılma */
+                rgba(0,0,0,0.85) 100% /* Geri kalanı senin istediğin sabit karartma */
+            ),
             url('media7.jpg'); 
         
         background-attachment: scroll; 
         background-size: 100% auto;
         background-repeat: no-repeat;
-        background-position: center top;
-        background-color: #000; /* Resim bitince her yer tam siyah kalsın */
+        
+        /* RESMİN ÜSTTEN UZAKLIĞI (50px yazan yeri dilediğin gibi artır/azalt) */
+        background-position: center 40px; 
+        
+        background-color: #000; 
     }
 }
             h1 { font-size: 3em; text-align: center; }
