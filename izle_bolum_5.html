@@ -4,69 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bölüm 5 - Merry Marbling</title>
-<style>
-        /* Temel Ayarlar */
+    <style>
+        /* SIFIRLAMA: Tarayıcının varsayılan boşluklarını yok et */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body { 
-            margin: 0; 
-            padding: 0;
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             min-height: 100vh;
-            background-color: #121212; /* Arka plan koyulaştırıldı */
+            background-color: #121212;
             background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('media6.jpg');
             background-attachment: fixed;
             background-size: cover;
             background-position: center;
             color: #fff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
+            overflow-x: hidden; /* Yatay kaymayı engelle */
         }
 
-        /* Header / Logo Alanı */
+        /* HEADER: Logoları tam sağa ve sola yasla */
         .site-header { 
             width: 100%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            padding: 20px 0;
-            z-index: 1000; 
+            padding: 10px 0; /* Üst-alt boşluk */
+            position: relative;
         }
-        .site-logo { height: 120px; width: auto; transition: transform 0.3s; }
-        .logo-sol { margin-left: 5%; }
-        .logo-sag { margin-right: 5%; }
+        .site-logo { 
+            height: clamp(60px, 10vw, 150px); /* Dinamik boyutlandırma */
+            width: auto; 
+            display: block;
+        }
+        /* Logoları tam köşeye sıfırla */
+        .logo-link-sol { margin-left: 0; }
+        .logo-konteyner-sag { margin-right: 0; }
 
-        /* İçerik Konteynırı */
         .container { 
-            width: 95%; 
+            width: 100%; 
             max-width: 800px; 
             margin: 0 auto;
+            padding: 0 10px; /* Mobilde yazılar kenara yapışmasın diye */
         }
 
-        /* Navigasyon (Breadcrumb) */
-        .ust-navigasyon {
-            font-size: 0.9em;
-            margin-bottom: 15px;
-            color: #aaa;
-        }
+        .ust-navigasyon { font-size: 0.9em; margin: 15px 0; color: #aaa; }
         .ust-navigasyon a { color: #ddd; text-decoration: none; }
-        .ust-navigasyon a:hover { color: #fff; text-decoration: underline; }
 
-        /* Seçici (Dropdown) */
-        .secici-konteyner {
-            margin-bottom: 20px;
-        }
         .secici-buton {
             background: #1a1d22;
             color: #fff;
             border: 1px solid #444;
-            padding: 10px;
+            padding: 12px;
             border-radius: 5px;
             width: 100%;
-            max-width: 250px;
-            cursor: pointer;
+            max-width: 300px;
+            margin-bottom: 20px;
         }
 
-        /* Başlık */
         .bolum-basligi {
             font-size: 1.8em;
             font-weight: bold;
@@ -75,61 +70,73 @@
             margin-bottom: 20px;
         }
 
-        /* Webtoon Görselleri */
+        /* PANEL BOŞLUKLARINI SIFIRLAYAN KRİTİK ALAN */
+        .webtoon-resimler {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            line-height: 0; /* Satır arası boşluğu sıfırla */
+            font-size: 0;   /* Alt boşluğu yok et */
+        }
         .webtoon-resimler img { 
             width: 100%; 
             height: auto; 
             display: block; 
-            margin: 0;
+            margin: 0; 
+            padding: 0;
+            border: none;
         }
 
-        /* Alt Navigasyon Butonları */
+        /* ALT BUTONLAR */
         .alt-nav { 
-            padding: 40px 0; 
+            padding: 50px 0; 
             display: flex;
             justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap; /* Mobilde sığmazsa alta geçer */
+            gap: 10px;
+            flex-wrap: wrap; 
         }
         .btn { 
-            padding: 15px 25px; 
+            padding: 15px 20px; 
             background: #f8f8ff; 
             color: #000; 
             text-decoration: none; 
             border-radius: 8px; 
             font-weight: bold; 
-            transition: 0.3s;
             text-align: center;
-            min-width: 140px;
+            flex: 1; /* Butonlar eşit genişlikte olsun */
+            min-width: 120px;
+            max-width: 200px;
         }
-        .btn:hover { background: #0B2545; color: #fff; }
 
-        /* Disqus Paneli */
         .yorum-paneli { 
             width: 100%; 
             max-width: 800px; 
             margin: 40px auto; 
             padding: 20px; 
-            background: rgba(0, 0, 0, 0.8); 
+            background: rgba(0, 0, 0, 0.85); 
             border-radius: 15px; 
-            border: 1px solid #333;
-            box-sizing: border-box;
         }
 
-        /* Mobil Düzenlemeler */
-        @media (max-width: 600px) { 
-            .site-logo { height: 60px; }
-            .bolum-basligi { font-size: 1.4em; }
-            .btn { flex: 1; padding: 12px 10px; font-size: 0.9em; }
-            .alt-nav { gap: 10px; padding: 30px 10px; }
+        /* GELİŞMİŞ MOBİL AYARLAR (MEDIA QUERIES) */
+        @media (max-width: 768px) {
+            .site-header { padding: 5px 0; }
+            .bolum-basligi { font-size: 1.3em; }
+            .btn { font-size: 0.8em; padding: 12px 5px; }
+            .container { padding: 0; } /* Resimler mobilde tam ekran olsun */
+            .webtoon-resimler { width: 100vw; margin-left: calc(-50vw + 50%); } /* Resmi ekranın dışına kadar yayar */
         }
-</style>
+    </style>
 </head>
 <body>
-      <header class="site-header">
-        <a href="index.html"> <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol"> </a>
-        <div class="logo-konteyner"> <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag"> </div>
-      </header>
+
+    <header class="site-header">
+        <a href="index.html" class="logo-link-sol">
+            <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo">
+        </a>
+        <div class="logo-konteyner-sag">
+            <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo">
+        </div>
+    </header>
 
     <div class="container">
         <nav class="ust-navigasyon">
@@ -138,9 +145,6 @@
 
         <div class="secici-konteyner">
             <select class="secici-buton" onchange="location = this.value;">
-                <option value="izle_bolum_1.html">Bölüm 1</option>
-                <option value="izle_bolum_2.html">Bölüm 2</option>
-                <option value="izle_bolum_3.html">Bölüm 3</option>
                 <option value="izle_bolum_4.html">Bölüm 4</option>
                 <option value="izle_bolum_5.html" selected>Bölüm 5</option>
                 <option value="izle_bolum_6.html">Bölüm 6</option>
@@ -149,29 +153,33 @@
 
         <div class="bolum-basligi">5. Bölüm</div>
 
-        <img src="bolum_5/1.jpg"> 
-        <img src="bolum_5/2.jpg"> 
-        <img src="bolum_5/3.jpg"> 
-        <img src="bolum_5/4.jpg">
-        <img src="bolum_5/5.jpg"> 
-        <img src="bolum_5/6.jpg"> 
-        <img src="bolum_5/7.jpg"> 
-        <img src="bolum_5/8.jpg"> 
-        <div class="nav">
-            <div class="buton-siralamasi"> 
-                <a href="izle_bolum_4.html" class="btn">Önceki Bölüm</a>  <a href="izle_bolum_6.html" class="btn">Sonraki Bölüm</a> 
-            </div>
+        <div class="webtoon-resimler">
+            <img src="bolum_5/1.jpg"> 
+            <img src="bolum_5/2.jpg"> 
+            <img src="bolum_5/3.jpg"> 
+            <img src="bolum_5/4.jpg">
+            <img src="bolum_5/5.jpg"> 
+            <img src="bolum_5/6.jpg"> 
+            <img src="bolum_5/7.png"> 
+            <img src="bolum_5/8.png"> 
+        </div>
+
+        <div class="alt-nav">
+            <a href="izle_bolum_4.html" class="btn">Önceki Bölüm</a> 
+            <a href="izle_bolum_6.html" class="btn">Sonraki Bölüm</a> 
+            <a href="index.html" class="btn">Ana Sayfa</a>
         </div>
     </div>
 
-    <div class="yorum-arkaplan-paneli"> <div id="disqus_thread"></div> </div>
+    <div class="yorum-paneli">
+        <div id="disqus_thread"></div>
+    </div>
 
     <script>
         var disqus_config = function () {
             this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_5.html'; 
             this.page.identifier = 'merry-marbling-bolum-5'; 
         };
-    
         (function() { 
             var d = document, s = d.createElement('script');
             s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
@@ -179,6 +187,5 @@
             (d.head || d.body).appendChild(s);
         })();
     </script>
-    <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 </body>
 </html>
