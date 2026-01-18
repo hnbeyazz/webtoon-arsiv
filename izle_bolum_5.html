@@ -4,125 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bölüm 5 - Merry Marbling</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body { 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            min-height: 100vh;
-            background-color: #121212;
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('media6.jpg');
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center;
-            color: #fff;
-            font-family: 'Segoe UI', sans-serif;
-            overflow-x: hidden;
-        }
-
-        /* HEADER: Logolar büyütüldü ve tam köşelere itildi */
-        .site-header { 
-            width: 100%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 15px 0;
-        }
-        .site-logo { 
-            /* Logo boyutu büyütüldü */
-            height: clamp(80px, 15vw, 180px); 
-            width: auto; 
-            display: block;
-        }
-        .logo-link-sol { margin-left: 0; }
-        .logo-konteyner-sag { margin-right: 0; }
-
-        .container { 
-            width: 100%; 
-            max-width: 800px; 
-            margin: 0 auto;
-            padding: 0 10px;
-        }
-
-        .ust-navigasyon { font-size: 0.9em; margin: 15px 0; color: #aaa; }
-        .ust-navigasyon a { color: #ddd; text-decoration: none; }
-
-        .secici-buton {
-            background: #1a1d22;
-            color: #fff;
-            border: 1px solid #444;
-            padding: 12px;
-            border-radius: 5px;
-            width: 100%;
-            max-width: 300px;
-            margin-bottom: 20px;
-            cursor: pointer;
-        }
-
-        .bolum-basligi {
-            font-size: 1.8em;
-            font-weight: bold;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        /* PANEL BOŞLUKLARINI SIFIRLA */
-        .webtoon-resimler {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            line-height: 0;
-            font-size: 0;
-        }
-        .webtoon-resimler img { 
-            width: 100%; 
-            height: auto; 
-            display: block; 
-            margin: 0; 
-            padding: 0;
-            border: none;
-        }
-
-        /* ALT NAVİGASYON: Sadece Önceki/Sonraki */
-        .alt-nav { 
-            padding: 50px 0; 
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap; 
-        }
-        .btn { 
-            padding: 15px 25px; 
-            background: #f8f8ff; 
-            color: #000; 
-            text-decoration: none; 
-            border-radius: 8px; 
-            font-weight: bold; 
-            text-align: center;
-            flex: 1;
-            min-width: 140px;
-            max-width: 250px;
-            transition: 0.3s;
-        }
-        .btn:hover { background: #0B2545; color: #fff; }
-
-        .yorum-paneli { 
-            width: 100%; 
-            max-width: 800px; 
-            margin: 40px auto; 
-            padding: 20px; 
-            background: rgba(0, 0, 0, 0.85); 
-            border-radius: 15px; 
-        }
-
-        @media (max-width: 768px) {
-            .site-logo { height: 80px; } /* Mobilde çok devasa olmaması için */
-            .bolum-basligi { font-size: 1.3em; }
-            .btn { font-size: 0.85em; padding: 12px 10px; }
-            .container { padding: 0; }
+     <style>
+        body { margin: 0;  display: flex;  flex-direction: column; align-items: center; min-height: 100vh; background-color:transparent ; background-attachment: fixed; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('media6.jpg'); }
+        .site-header { width: 100%; background: transparent; padding: 40px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
+        .site-logo { height: 200px; width: auto; display: block; transition: transform 0.3s ease; }
+        .logo-sol { margin-left: 50px; }
+        .logo-sag { margin-right: 50px; }
+        .ust-navigasyon {width: 100%; color: #666; font-size: 0.9em; font-family: 'Segoe UI', sans-serif; margin-bottom: 15px; text-align: left; }
+        .ust-navigasyon a { color: #888; text-decoration: none; transition: 0.3s; }
+        .ust-navigasyon a:hover { color: #fff; }
+        .secici-konteyner { display: flex; gap: 12px; margin-bottom: 25px; width: 100%; }
+        .secici-buton { background: #1a1d22; color: #ccc; border: 1px solid #333; padding: 10px 15px; border-radius: 6px; font-family: 'Segoe UI', sans-serif; font-size: 0.95em; cursor: pointer; outline: none; flex: 1; max-width: 200px; }
+        .secici-buton:hover { border-color: #555; color: #fff; }
+        .bolum-basligi { width: 100%; text-align: left; padding: 10px 0 10px 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 1.8em; font-weight: bold; color: #fff; border-bottom: 1px solid #333; margin-bottom: 25px; letter-spacing: 1px; }
+       .container { width: 100%; max-width: 800px; background: transparent; margin-top: 0; }
+        img { width: 100%; height: auto; display: block; }
+        .nav { padding: 70px; text-align: center; background: transparent; }
+        .btn { padding: 20px 50px; background: #f8f8ff ; color: #000000 ; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: sans-serif; transition: 0.3s; }
+        .btn:hover { background: #0B2545; }
+        .yorum-arkaplan-paneli { width: 100%; max-width: 800px; margin: 40px auto; padding: 40px 20px; box-sizing: border-box; border-radius: 15px; min-height: 600px; background-image: url('yorum.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: rgba(0, 0, 0, 0.6); background-blend-mode: darken; border: 1px solid #333; }
+        @media (max-width: 600px) { 
+        .secici-konteyner { gap: 8px; margin-bottom: 15px; }
+        .secici-buton { padding: 6px 10px; font-size: 0.8em; min-width: auto; flex: 1;}
+        .site-header { padding: 20px 0; }
+        .site-logo { height: 80px; }
+        .logo-sol { margin-left: 15px; }
+        .logo-sag { margin-right: 15px; }
+        .btn { padding: 15px 30px; font-size: 0.9em; }
+        .bolum-basligi { font-size: 1.4em; padding-left: 10px; }
+        .ust-navigasyon, .secici-konteyner { padding-left: 10px; }
         }
     </style>
 </head>
