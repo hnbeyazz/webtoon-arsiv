@@ -10,43 +10,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Shadows+Into+Light&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --ana-mavi: #001d3d;
-            --baslik-mavi: #90e0ef;
-            --altin-sarisi: #ffde00;
-            --arka-plan: #FFFFFF;
+        :root {--ana-mavi: #001d3d; --baslik-mavi: #90e0ef; --altin-sarisi: #ffde00; --arka-plan: #FFFFFF; }
+
+        body { 
+            margin: 0; 
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('867320b5e436c545505d605d1a7c5481.jpg');
+            background-size: 100% auto; 
+            background-position: center top; 
+            background-repeat: no-repeat;
+            background-color: #000; 
+            background-attachment: fixed; 
+            color: #fff; 
+            font-family: 'Tinos', serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh;
         }
 
-body {
-    margin: 0;
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('867320b5e436c545505d605d1a7c5481.jpg');
-    background-size: 100% auto;
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-color: #000;
-    background-attachment: fixed;
-    color: #fff;
-    font-family: 'Tinos', serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-        .sayfa {
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-
-
-.tanitim-alani {
-    display: flex;
-    gap: 40px;
-    padding: 60px 20px 20px 20px;
-    align-items: flex-start;
-    justify-content: flex-start;
-}
-
+        .tanitim-alani {
+            display: flex; flex-wrap: wrap; gap: 40px;
+            max-width: 1000px; padding: 60px 20px;
+            align-items: flex-start; justify-content: center;
+        }
 
         .kapak {
             width: 280px; border-radius: 15px;
@@ -54,18 +40,12 @@ body {
             border: 1px solid #333;
         }
 
-.detaylar {
-    flex: 1;
-    min-width: 0;
-    text-align: left;
-}
-
+        .detaylar { flex: 1; min-width: 350px; text-align: left; }
         
         h1 { 
-h1 {
-    text-align: left; font-family: 'Shadows Into Light', cursive; font-size: 4.5em; margin: 0; color: var(--arka-plan);
-}
-
+            font-family: 'Shadows Into Light', cursive; 
+            font-size: 4.5em; margin: 0; color: var(--arka-plan); 
+        }
 
         .konu-metni { 
             font-family: 'Cormorant Garamond', serif; 
@@ -133,45 +113,14 @@ h1 {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 15px;
         }
-        .yeni-etiketi {
-            background-color: #ff3e3e; color: white; font-size: 0.8em; padding: 4px 9px;
-            border-radius: 4px; margin-left: 15px; display: inline-block;
-            font-family: sans-serif; font-weight: bold; vertical-align: middle;
-            animation: yanip-son 1.5s infinite, hafif-don 3s infinite linear;
-        }
 
-        @keyframes yanip-son { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-        @keyframes hafif-don { 0% { transform: rotate(0deg); } 25% { transform: rotate(5deg); } 75% { transform: rotate(-5deg); } 100% { transform: rotate(0deg); } }
-
-          @media (max-width: 600px) {
+        @media (max-width: 600px) {
             body { 
-                background-image: 
-                    linear-gradient(to bottom, 
-                        rgba(0, 0, 0, 1) 0px,       
-                        rgba(0, 0, 30, 1) 150px,    
-                        rgba(0, 0, 30, 0.5) 250px,  
-                        rgba(0, 0, 0, 0) 350px,     
-                        rgba(0, 0, 0, 0) 700px,     
-                        rgba(0, 0, 30, 0.5) 850px,  
-                        rgba(0, 0, 30, 1) 950px,    
-                        rgba(0, 0, 0, 1) 1100px     
-                    ),
-                    url('media7.jpg'); 
-
-                background-position: center 300px;
-                background-attachment: scroll; 
-                background-size: 100% auto;
-                background-repeat: no-repeat;
-                background-color: #000; 
-                align-items: flex-start;
+                background-image: url('yatay.jpg'); 
+                background-size: cover; 
+                background-position: center center;
+                background-attachment: fixed; 
             }
-            h1 { font-size: 3em; text-align: left; }
-            .kapak { width: 100%; max-width: 250px; margin: 0; display: block; }
-            .detaylar { text-align: left; min-width: 100%; }
-        }
-
-
-       
             h1 { font-size: 3em; text-align: center; }
             .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
             .detaylar { text-align: center; min-width: 100%; }
@@ -180,7 +129,6 @@ h1 {
 </head>
 
 <body>
-      <div class="sayfa">
 
     <div class="tanitim-alani">
         <img src="tall.jpg" class="kapak" alt="Merry Marbling">
@@ -202,7 +150,7 @@ h1 {
         <a href="izle_bolum_6.html" class="bolum-kart" onclick="kaydet('bolum6')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">6. Bölüm</span>
-                <span class="yeni-etiketi">YENİ</span> <span class="bolum-tarih">14 Ocak 2026</span>
+                <span class="bolum-tarih">14 Ocak 2026</span>
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum6">
         </a>
@@ -251,7 +199,6 @@ h1 {
     <div class="yorum-alani">
         <div id="disqus_thread"></div>
     </div>
-      </div>
 
     <script>
         function ozetiAc() {
