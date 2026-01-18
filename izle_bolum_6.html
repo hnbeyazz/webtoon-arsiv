@@ -20,11 +20,10 @@
        .container { width: 100%; max-width: 800px; background: transparent; margin-top: 0; }
         img { width: 100%; height: auto; display: block; }
         .nav { padding: 70px; text-align: center; background: transparent; }
-        .btn { padding: 20px 50px; background: #f8f8ff ; color: #000000 ; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: sans-serif; transition: 0.3s; }
+        .btn { padding: 20px 40px; background: #f8f8ff ; color: #000000 ; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: sans-serif; transition: 0.3s; }
         .btn:hover { background: #0B2545; }
         .yorum-arkaplan-paneli { width: 100%; max-width: 800px; margin: 40px auto; padding: 40px 20px; box-sizing: border-box; border-radius: 15px; min-height: 600px; background-image: url('yorum.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: rgba(0, 0, 0, 0.6); background-blend-mode: darken; border: 1px solid #333; }
         @media (max-width: 600px) { 
-        body { background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('media6.jpg'); background-position: 40% center; }
         .secici-konteyner { gap: 8px; margin-bottom: 15px; }
         .secici-buton { padding: 6px 10px; font-size: 0.8em; min-width: auto; flex: 1;}
         .site-header { padding: 20px 0; }
@@ -34,47 +33,18 @@
         .btn { padding: 15px 30px; font-size: 0.9em; }
         .bolum-basligi { font-size: 1.4em; padding-left: 10px; }
         .ust-navigasyon, .secici-konteyner { padding-left: 10px; }
-@media (max-width: 600px) {
-    body {
-        background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('media6.jpg');
-        background-position: 40% center;
-    }
-
-    .secici-konteyner { gap: 8px; margin-bottom: 15px; }
-    .secici-buton { padding: 6px 10px; font-size: 0.8em; min-width: auto; flex: 1; }
-    .site-header { padding: 20px 0; }
-    .site-logo { height: 80px; }
-    .logo-sol { margin-left: 15px; }
-    .logo-sag { margin-right: 15px; }
-    .btn { padding: 15px 30px; font-size: 0.9em; }
-    .bolum-basligi { font-size: 1.4em; padding-left: 10px; }
-    .ust-navigasyon, .secici-konteyner { padding-left: 10px; }
-
-    /* Webtoon resimlerinin alt alta boşluksuz olması */
-    .webtoon-resimler {
-        line-height: 0;
-        font-size: 0;
-    }
-
-    .webtoon-resimler img {
-        display: block;
-        margin: 0;
-        padding: 0;
-    }
-}
-
+        }
     </style>
 </head>
 <body>
-
-    <header class="site-header">
-        <a href="index.html"><img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Logo" class="site-logo logo-sol"></a>
-        <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Logo" class="site-logo logo-sag">
-    </header>
+      <header class="site-header">
+        <a href="index.html"> <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol"> </a>
+        <div class="logo-konteyner"> <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag"> </div>
+      </header>
 
     <div class="container">
         <nav class="ust-navigasyon">
-            <a href="index.html">Ana Sayfa</a> / <a href="index.html">Merry Marbling</a> / <span>Bölüm 6</span>
+            <a href="index.html">Ana Sayfa</a> / <a href="index.html">Merry Marbling</a> / <span>Bölüm 4</span>
         </nav>
 
         <div class="secici-konteyner">
@@ -90,34 +60,31 @@
 
         <div class="bolum-basligi">6. Bölüm</div>
 
-        <div class="webtoon-resimler">
-            <img src="bolum_6/1.jpg" alt="Sayfa 1"> 
-            <img src="bolum_6/2.jpg" alt="Sayfa 2"> 
-            <img src="bolum_6/3.jpg" alt="Sayfa 3"> 
-            <img src="bolum_6/4.jpg" alt="Sayfa 4">
-            <img src="bolum_6/5.jpg" alt="Sayfa 5"> 
-            <img src="bolum_6/6.jpg" alt="Sayfa 6"> 
-            <img src="bolum_6/7.jpg" alt="Sayfa 7"> 
-            <img src="bolum_6/8.jpg" alt="Sayfa 8"> 
-            <img src="bolum_6/9.jpg" alt="Sayfa 9"> 
-            <img src="bolum_6/10.jpg" alt="Sayfa 10"> 
-        </div>
-
-        <div class="alt-nav">
-            <a href="izle_bolum_5.html" class="btn">Önceki Bölüm</a> 
-            <a href="index.html" class="btn">Ana Sayfaya Dön</a> 
+        <img src="bolum_6/1.jpg"> 
+        <img src="bolum_6/2.jpg"> 
+        <img src="bolum_6/3.jpg"> 
+        <img src="bolum_6/4.jpg">
+        <img src="bolum_6/5.jpg"> 
+        <img src="bolum_6/6.jpg"> 
+        <img src="bolum_6/7.jpg"> 
+        <img src="bolum_6/8.jpg"> 
+        <img src="bolum_6/9.jpg"> 
+        <img src="bolum_6/10.jpg"> 
+        <div class="nav">
+            <div class="buton-siralamasi"> 
+                <a href="izle_bolum_5.html" class="btn">Önceki Bölüm</a>  <a href="index.html" class="btn">Ana Sayfaya Dön</a> 
+            </div>
         </div>
     </div>
 
-    <div class="yorum-paneli">
-        <div id="disqus_thread"></div>
-    </div>
+    <div class="yorum-arkaplan-paneli"> <div id="disqus_thread"></div> </div>
 
     <script>
         var disqus_config = function () {
             this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_6.html'; 
             this.page.identifier = 'merry-marbling-bolum-6'; 
         };
+    
         (function() { 
             var d = document, s = d.createElement('script');
             s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
@@ -125,5 +92,6 @@
             (d.head || d.body).appendChild(s);
         })();
     </script>
+    <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 </body>
 </html>
