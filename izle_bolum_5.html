@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bölüm 5 - Merry Marbling</title>
     <style>
-        /* SIFIRLAMA: Tarayıcının varsayılan boşluklarını yok et */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body { 
@@ -20,24 +19,23 @@
             background-position: center;
             color: #fff;
             font-family: 'Segoe UI', sans-serif;
-            overflow-x: hidden; /* Yatay kaymayı engelle */
+            overflow-x: hidden;
         }
 
-        /* HEADER: Logoları tam sağa ve sola yasla */
+        /* HEADER: Logolar büyütüldü ve tam köşelere itildi */
         .site-header { 
             width: 100%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            padding: 10px 0; /* Üst-alt boşluk */
-            position: relative;
+            padding: 15px 0;
         }
         .site-logo { 
-            height: clamp(60px, 10vw, 150px); /* Dinamik boyutlandırma */
+            /* Logo boyutu büyütüldü */
+            height: clamp(80px, 15vw, 180px); 
             width: auto; 
             display: block;
         }
-        /* Logoları tam köşeye sıfırla */
         .logo-link-sol { margin-left: 0; }
         .logo-konteyner-sag { margin-right: 0; }
 
@@ -45,7 +43,7 @@
             width: 100%; 
             max-width: 800px; 
             margin: 0 auto;
-            padding: 0 10px; /* Mobilde yazılar kenara yapışmasın diye */
+            padding: 0 10px;
         }
 
         .ust-navigasyon { font-size: 0.9em; margin: 15px 0; color: #aaa; }
@@ -60,6 +58,7 @@
             width: 100%;
             max-width: 300px;
             margin-bottom: 20px;
+            cursor: pointer;
         }
 
         .bolum-basligi {
@@ -70,13 +69,13 @@
             margin-bottom: 20px;
         }
 
-        /* PANEL BOŞLUKLARINI SIFIRLAYAN KRİTİK ALAN */
+        /* PANEL BOŞLUKLARINI SIFIRLA */
         .webtoon-resimler {
             width: 100%;
             display: flex;
             flex-direction: column;
-            line-height: 0; /* Satır arası boşluğu sıfırla */
-            font-size: 0;   /* Alt boşluğu yok et */
+            line-height: 0;
+            font-size: 0;
         }
         .webtoon-resimler img { 
             width: 100%; 
@@ -87,26 +86,28 @@
             border: none;
         }
 
-        /* ALT BUTONLAR */
+        /* ALT NAVİGASYON: Sadece Önceki/Sonraki */
         .alt-nav { 
             padding: 50px 0; 
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 15px;
             flex-wrap: wrap; 
         }
         .btn { 
-            padding: 15px 20px; 
+            padding: 15px 25px; 
             background: #f8f8ff; 
             color: #000; 
             text-decoration: none; 
             border-radius: 8px; 
             font-weight: bold; 
             text-align: center;
-            flex: 1; /* Butonlar eşit genişlikte olsun */
-            min-width: 120px;
-            max-width: 200px;
+            flex: 1;
+            min-width: 140px;
+            max-width: 250px;
+            transition: 0.3s;
         }
+        .btn:hover { background: #0B2545; color: #fff; }
 
         .yorum-paneli { 
             width: 100%; 
@@ -117,13 +118,11 @@
             border-radius: 15px; 
         }
 
-        /* GELİŞMİŞ MOBİL AYARLAR (MEDIA QUERIES) */
         @media (max-width: 768px) {
-            .site-header { padding: 5px 0; }
+            .site-logo { height: 80px; } /* Mobilde çok devasa olmaması için */
             .bolum-basligi { font-size: 1.3em; }
-            .btn { font-size: 0.8em; padding: 12px 5px; }
-            .container { padding: 0; } /* Resimler mobilde tam ekran olsun */
-            .webtoon-resimler { width: 100vw; margin-left: calc(-50vw + 50%); } /* Resmi ekranın dışına kadar yayar */
+            .btn { font-size: 0.85em; padding: 12px 10px; }
+            .container { padding: 0; }
         }
     </style>
 </head>
@@ -160,15 +159,14 @@
             <img src="bolum_5/4.jpg">
             <img src="bolum_5/5.jpg"> 
             <img src="bolum_5/6.jpg"> 
-            <img src="bolum_5/7.jpg"> 
-            <img src="bolum_5/8.jpg"> 
+            <img src="bolum_5/7.png"> 
+            <img src="bolum_5/8.png"> 
         </div>
 
         <div class="alt-nav">
             <a href="izle_bolum_4.html" class="btn">Önceki Bölüm</a> 
             <a href="izle_bolum_6.html" class="btn">Sonraki Bölüm</a> 
-            <a href="index.html" class="btn">Ana Sayfa</a>
-        </div>
+            </div>
     </div>
 
     <div class="yorum-paneli">
@@ -189,3 +187,4 @@
     </script>
 </body>
 </html>
+
