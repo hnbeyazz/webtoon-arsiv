@@ -17,27 +17,36 @@
             --arka-plan: #FFFFFF;
         }
 
-        body { 
-            margin: 0; 
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('867320b5e436c545505d605d1a7c5481.jpg');
-            background-size: 100% auto; 
-            background-position: center top; 
-            background-repeat: no-repeat;
-            background-color: #000; 
-            background-attachment: fixed; 
-            color: #fff; 
-            font-family: 'Tinos', serif; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            min-height: 100vh;
-        }
+body {
+    margin: 0;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('867320b5e436c545505d605d1a7c5481.jpg');
+    background-size: 100% auto;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-color: #000;
+    background-attachment: fixed;
+    color: #fff;
+    font-family: 'Tinos', serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+        .sayfa {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
 
-        .tanitim-alani {
-            display: flex; flex-wrap: wrap; gap: 40px;
-            max-width: 1000px; padding: 60px 20px;
-            align-items: flex-start; justify-content: center;
-        }
+
+
+.tanitim-alani {
+    display: flex;
+    gap: 40px;
+    padding: 60px 20px 20px 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
 
         .kapak {
             width: 280px; border-radius: 15px;
@@ -45,12 +54,18 @@
             border: 1px solid #333;
         }
 
-        .detaylar { flex: 1; min-width: 350px; text-align: left; }
+.detaylar {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+}
+
         
         h1 { 
-            font-family: 'Shadows Into Light', cursive; 
-            font-size: 4.5em; margin: 0; color: var(--arka-plan); 
-        }
+h1 {
+    text-align: left; font-family: 'Shadows Into Light', cursive; font-size: 4.5em; margin: 0; color: var(--arka-plan);
+}
+
 
         .konu-metni { 
             font-family: 'Cormorant Garamond', serif; 
@@ -165,6 +180,7 @@
 </head>
 
 <body>
+      <div class="sayfa">
 
     <div class="tanitim-alani">
         <img src="tall.jpg" class="kapak" alt="Merry Marbling">
@@ -235,6 +251,7 @@
     <div class="yorum-alani">
         <div id="disqus_thread"></div>
     </div>
+      </div>
 
     <script>
         function ozetiAc() {
