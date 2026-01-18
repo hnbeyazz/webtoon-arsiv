@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bölüm 5 - Merry Marbling</title>
-     <style>
+    <style>
         body { margin: 0;  display: flex;  flex-direction: column; align-items: center; min-height: 100vh; background-color:transparent ; background-attachment: fixed; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('media6.jpg'); }
         .site-header { width: 100%; background: transparent; padding: 40px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
         .site-logo { height: 200px; width: auto; display: block; transition: transform 0.3s ease; }
@@ -20,7 +20,7 @@
        .container { width: 100%; max-width: 800px; background: transparent; margin-top: 0; }
         img { width: 100%; height: auto; display: block; }
         .nav { padding: 70px; text-align: center; background: transparent; }
-        .btn { padding: 20px 50px; background: #f8f8ff ; color: #000000 ; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: sans-serif; transition: 0.3s; }
+        .btn { padding: 20px 40px; background: #f8f8ff ; color: #000000 ; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: sans-serif; transition: 0.3s; }
         .btn:hover { background: #0B2545; }
         .yorum-arkaplan-paneli { width: 100%; max-width: 800px; margin: 40px auto; padding: 40px 20px; box-sizing: border-box; border-radius: 15px; min-height: 600px; background-image: url('yorum.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: rgba(0, 0, 0, 0.6); background-blend-mode: darken; border: 1px solid #333; }
         @media (max-width: 600px) { 
@@ -37,23 +37,21 @@
     </style>
 </head>
 <body>
-
-    <header class="site-header">
-        <a href="index.html" class="logo-link-sol">
-            <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo">
-        </a>
-        <div class="logo-konteyner-sag">
-            <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo">
-        </div>
-    </header>
+      <header class="site-header">
+        <a href="index.html"> <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol"> </a>
+        <div class="logo-konteyner"> <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag"> </div>
+      </header>
 
     <div class="container">
         <nav class="ust-navigasyon">
-            <a href="index.html">Ana Sayfa</a> / <a href="index.html">Merry Marbling</a> / <span>Bölüm 5</span>
+            <a href="index.html">Ana Sayfa</a> / <a href="index.html">Merry Marbling</a> / <span>Bölüm 4</span>
         </nav>
 
         <div class="secici-konteyner">
             <select class="secici-buton" onchange="location = this.value;">
+                <option value="izle_bolum_1.html">Bölüm 1</option>
+                <option value="izle_bolum_2.html">Bölüm 2</option>
+                <option value="izle_bolum_3.html">Bölüm 3</option>
                 <option value="izle_bolum_4.html">Bölüm 4</option>
                 <option value="izle_bolum_5.html" selected>Bölüm 5</option>
                 <option value="izle_bolum_6.html">Bölüm 6</option>
@@ -62,32 +60,27 @@
 
         <div class="bolum-basligi">5. Bölüm</div>
 
-        <div class="webtoon-resimler">
-            <img src="bolum_5/1.jpg"> 
-            <img src="bolum_5/2.jpg"> 
-            <img src="bolum_5/3.jpg"> 
-            <img src="bolum_5/4.jpg">
-            <img src="bolum_5/5.jpg"> 
-            <img src="bolum_5/6.jpg"> 
-            <img src="bolum_5/7.jpg"> 
-            <img src="bolum_5/8.jpg"> 
-        </div>
-
-        <div class="alt-nav">
-            <a href="izle_bolum_4.html" class="btn">Önceki Bölüm</a> 
-            <a href="izle_bolum_6.html" class="btn">Sonraki Bölüm</a> 
+        <img src="bolum_5/1.jpg"> 
+        <img src="bolum_5/2.jpg"> 
+        <img src="bolum_5/3.jpg"> 
+        <img src="bolum_5/4.jpg">
+        <img src="bolum_5/5.jpg"> 
+        <img src="bolum_5/6.jpg"> 
+        <div class="nav">
+            <div class="buton-siralamasi"> 
+                <a href="izle_bolum_4.html" class="btn">Önceki Bölüm</a>  <a href="izle_bolum_6.html" class="btn">Sonraki Bölüm</a> 
             </div>
+        </div>
     </div>
 
-    <div class="yorum-paneli">
-        <div id="disqus_thread"></div>
-    </div>
+    <div class="yorum-arkaplan-paneli"> <div id="disqus_thread"></div> </div>
 
     <script>
         var disqus_config = function () {
             this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_5.html'; 
             this.page.identifier = 'merry-marbling-bolum-5'; 
         };
+    
         (function() { 
             var d = document, s = d.createElement('script');
             s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
@@ -95,6 +88,6 @@
             (d.head || d.body).appendChild(s);
         })();
     </script>
+    <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 </body>
 </html>
-
