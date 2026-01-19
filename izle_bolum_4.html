@@ -102,7 +102,19 @@
             (d.head || d.body).appendChild(s);
         })();
     </script>
-    <script> document.querySelectorAll('.container img').forEach(img => { img.addEventListener('click', function(e) { // Tarayıcının varsayılan tıklama efektlerini durdur e.preventDefault(); window.scrollBy({ top: window.innerHeight * 0.7, // Ekranın %70'i kadar kaydır behavior: 'smooth' }); }); }); </script>
+    <script>
+    document.querySelectorAll('.container img').forEach(img => {
+        img.addEventListener('click', function(e) {
+            // Tarayıcının varsayılan tıklama efektlerini durdur
+            e.preventDefault(); 
+            
+            window.scrollBy({
+                top: window.innerHeight * 0.7, // Ekranın %70'i kadar kaydır
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
     <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 </body>
 </html>
