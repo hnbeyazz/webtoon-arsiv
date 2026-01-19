@@ -9,6 +9,7 @@
         .site-header { width: 100%; background: transparent; padding: 40px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
         .site-logo { height: 200px; width: auto; display: block; transition: transform 0.3s ease; }
         .logo-sol { margin-left: 50px; }
+         cursor: pointer; } /* Tıklamadaki mavi/gri gölgeyi ve çerçeveyi tamamen kaldırır */ * { -webkit-tap-highlight-color: transparent; outline: none; -ms-touch-action: manipulation; touch-action: manipulation; } /* Resimlere tıklarken hiçbir görsel efekt oluşmasın */ .container img { cursor: pointer; -webkit-user-select: none; /* Metin seçmeyi engeller */ -webkit-touch-callout: none; /* Uzun basınca çıkan menüyü engeller */ }
         .logo-sag { margin-right: 50px; }
         .ust-navigasyon {width: 100%; color: #666; font-size: 0.9em; font-family: 'Segoe UI', sans-serif; margin-bottom: 15px; text-align: left; }
         .ust-navigasyon a { color: #888; text-decoration: none; transition: 0.3s; }
@@ -96,6 +97,19 @@
             (d.head || d.body).appendChild(s);
         })();
     </script>
+    <script>
+    document.querySelectorAll('.container img').forEach(img => {
+        img.addEventListener('click', function(e) {
+            // Tarayıcının varsayılan tıklama efektlerini durdur
+            e.preventDefault(); 
+            
+            window.scrollBy({
+                top: window.innerHeight * 0.7, // Ekranın %70'i kadar kaydır
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
     <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 </body>
 </html>
