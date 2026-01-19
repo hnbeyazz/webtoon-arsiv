@@ -20,6 +20,9 @@
        .container { width: 100%; max-width: 800px; background: transparent; margin-top: 0; }
         img { width: 100%; height: auto; display: block; }
         .nav { padding: 70px; text-align: center; background: transparent; }
+        .container img {
+    cursor: pointer;
+}
         .btn { padding: 20px 40px; background: #f8f8ff ; color: #000000 ; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: sans-serif; transition: 0.3s; }
         .btn:hover { background: #0B2545; }
         .yorum-arkaplan-paneli { width: 100%; max-width: 800px; margin: 40px auto; padding: 40px 20px; box-sizing: border-box; border-radius: 15px; min-height: 600px; background-image: url('yorum.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: rgba(0, 0, 0, 0.6); background-blend-mode: darken; border: 1px solid #333; }
@@ -90,6 +93,17 @@
             (d.head || d.body).appendChild(s);
         })();
     </script>
+    <script>
+    // Sadece .container içindeki resimlere tıklanınca çalışır
+    document.querySelectorAll('.container img').forEach(img => {
+        img.addEventListener('click', function() {
+            window.scrollBy({
+                top: 600, // Her tıklamada 600 piksel aşağı kaydır (Bu değeri değiştirebilirsin)
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
     <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 </body>
 </html>
