@@ -5,7 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bölüm 7 - Merry Marbling</title>
     <style>
-        body { margin: 0;  display: flex;  flex-direction: column; align-items: center; min-height: 100vh; background-color:transparent ; background-attachment: fixed; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('media6.jpg'); }
+        body { margin: 0;  display: flex;  flex-direction: column; /* Tıklamadaki mavi/gri gölgeyi ve çerçeveyi tamamen kaldırır */
+* {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+/* Resimlere tıklarken hiçbir görsel efekt oluşmasın */
+.container img {
+    cursor: pointer;
+    -webkit-user-select: none; /* Metin seçmeyi engeller */
+    -webkit-touch-callout: none; /* Uzun basınca çıkan menüyü engeller */
+}align-items: center; min-height: 100vh; background-color:transparent ; background-attachment: fixed; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('media6.jpg'); }
         .site-header { width: 100%; background: transparent; padding: 40px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
         .site-logo { height: 200px; width: auto; display: block; transition: transform 0.3s ease; }
         .logo-sol { margin-left: 50px; }
@@ -93,12 +106,14 @@
             (d.head || d.body).appendChild(s);
         })();
     </script>
-    <script>
-    // Sadece .container içindeki resimlere tıklanınca çalışır
+<script>
     document.querySelectorAll('.container img').forEach(img => {
-        img.addEventListener('click', function() {
+        img.addEventListener('click', function(e) {
+            // Tarayıcının varsayılan tıklama efektlerini durdur
+            e.preventDefault(); 
+            
             window.scrollBy({
-                top: 600, // Her tıklamada 600 piksel aşağı kaydır (Bu değeri değiştirebilirsin)
+                top: window.innerHeight * 0.7, // Ekranın %70'i kadar kaydır
                 behavior: 'smooth'
             });
         });
