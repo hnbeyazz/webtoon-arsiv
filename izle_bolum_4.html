@@ -18,6 +18,7 @@
         .secici-buton:hover { border-color: #555; color: #fff; }
         .bolum-basligi { width: 100%; text-align: left; padding: 10px 0 10px 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 1.8em; font-weight: bold; color: #fff; border-bottom: 1px solid #333; margin-bottom: 25px; letter-spacing: 1px; }
        .container { width: 100%; max-width: 800px; background: transparent; margin-top: 0; }
+        cursor: pointer; } /* Tıklamadaki mavi/gri gölgeyi ve çerçeveyi tamamen kaldırır */ * { -webkit-tap-highlight-color: transparent; outline: none; -ms-touch-action: manipulation; touch-action: manipulation; } /* Resimlere tıklarken hiçbir görsel efekt oluşmasın */ .container img { cursor: pointer; -webkit-user-select: none; /* Metin seçmeyi engeller */ -webkit-touch-callout: none; /* Uzun basınca çıkan menüyü engeller */ }
         img { width: 100%; height: auto; display: block; }
         .nav { padding: 70px; text-align: center; background: transparent; }
         .btn { padding: 20px 40px; background: #f8f8ff ; color: #000000 ; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: sans-serif; transition: 0.3s; }
@@ -101,6 +102,7 @@
             (d.head || d.body).appendChild(s);
         })();
     </script>
+    <script> document.querySelectorAll('.container img').forEach(img => { img.addEventListener('click', function(e) { // Tarayıcının varsayılan tıklama efektlerini durdur e.preventDefault(); window.scrollBy({ top: window.innerHeight * 0.7, // Ekranın %70'i kadar kaydır behavior: 'smooth' }); }); }); </script>
     <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 </body>
 </html>
