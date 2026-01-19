@@ -5,12 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bölüm 2 - Merry Marbling</title>
     <style>
-        body { margin: 0;  display: flex;  flex-direction: column; align-items: center; min-height: 100vh; background-color:transparent ; background-attachment: fixed; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('media6.jpg'); }
+        body { margin: 0;  display: flex;  flex-direction: column; /* Tıklamadaki mavi/gri gölgeyi ve çerçeveyi tamamen kaldırır */
+* {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+/* Resimlere tıklarken hiçbir görsel efekt oluşmasın */
+.container img {
+    cursor: pointer;
+    -webkit-user-select: none; /* Metin seçmeyi engeller */
+    -webkit-touch-callout: none; /* Uzun basınca çıkan menüyü engeller */
+}align-items: center; min-height: 100vh; background-color:transparent ; background-attachment: fixed; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('media6.jpg'); }
         .site-header { width: 100%; background: transparent; padding: 40px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
         .site-logo { height: 200px; width: auto; display: block; transition: transform 0.3s ease; }
         .logo-sol { margin-left: 50px; }
         .logo-sag { margin-right: 50px; }
-        cursor: pointer; } /* Tıklamadaki mavi/gri gölgeyi ve çerçeveyi tamamen kaldırır */ * { -webkit-tap-highlight-color: transparent; outline: none; -ms-touch-action: manipulation; touch-action: manipulation; } /* Resimlere tıklarken hiçbir görsel efekt oluşmasın */ .container img { cursor: pointer; -webkit-user-select: none; /* Metin seçmeyi engeller */ -webkit-touch-callout: none; /* Uzun basınca çıkan menüyü engeller */ }
         .ust-navigasyon {width: 100%; color: #666; font-size: 0.9em; font-family: 'Segoe UI', sans-serif; margin-bottom: 15px; text-align: left; }
         .ust-navigasyon a { color: #888; text-decoration: none; transition: 0.3s; }
         .ust-navigasyon a:hover { color: #fff; }
@@ -21,7 +33,10 @@
        .container { width: 100%; max-width: 800px; background: transparent; margin-top: 0; }
         img { width: 100%; height: auto; display: block; }
         .nav { padding: 70px; text-align: center; background: transparent; }
-        .btn { padding: 20px 50px; background: #f8f8ff ; color: #000000 ; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: sans-serif; transition: 0.3s; }
+        .container img {
+    cursor: pointer;
+}
+        .btn { padding: 20px 40px; background: #f8f8ff ; color: #000000 ; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: sans-serif; transition: 0.3s; }
         .btn:hover { background: #0B2545; }
         .yorum-arkaplan-paneli { width: 100%; max-width: 800px; margin: 40px auto; padding: 40px 20px; box-sizing: border-box; border-radius: 15px; min-height: 600px; background-image: url('yorum.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: rgba(0, 0, 0, 0.6); background-blend-mode: darken; border: 1px solid #333; }
         @media (max-width: 600px) { 
@@ -36,6 +51,8 @@
         .ust-navigasyon, .secici-konteyner { padding-left: 10px; }
         }
     </style>
+
+   
 </head>
 <body>
       <header class="site-header">
@@ -99,6 +116,7 @@
     <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 </body>
 </html>
+
 
 
 
