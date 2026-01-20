@@ -37,42 +37,7 @@
             align-items: center; 
             min-height: 100vh;
         }
-        /* Ana Sayfa Üst Bar (Header) */
-.ana-ust-bar {
-    width: 100%;
-    /* Görseldeki gibi soldan sağa lacivert/mavi geçişi */
-    background: linear-gradient(90deg, #000033 0%, #000066 50%, #1a75ff 100%);
-    padding: 15px 50px; /* Üst-alt ve sağ-sol boşluk */
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    /* Sabit durması (Scroll ile gitmesi) için */
-    position: relative; 
-    margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Hafif gölge */
-}
 
-.ana-ust-bar img {
-    height: 60px; /* Logonun büyüklüğü */
-    width: auto;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.ana-ust-bar img:hover {
-    transform: scale(1.05);
-}
-
-/* Mobil uyum: Ekran daralınca logo ortalansın */
-@media (max-width: 600px) {
-    .ana-ust-bar {
-        padding: 10px 20px;
-        justify-content: center;
-    }
-    .ana-ust-bar img {
-        height: 45px;
-    }
-}
              .yeni-etiketi {
             background-color: #ff3e3e;
             color: white;
@@ -191,11 +156,6 @@
 </head>
 
 <body>
-    <header class="ana-ust-bar">
-    <a href="index.html">
-        <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Site Logosu">
-    </a>
-</header>
 
     <div class="tanitim-alani">
         <img src="tall.jpg" class="kapak" alt="Merry Marbling">
