@@ -85,10 +85,16 @@
         @keyframes hafif-don { 0% { transform: rotate(0deg); } 25% { transform: rotate(5deg); } 75% { transform: rotate(-5deg); } 100% { transform: rotate(0deg); } }
 
         .tanitim-alani {
+            margin-top: 180px;
             display: flex; flex-wrap: wrap; gap: 40px;
             max-width: 1000px; padding: 60px 20px;
             align-items: flex-start; justify-content: center;
         }
+        @media (max-width: 600px) {
+    .tanitim-alani {
+        margin-top: 100px; 
+    }
+}
 
         .kapak {
             width: 280px; border-radius: 15px;
