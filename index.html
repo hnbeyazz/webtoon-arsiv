@@ -59,11 +59,14 @@
 /* Mobil için logoyu küçültelim */
 @media (max-width: 600px) {
     .ana-serbest-logo {
-        top: 5px;
-        left: 5px;
+        top: 5px !important;  /* En üste yapıştırır */
+        left: 5px !important; /* En sola yapıştırır */
+        padding: 0 !important;
+        margin: 0 !important;
     }
     .ana-serbest-logo img {
-        height: 200px;
+        height: 120px; /* 200px mobilde çok büyüktür, 120px daha dengeli durur */
+        display: block;
     }
 }
 
