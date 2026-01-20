@@ -41,7 +41,16 @@
         .logo-sol { margin-left: 50px; }
         .logo-sag { margin-right: 50px; }
 
-        .container { width: 100%; max-width: 800px; background: transparent; margin-top: 0; }
+.container { 
+    width: 100%; 
+    max-width: 800px; 
+    background: transparent; 
+    margin-top: 0; 
+    /* Kenar boşluklarını buradan ayarlıyoruz */
+    padding-left: 20px;  /* Sol boşluk */
+    padding-right: 20px; /* Sağ boşluk */
+    box-sizing: border-box; /* Boşlukların genişliği taşırmasını engeller */
+}
         .container img { width: 100%; height: auto; display: block; cursor: pointer; -webkit-user-select: none; -webkit-touch-callout: none; }
 
         .ust-navigasyon { width: 100%; color: #666; font-size: 0.9em; margin-bottom: 15px; text-align: left; }
@@ -207,6 +216,7 @@
 </script>
 </body>
 </html>
+
 
 
 
