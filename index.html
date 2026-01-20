@@ -89,7 +89,8 @@
         @keyframes hafif-don { 0% { transform: rotate(0deg); } 25% { transform: rotate(5deg); } 75% { transform: rotate(-5deg); } 100% { transform: rotate(0deg); } }
 
         .tanitim-alani {
-            margin-top: 180px;
+            margin-top: 0px !important; /* Logodan sonraki boşluğu h1'e göre ayarlar */
+    padding-top: 0px;
             display: flex; flex-wrap: wrap; gap: 40px;
             max-width: 1000px; padding: 60px 20px;
             align-items: flex-start; justify-content: center;
@@ -117,6 +118,8 @@
 
     text-shadow: 1px 1px 2px rgba(189, 224, 254, 0.4); 
              font-size: 1.25em;
+            margin-bottom: 5px; /* Alt boşluğu iyice azalttık */
+    padding-bottom: 0;
         }
 
         .konu-metni { 
