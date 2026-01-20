@@ -37,6 +37,35 @@
             align-items: center; 
             min-height: 100vh;
         }
+        /* Ana Sayfadaki Serbest Logo */
+.ana-serbest-logo {
+    position: absolute; /* Arka planın üzerine "yapışır" */
+    top: 30px;         /* Üstten boşluk */
+    left: 40px;        /* Soldan boşluk */
+    z-index: 2000;
+}
+
+.ana-serbest-logo img {
+    height: 120px;     /* Logonun boyutu (İstediğin gibi değiştirebilirsin) */
+    width: auto;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2)); /* Hafif bir parlama efekti */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ana-serbest-logo img:hover {
+    transform: scale(1.1) rotate(-2deg); /* Hafifçe büyür ve yana yatar */
+}
+
+/* Mobil için logoyu küçültelim */
+@media (max-width: 600px) {
+    .ana-serbest-logo {
+        top: 20px;
+        left: 20px;
+    }
+    .ana-serbest-logo img {
+        height: 70px;
+    }
+}
 
              .yeni-etiketi {
             background-color: #ff3e3e;
@@ -156,6 +185,11 @@
 </head>
 
 <body>
+    <div class="ana-serbest-logo">
+    <a href="index.html">
+        <img src="" alt="Fansub Logo">
+    </a>
+</div>
 
     <div class="tanitim-alani">
         <img src="tall.jpg" class="kapak" alt="Merry Marbling">
