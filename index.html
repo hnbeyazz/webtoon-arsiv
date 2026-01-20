@@ -108,12 +108,19 @@
         .detaylar { flex: 1; min-width: 350px; text-align: left; }
         
         h1 { 
-            font-family: 'PublicaSans', italic;
-            font-size: 4.5em; margin: 0; color: var(--arka-plan); 
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 100;      /* En ince seviye */
+    font-style: italic;    /* İtalik duruş */
+    color: #ff85a1;        /* İstediğin o pembe tonu */
+    letter-spacing: 1.5px; /* Harfleri biraz açarsan incelik daha çok vurgulanır */
+    text-transform: none;  /* Küçük-büyük harf doğal kalsın */
+    /* Hafif bir mavi parıltı ekleyerek "Marbling" havası katabiliriz */
+    text-shadow: 1px 1px 2px rgba(189, 224, 254, 0.4); 
         }
 
         .konu-metni { 
-            font-family: 'PublicaSans', italic;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 100;      /* En ince seviye */
             line-height: 1.6; color: var(--arka-plan); 
             font-size: 1.25em; text-align: justify;
             max-height: 100px; overflow: hidden;
@@ -132,7 +139,8 @@
 
         .liste-baslik { 
             width: 100%; max-width: 900px; padding-left: 20px; 
-            color: var(--arka-plan); font-family: 'PublicaSans', italic;
+            color: var(--arka-plan);     font-family: 'Public Sans', sans-serif;
+    font-weight: 100;      /* En ince seviye */
             font-size: 2.5em; border-bottom: 1px solid #222;
             padding-bottom: 10px; margin-top: 20px;
         }
