@@ -13,6 +13,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
+        @font-face {
+    font-family: 'PublicaSans';
+    src: url('PublicaSans-Italic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
+
         :root {--ana-mavi: #001d3d; --baslik-mavi: #90e0ef; --altin-sarisi: #ffde00; --arka-plan: #FFFFFF; }
 
         body { 
@@ -24,7 +31,7 @@
             background-color: #000; 
             background-attachment: fixed; 
             color: #fff; 
-            font-family: 'Tinos', serif; 
+            font-family: 'PublicaSans', italic; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
@@ -38,7 +45,7 @@
             border-radius: 4px;
             margin-left: 15px;
             display: inline-block;
-            font-family: sans-serif;
+            font-family: 'PublicaSans', italic;
             font-weight: bold;
             vertical-align: middle;
             animation: yanip-son 1.5s infinite, hafif-don 3s infinite linear;
@@ -62,12 +69,12 @@
         .detaylar { flex: 1; min-width: 350px; text-align: left; }
         
         h1 { 
-            font-family: 'Tinos',ital; 
+            font-family: 'PublicaSans', italic;
             font-size: 4.5em; margin: 0; color: var(--arka-plan); 
         }
 
         .konu-metni { 
-            font-family: 'Tinos', ital; 
+            font-family: 'PublicaSans', italic;
             line-height: 1.6; color: var(--arka-plan); 
             font-size: 1.25em; text-align: justify;
             max-height: 100px; overflow: hidden;
@@ -79,14 +86,14 @@
 
         .devamini-oku-btn {
             background: none; border: none; color: var(--arka-plan);
-            font-family: 'Tinos', ital; 
+            font-family: 'PublicaSans', italic;
             font-size: 1.3em; cursor: pointer; padding: 0;
             display: block;
         }
 
         .liste-baslik { 
             width: 100%; max-width: 900px; padding-left: 20px; 
-            color: var(--arka-plan); font-family: 'Shadows Into Light', cursive;
+            color: var(--arka-plan); font-family: 'PublicaSans', italic;
             font-size: 2.5em; border-bottom: 1px solid #222;
             padding-bottom: 10px; margin-top: 20px;
         }
