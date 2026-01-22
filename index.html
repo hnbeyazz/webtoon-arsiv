@@ -48,7 +48,7 @@ body {
 @media (max-width: 600px) {
     body { 
         /* Mobilde ilk açılış resmi (JS yüklenene kadar görünür) */
-        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('media8.jpg');
+       /* background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('media8.jpg'); */
         background-size: cover; 
         background-position: center center;
         background-attachment: fixed; 
@@ -370,28 +370,34 @@ body {
     </script>
     <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 <script>
-    function mobilArkaplanGuncelle() {
-        if (window.innerWidth <= 600) {
-            const gunlukResimler = [
-                "media.jpg",    // 0
-                "media2.jpg", // 1
-                "media3.jpg",      // 2
-                "media4.jpg",  // 3
-                "media5.jpg",  // 4
-                "media6",      // 5
-                "media7.jpg"  // 6
-            ];
-// const bugun = new Date().getDay(); // Bu gerçek zamanlı olan, şimdilik susturduk.
-const bugun = 3; // Çarşamba gününün resmini zorla gösterir.
-            const secilenResim = gunlukResimler[bugun];
+        let testGun = 0;
+        // Buradaki resim isimlerinin senin dosyalarınla (media1.jpg vb.) aynı olduğundan emin ol
+        const gunlukResimler = [
+            "media1.jpg", 
+            "media2.jpg", 
+            "media3.jpg", 
+            "media4.jpg", 
+            "media5.jpg", 
+            "media6.jpg", 
+            "media7.jpg"
+        ];
 
-            // CSS'deki linear-gradient efektini koruyarak sadece resmi değiştiriyoruz
-            document.body.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${secilenResim}')`;
-        }
-    }
+        setInterval(() => {
+            if (window.innerWidth <= 600) { // Sadece mobilde test etmek için
+                const secilenResim = gunlukResimler[testGun];
+                
+                // !important etkisini JS ile veriyoruz ki CSS ezmesin
+                document.body.style.setProperty(
+                    'background-image', 
+                    `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${secilenResim}')`, 
+                    'important'
+                );
+                
+                console.log("Şu an değişen resim: " + secilenResim); // Tarayıcı konsolunda takip edebilirsin
+                testGun = (testGun + 1) % 7;
+            }
+        }, 1000); // 1000 milisaniye = 1 saniye
+    </script>
 
-    window.addEventListener('load', mobilArkaplanGuncelle);
-    window.addEventListener('resize', mobilArkaplanGuncelle);
-</script>
 </body>
 </html>
