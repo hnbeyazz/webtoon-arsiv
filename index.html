@@ -23,21 +23,37 @@
 
         :root {--ana-mavi: #001d3d; --baslik-mavi: #90e0ef; --altin-sarisi: #ffde00; --arka-plan: #FFFFFF; }
 
-        body { 
-            margin: 0; 
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('867320b5e436c545505d605d1a7c5481.jpg');
-            background-size: 100% auto; 
-            background-position: center top; 
-            background-repeat: no-repeat;
-            background-color: #000; 
-            background-attachment: fixed; 
-            color: #fff; 
-            font-family: 'Public Sans', italic; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            min-height: 100vh;
-        }
+body { 
+    margin: 0; 
+    /* PC Sabit Arka Planı */
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('867320b5e436c545505d605d1a7c5481.jpg');
+    background-size: 100% auto; 
+    background-position: center top; 
+    background-repeat: no-repeat;
+    background-color: #000; 
+    background-attachment: fixed; 
+    color: #fff; 
+    
+    /* FONT DÜZELTME: Public Sans Thin Italic */
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 100;
+    font-style: italic;
+
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    min-height: 100vh;
+}
+
+@media (max-width: 600px) {
+    body { 
+        /* Mobilde ilk açılış resmi (JS yüklenene kadar görünür) */
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('media8.jpg');
+        background-size: cover; 
+        background-position: center center;
+        background-attachment: fixed; 
+    }
+}
         /* Ana Sayfadaki Serbest Logo */
 .ana-serbest-logo {
     position: absolute; /* Arka planın üzerine "yapışır" */
@@ -110,6 +126,7 @@
         .detaylar { flex: 1; min-width: 350px; text-align: left; }
         
         h1 { 
+            margin-bottom: 0;
     font-family: 'Public Sans', italic;
     font-weight: 100;      /* En ince seviye */
     font-style: italic;    /* İtalik duruş */
@@ -191,13 +208,28 @@
             border-radius: 15px;
         }
 
-        @media (max-width: 600px) {
-            body { 
-               background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('media8.jpg');
-                background-size: cover; 
-                background-position: center center;
-                background-attachment: fixed; 
-            }
+body { 
+    margin: 0; 
+    /* PC Sabit Arka Planı */
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('867320b5e436c545505d605d1a7c5481.jpg');
+    background-size: 100% auto; 
+    background-position: center top; 
+    background-repeat: no-repeat;
+    background-color: #000; 
+    background-attachment: fixed; 
+    color: #fff; 
+    
+    /* FONT DÜZELTME: Public Sans Thin Italic */
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 100;
+    font-style: italic;
+
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    min-height: 100vh;
+}
+
             h1 { font-size: 3em; text-align: center; }
             .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
             .detaylar { text-align: center; min-width: 100%; }
@@ -337,6 +369,29 @@
         })();
     </script>
     <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
+<script>
+    function mobilArkaplanGuncelle() {
+        if (window.innerWidth <= 600) {
+            const gunlukResimler = [
+                "media.jpg",    // 0
+                "media2.jpg", // 1
+                "media3.jpg",      // 2
+                "media4.jpg",  // 3
+                "media5.jpg",  // 4
+                "media6",      // 5
+                "media7.jpg"  // 6
+            ];
 
+            const bugun = new Date().getDay();
+            const secilenResim = gunlukResimler[bugun];
+
+            // CSS'deki linear-gradient efektini koruyarak sadece resmi değiştiriyoruz
+            document.body.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${secilenResim}')`;
+        }
+    }
+
+    window.addEventListener('load', mobilArkaplanGuncelle);
+    window.addEventListener('resize', mobilArkaplanGuncelle);
+</script>
 </body>
 </html>
