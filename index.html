@@ -369,35 +369,5 @@ body {
         })();
     </script>
     <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
-<script>
-        let testGun = 0;
-        // Buradaki resim isimlerinin senin dosyalarınla (media1.jpg vb.) aynı olduğundan emin ol
-        const gunlukResimler = [
-            "media1.jpg", 
-            "media2.jpg", 
-            "media3.jpg", 
-            "media4.jpg", 
-            "media5.jpg", 
-            "media6.jpg", 
-            "media7.jpg"
-        ];
-
-        setInterval(() => {
-            if (window.innerWidth <= 600) { // Sadece mobilde test etmek için
-                const secilenResim = gunlukResimler[testGun];
-                
-                // !important etkisini JS ile veriyoruz ki CSS ezmesin
-                document.body.style.setProperty(
-                    'background-image', 
-                    `linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('${secilenResim}')`, 
-                    'important'
-                );
-                
-                console.log("Şu an değişen resim: " + secilenResim); // Tarayıcı konsolunda takip edebilirsin
-                testGun = (testGun + 1) % 7;
-            }
-        }, 10000); // 1000 milisaniye = 1 saniye
-    </script>
-
 </body>
 </html>
