@@ -27,77 +27,54 @@
             align-items: center; 
             min-height: 100vh; 
             background-color: #00001a;
-            background-attachment: fixed; 
-            background-size: cover; 
-            background-position: center 30px; 
-            background-image: url('media6.jpg'); 
+            color: #fff;
             font-family: 'PublicaSans', sans-serif;
         }
-        @media (max-width: 900px) {
-body { 
-    margin: 0;  
-    display: flex;  
-    flex-direction: column; 
-    align-items: center; 
-    min-height: 100vh; 
-    background-color: #00001a; /* GIF yüklenene kadar görünecek renk */
-    background-attachment: fixed; 
-    background-size: cover; 
-    background-position: center; 
-    /* 'arkaplan.gif' yerine kendi GIF dosyanın tam adını yaz */
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('arkaplan.gif'); 
-    font-family: 'PublicaSans', sans-serif;
-}
+
+        /* Video Arka Plan Ayarları */
+        #arkaplan-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -2;
+            object-fit: cover;
         }
-/* Header Ayarları */
-.site-header { 
-    width: 100%; 
-    background: transparent; 
-    padding: 0; /* Üst boşluğu tamamen kaldırdık */
-    display: flex; 
-    justify-content: space-between; 
-    align-items: flex-start; /* Logoları tepeye yasladık */
-    position: relative; 
-    z-index: 1000; 
-}
 
-.site-logo { 
-    height: 200px; 
-    width: auto; 
-    display: block; 
-    transition: transform 0.3s ease; 
-}
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Karartma oranını biraz artırdım ki okunabilsin */
+            z-index: -1;
+        }
 
-.logo-sol { 
-    margin-left: -40px; 
-    margin-top: 0px; /* Burayı 0 yaparsan en üste değer */
-}
+        /* Header ve Logo Ayarları */
+        .site-header { 
+            width: 100%; 
+            background: transparent; 
+            padding: 0; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            position: relative; 
+            z-index: 1000; 
+        }
 
-.logo-sag { 
-    margin-right: -10px; 
-    margin-top: 0; 
-}
-#arkaplan-video {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: -2; /* Her şeyin arkasında kalması için */
-  object-fit: cover;
-}
+        .site-logo { 
+            height: 180px; /* Mobilde taşmaması için hafif küçültüldü */
+            width: auto; 
+            display: block; 
+            transition: transform 0.3s ease; 
+        }
 
-.video-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.2); /* Karartma katmanı buraya geldi */
-  z-index: -1;
-}
+        .logo-sol { margin-left: -10px; margin-top: 0; }
+        .logo-sag { margin-right: -10px; margin-top: 0; }
 
-        /* Ana Konteyner */
+        /* Konteyner */
         .container { 
             width: 100%; 
             max-width: 800px; 
@@ -105,67 +82,58 @@ body {
             padding: 0 10px; 
             box-sizing: border-box; 
         }
-        .container img { width: 100%; height: auto; display: block; -webkit-user-select: none; }
+        .container img { width: 100%; height: auto; display: block; -webkit-user-select: none; margin-bottom: 2px; }
 
         /* Navigasyon ve Seçici */
-        .ust-navigasyon { width: 100%; color: #666; font-size: 0.9em; margin-bottom: 15px; text-align: left; }
+        .ust-navigasyon { width: 100%; color: #ccc; font-size: 0.9em; margin: 15px 0; text-align: left; }
         .ust-navigasyon a { color: #888; text-decoration: none; transition: 0.3s; }
         .ust-navigasyon a:hover { color: #fff; }
 
         .secici-konteyner { display: flex; gap: 12px; margin-bottom: 25px; width: 100%; }
-        .secici-buton { background: #1a1d22; color: #ccc; border: 1px solid #333; padding: 10px 15px; border-radius: 6px; font-family: inherit; font-size: 0.95em; cursor: pointer; flex: 1; max-width: 200px; }
+        .secici-buton { background: #1a1d22; color: #ccc; border: 1px solid #333; padding: 12px; border-radius: 6px; font-family: inherit; cursor: pointer; flex: 1; }
 
-        .bolum-basligi { width: 100%; text-align: left; padding: 10px 0; font-size: 1.8em; font-weight: bold; color: #fff; border-bottom: 1px solid #333; margin-bottom: 25px; letter-spacing: 1px; }
+        .bolum-basligi { width: 100%; text-align: left; padding: 10px 0; font-size: 1.8em; font-weight: bold; border-bottom: 1px solid #333; margin-bottom: 25px; }
         
-        .nav { padding: 20px 0 30px 0; text-align: center; display: flex; justify-content: center; gap: 10px; }
-        .btn-modern { width: 50px; height: 50px; background-color: #010141; display: flex; justify-content: center; align-items: center; border-radius: 10px; text-decoration: none; transition: 0.3s ease; }
-        .btn-modern:hover { background-color: #030366; transform: scale(1.05); }
-        .icon-svg { width: 20px; height: 20px; fill: none; stroke: #ffffff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+        /* Navigasyon Butonları */
+        .nav { padding: 30px 0; text-align: center; display: flex; justify-content: center; gap: 15px; }
+        .btn-modern { width: 55px; height: 55px; background-color: #010141; display: flex; justify-content: center; align-items: center; border-radius: 12px; transition: 0.3s; }
+        .btn-modern:hover { background-color: #030366; transform: scale(1.1); }
+        .icon-svg { width: 24px; height: 24px; fill: none; stroke: #ffffff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 
-        /* YORUM PANELİ VE ARKA PLAN */
+        /* Yorum Paneli */
         .yorum-arkaplan-paneli { 
             width: 100%; 
             max-width: 800px; 
             margin: 40px auto; 
-            padding: 30px; 
+            padding: 20px; 
             box-sizing: border-box; 
             border-radius: 15px; 
-            border: 1px solid #333;
-            min-height: 400px;
-            /* Arka plan resmi ve okunabilirlik katmanı */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('yorum.jpeg'); 
-            background-size: cover; 
-            background-position: center;
-            background-repeat: no-repeat;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0, 0, 0, 0.6); 
         }
 
-        /* Disqus'u resmin üzerine şeffaf oturtmak için */
-        #disqus_thread {
-            background: transparent !important;
-        }
-
-        @media (max-width: 50px) { 
-            .site-logo { height: 200px; }
-            .logo-sol { margin-left: 20px; margin-top: -20px;}
-            .logo-sag { margin-right: 15px; }
-            .btn-modern { width: 45px; height: 45px; }
+        /* Mobil Optimizasyon */
+        @media (max-width: 600px) {
+            .site-logo { height: 120px; }
+            .logo-sol { margin-left: 0; }
+            .logo-sag { margin-right: 0; }
         }
     </style>
 </head>
 <body>
-<video autoplay muted loop id="arkaplan-video">
-  <source src="arkaplan.mp4" type="video/mp4">
+
+<video autoplay muted loop playsinline id="arkaplan-video">
+    <source src="arkaplan.mp4" type="video/mp4">
 </video>
 <div class="video-overlay"></div>
+
 <header class="site-header">
     <a href="index.html"> 
         <img src="ivan.png" alt="Sol Logo" class="site-logo logo-sol"> 
     </a>
-    <div class="logo-konteyner"> 
-        <a href="index.html">
-            <img src="till.png" alt="Sağ Logo" class="site-logo logo-sag"> 
-        </a>
-    </div>
+    <a href="index.html">
+        <img src="till.png" alt="Sağ Logo" class="site-logo logo-sag"> 
+    </a>
 </header>
 
 <div class="container">
@@ -182,29 +150,14 @@ body {
     </div>
 
     <div class="bolum-basligi">1. Bölüm</div>
-    <img src="1.png">
-    <img src="./bolum_1/1.jpg">
+    
+    <img src="bolum_1/1.jpg">
     <img src="bolum_1/2.jpg"> 
-    <img src="bolum_1/3.jpg">
-    <img src="bolum_1/4.jpg"> 
-    <img src="bolum_1/5.jpg"> 
-    <img src="bolum_1/6.jpg"> 
-    <img src="bolum_1/7.png"> 
-    <img src="bolum_1/8.png"> 
-    <img src="bolum_1/9.png"> 
-    <img src="bolum_1/10.png">
-    <img src="bolum_1/11.png">
-    <img src="bolum_1/12.png">
-    <img src="bolum_1/13.png"> 
-    <img src="bolum_1/14.jpg"> 
-    <img src="bolum_1/15.jpg">
-
     <div class="nav">
-        <a href="index.html" class="btn-modern" title="Bilgi">
+        <a href="index.html" class="btn-modern" title="Ana Sayfa">
             <svg class="icon-svg" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="16" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
             </svg>
         </a>
         <a href="izle_bolum_2.html" class="btn-modern" title="Sonraki Bölüm">
@@ -222,28 +175,18 @@ body {
 
 <script>
     var disqus_config = function () {
-        this.page.url = window.location.href;  
-        this.page.identifier = window.location.pathname; 
+        // window.location.href yerine tam linki manuel zorluyoruz
+        this.page.url = window.location.origin + window.location.pathname;
+        this.page.identifier = window.location.pathname;
     };
 
     (function() { 
         var d = document, s = d.createElement('script');
-        // Senin özel shortname yapına göre link düzenlendi
         s.src = 'https://https-lucaenfansub-netlify-app.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
 </script>
 
-<noscript>Yorumları görmek için JavaScript'i etkinleştirin.</noscript>
-<script id="dsq-count-scr" src="//https-lucaenfansub-netlify-app.disqus.com/count.js" async></script>
-
 </body>
 </html>
-
-
-
-
-
-
-
