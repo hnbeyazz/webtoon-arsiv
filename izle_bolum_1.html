@@ -36,16 +36,37 @@
         @media (max-width: 900px) {
             body {
                 background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('media7.jpg'); 
-                background-position: center px  0px  50px 600px;
-            
+                background-position: center 0px 50px 600px;
             }
         }
+/* Header Ayarları */
+.site-header { 
+    width: 100%; 
+    background: transparent; 
+    padding: 0; /* Üst boşluğu tamamen kaldırdık */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; /* Logoları tepeye yasladık */
+    position: relative; 
+    z-index: 1000; 
+}
 
-        /* Header Ayarları */
-        .site-header { width: 100%; background: transparent; padding: 40px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
-        .site-logo { height: 300px; width: auto; display: block; transition: transform 0.3s ease; }
-        .logo-sol { margin-left: 50px; }
-        .logo-sag { margin-right: 50px; }
+.site-logo { 
+    height: 200px; 
+    width: auto; 
+    display: block; 
+    transition: transform 0.3s ease; 
+}
+
+.logo-sol { 
+    margin-left: -40px; 
+    margin-top: 0px; /* Burayı 0 yaparsan en üste değer */
+}
+
+.logo-sag { 
+    margin-right: 50px; 
+    margin-top: 0; 
+}
 
         /* Ana Konteyner */
         .container { 
@@ -96,7 +117,7 @@
 
         @media (max-width: 50px) { 
             .site-logo { height: 200px; }
-            .logo-sol { margin-left: 20px; }
+            .logo-sol { margin-left: 20px; margin-top: -20px;}
             .logo-sag { margin-right: 15px; }
             .btn-modern { width: 45px; height: 45px; }
         }
@@ -175,6 +196,7 @@
 
     (function() { 
         var d = document, s = d.createElement('script');
+        // Senin özel shortname yapına göre link düzenlendi
         s.src = 'https://https-lucaenfansub-netlify-app.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
@@ -186,3 +208,4 @@
 
 </body>
 </html>
+
