@@ -27,54 +27,76 @@
             align-items: center; 
             min-height: 100vh; 
             background-color: #00001a;
-            color: #fff;
+            background-attachment: fixed; 
+            background-size: cover; 
+            background-position: center 30px; 
+            background-image: url('media6.jpg'); 
             font-family: 'PublicaSans', sans-serif;
         }
-
-        /* Video Arka Plan Ayarları */
-        #arkaplan-video {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -2;
-            object-fit: cover;
+        @media (max-width: 900px) {
+body { 
+    margin: 0;  
+    display: flex;  
+    flex-direction: column; 
+    align-items: center; 
+    min-height: 100vh; 
+    background-color: #00001a; 
+    background-attachment: fixed; 
+    background-size: cover; 
+    background-position: center; 
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('arkaplan.gif'); 
+    font-family: 'PublicaSans', sans-serif;
+}
         }
+/* Header Ayarları */
+.site-header { 
+    width: 100%; 
+    background: transparent; 
+    padding: 0; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    position: relative; 
+    z-index: 1000; 
+}
 
-        .video-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Karartma oranını biraz artırdım ki okunabilsin */
-            z-index: -1;
-        }
+.site-logo { 
+    height: 200px; 
+    width: auto; 
+    display: block; 
+    transition: transform 0.3s ease; 
+}
 
-        /* Header ve Logo Ayarları */
-        .site-header { 
-            width: 100%; 
-            background: transparent; 
-            padding: 0; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: flex-start; 
-            position: relative; 
-            z-index: 1000; 
-        }
+.logo-sol { 
+    margin-left: -40px; 
+    margin-top: 0px; 
+}
 
-        .site-logo { 
-            height: 180px; /* Mobilde taşmaması için hafif küçültüldü */
-            width: auto; 
-            display: block; 
-            transition: transform 0.3s ease; 
-        }
+.logo-sag { 
+    margin-right: -10px; 
+    margin-top: 0; 
+}
+#arkaplan-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -2; 
+  object-fit: cover;
+}
 
-        .logo-sol { margin-left: -10px; margin-top: 0; }
-        .logo-sag { margin-right: -10px; margin-top: 0; }
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2); 
+  z-index: -1;
+}
 
-        /* Konteyner */
+        /* Ana Konteyner */
         .container { 
             width: 100%; 
             max-width: 800px; 
@@ -82,58 +104,65 @@
             padding: 0 10px; 
             box-sizing: border-box; 
         }
-        .container img { width: 100%; height: auto; display: block; -webkit-user-select: none; margin-bottom: 2px; }
+        .container img { width: 100%; height: auto; display: block; -webkit-user-select: none; }
 
         /* Navigasyon ve Seçici */
-        .ust-navigasyon { width: 100%; color: #ccc; font-size: 0.9em; margin: 15px 0; text-align: left; }
+        .ust-navigasyon { width: 100%; color: #666; font-size: 0.9em; margin-bottom: 15px; text-align: left; }
         .ust-navigasyon a { color: #888; text-decoration: none; transition: 0.3s; }
         .ust-navigasyon a:hover { color: #fff; }
 
         .secici-konteyner { display: flex; gap: 12px; margin-bottom: 25px; width: 100%; }
-        .secici-buton { background: #1a1d22; color: #ccc; border: 1px solid #333; padding: 12px; border-radius: 6px; font-family: inherit; cursor: pointer; flex: 1; }
+        .secici-buton { background: #1a1d22; color: #ccc; border: 1px solid #333; padding: 10px 15px; border-radius: 6px; font-family: inherit; font-size: 0.95em; cursor: pointer; flex: 1; max-width: 200px; }
 
-        .bolum-basligi { width: 100%; text-align: left; padding: 10px 0; font-size: 1.8em; font-weight: bold; border-bottom: 1px solid #333; margin-bottom: 25px; }
+        .bolum-basligi { width: 100%; text-align: left; padding: 10px 0; font-size: 1.8em; font-weight: bold; color: #fff; border-bottom: 1px solid #333; margin-bottom: 25px; letter-spacing: 1px; }
         
-        /* Navigasyon Butonları */
-        .nav { padding: 30px 0; text-align: center; display: flex; justify-content: center; gap: 15px; }
-        .btn-modern { width: 55px; height: 55px; background-color: #010141; display: flex; justify-content: center; align-items: center; border-radius: 12px; transition: 0.3s; }
-        .btn-modern:hover { background-color: #030366; transform: scale(1.1); }
-        .icon-svg { width: 24px; height: 24px; fill: none; stroke: #ffffff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+        .nav { padding: 20px 0 30px 0; text-align: center; display: flex; justify-content: center; gap: 10px; }
+        .btn-modern { width: 50px; height: 50px; background-color: #010141; display: flex; justify-content: center; align-items: center; border-radius: 10px; text-decoration: none; transition: 0.3s ease; }
+        .btn-modern:hover { background-color: #030366; transform: scale(1.05); }
+        .icon-svg { width: 20px; height: 20px; fill: none; stroke: #ffffff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 
-        /* Yorum Paneli */
+        /* YORUM PANELİ VE ARKA PLAN */
         .yorum-arkaplan-paneli { 
             width: 100%; 
             max-width: 800px; 
             margin: 40px auto; 
-            padding: 20px; 
+            padding: 30px; 
             box-sizing: border-box; 
             border-radius: 15px; 
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(0, 0, 0, 0.6); 
+            border: 1px solid #333;
+            min-height: 400px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('yorum.jpeg'); 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
-        /* Mobil Optimizasyon */
-        @media (max-width: 600px) {
-            .site-logo { height: 120px; }
-            .logo-sol { margin-left: 0; }
-            .logo-sag { margin-right: 0; }
+        #disqus_thread {
+            background: transparent !important;
+        }
+
+        @media (max-width: 50px) { 
+            .site-logo { height: 200px; }
+            .logo-sol { margin-left: 20px; margin-top: -20px;}
+            .logo-sag { margin-right: 15px; }
+            .btn-modern { width: 45px; height: 45px; }
         }
     </style>
 </head>
 <body>
-
-<video autoplay muted loop playsinline id="arkaplan-video">
-    <source src="arkaplan.mp4" type="video/mp4">
+<video autoplay muted loop id="arkaplan-video">
+  <source src="arkaplan.mp4" type="video/mp4">
 </video>
 <div class="video-overlay"></div>
-
 <header class="site-header">
     <a href="index.html"> 
         <img src="ivan.png" alt="Sol Logo" class="site-logo logo-sol"> 
     </a>
-    <a href="index.html">
-        <img src="till.png" alt="Sağ Logo" class="site-logo logo-sag"> 
-    </a>
+    <div class="logo-konteyner"> 
+        <a href="index.html">
+            <img src="till.png" alt="Sağ Logo" class="site-logo logo-sag"> 
+        </a>
+    </div>
 </header>
 
 <div class="container">
@@ -150,7 +179,6 @@
     </div>
 
     <div class="bolum-basligi">1. Bölüm</div>
-    
     <img src="bolum_1/1.jpg">
     <img src="bolum_1/2.jpg"> 
 
@@ -176,7 +204,6 @@
 
 <script>
     var disqus_config = function () {
-        // window.location.origin ekleyerek tam URL güvenliğini sağladık
         this.page.url = window.location.origin + window.location.pathname;
         this.page.identifier = window.location.pathname;
     };
@@ -189,6 +216,10 @@
     })();
 </script>
 
+<noscript>Yorumları görmek için JavaScript'i etkinleştirin.</noscript>
+<script id="dsq-count-scr" src="//https-lucaenfansub-netlify-app.disqus.com/count.js" async></script>
+
 </body>
 </html>
+
 
