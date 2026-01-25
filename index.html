@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Merry Marbling - Ana Sayfa</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@1,100&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@1,100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Shadows+Into+Light&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
         @font-face {
@@ -17,174 +15,113 @@
             font-style: italic;
         }
 
-        :root {
-            --ana-mavi: #001d3d;
-            --baslik-mavi: #90e0ef;
-            --altin-sarisi: #ffde00;
-            --arka-plan: #FFFFFF;
-        }
+        :root {--ana-mavi: #001d3d; --baslik-mavi: #90e0ef; --altin-sarisi: #ffde00; --arka-plan: #FFFFFF; }
 
         body { 
             margin: 0; 
             background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('867320b5e436c545505d605d1a7c5481.jpg');
-            background-size: cover; 
+            background-size: 100% auto; 
             background-position: center top; 
             background-repeat: no-repeat;
             background-color: #000; 
             background-attachment: fixed; 
             color: #fff; 
-            font-family: 'Public Sans', sans-serif; 
+            font-family: 'Public Sans', italic; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             min-height: 100vh;
         }
 
-        /* Logo Ayarları - Boşluğu Sildik */
         .ana-serbest-logo {
             position: absolute;
-            top: 0; /* Boşluk kalmaması için tam sıfıra çektik */
+            top: 20px;
             left: 20px;
             z-index: 2000;
         }
 
         .ana-serbest-logo img {
-            height: 400px;
+            height: 500px;
             width: auto;
             filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .ana-serbest-logo img:hover {
-            transform: scale(1.05) rotate(-2deg);
+        .ana-serbest-logo img:hover { transform: scale(1.1) rotate(-2deg); }
+
+        @media (max-width: 500px) {
+            .ana-serbest-logo { top: -100px !important; left: -75px !important; padding: 0 !important; margin: 0 !important; }
+            .ana-serbest-logo img { height: 350px; display: block; top: -90px; }
         }
 
-        /* Tanıtım Alanı */
         .tanitim-alani {
-            margin-top: 250px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            max-width: 1000px;
-            padding: 20px;
-            align-items: flex-start;
-            justify-content: center;
+            margin-top: 180px; display: flex; flex-wrap: wrap; gap: 40px;
+            max-width: 1000px; padding: 60px 20px; align-items: flex-start; justify-content: center;
         }
 
-        .kapak {
-            width: 280px;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(144, 224, 239, 0.2);
-        }
+        @media (max-width: 600px) { .tanitim-alani { margin-top: 100px; } }
 
-        .detaylar { flex: 1; min-width: 300px; text-align: left; }
-
+        .kapak { width: 280px; border-radius: 15px; box-shadow: 0 10px 40px rgba(144, 224, 239, 0.2); }
+        .detaylar { flex: 1; min-width: 350px; text-align: left; }
+        
         h1 { 
-            font-family: 'Public Sans', sans-serif;
-            font-weight: 100;
-            font-style: italic;
-            color: #ffffff;
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-family: 'Public Sans', italic; font-weight: 100; font-style: italic; color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(189, 224, 254, 0.4); font-size: 1.25em; margin-bottom: 5px;
         }
 
         .konu-metni { 
-            font-family: 'Public Sans', sans-serif;
-            font-weight: 100;
-            line-height: 1.6;
-            color: var(--arka-plan); 
-            font-size: 1.1em;
-            text-align: justify;
-            max-height: 80px; /* Kapalıyken yükseklik */
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-            margin-bottom: 10px;
+            font-family: 'Public Sans', italic; font-weight: 100; line-height: 1.6; color: var(--arka-plan); 
+            font-size: 1.25em; text-align: justify; max-height: 100px; overflow: hidden;
+            transition: max-height 0.5s ease-in-out; margin-bottom: 10px;
         }
 
-        .konu-metni.acik { max-height: 1000px; }
+        .konu-metni.acik { max-height: 2500px; }
 
         .devamini-oku-btn {
-            background: none;
-            border: none;
-            color: var(--baslik-mavi);
-            font-family: inherit;
-            font-size: 1em;
-            cursor: pointer;
-            padding: 0;
-            text-decoration: underline;
+            background: none; border: none; color: var(--arka-plan);
+            font-family: 'Public Sans', italic; font-size: 1.3em; cursor: pointer; padding: 0; display: block;
         }
 
-        /* Bölüm Listesi */
         .liste-baslik { 
-            width: 100%;
-            max-width: 900px;
-            padding: 0 20px;
-            color: var(--arka-plan);
-            font-size: 2em;
-            border-bottom: 1px solid #222;
-            margin-top: 40px;
-            padding-bottom: 10px;
+            width: 100%; max-width: 900px; padding-left: 20px; color: var(--arka-plan); 
+            font-family: 'Public Sans', italic; font-weight: 100; font-size: 2.5em; 
+            border-bottom: 1px solid #222; padding-bottom: 10px; margin-top: 20px;
         }
 
         .bolum-listesi { 
-            width: 100%;
-            max-width: 900px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            width: 100%; max-width: 900px; padding: 20px 20px 40px 20px; 
+            display: flex; flex-direction: column; gap: 5px;
         }
 
         .bolum-kart {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px 25px;
-            text-decoration: none;
-            color: #fff;
-            border-radius: 8px;
-            transition: 0.3s;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(255, 255, 255, 0.02); padding: 20px 25px;
+            text-decoration: none; color: #fff; border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s;
         }
 
-        .bolum-kart:hover {
-            background: rgba(144, 224, 239, 0.15);
-            transform: translateX(10px);
-        }
+        .bolum-kart:hover { background: rgba(144, 224, 239, 0.08); padding-left: 35px; }
+        .bolum-no { font-size: 1.4em; font-weight: bold; }
+        .bolum-tarih { font-size: 0.85em; color: #888; margin-top: 4px; }
+        .izlendi-ikon { width: 24px; height: 24px; opacity: 0; transition: 0.3s; filter: invert(1); }
+        .izlendi-ikon.aktif { opacity: 0.6; }
 
-        .izlendi-ikon {
-            width: 24px;
-            height: 24px;
-            opacity: 0.2;
-            filter: invert(1);
-        }
-
-        .izlendi-ikon.aktif { opacity: 1; filter: none; }
-
-        /* Yorum Alanı */
         .yorum-alani {
-            width: 100%;
-            max-width: 900px;
-            padding: 20px;
-            margin: 50px 0;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
+            width: 100%; max-width: 900px; padding: 20px; margin-bottom: 50px;
+            background: rgba(255, 255, 255, 0.03); border-radius: 15px;
         }
 
-        /* Mobil Düzenlemeler */
         @media (max-width: 600px) {
-            .ana-serbest-logo img { height: 250px; }
-            .tanitim-alani { margin-top: 150px; }
-            .detaylar { text-align: center; }
+            body { background-image: url('media16.jpg'); background-size: cover; background-position: center center; }
+            h1 { font-size: 3em; text-align: center; }
+            .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
+            .detaylar { text-align: center; min-width: 100%; }
         }
     </style>
 </head>
 
 <body>
     <div class="ana-serbest-logo">
-        <a href="index.html">
-            <img src="logo1.2.png" alt="Fansub Logo">
-        </a>
+        <a href="index.html"> <img src="logo1.2.png" alt="Fansub Logo"> </a>
     </div>
 
     <div class="tanitim-alani">
@@ -193,7 +130,7 @@
             <h1>Merry Marbling</h1>
             <div class="ozet-konteynir">
                 <p class="konu-metni" id="ozetMetin">
-                    Merry Marbling serisinin konusu buraya gelecek. Bu metin "Devamını Oku" butonuna basıldığında tamamen açılacak şekilde ayarlandı.
+                    Merry Marbling serisinin tüm bölümlerine buradan ulaşabilirsiniz. Keyifli okumalar!
                 </p>
                 <button class="devamini-oku-btn" id="btnOku" onclick="ozetiAc()">Devamını Oku...</button>
             </div>
@@ -205,16 +142,56 @@
     <div class="bolum-listesi">
         <a href="izle_bolum_7.html" class="bolum-kart" onclick="kaydet('bolum7')">
             <div class="bolum-bilgi">
-                <div class="bolum-no">7. Bölüm</div>
-                <div class="bolum-tarih">19 Ocak 2026</div>
+                <span class="bolum-no">7. Bölüm</span>
+                <span class="bolum-tarih">19 Ocak 2026</span>
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum7">
         </a>
-        
+
+        <a href="izle_bolum_6.html" class="bolum-kart" onclick="kaydet('bolum6')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">6. Bölüm</span>
+                <span class="bolum-tarih">14 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum6">
+        </a>
+
+        <a href="izle_bolum_5.html" class="bolum-kart" onclick="kaydet('bolum5')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">5. Bölüm</span>
+                <span class="bolum-tarih">9 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum5">
+        </a>
+
+        <a href="izle_bolum_4.html" class="bolum-kart" onclick="kaydet('bolum4')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">4. Bölüm</span>
+                <span class="bolum-tarih">5 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum4">
+        </a>
+
+        <a href="izle_bolum_3.html" class="bolum-kart" onclick="kaydet('bolum3')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">3. Bölüm</span>
+                <span class="bolum-tarih">2 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum3">
+        </a>
+
+        <a href="izle_bolum_2.html" class="bolum-kart" onclick="kaydet('bolum2')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">2. Bölüm</span>
+                <span class="bolum-tarih">2 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum2">
+        </a>
+
         <a href="izle_bolum_1.html" class="bolum-kart" onclick="kaydet('bolum1')">
             <div class="bolum-bilgi">
-                <div class="bolum-no">1. Bölüm</div>
-                <div class="bolum-tarih">1 Ocak 2026</div>
+                <span class="bolum-no">1. Bölüm</span>
+                <span class="bolum-tarih">1 Ocak 2026</span>
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum1">
         </a>
@@ -225,20 +202,17 @@
     </div>
 
     <script>
-        // Özet Açma/Kapatma
         function ozetiAc() {
-            const metin = document.getElementById("ozetMetin");
-            const btn = document.getElementById("btnOku");
+            var metin = document.getElementById("ozetMetin");
+            var btn = document.getElementById("btnOku");
             metin.classList.toggle("acik");
             btn.innerHTML = metin.classList.contains("acik") ? "Daha Az Gör" : "Devamını Oku...";
         }
 
-        // Bölüm İzleme Kaydı
         function kaydet(id) {
             localStorage.setItem(id, "true");
         }
 
-        // Sayfa Yüklendiğinde Kontrol
         window.onload = function() {
             const bolumler = ['bolum1', 'bolum2', 'bolum3', 'bolum4', 'bolum5', 'bolum6', 'bolum7'];
             bolumler.forEach(id => {
@@ -249,11 +223,11 @@
             });
         };
 
-        // Disqus Ayarları
         var disqus_config = function () {
-            this.page.url = window.location.href;
+            this.page.url = window.location.origin + window.location.pathname;
             this.page.identifier = window.location.pathname;
         };
+
         (function() { 
             var d = document, s = d.createElement('script');
             s.src = 'https://https-lucaenfansub-netlify-app.disqus.com/embed.js';
