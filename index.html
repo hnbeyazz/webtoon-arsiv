@@ -47,7 +47,7 @@
 }
 
 .ana-serbest-logo img {
-    height: 300px;     /* Logonun boyutu (İstediğin gibi değiştirebilirsin) */
+    height: 500px;     /* Logonun boyutu (İstediğin gibi değiştirebilirsin) */
     width: auto;
     filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2)); /* Hafif bir parlama efekti */
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -58,16 +58,17 @@
 }
 
 /* Mobil için logoyu küçültelim */
-@media (max-width: 600px) {
+@media (max-width: 500px) {
     .ana-serbest-logo {
-        top: 0px !important;  /* En üste yapıştırır */
-        left: 0px !important; /* En sola yapıştırır */
+        top: -100px !important;  /* En üste yapıştırır */
+        left: -75px !important; /* En sola yapıştırır */
         padding: 0 !important;
         margin: 0 !important;
     }
     .ana-serbest-logo img {
-        height: 160px; /* 200px mobilde çok büyüktür, 120px daha dengeli durur */
+        height: 350px; /* 200px mobilde çok büyüktür, 120px daha dengeli durur */
         display: block;
+        top: -90px;
     }
 }
 
@@ -104,7 +105,6 @@
         .kapak {
             width: 280px; border-radius: 15px;
             box-shadow: 0 10px 40px rgba(144, 224, 239, 0.2);
-            border: 1px solid #333;
         }
 
         .detaylar { flex: 1; min-width: 350px; text-align: left; }
@@ -193,7 +193,7 @@
 
         @media (max-width: 600px) {
             body { 
-               background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('media8.jpg');
+               background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('media16.jpg');
                 background-size: cover; 
                 background-position: center center;
                 background-attachment: fixed; 
@@ -208,18 +208,17 @@
 <body>
     <div class="ana-serbest-logo">
     <a href="index.html">
-        <img src="logoana.png" alt="Fansub Logo">
+        <img src="logo1.2.png" alt="Fansub Logo">
     </a>
 </div>
 
     <div class="tanitim-alani">
-        <img src="tall.jpg" class="kapak" alt="Merry Marbling">
+        <img src="tanitimgörseli.jpg" class="kapak" alt="Merry Marbling">
         
         <div class="detaylar">
             <h1>Merry Marbling</h1>
             <div class="ozet-konteynir">
                 <p class="konu-metni" id="ozetMetin"> 
-                    Ha Ian, görünüşte kusursuz bir lise öğrencisidir: son derece nazik, sıcak, güvenilir ve üstüne üstlük yakışıklıdır. Ire-dong kasabasında herkesin gözünde bir idol hâline gelmiştir; hatta çocukken yaptığı masum bir iyilik sayesinde hakkında dillerden düşmeyen “Noel Meleği” olarak anılmaktadır...
                 </p>
                 <button class="devamini-oku-btn" id="btnOku" onclick="ozetiAc()">Devamını Oku...</button>
             </div>
