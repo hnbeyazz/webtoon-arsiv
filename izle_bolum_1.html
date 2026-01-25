@@ -153,6 +153,7 @@
     
     <img src="bolum_1/1.jpg">
     <img src="bolum_1/2.jpg"> 
+
     <div class="nav">
         <a href="index.html" class="btn-modern" title="Ana Sayfa">
             <svg class="icon-svg" viewBox="0 0 24 24">
@@ -175,7 +176,7 @@
 
 <script>
     var disqus_config = function () {
-        // window.location.href yerine tam linki manuel zorluyoruz
+        // window.location.origin ekleyerek tam URL güvenliğini sağladık
         this.page.url = window.location.origin + window.location.pathname;
         this.page.identifier = window.location.pathname;
     };
@@ -190,3 +191,4 @@
 
 </body>
 </html>
+
