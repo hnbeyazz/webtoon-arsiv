@@ -13,30 +13,62 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <style>
-        @font-face {
-    font-family: 'PublicaSans';
-    src: url('PublicaSans-Italic.otf') format('opentype');
-    font-weight: normal;
-    font-style: italic;
-}
+      <style>
 
-        :root {--ana-mavi: #001d3d; --baslik-mavi: #90e0ef; --altin-sarisi: #ffde00; --arka-plan: #FFFFFF; }
+        @font-face {
+
+            font-family: 'PublicaSans';
+
+            src: url('PublicaSans-Italic.otf') format('opentype');
+
+            font-weight: normal;
+
+            font-style: italic;
+
+        }
+
+
+
+        :root {
+
+            --ana-mavi: #001d3d;
+
+            --baslik-mavi: #90e0ef;
+
+            --arka-plan: #FFFFFF;
+
+        }
+
+
 
         body { 
+
             margin: 0; 
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('867320b5e436c545505d605d1a7c5481.jpg');
-            background-size: 100% auto; 
+
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('media16.jpg');
+
+            background-size: cover; 
+
             background-position: center top; 
+
             background-repeat: no-repeat;
+
             background-color: #000; 
+
             background-attachment: fixed; 
+
             color: #fff; 
-            font-family: 'Public Sans', italic; 
+
+            font-family: 'PublicaSans', sans-serif; 
+
             display: flex; 
+
             flex-direction: column; 
+
             align-items: center; 
+
             min-height: 100vh;
+
         }
         /* Ana Sayfadaki Serbest Logo */
 .ana-serbest-logo {
@@ -107,46 +139,68 @@
             box-shadow: 0 10px 40px rgba(144, 224, 239, 0.2);
         }
 
-        .detaylar { flex: 1; min-width: 350px; text-align: left; }
-        
-        h1 { 
-    font-family: 'Public Sans', italic;
-    font-weight: 100;      /* En ince seviye */
-    font-style: italic;    /* İtalik duruş */
-    color: #ffffff;     
-    text-transform: none;  /* Küçük-büyük harf doğal kalsın */
+        .detaylar { flex: 1; min-width: 320px; text-align: left; }
 
-    text-shadow: 1px 1px 2px rgba(189, 224, 254, 0.4); 
-             font-size: 1.25em;
-            margin-bottom: 5px; /* Alt boşluğu iyice azalttık */
-    padding-bottom: 0;
+        
+
+        h1 { 
+
+            font-family: 'PublicaSans', sans-serif; 
+
+            font-style: italic;
+
+            color: #ffffff;
+
+            font-size: 2.5em; 
+
+            margin-bottom: 15px;
+
         }
+
+
 
         .konu-metni { 
-    font-family: 'Public Sans', italic;
-    font-weight: 100;      /* En ince seviye */
-            line-height: 1.6; color: var(--arka-plan); 
-            font-size: 1.25em; text-align: justify;
-            max-height: 100px; overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-            margin-bottom: 10px;
+
+            line-height: 1.7; 
+
+            color: #ddd; 
+
+            font-size: 1.1em; 
+
+            text-align: justify; 
+
+            max-height: 100px; 
+
+            overflow: hidden;
+
+            transition: max-height 0.5s ease; 
+
         }
 
-        .konu-metni.acik { max-height: 2500px; }
+
+
+        .konu-metni.acik { max-height: 1000px; }
+
+
 
         .devamini-oku-btn {
-            background: none; border: none; color: var(--arka-plan);
-            font-family: 'Public Sans', italic;
-            font-size: 1.3em; cursor: pointer; padding: 0;
-            display: block;
+
+            background: none; border: none; color: var(--baslik-mavi);
+
+            font-weight: bold; cursor: pointer; padding: 10px 0; font-size: 1em;
+
         }
 
+
+
         .liste-baslik { 
-            width: 100%; max-width: 900px; padding-left: 20px; 
-            color: var(--arka-plan);     font-family: 'Public Sans', italic;
-    font-weight: 100;      /* En ince seviye */
-            font-size: 2.5em; border-bottom: 1px solid #222;
-            padding-bottom: 10px; margin-top: 20px;
+
+            width: 100%; max-width: 900px; padding: 0 20px; color: #fff; 
+
+            font-size: 1.8em; border-bottom: 2px solid #333; 
+
+            padding-bottom: 10px; margin-top: 40px; box-sizing: border-box;
+
         }
 
         .bolum-listesi { 
