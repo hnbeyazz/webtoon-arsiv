@@ -33,15 +33,15 @@
         .logo-sol { margin-left: 50px; }
         .logo-sag { margin-right: 50px; }
 
-.container { 
-    width: 100%; 
-    max-width: 800px; 
-    background: transparent; 
-    margin-top: 0; 
-    padding-left: 10px; 
-    padding-right: 10px; 
-    box-sizing: border-box; 
-}
+        .container { 
+            width: 100%; 
+            max-width: 800px; 
+            background: transparent; 
+            margin-top: 0; 
+            padding-left: 10px; 
+            padding-right: 10px; 
+            box-sizing: border-box; 
+        }
         .container img { width: 100%; height: auto; display: block; cursor: pointer; -webkit-user-select: none; -webkit-touch-callout: none; }
 
         .ust-navigasyon { width: 100%; color: #666; font-size: 0.9em; margin-bottom: 15px; text-align: left; }
@@ -97,18 +97,17 @@
             .logo-sag { margin-right: 15px; }
             .btn-modern { width: 40px; height: 40px; border-radius:6px;}
             .icon-svg { width: 25px; height: 25px; }
-        .nav { 
-            padding-top: 20px;
-            padding-bottom: 30px;
-            text-align: center; 
-            background: transparent; 
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-        }
+            .nav { 
+                padding-top: 20px;
+                padding-bottom: 30px;
+                text-align: center; 
+                background: transparent; 
+                display: flex;
+                justify-content: center;
+                gap: 5px;
+            }
         }
     </style>
-
 </head>
 <body>
       <header class="site-header">
@@ -134,7 +133,7 @@
         </div>
 
         <div class="bolum-basligi">5. Bölüm</div>
-<img src="1.png">
+        <img src="1.png">
         <img src="bolum_5/1.jpg"> 
         <img src="bolum_5/2.jpg"> 
         <img src="bolum_5/3.jpg"> 
@@ -143,6 +142,7 @@
         <img src="bolum_5/6.jpg"> 
         <img src="bolum_5/7.jpg"> 
         <img src="bolum_5/8.jpg"> 
+
         <div class="nav">
             <a href="izle_bolum_4.html" class="btn-modern" title="Önceki Bölüm">
                 <svg class="icon-svg" viewBox="0 0 24 24">
@@ -160,7 +160,6 @@
         </div>
     </div>
 
-
     <div class="yorum-arkaplan-paneli"> <div id="disqus_thread"></div> </div>
 
     <script>
@@ -175,20 +174,18 @@
             s.setAttribute('data-timestamp', +new Date());
             (d.head || d.body).appendChild(s);
         })();
-    </script>
-   <script>
-    document.querySelectorAll('.container img').forEach(img => {
-        img.addEventListener('click', function(e) {
-            // Tarayıcının varsayılan tıklama efektlerini durdur
-            e.preventDefault(); 
-            
-            window.scrollBy({
-                top: window.innerHeight * 0.7, // Ekranın %70'i kadar kaydır
-                behavior: 'smooth'
+
+        // Resim tıklama kaydırma efekti
+        document.querySelectorAll('.container img').forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.preventDefault(); 
+                window.scrollBy({
+                    top: window.innerHeight * 0.7,
+                    behavior: 'smooth'
+                });
             });
         });
-    });
-</script>
+    </script>
     <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 </body>
 </html>
