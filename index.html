@@ -127,9 +127,26 @@
         }
 
         /* DİKKAT: Buradaki noktayı ve yüksekliği düzelttim */
-  .yorum-alani { width: 100%; max-width: 800px; margin: 40px auto; padding: 40px 20px; box-sizing: border-box; border-radius: 15px; min-height: 600px; background-image: url('yorum.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: rgba(0, 0, 0, 0.6); background-blend-mode: darken; border: 1px solid #333; }
-
-        .yeni-etiketi {
+  .yorum-alani { 
+            width: 100%; 
+            max-width: 800px; 
+            margin: 40px auto; 
+            padding: 40px 20px; 
+            box-sizing: border-box; 
+            border-radius: 15px; 
+            min-height: 600px; 
+            
+            /* Arka plan ayarları */
+            background-image: url('yorum.jpeg'); 
+            background-size: contain; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            background-attachment: fixed; /* Sayfa kaysa da resim çakılı kalır */
+            background-color: rgba(0, 0, 0, 0.4); /* İçeriğin okunması için biraz daha kararttım */
+            background-blend-mode: darken; 
+            
+            border: 1px solid #333; 
+        }
             background: linear-gradient(45deg, #ff4d4d, #f9ca24);
             color: #fff;
             font-size: 0.7em;
