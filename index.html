@@ -120,7 +120,37 @@
             opacity: 1; filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(160deg) brightness(118%) contrast(119%); 
         }
 
-.    yorum-alani { width: 100%; max-width: 800px; margin: 40px auto; padding: 40px 20px; box-sizing: border-box; border-radius: 15px; min-height: 600px; background-image: url('yorum.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: rgba(0, 0, 0, 0.6); background-blend-mode: darken; border: 1px solid #333; }
+        /* DİKKAT: Buradaki noktayı ve yüksekliği düzelttim */
+        .yorum-alani { 
+            width: 100%; 
+            max-width: 900px; 
+            margin: 40px auto; 
+            padding: 40px 20px; 
+            box-sizing: border-box; 
+            border-radius: 15px; 
+            min-height: 400px; 
+            background-image: url('yorum.jpeg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            background-color: rgba(0, 0, 0, 0.6); 
+            background-blend-mode: darken; 
+            border: 1px solid #333; 
+        }
+
+        .yeni-etiketi {
+            background: linear-gradient(45deg, #ff4d4d, #f9ca24);
+            color: #fff;
+            font-size: 0.7em;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+            display: inline-block;
+            vertical-align: middle;
+        }
 
         @media (max-width: 600px) {
             .ana-serbest-logo img { height: 100px; }
@@ -129,19 +159,6 @@
             .detaylar { text-align: center; }
             .kapak { width: 200px; margin: 0 auto; display: block; }
         }
-        .yeni-etiketi {
-    background: linear-gradient(45deg, #ff4d4d, #f9ca24);
-    color: #fff;
-    font-size: 0.7em;
-    font-weight: bold;
-    padding: 3px 8px;
-    border-radius: 4px;
-    margin-left: 10px;
-    text-transform: uppercase;
-    box-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
-    display: inline-block;
-    vertical-align: middle;
-}
     </style>
 </head>
 
@@ -156,7 +173,7 @@
             <h1>Merry Marbling</h1>
             <div class="ozet-konteynir">
                 <p class="konu-metni" id="ozetMetin">
-Ire-dong kasabasının göz bebeği Ha Ian, herkesin hayran olduğu kusursuz bir 'Noel Meleği'dir. Ancak bu parlak maskenin ardında, kimsenin bilmediği soğuk bir gerçek saklıdır. Okula yeni transfer olan ve hastalığı nedeniyle hayata öfkeli olan Baek Yugun, tesadüfen Ian’ın bu sahte kahramanlığının ardındaki kirli planı öğrenir. İki zıt kutup; biri toplumun sevgilisi, diğeri ise yalnızlığın sert yüzü... Yugun bu büyük sırrı ifşa edip maskeleri düşürebilecek mi, yoksa Ian’ın ürpertici oyununun bir parçası mı olacak? Gerçek iyilik ve sahte nezaket arasındaki o ince çizgide, beklenmedik bir ortaklık doğmak üzere.
+                    Ire-dong kasabasının göz bebeği Ha Ian, herkesin hayran olduğu kusursuz bir 'Noel Meleği'dir. Ancak bu parlak maskenin ardında, kimsenin bilmediği soğuk bir gerçek saklıdır. Okula yeni transfer olan ve hastalığı nedeniyle hayata öfkeli olan Baek Yugun, tesadüfen Ian’ın bu sahte kahramanlığının ardındaki kirli planı öğrenir. İki zıt kutup; biri toplumun sevgilisi, diğeri ise yalnızlığın sert yüzü... Yugun bu büyük sırrı ifşa edip maskeleri düşürebilecek mi, yoksa Ian’ın ürpertici oyununun bir parçası mı olacak? Gerçek iyilik ve sahte nezaket arasındaki o ince çizgide, beklenmedik bir ortaklık doğmak üzere.
                 </p>
                 <button class="devamini-oku-btn" id="btnOku" onclick="ozetiAc()">Devamını Oku...</button>
             </div>
@@ -166,21 +183,14 @@ Ire-dong kasabasının göz bebeği Ha Ian, herkesin hayran olduğu kusursuz bir
     <h2 class="liste-baslik">Bölümler</h2>
 
     <div class="bolum-listesi">
-<a href="izle_bolum_8.html" class="bolum-kart" onclick="kaydet('bolum8')">
-    <div class="bolum-bilgi">
-        <span class="bolum-no">8. Bölüm <span class="yeni-etiketi">YENİ</span></span>
-        <span class="bolum-tarih">26 Ocak 2026</span>
-    </div>
-    <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum8">
-</a>
+        <a href="izle_bolum_8.html" class="bolum-kart" onclick="kaydet('bolum8')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">8. Bölüm <span class="yeni-etiketi">YENİ</span></span>
+                <span class="bolum-tarih">26 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum8">
+        </a>
 
-<a href="izle_bolum_7.html" class="bolum-kart" onclick="kaydet('bolum7')">
-    <div class="bolum-bilgi">
-        <span class="bolum-no">7. Bölüm</span>
-        <span class="bolum-tarih">19 Ocak 2026</span>
-    </div>
-    <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum7">
-</a>
         <a href="izle_bolum_7.html" class="bolum-kart" onclick="kaydet('bolum7')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">7. Bölüm</span>
@@ -196,47 +206,7 @@ Ire-dong kasabasının göz bebeği Ha Ian, herkesin hayran olduğu kusursuz bir
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum6">
         </a>
-
-        <a href="izle_bolum_5.html" class="bolum-kart" onclick="kaydet('bolum5')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">5. Bölüm</span>
-                <span class="bolum-tarih">9 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum5">
-        </a>
-
-        <a href="izle_bolum_4.html" class="bolum-kart" onclick="kaydet('bolum4')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">4. Bölüm</span>
-                <span class="bolum-tarih">5 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum4">
-        </a>
-
-        <a href="izle_bolum_3.html" class="bolum-kart" onclick="kaydet('bolum3')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">3. Bölüm</span>
-                <span class="bolum-tarih">2 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum3">
-        </a>
-
-        <a href="izle_bolum_2.html" class="bolum-kart" onclick="kaydet('bolum2')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">2. Bölüm</span>
-                <span class="bolum-tarih">2 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum2">
-        </a>
-
-        <a href="izle_bolum_1.html" class="bolum-kart" onclick="kaydet('bolum1')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">1. Bölüm</span>
-                <span class="bolum-tarih">1 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum1">
-        </a>
-    </div>
+        </div>
 
     <div class="yorum-alani">
         <div id="disqus_thread"></div>
@@ -255,7 +225,7 @@ Ire-dong kasabasının göz bebeği Ha Ian, herkesin hayran olduğu kusursuz bir
         }
 
         window.onload = function() {
-            const bolumler = ['bolum1', 'bolum2', 'bolum3', 'bolum4', 'bolum5', 'bolum6', 'bolum7'];
+            const bolumler = ['bolum1', 'bolum2', 'bolum3', 'bolum4', 'bolum5', 'bolum6', 'bolum7', 'bolum8'];
             bolumler.forEach(id => {
                 if (localStorage.getItem(id) === "true") {
                     const icon = document.getElementById("icon-" + id);
