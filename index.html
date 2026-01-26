@@ -22,6 +22,7 @@
             --ana-mavi: #001d3d;
             --baslik-mavi: #90e0ef;
             --arka-plan: #FFFFFF;
+            --zumrut: #00b894;
         }
 
         body { 
@@ -38,6 +39,57 @@
             flex-direction: column; 
             align-items: center; 
             min-height: 100vh;
+        }
+
+        /* BİLDİRİM BUTONU */
+        .bildirim-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--zumrut);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            z-index: 3000;
+            box-shadow: 0 0 20px rgba(0, 184, 148, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .bildirim-btn:hover { transform: scale(1.1); }
+
+        /* DUYURU EKRANI (MODAL) */
+        .duyuru-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 4000;
+        }
+        .duyuru-ekran {
+            background: white;
+            color: #333;
+            padding: 40px;
+            border-radius: 15px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        }
+        .duyuru-ekran h2 { color: var(--zumrut); margin-top: 0; font-family: sans-serif; letter-spacing: 1px; }
+        .duyuru-ekran p { font-size: 1.1em; line-height: 1.5; font-family: sans-serif; font-weight: bold; margin: 20px 0; }
+        .kapat-btn {
+            padding: 10px 25px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
         }
 
         .ana-serbest-logo {
@@ -103,13 +155,16 @@
 
         .liste-baslik { 
             width: 100%; max-width: 900px; padding: 0 20px; color: #fff; 
-            font-size: 1.8em; border-bottom: 
-            font-family: 'PublicaSans', sans-serif; font-style: italic;2px solid #333; padding-bottom: 10px; 
+            font-size: 1.8em; border-bottom: 2px solid #333; padding-bottom: 10px; 
             margin-top: 40px; box-sizing: border-box; text-align: left;
+            font-family: 'PublicaSans', sans-serif; font-style: italic;
         }
 
-        .bolum-listesi { width:  100%; max-width: 900px; padding: 20px; display: flex; 
-            font-family: 'PublicaSans', sans-serif; font-style: italic;flex-direction: column; gap: 5px; }
+        .bolum-listesi { 
+            width: 100%; max-width: 900px; padding: 20px; display: flex; 
+            flex-direction: column; gap: 5px;
+            font-family: 'PublicaSans', sans-serif; font-style: italic;
+        }
 
         .bolum-kart {
             display: flex;
@@ -153,6 +208,18 @@
         <a href="index.html"><img src="logo1.2.png" alt="Fansub Logo"></a>
     </div>
 
+    <button class="bildirim-btn" onclick="duyuruAc()">
+        <img src="https://cdn-icons-png.flaticon.com/512/1827/1827347.png" width="30" style="filter: invert(1);">
+    </button>
+
+    <div class="duyuru-overlay" id="duyuruKutusu">
+        <div class="duyuru-ekran">
+            <h2>DUYURU</h2>
+            <p>Yeni bölümler 10 günde bir gelmektedir!<br><br>İyi okumalar.</p>
+            <button class="kapat-btn" onclick="duyuruKapat()">Anladım</button>
+        </div>
+    </div>
+
     <div class="tanitim-alani">
         <img src="tall.jpg" class="kapak" alt="Merry Marbling">
         <div class="detaylar">
@@ -176,7 +243,6 @@
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum8">
         </a>
-
         <a href="izle_bolum_7.html" class="bolum-kart" onclick="kaydet('bolum7')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">7. Bölüm</span>
@@ -184,7 +250,6 @@
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum7">
         </a>
-
         <a href="izle_bolum_6.html" class="bolum-kart" onclick="kaydet('bolum6')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">6. Bölüm</span>
@@ -192,7 +257,6 @@
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum6">
         </a>
-
         <a href="izle_bolum_5.html" class="bolum-kart" onclick="kaydet('bolum5')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">5. Bölüm</span>
@@ -200,7 +264,6 @@
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum5">
         </a>
-
         <a href="izle_bolum_4.html" class="bolum-kart" onclick="kaydet('bolum4')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">4. Bölüm</span>
@@ -208,7 +271,6 @@
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum4">
         </a>
-
         <a href="izle_bolum_3.html" class="bolum-kart" onclick="kaydet('bolum3')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">3. Bölüm</span>
@@ -216,7 +278,6 @@
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum3">
         </a>
-
         <a href="izle_bolum_2.html" class="bolum-kart" onclick="kaydet('bolum2')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">2. Bölüm</span>
@@ -224,7 +285,6 @@
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum2">
         </a>
-
         <a href="izle_bolum_1.html" class="bolum-kart" onclick="kaydet('bolum1')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">1. Bölüm</span>
@@ -244,6 +304,22 @@
             var btn = document.getElementById("btnOku");
             metin.classList.toggle("acik");
             btn.innerHTML = metin.classList.contains("acik") ? "Daha Az Gör" : "Devamını Oku...";
+        }
+
+        function duyuruAc() {
+            document.getElementById("duyuruKutusu").style.display = "flex";
+        }
+
+        function duyuruKapat() {
+            document.getElementById("duyuruKutusu").style.display = "none";
+        }
+
+        // Overlay dışına basınca kapatma
+        window.onclick = function(event) {
+            var overlay = document.getElementById("duyuruKutusu");
+            if (event.target == overlay) {
+                overlay.style.display = "none";
+            }
         }
 
         function kaydet(id) { localStorage.setItem(id, "true"); }
