@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Merry Marbling - Ana Sayfa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@1,100&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Shadows+Into+Light&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <style>
         @font-face {
@@ -15,18 +14,22 @@
             font-style: italic;
         }
 
-        :root {--ana-mavi: #001d3d; --baslik-mavi: #90e0ef; --altin-sarisi: #ffde00; --arka-plan: #FFFFFF; }
+        :root {
+            --ana-mavi: #001d3d;
+            --baslik-mavi: #90e0ef;
+            --arka-plan: #FFFFFF;
+        }
 
         body { 
             margin: 0; 
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('867320b5e436c545505d605d1a7c5481.jpg');
-            background-size: 100% auto; 
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.95)), url('867320b5e436c545505d605d1a7c5481.jpg');
+            background-size: cover; 
             background-position: center top; 
             background-repeat: no-repeat;
             background-color: #000; 
             background-attachment: fixed; 
             color: #fff; 
-            font-family: 'Public Sans', italic; 
+            font-family: 'PublicaSans', sans-serif; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
@@ -41,87 +44,100 @@
         }
 
         .ana-serbest-logo img {
-            height: 500px;
+            height: 180px;
             width: auto;
             filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .ana-serbest-logo img:hover { transform: scale(1.1) rotate(-2deg); }
-
-        @media (max-width: 500px) {
-            .ana-serbest-logo { top: -100px !important; left: -75px !important; padding: 0 !important; margin: 0 !important; }
-            .ana-serbest-logo img { height: 350px; display: block; top: -90px; }
+            transition: transform 0.4s ease;
         }
 
         .tanitim-alani {
-            margin-top: 180px; display: flex; flex-wrap: wrap; gap: 40px;
-            max-width: 1000px; padding: 60px 20px; align-items: flex-start; justify-content: center;
+            margin-top: 150px; 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 40px;
+            max-width: 1000px; 
+            padding: 40px 20px; 
+            align-items: flex-start; 
+            justify-content: center;
         }
 
-        @media (max-width: 600px) { .tanitim-alani { margin-top: 100px; } }
+        .kapak { 
+            width: 280px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
 
-        .kapak { width: 280px; border-radius: 15px; box-shadow: 0 10px 40px rgba(144, 224, 239, 0.2); }
-        .detaylar { flex: 1; min-width: 350px; text-align: left; }
+        .detaylar { flex: 1; min-width: 320px; text-align: left; }
         
         h1 { 
-            font-family: 'Public Sans', italic; font-weight: 100; font-style: italic; color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(189, 224, 254, 0.4); font-size: 1.25em; margin-bottom: 5px;
+            font-family: 'PublicaSans', sans-serif; 
+            font-style: italic;
+            color: #ffffff;
+            font-size: 2.5em; 
+            margin-bottom: 15px;
         }
 
         .konu-metni { 
-            font-family: 'Public Sans', italic; font-weight: 100; line-height: 1.6; color: var(--arka-plan); 
-            font-size: 1.25em; text-align: justify; max-height: 100px; overflow: hidden;
-            transition: max-height 0.5s ease-in-out; margin-bottom: 10px;
+            line-height: 1.7; 
+            color: #ddd; 
+            font-size: 1.1em; 
+            text-align: justify; 
+            max-height: 100px; 
+            overflow: hidden;
+            transition: max-height 0.5s ease; 
         }
 
-        .konu-metni.acik { max-height: 2500px; }
+        .konu-metni.acik { max-height: 1000px; }
 
         .devamini-oku-btn {
-            background: none; border: none; color: var(--arka-plan);
-            font-family: 'Public Sans', italic; font-size: 1.3em; cursor: pointer; padding: 0; display: block;
+            background: none; border: none; color: var(--baslik-mavi);
+            font-weight: bold; cursor: pointer; padding: 10px 0; font-size: 1em;
         }
 
         .liste-baslik { 
-            width: 100%; max-width: 900px; padding-left: 20px; color: var(--arka-plan); 
-            font-family: 'Public Sans', italic; font-weight: 100; font-size: 2.5em; 
-            border-bottom: 1px solid #222; padding-bottom: 10px; margin-top: 20px;
+            width: 100%; max-width: 900px; padding: 0 20px; color: #fff; 
+            font-size: 1.8em; border-bottom: 2px solid #333; 
+            padding-bottom: 10px; margin-top: 40px; box-sizing: border-box;
         }
 
         .bolum-listesi { 
-            width: 100%; max-width: 900px; padding: 20px 20px 40px 20px; 
-            display: flex; flex-direction: column; gap: 5px;
+            width: 100%; max-width: 900px; padding: 20px; 
+            display: flex; flex-direction: column; gap: 10px; box-sizing: border-box;
         }
 
         .bolum-kart {
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(255, 255, 255, 0.02); padding: 20px 25px;
-            text-decoration: none; color: #fff; border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s;
+            background: rgba(255, 255, 255, 0.05); padding: 15px 25px;
+            border-radius: 10px; text-decoration: none; color: #fff; transition: 0.3s;
         }
 
-        .bolum-kart:hover { background: rgba(144, 224, 239, 0.08); padding-left: 35px; }
-        .bolum-no { font-size: 1.4em; font-weight: bold; }
-        .bolum-tarih { font-size: 0.85em; color: #888; margin-top: 4px; }
-        .izlendi-ikon { width: 24px; height: 24px; opacity: 0; transition: 0.3s; filter: invert(1); }
-        .izlendi-ikon.aktif { opacity: 0.6; }
+        .bolum-kart:hover { background: rgba(144, 224, 239, 0.1); transform: translateX(10px); }
+
+        .izlendi-ikon { 
+            width: 22px; height: 22px; opacity: 0.1; filter: invert(1); transition: 0.3s; 
+        }
+        .izlendi-ikon.aktif { 
+            opacity: 1; filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(160deg) brightness(118%) contrast(119%); 
+        }
 
         .yorum-alani {
-            width: 100%; max-width: 900px; padding: 20px; margin-bottom: 50px;
-            background: rgba(255, 255, 255, 0.03); border-radius: 15px;
+            width: 100%; max-width: 900px; padding: 30px; margin: 40px 0;
+            background: rgba(0, 0, 0, 0.3); border-radius: 15px; border: 1px solid #333; box-sizing: border-box;
         }
 
         @media (max-width: 600px) {
-            body { background-image: url('media16.jpg'); background-size: cover; background-position: center center; }
-            h1 { font-size: 3em; text-align: center; }
-            .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
-            .detaylar { text-align: center; min-width: 100%; }
+            .ana-serbest-logo img { height: 100px; }
+            .tanitim-alani { margin-top: 100px; }
+            h1 { font-size: 1.8em; text-align: center; }
+            .detaylar { text-align: center; }
+            .kapak { width: 200px; margin: 0 auto; display: block; }
         }
     </style>
 </head>
 
 <body>
     <div class="ana-serbest-logo">
-        <a href="index.html"> <img src="logo1.2.png" alt="Fansub Logo"> </a>
+        <a href="index.html"> <img src="logo1.2.png" alt="Logo"> </a>
     </div>
 
     <div class="tanitim-alani">
@@ -130,7 +146,8 @@
             <h1>Merry Marbling</h1>
             <div class="ozet-konteynir">
                 <p class="konu-metni" id="ozetMetin">
-                    Merry Marbling serisinin tüm bölümlerine buradan ulaşabilirsiniz. Keyifli okumalar!
+                    Merry Marbling serisinin tüm bölümlerine buradan ulaşabilirsiniz. 
+                    Keyifli okumalar dileriz!
                 </p>
                 <button class="devamini-oku-btn" id="btnOku" onclick="ozetiAc()">Devamını Oku...</button>
             </div>
@@ -224,13 +241,13 @@
         };
 
         var disqus_config = function () {
-            this.page.url = window.location.origin + window.location.pathname;
-            this.page.identifier = window.location.pathname;
+            this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/index.html'; 
+            this.page.identifier = 'merry-marbling-ana-sayfa'; 
         };
 
         (function() { 
             var d = document, s = d.createElement('script');
-            s.src = 'https://https-lucaenfansub-netlify-app.disqus.com/embed.js';
+            s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
             s.setAttribute('data-timestamp', +new Date());
             (d.head || d.body).appendChild(s);
         })();
