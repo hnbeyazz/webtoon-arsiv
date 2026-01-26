@@ -36,18 +36,24 @@
             min-height: 100vh;
         }
 
-        .ana-serbest-logo {
+        ana-serbest-logo {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 0; /* Üstten tamamen sıfırlandı */
+            left: 0; /* Soldan tamamen sıfırlandı */
             z-index: 2000;
         }
 
         .ana-serbest-logo img {
-            height: 180px;
+            height: 250px; /* Boyutu 180px'den 250px'e çıkardım, istersen daha da artırabilirsin */
             width: auto;
             filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
             transition: transform 0.4s ease;
+            display: block; /* Alt boşlukları engellemek için */
+        }
+
+        /* Mobilde çok devasa durmaması için küçük bir ayar */
+        @media (max-width: 600px) {
+            .ana-serbest-logo img { height: 150px; }
         }
 
         .tanitim-alani {
@@ -138,7 +144,6 @@
         }
 
         @media (max-width: 600px) {
-            .ana-serbest-logo img { height: 100px; }
             .tanitim-alani { margin-top: 100px; }
             h1 { font-size: 1.8em; text-align: center; }
             .detaylar { text-align: center; }
