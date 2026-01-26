@@ -9,216 +9,107 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Shadows+Into+Light&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-      <style>
-
+    <style>
         @font-face {
-
             font-family: 'PublicaSans';
-
             src: url('PublicaSans-Italic.otf') format('opentype');
-
             font-weight: normal;
-
             font-style: italic;
-
         }
-
-
 
         :root {
-
             --ana-mavi: #001d3d;
-
             --baslik-mavi: #90e0ef;
-
             --arka-plan: #FFFFFF;
-
         }
-
-
 
         body { 
-
             margin: 0; 
-
             background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('media16.jpg');
-
             background-size: cover; 
-
             background-position: center top; 
-
             background-repeat: no-repeat;
-
             background-color: #000; 
-
             background-attachment: fixed; 
-
             color: #fff; 
-
             font-family: 'PublicaSans', sans-serif; 
-
             display: flex; 
-
             flex-direction: column; 
-
             align-items: center; 
-
             min-height: 100vh;
-
         }
-        /* Ana Sayfadaki Serbest Logo */
-.ana-serbest-logo {
-    position: absolute; /* Arka planın üzerine "yapışır" */
-    top: 20px;         /* Üstten boşluk */
-    left: 20px;        /* Soldan boşluk */
-    z-index: 2000;
-}
 
-.ana-serbest-logo img {
-    height: 500px;     /* Logonun boyutu (İstediğin gibi değiştirebilirsin) */
-    width: auto;
-    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2)); /* Hafif bir parlama efekti */
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+        .ana-serbest-logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
+        }
 
-.ana-serbest-logo img:hover {
-    transform: scale(1.1) rotate(-2deg); /* Hafifçe büyür ve yana yatar */
-}
+        .ana-serbest-logo img {
+            height: 500px;
+            width: auto;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-/* Mobil için logoyu küçültelim */
-@media (max-width: 500px) {
-    .ana-serbest-logo {
-        top: -100px !important;  /* En üste yapıştırır */
-        left: -75px !important; /* En sola yapıştırır */
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-    .ana-serbest-logo img {
-        height: 350px; /* 200px mobilde çok büyüktür, 120px daha dengeli durur */
-        display: block;
-        top: -90px;
-    }
-}
+        @media (max-width: 500px) {
+            .ana-serbest-logo { top: -100px !important; left: -75px !important; }
+            .ana-serbest-logo img { height: 350px; display: block; top: -90px; }
+        }
 
- .yeni-etiketi {
-
-    background: linear-gradient(45deg, #ff4d4d, #f9ca24);
-
-    color: #fff;
-
-    font-size: 0.7em;
-
-    font-weight: bold;
-
-    padding: 3px 8px;
-
-    border-radius: 4px;
-
-    margin-left: 10px;
-
-    text-transform: uppercase;
-
-    box-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
-
-    display: inline-block;
-
-    vertical-align: middle;
-
-}
-
-        @keyframes yanip-son { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-        @keyframes hafif-don { 0% { transform: rotate(0deg); } 25% { transform: rotate(5deg); } 75% { transform: rotate(-5deg); } 100% { transform: rotate(0deg); } }
+        .yeni-etiketi {
+            background: #ff0000; 
+            color: #fff;
+            font-size: 0.7em;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            display: inline-block;
+            vertical-align: middle;
+        }
 
         .tanitim-alani {
             margin-top: 180px;
-
-            display: flex; flex-wrap: wrap; gap: 40px;
-            max-width: 1000px; padding: 60px 20px;
-            align-items: flex-start; justify-content: center;
-        }
-        @media (max-width: 600px) {
-    .tanitim-alani {
-        margin-top: 100px; 
-    }
-}
-
-        .kapak {
-            width: 280px; border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(144, 224, 239, 0.2);
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 40px;
+            max-width: 1000px; 
+            padding: 60px 20px;
+            align-items: flex-start; 
+            justify-content: center;
         }
 
+        .kapak { width: 280px; border-radius: 15px; box-shadow: 0 10px 40px rgba(144, 224, 239, 0.2); }
         .detaylar { flex: 1; min-width: 320px; text-align: left; }
 
-        
-
         h1 { 
-
-            font-family: 'PublicaSans', sans-serif; 
-
-            font-style: italic;
-
-            color: #ffffff;
-
-            font-size: 2.5em; 
-
-            margin-bottom: 15px;
-
+            font-family: 'PublicaSans', sans-serif; font-style: italic;
+            color: #ffffff; font-size: 2.5em; margin-bottom: 40px;
         }
-
-
 
         .konu-metni { 
-
-            line-height: 1.7; 
-
-            color: #ddd; 
-
-            font-size: 1.1em; 
-
-            text-align: justify; 
-
-            max-height: 100px; 
-
-            overflow: hidden;
-
+            line-height: 1.7; color: #ddd; font-size: 1.1em; text-align: justify; 
+            max-height: 100px; overflow: hidden; font-family: 'PublicaSans', sans-serif; font-style: italic;
             transition: max-height 0.5s ease; 
-
         }
-
-
 
         .konu-metni.acik { max-height: 1000px; }
-
-
-
-        .devamini-oku-btn {
-
-            background: none; border: none; color: var(--baslik-mavi);
-
-            font-weight: bold; cursor: pointer; padding: 10px 0; font-size: 1em;
-
-        }
-
-
+        .devamini-oku-btn { background: none; border: none; color: var(--baslik-mavi); font-weight: bold; cursor: pointer; padding: 10px 0; font-size: 1em; }
 
         .liste-baslik { 
-
             width: 100%; max-width: 900px; padding: 0 20px; color: #fff; 
-
-            font-size: 1.8em; border-bottom: 2px solid #333; 
-
-            padding-bottom: 10px; margin-top: 40px; box-sizing: border-box;
-
+            font-size: 1.8em; border-bottom: 
+            font-family: 'PublicaSans', sans-serif; font-style: italic;2px solid #333; padding-bottom: 10px; 
+            margin-top: 40px; box-sizing: border-box; text-align: left;
         }
 
-        .bolum-listesi { 
-            width: 100%; max-width: 900px; padding: 20px 20px 40px 20px; 
-            display: flex; flex-direction: column; gap: 5px;
-        }
+        .bolum-listesi { width:  100%; max-width: 900px; padding: 20px; display: flex; 
+            font-family: 'PublicaSans', sans-serif; font-style: italic;flex-direction: column; gap: 5px; }
 
         .bolum-kart {
             display: flex;
@@ -232,86 +123,68 @@
             transition: 0.3s;
         }
 
-        .bolum-kart:hover {
-            background: rgba(144, 224, 239, 0.08);
-            padding-left: 35px;
+        .bolum-bilgi { 
+            text-align: left !important; 
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .bolum-no { font-size: 1.4em; font-weight: bold; }
         .bolum-tarih { font-size: 0.85em; color: #888; margin-top: 4px; }
 
-        .izlendi-ikon {
-            width: 24px; height: 24px;
-            opacity: 0; transition: 0.3s;
-            filter: invert(1);
-        }
-
+        .izlendi-ikon { width: 24px; height: 24px; opacity: 0; transition: 0.3s; filter: invert(1); }
         .izlendi-ikon.aktif { opacity: 0.6; }
 
-        .yorum-alani {
-            width: 100%;
-            max-width: 900px;
-            padding: 20px;
-            margin-bottom: 50px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-        }
+        .yorum-alani { width: 100%; max-width: 900px; padding: 20px; margin-bottom: 50px; background: rgba(255, 255, 255, 0.03); border-radius: 15px; }
 
         @media (max-width: 600px) {
-            body { 
-               background-image: url('media16.jpg');
-                background-size: cover; 
-                background-position: center center;
-                background-attachment: fixed; 
-            }
+            .tanitim-alani { margin-top: 100px; }
             h1 { font-size: 3em; text-align: center; }
             .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
             .detaylar { text-align: center; min-width: 100%; }
+            .bolum-bilgi { text-align: left !important; }
         }
     </style>
 </head>
 
 <body>
     <div class="ana-serbest-logo">
-    <a href="index.html">
-        <img src="logo1.2.png" alt="Fansub Logo">
-    </a>
-</div>
+        <a href="index.html"><img src="logo1.2.png" alt="Fansub Logo"></a>
+    </div>
 
     <div class="tanitim-alani">
-        <img src="tall.jpg" class="kapak" alt="Merry Marbling">
-        
-<div class="detaylar">
-    <h1>Merry Marbling</h1>
-    <div class="ozet-konteynir">
-        <p class="konu-metni" id="ozetMetin">
-            Ire-dong kasabasının göz bebeği Ha Ian, herkesin hayran olduğu kusursuz bir 'Noel Meleği'dir. Ancak bu parlak maskenin ardında, kimsenin bilmediği soğuk bir gerçek saklıdır. Okula yeni transfer olan ve hastalığı nedeniyle hayata öfkeli olan Baek Yugun, tesadüfen Ian’ın bu sahte kahramanlığının ardındaki kirli planı öğrenir. İki zıt kutup; biri toplumun sevgilisi, diğeri ise yalnızlığın sert yüzü... Yugun bu büyük sırrı ifşa edip maskeleri düşürebilecek mi, yoksa Ian’ın ürpertici oyununun bir parçası mı olacak? Gerçek iyilik ve sahte nezaket arasındaki o ince çizgide, beklenmedik bir ortaklık doğmak üzere.
-        </p>
-        <button class="devamini-oku-btn" id="btnOku" onclick="ozetiAc()">Devamını Oku...</button>
+        <img src="tanitimgörseli.jpg" class="kapak" alt="Merry Marbling">
+        <div class="detaylar">
+            <h1>Merry Marbling</h1>
+            <div class="ozet-konteynir">
+                <p class="konu-metni" id="ozetMetin">
+                    Ire-dong kasabasının göz bebeği Ha Ian, herkesin hayran olduğu kusursuz bir 'Noel Meleği'dir. Ancak bu parlak maskenin ardında, kimsenin bilmediği soğuk bir gerçek saklıdır. Okula yeni transfer olan ve hastalığı nedeniyle hayata öfkeli olan Baek Yugun, tesadüfen Ian’ın bu sahte kahramanlığının ardındaki kirli planı öğrenir. İki zıt kutup; biri toplumun sevgilisi, diğeri ise yalnızlığın sert yüzü... Yugun bu büyük sırrı ifşa edip maskeleri düşürebilecek mi, yoksa Ian’ın ürpertici oyununun bir parçası mı olacak? Gerçek iyilik ve sahte nezaket arasındaki o ince çizgide, beklenmedik bir ortaklık doğmak üzere.
+                </p>
+                <button class="devamini-oku-btn" id="btnOku" onclick="ozetiAc()">Devamını Oku...</button>
+            </div>
+        </div>
     </div>
-</div>
 
     <h2 class="liste-baslik">Bölümler</h2>
 
     <div class="bolum-listesi">
-              <a href="izle_bolum_8.html" class="bolum-kart" onclick="kaydet('bolum8')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">8. Bölüm <span class="yeni-etiketi">YENİ</span></span>
-                <span class="bolum-tarih">26 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum8">
-        </a>
+        <a href="izle_bolum_8.html" class="bolum-kart" onclick="kaydet('bolum8')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">8. Bölüm <span class="yeni-etiketi">YENİ</span></span>
+                <span class="bolum-tarih">26 Ocak 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum8">
+        </a>
 
-      
-              <a href="izle_bolum_7.html" class="bolum-kart" onclick="kaydet('bolum7')">
+        <a href="izle_bolum_7.html" class="bolum-kart" onclick="kaydet('bolum7')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">7. Bölüm</span>
                 <span class="bolum-tarih">19 Ocak 2026</span>
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum7">
         </a>
-        
-        
+
         <a href="izle_bolum_6.html" class="bolum-kart" onclick="kaydet('bolum6')">
             <div class="bolum-bilgi">
                 <span class="bolum-no">6. Bölüm</span>
@@ -361,43 +234,41 @@
         </a>
     </div>
 
-    <div class="yorum-alani">
-        <div id="disqus_thread"></div>
-    </div>
+    <div class="yorum-alani">
+        <div id="disqus_thread"></div>
+    </div>
 
-    <script>
-        function ozetiAc() {
-            var metin = document.getElementById("ozetMetin");
-            var btn = document.getElementById("btnOku");
-            metin.classList.toggle("acik");
-            btn.innerHTML = metin.classList.contains("acik") ? "Daha Az Gör" : "Devamını Oku...";
-        }
+    <script>
+        function ozetiAc() {
+            var metin = document.getElementById("ozetMetin");
+            var btn = document.getElementById("btnOku");
+            metin.classList.toggle("acik");
+            btn.innerHTML = metin.classList.contains("acik") ? "Daha Az Gör" : "Devamını Oku...";
+        }
 
-        function kaydet(id) {
-            localStorage.setItem(id, "true");
-        }
+        function kaydet(id) { localStorage.setItem(id, "true"); }
 
-        window.onload = function() {
-            const bolumler = ['bolum1', 'bolum2', 'bolum3', 'bolum4', 'bolum5', 'bolum6', 'bolum7', 'bolum8'];
-            bolumler.forEach(id => {
-                if (localStorage.getItem(id) === "true") {
-                    const icon = document.getElementById("icon-" + id);
-                    if (icon) icon.classList.add("aktif");
-                }
-            });
-        };
+        window.onload = function() {
+            const bolumler = ['bolum1', 'bolum2', 'bolum3', 'bolum4', 'bolum5', 'bolum6', 'bolum7', 'bolum8'];
+            bolumler.forEach(id => {
+                if (localStorage.getItem(id) === "true") {
+                    const icon = document.getElementById("icon-" + id);
+                    if (icon) icon.classList.add("aktif");
+                }
+            });
+        };
 
-        var disqus_config = function () {
-            this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/index.html'; 
-            this.page.identifier = 'merry-marbling-ana-sayfa'; 
-        };
+        var disqus_config = function () {
+            this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/index.html'; 
+            this.page.identifier = 'merry-marbling-ana-sayfa'; 
+        };
 
-        (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
+        (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 </body>
 </html>
