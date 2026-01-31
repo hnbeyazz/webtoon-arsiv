@@ -1,1 +1,208 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bölüm 7 - Merry Marbling</title>
+    <style>
+        @font-face { font-family: 'PublicaSans'; src: url('PublicaSans-Italic.otf') format('opentype'); font-weight: normal; font-style: italic;}
 
+        * {
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+        }
+
+        body { 
+            margin: 0;  
+            display: flex;  
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh; 
+            background-color: #00001a;
+            background-attachment: fixed; 
+            background-size: cover; 
+            background-position: center; 
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('media17.jpg'); 
+            font-family: 'PublicaSans', italic;
+        }
+
+        .site-header { width: 100%; background: transparent; padding: 40px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
+        .site-logo { height: 200px; width: auto; display: block; transition: transform 0.3s ease; }
+        .logo-sol { margin-left: 50px; }
+        .logo-sag { margin-right: 50px; }
+
+        #game-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            padding: 25px;
+            border-radius: 20px;
+            max-width: 380px;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            margin-bottom: 50px;
+        }
+
+        #board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 25px; }
+        .cell { height: 90px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; cursor: pointer; transition: 0.2s; }
+        .cell:hover { background: rgba(255,255,255,0.2) !important; transform: translateY(-2px); }
+
+        .btn-reset { background: #ffcbdb; color: #000000; border: none; padding: 12px 30px; border-radius: 30px; cursor: pointer; font-family: 'PublicaSans', italic !; margin-bottom: 25px; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 203, 219, 0.4); }
+        .btn-reset:hover { background: #f8b8cc !important; transform: scale(1.05); }
+
+        table { width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.15); border-radius: 12px; overflow: hidden; font-size: 0.9rem; }
+        th, td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+        @media (max-width: 600px) { 
+            .site-logo { height: 80px; }
+            .logo-sol { margin-left: 15px; }
+            .logo-sag { margin-right: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a href="index.html"> <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol"> </a>
+        <div class="logo-konteyner"> <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag"> </div>
+    </header>
+
+    <div id="game-container">
+        <h2 style="margin-bottom: 5px; font-size: 1.2rem; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">9. Bölümü Hoşça Bekleme Aktivitesi</h2>
+        <p id="status" style="margin-bottom: 15px; font-weight: 300; height: 20px; font-size: 0.9rem;">Sıra sende (X)</p>
+        
+        <div id="board">
+            <div class="cell" onclick="playerMove(0)"></div>
+            <div class="cell" onclick="playerMove(1)"></div>
+            <div class="cell" onclick="playerMove(2)"></div>
+            <div class="cell" onclick="playerMove(3)"></div>
+            <div class="cell" onclick="playerMove(4)"></div>
+            <div class="cell" onclick="playerMove(5)"></div>
+            <div class="cell" onclick="playerMove(6)"></div>
+            <div class="cell" onclick="playerMove(7)"></div>
+            <div class="cell" onclick="playerMove(8)"></div>
+        </div>
+        
+        <button class="btn-reset" onclick="resetGame()">Yeniden Başlat</button>
+
+        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.15); margin-bottom: 20px;">
+
+        <h4 style="margin-bottom: 12px; font-weight: 400; letter-spacing: 1px; font-size: 0.8rem;">🏆 SKOR TABLOSU</h4>
+        <table>
+            <tr style="background: rgba(255,255,255,0.05);">
+                <th>Oyuncu</th>
+                <th>Galibiyet</th>
+            </tr>
+            <tr>
+                <td>Sen (X)</td>
+                <td id="player-wins" style=" color: #fab1a0;">0</td>
+            </tr>
+            <tr>
+                <td>LucaenBot (O)</td>
+                <td id="bot-wins" style="color: #81ecec;">0</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        let board = ['', '', '', '', '', '', '', '', ''];
+        let gameActive = true;
+        let playerWins = parseInt(localStorage.getItem('lucaenWins')) || 0;
+        let botWins = parseInt(localStorage.getItem('lucaenBotWins')) || 0;
+
+        document.getElementById('player-wins').innerText = playerWins;
+        document.getElementById('bot-wins').innerText = botWins;
+
+        const winPatterns = [
+            [0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]
+        ];
+
+        function playerMove(index) {
+            if (board[index] === '' && gameActive) {
+                makeMove(index, 'X');
+                if (gameActive) {
+                    document.getElementById('status').innerText = "LucaenBot düşünüyor...";
+                    setTimeout(botMove, 600);
+                }
+            }
+        }
+
+        function botMove() {
+            if (!gameActive) return;
+            
+            let move;
+            if (Math.random() > 0.05) {
+                move = findBestMove('O') || findBestMove('X') || randomMove();
+            } else {
+                move = randomMove();
+            }
+
+            if (move !== null) {
+                makeMove(move, 'O');
+                document.getElementById('status').innerText = "Senin sıran (X)";
+            }
+        }
+
+        function findBestMove(p) {
+            for (let pattern of winPatterns) {
+                let [a, b, c] = pattern;
+                let vals = [board[a], board[b], board[c]];
+                if (vals.filter(v => v === p).length === 2 && vals.includes('')) {
+                    return pattern[vals.indexOf('')];
+                }
+            }
+            return null;
+        }
+
+        function randomMove() {
+            let emptyCells = board.map((v, i) => v === '' ? i : null).filter(v => v !== null);
+            return emptyCells.length > 0 ? emptyCells[Math.floor(Math.random() * emptyCells.length)] : null;
+        }
+
+        function makeMove(index, player) {
+            board[index] = player;
+            const cell = document.querySelectorAll('.cell')[index];
+            cell.innerText = player;
+            cell.style.color = player === 'X' ? '#fab1a0' : '#81ecec';
+            checkResult();
+        }
+
+        function checkResult() {
+            for (let pattern of winPatterns) {
+                let [a, b, c] = pattern;
+                if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                    gameActive = false;
+                    if (board[a] === 'X') {
+                        document.getElementById('status').innerText = "Kazandın! 🎉";
+                        playerWins++;
+                        localStorage.setItem('lucaenWins', playerWins);
+                        document.getElementById('player-wins').innerText = playerWins;
+                    } else {
+                        document.getElementById('status').innerText = "LucaenBot kazandı! 🤖";
+                        botWins++;
+                        localStorage.setItem('lucaenBotWins', botWins);
+                        document.getElementById('bot-wins').innerText = botWins;
+                    }
+                    return;
+                }
+            }
+            if (!board.includes('')) {
+                document.getElementById('status').innerText = "Berabere! 🤝";
+                gameActive = false;
+            }
+        }
+
+        function resetGame() {
+            board = ['', '', '', '', '', '', '', '', ''];
+            gameActive = true;
+            document.querySelectorAll('.cell').forEach(c => {
+                c.innerText = '';
+                c.style.color = 'white';
+            });
+            document.getElementById('status').innerText = "Sıra sende (X)";
+        }
+    </script>
+</body>
+</html>
