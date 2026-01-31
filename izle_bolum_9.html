@@ -54,8 +54,8 @@
         .cell { 
             width: 100%;
             aspect-ratio: 1 / 1; /* TAM KARE YAPAR */
-            background: rgba(255,255,255,0.1); 
-            border: 1px solid rgba(255,255,255,0.2); 
+            background: rgba(56, 39, 53, 0.1); 
+            border: 1px solid #ffcbdb;
             border-radius: 10px; 
             display: flex; 
             align-items: center; 
@@ -65,7 +65,7 @@
             transition: 0.2s; 
         }
 
-        .cell:hover { background: rgba(255,255,255,0.2) !important; transform: translateY(-2px); }
+        .cell:hover { background: rgba(218, 140, 163, 0.63) !important; transform: translateY(-2px); }
 
         .btn-reset { background: #ffcbdb; color: #000; border: none; padding: 12px 30px; border-radius: 30px; cursor: pointer; font-family: 'PublicaSans', italic; margin-bottom: 25px; transition: 0.3s; }
         
@@ -88,7 +88,7 @@
     </header>
 
     <div id="game-container">
-        <h2 style="margin-bottom: 5px; font-size: 1.1rem; color: #fff;">9. Bölüm Bekleme Aktivitesi</h2>
+        <h2 style="margin-bottom: 5px; font-size: 1.1rem; color: #fff;">9. Bölümü Hoşça Bekleme Aktivitesi</h2>
         <p id="status" style="margin-bottom: 15px; font-size: 0.9rem;">Sıra sende (X)</p>
         
         <div id="board">
@@ -106,9 +106,9 @@
         <button class="btn-reset" onclick="resetGame()">Yeniden Başlat</button>
 
         <h4 style="margin: 10px 0; font-size: 0.8rem;">🏆 SKOR TABLOSU</h4>
-        <table style="width:100%; font-size: 0.8rem; border-collapse: collapse;">
-            <tr><td>Sen (X)</td><td id="player-wins" style="color: #fab1a0;">0</td></tr>
-            <tr><td>LucaenBot (O)</td><td id="bot-wins" style="color: #81ecec;">0</td></tr>
+        <table style="width:100%; font-size: 0.8rem; font-family: 'PublicaSans', italic; border-collapse: collapse;">
+            <tr><td>Sen (X)</td><td id="player-wins" style=" font-family: 'PublicaSans', italic; color: #fab1a0;">0</td></tr>
+            <tr><td>LucaenBot (O)</td><td id="bot-wins" style=" font-family: 'PublicaSans', italic; color: #072c04;">0</td></tr>
         </table>
     </div>
 
