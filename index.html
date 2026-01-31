@@ -146,7 +146,7 @@
         }
 
         .konu-metni { 
-            line-height: 1.7; color: #dc8cb0; font-size: 1.1em; text-align: justify; 
+            line-height: 1.7; color: #ffffff; font-size: 1.1em; text-align: justify; 
             max-height: 100px; overflow: hidden; font-family: 'PublicaSans', sans-serif; font-style: italic;
             transition: max-height 0.5s ease; 
         }
@@ -160,34 +160,68 @@
             margin-top: 40px; box-sizing: border-box; text-align: left;
             font-family: 'PublicaSans', sans-serif; font-style: italic;
         }
+        .ozet-konteynir {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid var(--baslik-mavi);
+    margin-top: 20px;
+}
 
-        .bolum-listesi { 
-            width: 100%; max-width: 900px; padding: 20px; display: flex; 
-            flex-direction: column; gap: 5px;
-            font-family: 'PublicaSans', sans-serif; font-style: italic;
-        }
+/* BÖLÜM LİSTESİ KONTEYNIRI */
+/* BÖLÜM LİSTESİ KONTEYNIRI (CEP GÖRÜNÜMÜ) */
+.bolum-listesi { 
+    width: 100%; 
+    max-width: 900px; 
+    padding: 0; /* Kartların kenarlara tam oturması için sıfırladık */
+    display: flex; 
+    flex-direction: column; 
+    gap: 0;
+    font-family: 'PublicaSans', sans-serif; 
+    font-style: italic;
 
-        .bolum-kart {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 20px 25px;
-            text-decoration: none;
-            color: #fff;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.3s;
-        }
+    /* --- KRİTİK AYARLAR --- */
+    height: 350px;      /* 5 Bölümün sığacağı yükseklik (Kart başına ~88px) */
+    overflow-y: auto; /* Kaydırma çubuğunun her zaman görünmesi stabilite sağlar */
+    background: rgba(0, 0, 0, 0.1); 
+    border-radius: 12px;
+}
 
-        .bolum-bilgi { 
-            text-align: left !important; 
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
+/* Kaydırma Çubuğu Tasarımı (Görseldeki gibi ince ve zarif) */
+.bolum-listesi::-webkit-scrollbar {
+    width: 5px;
+}
+.bolum-listesi::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+.bolum-listesi::-webkit-scrollbar-thumb {
+    background: #ffcbdb; /* Lucaenfansub pembesi */
+    border-radius: 10px;
+}
 
-        .bolum-no { font-size: 1.4em; font-weight: bold; }
-        .bolum-tarih { font-size: 0.85em; color: #888; margin-top: 4px; }
+/* KART TASARIMI */
+.bolum-kart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Yüksekliği 5 bölüme sabitlemek için ideal padding */
+    text-decoration: none;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: 0.3s;
+    min-height: 50px; /* Kartların daralmasını engeller */
+}
+
+.bolum-kart:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+.bolum-bilgi {
+    display: flex;
+    flex-direction: column;
+    gap: 2px; /* Yazılar birbirine yaklaşsın */
+}
+.bolum-no { font-size: 1.1rem; font-weight: bold; } /* Fontu biraz küçülttük */
+.bolum-tarih { font-size: 0.8rem; color: #888; }
 
         .izlendi-ikon { width: 24px; height: 24px; opacity: 0; transition: 0.3s; filter: invert(1); }
         .izlendi-ikon.aktif { opacity: 0.6; }
@@ -216,11 +250,9 @@
     <div class="ana-serbest-logo">
         <a href="index.html"><img src="logo1.2.png" alt="Fansub Logo"></a>
     </div>
-
     <button class="bildirim-btn" onclick="duyuruAc()">
         <img src="https://cdn-icons-png.flaticon.com/512/1827/1827347.png" width="30" style="filter: invert(1);">
     </button>
-
     <div class="duyuru-overlay" id="duyuruKutusu">
         <div class="duyuru-ekran">
             <h2>DUYURU</h2>
@@ -228,7 +260,6 @@
             <button class="kapat-btn" onclick="duyuruKapat()">Anladım</button>
         </div>
     </div>
-
     <div class="tanitim-alani">
         <img src="tall.jpg" class="kapak" alt="Merry Marbling">
         <div class="detaylar">
@@ -241,9 +272,10 @@
             </div>
         </div>
     </div>
-
     <h2 class="liste-baslik">Bölümler</h2>
-
+    <div style="width: 100%; max-width: 900px; display: flex; justify-content: space-between; align-items: flex-end;">
+    <span style="font-size: 0.8rem; color: #888; margin-bottom: 8px;">⇅ Sırala</span>
+</div>
     <div class="bolum-listesi">
         <a href="izle_bolum_9.html" class="bolum-kart" onclick="kaydet('bolum9')">
             <div class="bolum-bilgi">
@@ -309,7 +341,6 @@
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum1">
         </a>
     </div>
-
     <div class="yorum-alani">
         <div id="disqus_thread"></div>
     </div>
