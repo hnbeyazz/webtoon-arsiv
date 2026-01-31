@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bölüm 7 - Merry Marbling</title>
+    <title>Bölüm 9 - Merry Marbling</title>
     <style>
         @font-face { font-family: 'PublicaSans'; src: url('PublicaSans-Italic.otf') format('opentype'); font-weight: normal; font-style: italic;}
 
@@ -24,7 +24,7 @@
             background-attachment: fixed; 
             background-size: cover; 
             background-position: fixed; 
-            background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url('media17.jpg'); 
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('media17.jpg'); 
             font-family: 'PublicaSans', italic;
         }
 
@@ -45,12 +45,26 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
             margin-bottom: 50px;
         }
+        .hadiöyleolsun {
+            max-width: 380px;
+            margin-bottom: 50px;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            font-family: PublicaSans, italic;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
 
         #board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 25px; }
         .cell { height: 90px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; cursor: pointer; transition: 0.2s; }
         .cell:hover { background: rgba(255,255,255,0.2) !important; transform: translateY(-2px); }
 
-        .btn-reset { background: #ffcbdb; color: #000000; border: none; padding: 12px 30px; border-radius: 30px; cursor: pointer; font-family: 'PublicaSans', italic; margin-bottom: 25px; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 203, 219, 0.4); }
+        .btn-reset { background: #ffcbdb; color: #000000; border: none; padding: 12px 30px; border-radius: 30px; cursor: pointer; font-family: 'PublicaSans', italic !; margin-bottom: 25px; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 203, 219, 0.4); }
         .btn-reset:hover { background: #f8b8cc !important; transform: scale(1.05); }
 
         table { width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.15); border-radius: 12px; overflow: hidden; font-size: 0.9rem; }
@@ -105,8 +119,19 @@
             </tr>
         </table>
     </div>
+    <div class="hadiöyleolsun"> <h1>Bilgilendirme</h1>
+        <p> Galibiyet sayınızı yorumlarda paylaşın ve bölümün yayınlanma gününü o kadar ileri çekin! İyi eğlenceler! </p>
+    </div>
 
-    <script>
+
+
+
+
+
+
+
+
+        <script>
         let board = ['', '', '', '', '', '', '', '', ''];
         let gameActive = true;
         let playerWins = parseInt(localStorage.getItem('lucaenWins')) || 0;
@@ -130,21 +155,25 @@
         }
 
         function botMove() {
-            if (!gameActive) return;
-            
-            let move;
-            if (Math.random() > 0.05) {
-                move = findBestMove('O') || findBestMove('X') || randomMove();
-            } else {
-                move = randomMove();
-            }
+    if (!gameActive) return;
+    
+    let move;
+    // Hata payını sildik, bot her zaman önce kazanmayı, sonra seni engellemeyi hedefler
+    move = findBestMove('O') || findBestMove('X');
 
-            if (move !== null) {
-                makeMove(move, 'O');
-                document.getElementById('status').innerText = "Senin sıran (X)";
-            }
+    // Eğer kritik bir hamle yoksa, stratejik noktaları (merkez, sonra köşeler) seçer
+    if (move === null) {
+        if (board[4] === '') move = 4; // Önce merkezi kap (en stratejik nokta)
+        else move = randomMove(); // Merkez doluysa rastgele (ama akıllıca) oyna
+    }
+
+    if (move !== null) {
+        makeMove(move, 'O');
+        if (gameActive) {
+            document.getElementById('status').innerText = "Senin sıran (X)";
         }
-
+    }
+}
         function findBestMove(p) {
             for (let pattern of winPatterns) {
                 let [a, b, c] = pattern;
@@ -180,7 +209,7 @@
                         localStorage.setItem('lucaenWins', playerWins);
                         document.getElementById('player-wins').innerText = playerWins;
                     } else {
-                        document.getElementById('status').innerText = "LucaenBot kazandı! 🤖";
+                        document.getElementById('status').innerText = "Kaybettin 😓";
                         botWins++;
                         localStorage.setItem('lucaenBotWins', botWins);
                         document.getElementById('bot-wins').innerText = botWins;
@@ -204,5 +233,32 @@
             document.getElementById('status').innerText = "Sıra sende (X)";
         }
     </script>
+    <div class="yorum-arkaplan-paneli"> <div id="disqus_thread"></div> </div>
+
+    <script>
+        var disqus_config = function () {
+            this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_9.html'; 
+            this.page.identifier = 'merry-marbling-bolum-9'; 
+        };
+    
+        (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+
+        // Resim tıklama kaydırma efekti
+        document.querySelectorAll('.container img').forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.preventDefault(); 
+                window.scrollBy({
+                    top: window.innerHeight * 0.7,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 </body>
 </html>
