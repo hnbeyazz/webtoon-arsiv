@@ -290,5 +290,32 @@ th, td {
         });
     </script>
     <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
+<div class="yorum-arkaplan-paneli"> <div id="disqus_thread"></div> </div>
+
+    <script>
+        var disqus_config = function () {
+            this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_9.html'; 
+            this.page.identifier = 'merry-marbling-bolum-9'; 
+        };
+    
+        (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+
+        // Resim tıklama kaydırma
+        document.querySelectorAll('.container img').forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.preventDefault(); 
+                window.scrollBy({
+                    top: window.innerHeight * 0.7,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 </body>
 </html>
