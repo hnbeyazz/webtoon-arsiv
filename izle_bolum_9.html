@@ -33,18 +33,19 @@
         .logo-sol { margin-left: 50px; }
         .logo-sag { margin-right: 50px; }
 
-        #game-container {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            padding: 25px;
-            border-radius: 20px;
-            max-width: 380px;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            margin-bottom: 50px;
-        }
+#game-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    padding: 15px; /* Padding'i düşürdük */
+    border-radius: 20px;
+    width: 90%; /* Sabit px yerine yüzde verdik */
+    max-width: 320px; /* Maksimum genişliği daralttık */
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    margin: 0 auto 30px auto; /* Ortala ve alt boşluğu azalt */
+}
         .hadiöyleolsun {
             max-width: 380px;
             margin-bottom: 50px;
@@ -60,15 +61,44 @@
             line-height: 1.5;
         }
 
-        #board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 25px; }
-        .cell { height: 90px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; cursor: pointer; transition: 0.2s; }
+/* IZGARA: Hücreleri küçülttük */
+#board { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 8px; /* Boşluğu azalttık */
+    margin-bottom: 15px; 
+}
+ .cell { 
+    height: 70px; 
+    background: rgba(255,255,255,0.1); 
+    border: 1px solid rgba(255,255,255,0.2); 
+    border-radius: 10px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 1.8rem; /* Fontu küçülttük */
+    cursor: pointer; 
+    transition: 0.2s; 
+}       
         .cell:hover { background: rgba(255,255,255,0.2) !important; transform: translateY(-2px); }
 
-        .btn-reset { background: #ffcbdb; color: #000000; border: none; padding: 12px 30px; border-radius: 30px; cursor: pointer; font-family: 'PublicaSans', italic !; margin-bottom: 25px; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 203, 219, 0.4); }
-        .btn-reset:hover { background: #f8b8cc !important; transform: scale(1.05); }
+.btn-reset { 
+    padding: 8px 20px; 
+    font-size: 0.8rem; 
+    margin-bottom: 15px; 
+}        .btn-reset:hover { background: #f8b8cc !important; transform: scale(1.05); }
 
-        table { width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.15); border-radius: 12px; overflow: hidden; font-size: 0.9rem; }
-        th, td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+table { 
+    font-size: 0.8rem; /* Yazıları küçülttük */
+}
+
+th, td { 
+    padding: 8px; 
+}
+
+
+
 
         @media (max-width: 600px) { 
             .site-logo { height: 80px; }
