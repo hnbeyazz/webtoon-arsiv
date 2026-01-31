@@ -79,10 +79,12 @@
 #board { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
-    gap: 8px; /* Boşluğu azalttık */
-    margin-bottom: 15px; 
+    gap: 10px; /* Boşluğu azalttık */
+    margin-bottom: 15px 0px; 
 }
  .cell { 
+     width: 100%;
+     aspect-ratio: 1/1:
     height: 70px; 
     background: rgba(255,255,255,0.1); 
     border: 1px solid rgba(255,255,255,0.2); 
@@ -90,13 +92,25 @@
     display: flex; 
     align-items: center; 
     justify-content: center; 
-    font-size: 1.8rem; /* Fontu küçülttük */
+    font-size: 2rem; /* Fontu küçülttük */
     cursor: pointer; 
     transition: 0.2s; 
-}       
+}    
+        @media (max-width: 600px) { 
+    .site-header { padding: 20px 0; }
+    .site-logo { height: 100px; } /* Logoları mobilde makul bir boyuta çektik */
+    .logo-sol { margin-left: 15px; }
+    .logo-sag { margin-right: 15px; }
+    
+    #game-container { 
+        max-width: 300px; /* Telefonlar için ideal kutu genişliği */
+        padding: 15px;
+    }
+    .cell { font-size: 1.5rem; } /* X ve O işaretlerini biraz küçülttük */
+}
         .cell:hover { background: rgba(255,255,255,0.2) !important; transform: translateY(-2px); }
 
-.btn-reset { background: #ffcbdb; color: #000000; border: none; padding: 12px 30px; border-radius: 30px; cursor: pointer; font-family: 'PublicaSans', italic !; margin-bottom: 25px; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 203, 219, 0.4); }
+.btn-reset { background: #ffcbdb; color: #000000; font-family: 'PublicaSans', italic; border: none; padding: 12px 30px; border-radius: 30px; cursor: pointer; font-family: 'PublicaSans', italic !; margin-bottom: 25px; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 203, 219, 0.4); }
     .btn-reset:hover { background: #f8b8cc !important; transform: scale(1.05); }
 
 
