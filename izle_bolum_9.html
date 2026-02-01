@@ -53,7 +53,7 @@
 
         .cell { 
             width: 100%;
-            aspect-ratio: 1 / 1; /* TAM KARE YAPAR */
+            aspect-ratio: 1 / 1; 
             background: rgba(56, 39, 53, 0.1); 
             border: 1px solid #ffcbdb;
             border-radius: 10px; 
@@ -108,7 +108,7 @@
         <h4 style="margin: 10px 0; font-size: 0.8rem;">🏆 SKOR TABLOSU</h4>
         <table style="width:100%; font-size: 0.8rem; font-family: 'PublicaSans', italic; border-collapse: collapse;">
             <tr><td>Sen (X)</td><td id="player-wins" style=" font-family: 'PublicaSans', italic; color: #fab1a0;">0</td></tr>
-            <tr><td>LucaenBot (O)</td><td id="bot-wins" style=" font-family: 'PublicaSans', italic; color: #072c04;">0</td></tr>
+            <tr><td>LucaenBot (O)</td><td id="bot-wins" style=" font-family: 'PublicaSans', italic; color: #81ecec;">0</td></tr>
         </table>
     </div>
 
@@ -122,7 +122,6 @@
     </div>
 
     <script>
-        // OYUN MANTIĞI
         let board = ['', '', '', '', '', '', '', '', ''];
         let gameActive = true;
         let playerWins = parseInt(localStorage.getItem('lucaenWins')) || 0;
@@ -145,11 +144,32 @@
 
         function botMove() {
             if (!gameActive) return;
-            let move = findBestMove('O') || findBestMove('X');
+
+            // STRATEJİK KARAR MEKANİZMASI
+            
+            // 1. ÖNCELİK: Rakibi engelle (X'in kazanmasını durdur)
+            let move = findBestMove('X');
+
+            // 2. İKİNCİ ÖNCELİK: Eğer tehlike yoksa kazanmaya çalış
             if (move === null) {
-                if (board[4] === '') move = 4;
-                else move = randomMove();
+                move = findBestMove('O');
             }
+
+            // 3. ÜÇÜNCÜ ÖNCELİK: Stratejik kareleri tut
+            if (move === null) {
+                if (board[4] === '') {
+                    move = 4; // Merkez kare her zaman en iyisidir
+                } else {
+                    // Köşeleri kontrol et (0, 2, 6, 8)
+                    const corners = [0, 2, 6, 8].filter(i => board[i] === '');
+                    if (corners.length > 0) {
+                        move = corners[Math.floor(Math.random() * corners.length)];
+                    } else {
+                        move = randomMove();
+                    }
+                }
+            }
+
             if (move !== null) {
                 makeMove(move, 'O');
                 if (gameActive) document.getElementById('status').innerText = "Senin sıran (X)";
@@ -160,23 +180,25 @@
             for (let pattern of winPatterns) {
                 let [a, b, c] = pattern;
                 let vals = [board[a], board[b], board[c]];
+                // Eğer 2 tane aynı taştan varsa ve 3.sü boşsa orayı döndür
                 if (vals.filter(v => v === p).length === 2 && vals.includes('')) {
-                    return pattern[vals.indexOf('')];
+                    const emptyIndex = vals.indexOf('');
+                    return pattern[emptyIndex];
                 }
             }
             return null;
         }
 
         function randomMove() {
-            let empty = board.map((v, i) => v === '' ? i : null).filter(v => v !== null);
-            return empty.length > 0 ? empty[Math.floor(Math.random() * empty.length)] : null;
+            let emptyCells = board.map((v, i) => v === '' ? i : null).filter(v => v !== null);
+            return emptyCells.length > 0 ? emptyCells[Math.floor(Math.random() * emptyCells.length)] : null;
         }
 
         function makeMove(index, player) {
             board[index] = player;
-            const cell = document.querySelectorAll('.cell')[index];
-            cell.innerText = player;
-            cell.style.color = player === 'X' ? '#fab1a0' : '#81ecec';
+            const cells = document.querySelectorAll('.cell');
+            cells[index].innerText = player;
+            cells[index].style.color = player === 'X' ? '#fab1a0' : '#81ecec';
             checkResult();
         }
 
@@ -185,13 +207,14 @@
                 let [a, b, c] = pattern;
                 if (board[a] && board[a] === board[b] && board[a] === board[c]) {
                     gameActive = false;
+                    highlightWinner([a, b, c]);
                     if (board[a] === 'X') {
                         document.getElementById('status').innerText = "Kazandın! 🎉";
                         playerWins++;
                         localStorage.setItem('lucaenWins', playerWins);
                         document.getElementById('player-wins').innerText = playerWins;
                     } else {
-                        document.getElementById('status').innerText = "Kaybettin 😓";
+                        document.getElementById('status').innerText = "LucaenBot kazandı 😓";
                         botWins++;
                         localStorage.setItem('lucaenBotWins', botWins);
                         document.getElementById('bot-wins').innerText = botWins;
@@ -205,17 +228,27 @@
             }
         }
 
+        function highlightWinner(indices) {
+            const cells = document.querySelectorAll('.cell');
+            indices.forEach(i => {
+                cells[i].style.background = "rgba(255, 203, 219, 0.3)";
+            });
+        }
+
         function resetGame() {
             board = ['', '', '', '', '', '', '', '', ''];
             gameActive = true;
-            document.querySelectorAll('.cell').forEach(c => c.innerText = '');
+            const cells = document.querySelectorAll('.cell');
+            cells.forEach(c => {
+                c.innerText = '';
+                c.style.background = "rgba(56, 39, 53, 0.1)";
+            });
             document.getElementById('status').innerText = "Sıra sende (X)";
         }
 
-        // DISQUS AYARI (KİMLİĞİ DEĞİŞTİRDİK)
+        // DISQUS AYARI
         var disqus_config = function () {
             this.page.url = window.location.href; 
-            // BURAYI "bolum-9-ozel" YAPTIK Kİ 7 İLE KARIŞMASIN
             this.page.identifier = 'merry-marbling-bolum-9-ozel'; 
         };
         (function() { 
