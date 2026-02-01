@@ -3,176 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bölüm 9 - Merry Marbling (Yenilmez Mod)</title>
+    <title>Bölüm 9 - Merry Marbling</title>
     <style>
         @font-face { font-family: 'PublicaSans'; src: url('PublicaSans-Italic.otf') format('opentype'); font-weight: normal; font-style: italic;}
-        * { -webkit-tap-highlight-color: transparent; outline: none; touch-action: manipulation; }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+        }
+
         body { 
-            margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; 
-            background-color: #00001a; background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('media17.jpg'); 
-            background-attachment: fixed; background-size: cover; background-position: center; font-family: 'PublicaSans', italic;
+            margin: 0;  
+            display: flex;  
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh; 
+            background-color: #00001a;
+            background-attachment: fixed; 
+            background-size: cover; 
+            background-position: center; 
+            background-image: url('media17.jpg'); 
+            font-family: 'PublicaSans', sans-serif;
         }
-        .site-header { width: 100%; padding: 40px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
-        .site-logo { height: 180px; width: auto; transition: transform 0.3s ease; }
-        .logo-sol { margin-left: 50px; } .logo-sag { margin-right: 50px; }
-        #game-container {
-            text-align: center; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
-            padding: 20px; border-radius: 20px; width: 90%; max-width: 320px;
-            border: 1px solid rgba(255,255,255,0.2); color: white; box-shadow: 0 8px 32px rgba(0,0,0,0.5); margin-bottom: 30px;
+
+        .site-header { width: 100%; background: transparent; padding: 40px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
+        .site-logo { height: 200px; width: auto; display: block; transition: transform 0.3s ease; }
+        .logo-sol { margin-left: 50px; }
+        .logo-sag { margin-right: 50px; }
+
+        .container { 
+            width: 100%; 
+            max-width: 800px; 
+            background: transparent; 
+            margin-top: 0; 
+            padding-left: 10px; 
+            padding-right: 10px; 
+            box-sizing: border-box; 
         }
-        #board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0; }
-        .cell { 
-            width: 100%; aspect-ratio: 1/1; background: rgba(255, 255, 255, 0.05); 
-            border: 1px solid rgba(255, 203, 219, 0.4); border-radius: 12px; 
-            display: flex; align-items: center; justify-content: center; font-size: 2.2rem; 
-            cursor: pointer; transition: 0.3s; 
+        .container img { width: 100%; height: auto; display: block; cursor: pointer; -webkit-user-select: none; -webkit-touch-callout: none; }
+
+        .ust-navigasyon { width: 100%; color: #666; font-size: 0.9em; margin-bottom: 15px; text-align: left; }
+        .ust-navigasyon a { color: #888; text-decoration: none; transition: 0.3s; }
+        .ust-navigasyon a:hover { color: #fff; }
+
+        .secici-konteyner { display: flex; gap: 12px; margin-bottom: 25px; width: 100%; }
+        .secici-buton { background: #1a1d22; color: #ccc; border: 1px solid #333; padding: 10px 15px; border-radius: 6px; font-family: inherit; font-size: 0.95em; cursor: pointer; flex: 1; max-width: 200px; }
+
+        .bolum-basligi { width: 100%; text-align: left; padding: 10px 0 10px 0; font-size: 1.8em; font-weight: bold; color: #fff; border-bottom: 1px solid #333; margin-bottom: 25px; letter-spacing: 1px; }
+        .nav { 
+            padding-top: 20px;
+            padding-bottom: 30px;
+            text-align: center; 
+            background: transparent; 
+            display: flex;
+            justify-content: center;
+            font-family: PublicaSans, italic;
+            gap: 5px;
         }
-        .cell:hover { background: rgba(255, 203, 219, 0.2); }
-        .btn-reset { background: #ffcbdb; color: #000; border: none; padding: 12px 30px; border-radius: 30px; cursor: pointer; font-weight: bold; margin-bottom: 20px; }
-        .status-msg { font-size: 1rem; margin-bottom: 10px; height: 1.2rem; color: #ffcbdb; }
-        .yorum-arkaplan-paneli { width: 95%; max-width: 900px; padding: 20px; background: rgba(0, 0, 0, 0.4); border-radius: 15px; margin-bottom: 50px; }
-        @media (max-width: 600px) { .site-logo { height: 80px; } .logo-sol { margin-left: 15px; } .logo-sag { margin-right: 15px; } }
+
+        .btn-modern { 
+            width: 50px; 
+            height: 50px; 
+            background-color: #F7CAC9;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            border-radius: 10px;
+            text-decoration: none; 
+            transition: 0.3s ease;
+            border: none; 
+        }
+
+        .btn-modern:hover { 
+            background-color: #E37383;
+            transform: scale(1.03);
+        }
+        .icon-svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: #ffffff; 
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .yorum-arkaplan-paneli { width: 100%; max-width: 800px; margin: 40px auto; padding: 40px 20px; box-sizing: border-box; border-radius: 15px; min-height: 600px; background-image: url('yorum.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: rgba(0, 0, 0, 0.6); background-blend-mode: darken; border: 1px solid #333; }
+
+        @media (max-width: 600px) { 
+            .site-logo { height: 80px; }
+            .logo-sol { margin-left: 15px; }
+            .logo-sag { margin-right: 15px; }
+            .btn-modern { width: 40px; height: 40px; border-radius:6px;}
+            .icon-svg { width: 25px; height: 25px; }
+            .nav { 
+                padding-top: 20px;
+                padding-bottom: 30px;
+                text-align: center; 
+                background: transparent; 
+                display: flex;
+                justify-content: center;
+                gap: 5px;
+            }
+        }
     </style>
 </head>
 <body>
-    <header class="site-header">
-        <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" class="site-logo logo-sol">
-        <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" class="site-logo logo-sag">
-    </header>
+      <header class="site-header">
+        <a href="index.html"> <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol"> </a>
+        <div class="logo-konteyner"> <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag"> </div>
+      </header>
 
-    <div id="game-container">
-        <div class="status-msg" id="status">Sıra sende (X)</div>
-        <div id="board">
-            <div class="cell" onclick="playerMove(0)"></div>
-            <div class="cell" onclick="playerMove(1)"></div>
-            <div class="cell" onclick="playerMove(2)"></div>
-            <div class="cell" onclick="playerMove(3)"></div>
-            <div class="cell" onclick="playerMove(4)"></div>
-            <div class="cell" onclick="playerMove(5)"></div>
-            <div class="cell" onclick="playerMove(6)"></div>
-            <div class="cell" onclick="playerMove(7)"></div>
-            <div class="cell" onclick="playerMove(8)"></div>
+    <div class="container">
+        <nav class="ust-navigasyon">
+            <a href="index.html">Ana Sayfa</a> / <a href="index.html">Merry Marbling</a> / <span>Bölüm 9</span>
+        </nav>
+
+        <div class="secici-konteyner">
+            <select class="secici-buton" onchange="location = this.value;">
+                <option value="izle_bolum_1.html">Bölüm 1</option>
+                <option value="izle_bolum_2.html">Bölüm 2</option>
+                <option value="izle_bolum_3.html">Bölüm 3</option>
+                <option value="izle_bolum_4.html">Bölüm 4</option>
+                <option value="izle_bolum_5.html">Bölüm 5</option>
+                <option value="izle_bolum_6.html">Bölüm 6</option>
+                <option value="izle_bolum_7.html">Bölüm 7</option>
+                <option value="izle_bolum_8.html">Bölüm 8</option>
+                <option value="izle_bolum_9.html" selected>Bölüm 9</option>
+            </select>
         </div>
-        <button class="btn-reset" onclick="resetGame()">Yeniden Başlat</button>
-        <div style="font-size: 0.8rem; opacity: 0.8;">Skor: Sen <span id="p-score" style="color:#fab1a0">0</span> - <span id="b-score" style="color:#81ecec">0</span> Bot</div>
+
+        <div class="bolum-basligi">9. Bölüm</div>
+        <img src="1.png"> 
+<img src="bolum_9/1.jpg">
+<img src="bolum_9/2.jpg">
+<img src="bolum_9/3.jpg">
+<img src="bolum_9/4.jpg">
+<img src="bolum_9/5.jpg">
+<img src="bolum_9/6.jpg">
+<img src="bolum_9/7.jpg">
+<img src="bolum_9/8.jpg">
+<img src="bolum_9/9.jpg">
+<img src="bolum_9/10.jpg">
+<img src="bolum_9/11.jpg">
+<img src="bolum_9/12.jpg">
+<img src="bolum_9/13.jpg">
+<img src="bolum_9/14.jpg">
+<img src="bolum_9/15.jpg">
+<img src="bolum_9/16.jpg">
+<img src="bolum_9/17.jpg">
+<img src="bolum_9/18.jpg">
+<img src="bolum_9/19.jpg">
+<img src="bolum_9/20.jpg">
+<img src="bolum_9/21.jpg">
+<img src="bolum_9/22.jpg">
+<img src="bolum_9/23.jpg">
+<img src="bolum_9/24.jpg">
+<img src="bolum_9/25.jpg">
+<img src="bolum_9/26.jpg">
+<img src="bolum_9/27.jpg">
+
+        <div class="nav">
+            <a href="izle_bolum_6.html" class="btn-modern" title="Önceki Bölüm">
+                <svg class="icon-svg" viewBox="0 0 24 24">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <a href="index.html" class="btn-modern" title="Ana Sayfaya Dön">
+                <svg class="icon-svg" viewBox="0 0 24 24">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+            </a>
+        </div>
     </div>
 
-    <div class="yorum-arkaplan-paneli"><div id="disqus_thread"></div></div>
+    <div class="yorum-arkaplan-paneli"> <div id="disqus_thread"></div> </div>
 
     <script>
-        let board = ['', '', '', '', '', '', '', '', ''];
-        let gameActive = true;
-        const human = 'X';
-        const ai = 'O';
+        var disqus_config = function () {
+            this.page.url = window.location.href; 
+            // BURAYI "bolum-9-ozel" YAPTIK Kİ 7 İLE KARIŞMASIN
+            this.page.identifier = 'merry-marbling-bolum-9-ozel'; 
+        };
+        (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
 
-        let pScore = localStorage.getItem('lucaenWins') || 0;
-        let bScore = localStorage.getItem('lucaenBotWins') || 0;
-        document.getElementById('p-score').innerText = pScore;
-        document.getElementById('b-score').innerText = bScore;
-
-        function playerMove(i) {
-            if (board[i] === '' && gameActive) {
-                makeMove(i, human);
-                if (gameActive) {
-                    document.getElementById('status').innerText = "Bot hesaplıyor...";
-                    setTimeout(() => {
-                        let bestMove = getBestMove();
-                        makeMove(bestMove, ai);
-                        if (gameActive) document.getElementById('status').innerText = "Sıra sende (X)";
-                    }, 500);
-                }
-            }
-        }
-
-        function makeMove(i, p) {
-            board[i] = p;
-            const cell = document.getElementsByClassName('cell')[i];
-            cell.innerText = p;
-            cell.style.color = p === human ? '#fab1a0' : '#81ecec';
-            checkWinner();
-        }
-
-        function getBestMove() {
-            let bestScore = -Infinity;
-            let move;
-            for (let i = 0; i < 9; i++) {
-                if (board[i] === '') {
-                    board[i] = ai;
-                    let score = minimax(board, 0, false);
-                    board[i] = '';
-                    if (score > bestScore) {
-                        bestScore = score;
-                        move = i;
-                    }
-                }
-            }
-            return move;
-        }
-
-        const scores = { X: -10, O: 10, tie: 0 };
-
-        function minimax(board, depth, isMaximizing) {
-            let result = checkGameOver();
-            if (result !== null) return scores[result];
-
-            if (isMaximizing) {
-                let bestScore = -Infinity;
-                for (let i = 0; i < 9; i++) {
-                    if (board[i] === '') {
-                        board[i] = ai;
-                        let score = minimax(board, depth + 1, false);
-                        board[i] = '';
-                        bestScore = Math.max(score, bestScore);
-                    }
-                }
-                return bestScore;
-            } else {
-                let bestScore = Infinity;
-                for (let i = 0; i < 9; i++) {
-                    if (board[i] === '') {
-                        board[i] = human;
-                        let score = minimax(board, depth + 1, true);
-                        board[i] = '';
-                        bestScore = Math.min(score, bestScore);
-                    }
-                }
-                return bestScore;
-            }
-        }
-
-        function checkGameOver() {
-            const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-            for (let p of wins) {
-                if (board[p[0]] && board[p[0]] === board[p[1]] && board[p[0]] === board[p[2]]) return board[p[0]];
-            }
-            return board.includes('') ? null : 'tie';
-        }
-
-        function checkWinner() {
-            let result = checkGameOver();
-            if (result) {
-                gameActive = false;
-                if (result === 'tie') document.getElementById('status').innerText = "Berabere! 🤝";
-                else {
-                    document.getElementById('status').innerText = result === human ? "İmkansız! Kazandın 🎉" : "LucaenBot Kazandı 😓";
-                    if(result === human) { pScore++; localStorage.setItem('lucaenWins', pScore); }
-                    else { bScore++; localStorage.setItem('lucaenBotWins', bScore); }
-                    document.getElementById('p-score').innerText = pScore;
-                    document.getElementById('b-score').innerText = bScore;
-                }
-            }
-        }
-
-        function resetGame() {
-            board = ['', '', '', '', '', '', '', '', ''];
-            gameActive = true;
-            document.getElementById('status').innerText = "Sıra sende (X)";
-            Array.from(document.getElementsByClassName('cell')).forEach(c => c.innerText = '');
-        }
-
-        var disqus_config = function () { this.page.url = window.location.href; this.page.identifier = 'merry-marbling-bolum-9-yenilmez'; };
-        (function() { var d = document, s = d.createElement('script'); s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })();
+        // Resim tıklama kaydırma efekti
+        document.querySelectorAll('.container img').forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.preventDefault(); 
+                window.scrollBy({
+                    top: window.innerHeight * 0.7,
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
+    <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 </body>
 </html>
-
