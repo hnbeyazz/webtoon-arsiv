@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bölüm 10 - Merry Marbling</title>
+    <style>
+        @font-face { font-family: 'PublicaSans'; src: url('PublicaSans-Italic.otf') format('opentype'); font-weight: normal; font-style: italic;}
+        * { -webkit-tap-highlight-color: transparent; outline: none; touch-action: manipulation; }
+        body { 
+            margin: 0; display: flex; flex-direction: column; align-items: center; 
+            min-height: 100vh; background-color: #00001a; 
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('media17.jpg'); 
+            background-attachment: fixed; background-size: cover; background-position: center; 
+            font-family: 'PublicaSans', italic;
+        }
+        .site-header { 
+            width: 100%; padding: 40px 0; display: flex; justify-content: space-between; 
+            align-items: center; position: relative; z-index: 1000; }
+        .site-logo { height: 200px; width: auto; transition: transform 0.3s ease; }
+        .logo-sol { margin-left: 50px; } .logo-sag { margin-right: 50px; }
+        #game-container {
+            text-align: center; background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(6px);padding: 15px; border-radius: 20px; width: 90%; 
+            max-width: 320px; border: 1px solid rgba(255,255,255,0.2); 
+            color: white; box-shadow: 0 8px 32px rgba(0,0,0,0.3); 
+            margin: 0 auto 30px auto;}
+        #board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 15px 0; }
+        .cell { 
+            width: 100%; aspect-ratio: 1 / 1; background: rgba(255,255,255,0.1); 
+            border: 1px solid #ffcbdb; border-radius: 10px; 
+            display: flex; align-items: center; justify-content: center; font-size: 2rem; 
+            cursor: pointer; transition: 0.2s; }
+        .cell:hover { background: rgba(241, 126, 161, 0.3) !important; transform: 
+            translateY(-2px); }
+        .btn-reset { 
+            background: #ffcbdb; color: #000; border: none; padding: 12px 30px; 
+            border-radius: 30px; cursor: pointer; font-family: 'PublicaSans', italic; 
+            margin-bottom: 25px; transition: 0.3s; }
+        .hadiöyleolsun { max-width: 380px; padding: 15px 20px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(4px); border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); color: white; margin-bottom: 50px; text-align: center; }
+        .yorum-arkaplan-paneli { width: 90%; max-width: 900px; padding: 20px; margin-bottom: 50px; background: rgba(0, 0, 0, 0.3); border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        @media (max-width: 600px) { .site-logo { height: 80px; } .logo-sol { margin-left: 15px; } .logo-sag { margin-right: 15px; } .cell { font-size: 1.5rem; } }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a href="index.html"> <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol"> </a>
+        <div class="logo-konteyner"> <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag"> </div>
+    </header>
+
+    <div id="game-container">
+        <h2 style="margin-bottom: 5px; font-size: 1.1rem; color: #fff;">10. Bölümü Hoşça Bekleme Aktivitesi</h2>
+        <p id="status" style="margin-bottom: 15px; font-size: 0.9rem;">Sıra sende (X)</p>
+        
+        <div id="board">
+            <div class="cell" onclick="playerMove(0)"></div>
+            <div class="cell" onclick="playerMove(1)"></div>
+            <div class="cell" onclick="playerMove(2)"></div>
+            <div class="cell" onclick="playerMove(3)"></div>
+            <div class="cell" onclick="playerMove(4)"></div>
+            <div class="cell" onclick="playerMove(5)"></div>
+            <div class="cell" onclick="playerMove(6)"></div>
+            <div class="cell" onclick="playerMove(7)"></div>
+            <div class="cell" onclick="playerMove(8)"></div>
+        </div>
+        
+        <button class="btn-reset" onclick="resetGame()">Yeniden Başlat</button>
+
+        <h4 style="margin: 10px 0; margin-top: 0px; font-size: 0.8rem;">🏆 SKOR TABLOSU</h4>
+<table style="width:100%; font-size: 0.8rem; border-collapse: collapse;">
+            <tr><td>Sen (X)</td><td id="player-wins" style="color: #fab1a0;">0</td></tr>
+            <tr><td>LucaenBot (O)</td><td id="bot-wins" style="color: #81ecec;">0</td></tr>
+            <tr><td>Beraberlik</td><td id="draw-count" style="color: #ffffff;">0</td></tr>
+        </table>
+    </div>
+
+    <!-- <div class="hadiöyleolsun"> 
+        <h2 style="font-size: 1.2rem; margin-top: 0;">Bilgilendirme</h2>
+        <p>Galibiyet sayınızı yorumlarda paylaşın ve bölümün yayınlanma gününü o kadar ileri çekin!</p>
+    </div> -->
+
+    <div class="yorum-arkaplan-paneli"><div id="disqus_thread"></div></div>
+
+    <script>
+        let board = ['', '', '', '', '', '', '', '', ''];
+        let gameActive = true;
+        const human = 'X';
+        const ai = 'O';
+
+       // Skorları başlat
+        let pScore = parseInt(localStorage.getItem('lucaenWins')) || 0;
+        let bScore = parseInt(localStorage.getItem('lucaenBotWins')) || 0;
+        let tScore = parseInt(localStorage.getItem('lucaenDraws')) || 0; // Beraberlik skoru
+
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('admin') === 'lucaen') {
+            pScore = 236; // Admin özel
+            bScore = 178;
+            tScore = 542; // "Botu o kadar çok darladım ki kazanamadı bile" mesajı verir bu rakam
+        }
+
+        document.getElementById('player-wins').innerText = pScore;
+        document.getElementById('bot-wins').innerText = bScore;
+        document.getElementById('draw-count').innerText = tScore;
+        function playerMove(i) {
+            if (board[i] === '' && gameActive) {
+                makeMove(i, human);
+                if (gameActive) {
+                    document.getElementById('status').innerText = "LucaenBot başlıyor...";
+                    document.getElementById('board').style.pointerEvents = 'none';
+                    
+                    // Botun hamlesini bir sonraki frame'e atayarak UI'ın donmasını engelliyoruz
+                    setTimeout(() => {
+                        let bestMove = getBestMove();
+                        makeMove(bestMove, ai);
+                        document.getElementById('board').style.pointerEvents = 'auto';
+                        if (gameActive) document.getElementById('status').innerText = "Sıra sende (X)";
+                    }, 100);
+                }
+            }
+        }
+        function makeMove(i, p) {
+            board[i] = p;
+            const cell = document.getElementsByClassName('cell')[i];
+            cell.innerText = p;
+            cell.style.color = p === human ? '#fab1a0' : '#81ecec';
+            checkWinner();
+        }
+        function getBestMove() {
+            let bestScore = -Infinity;
+            let move;
+            if (board[4] === '') return 4;
+
+            for (let i = 0; i < 9; i++) {
+                if (board[i] === '') {
+                    board[i] = ai;
+                    // Alpha-Beta Pruning ile optimize edilmiş Minimax
+                    let score = minimax(board, 0, -Infinity, Infinity, false);
+                    board[i] = '';
+                    if (score > bestScore) {
+                        bestScore = score;
+                        move = i;
+                    }
+                }
+            }
+            return move;
+        }
+
+        const scores = { 'O': 10, 'X': -10, 'tie': 0 };
+
+        function minimax(board, depth, alpha, beta, isMaximizing) {
+            let result = checkGameOver();
+            if (result !== null) return scores[result];
+
+            if (isMaximizing) {
+                let bestScore = -Infinity;
+                for (let i = 0; i < 9; i++) {
+                    if (board[i] === '') {
+                        board[i] = ai;
+                        let score = minimax(board, depth + 1, alpha, beta, false);
+                        board[i] = '';
+                        bestScore = Math.max(score, bestScore);
+                        alpha = Math.max(alpha, score);
+                        if (beta <= alpha) break; // Budama (Pruning)
+                    }
+                }
+                return bestScore;
+            } else {
+                let bestScore = Infinity;
+                for (let i = 0; i < 9; i++) {
+                    if (board[i] === '') {
+                        board[i] = human;
+                        let score = minimax(board, depth + 1, alpha, beta, true);
+                        board[i] = '';
+                        bestScore = Math.min(score, bestScore);
+                        beta = Math.min(beta, score);
+                        if (beta <= alpha) break; // Budama (Pruning)
+                    }
+                }
+                return bestScore;
+            }
+        }
+
+        function checkGameOver() {
+            const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+            for (let p of wins) {
+                if (board[p[0]] !== '' && board[p[0]] === board[p[1]] && board[p[0]] === board[p[2]]) return board[p[0]];
+            }
+            return board.includes('') ? null : 'tie';
+        }
+
+function checkWinner() {
+            let result = checkGameOver();
+            if (result) {
+                gameActive = false;
+                if (result === 'tie') {
+                    tScore++;
+                    localStorage.setItem('lucaenDraws', tScore);
+                    document.getElementById('draw-count').innerText = tScore;
+                    
+                    document.getElementById('status').innerText = "Berabere!";
+                } else {
+                    document.getElementById('status').innerText = result === human ? 'Kazandın 🎉' : 'LucaenBot Kazandı 😓';
+                    if(result === human) { 
+                        pScore++; localStorage.setItem('lucaenWins', pScore); 
+                    } else { 
+                        bScore++; localStorage.setItem('lucaenBotWins', bScore); 
+                    }
+                    document.getElementById('player-wins').innerText = pScore;
+                    document.getElementById('bot-wins').innerText = bScore;
+                }
+            }
+        }
+
+        function resetGame() {
+            board = ['', '', '', '', '', '', '', '', ''];
+            gameActive = true;
+            document.getElementById('status').innerText = "Sıra sende (X)";
+            document.getElementById('board').style.pointerEvents = 'auto';
+            Array.from(document.getElementsByClassName('cell')).forEach(c => c.innerText = '');
+        }
+
+        var disqus_config = function () { 
+            this.page.url = window.location.href; 
+            this.page.identifier = 'merry-marbling-bolum-10-ozel'; 
+        };
+        (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+window.onload = () => {
+    document.getElementById('board').style.pointerEvents = 'none';
+    setTimeout(() => {
+        let bestMove = getBestMove();
+        makeMove(bestMove, ai);
+        document.getElementById('board').style.pointerEvents = 'auto';
+        document.getElementById('status').innerText = "Sıra sende (X)";
+    }, 800);
+};
+    </script>
+</body>
+</html>
