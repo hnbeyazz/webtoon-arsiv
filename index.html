@@ -2,15 +2,14 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Merry Marbling - Ana Sayfa</title>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@1,100&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Shadows+Into+Light&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-
     <style>
         @font-face {
             font-family: 'PublicaSans';
@@ -18,7 +17,11 @@
             font-weight: normal;
             font-style: italic;
         }
-
+:root { color-scheme: light dark;}
+@media (prefers-color-scheme: dark) {
+    body { background-color: #000 !important; }
+    .yeni-etiketi { background-color: #FDB5CE !important; color: #fff !important;}
+    .duyuru-ekran {background-color: white !important; color: #333 !important;} }
         :root {
             --ana-mavi: #001d3d;
             --baslik-mavi: #90e0ef;
@@ -26,7 +29,6 @@
             --zumrut: #D8E983;
             --özetpembesi: #ffc0cb;
         }
-
         body { 
             margin: 0; 
             background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('media16.jpg');
@@ -42,8 +44,6 @@
             align-items: center; 
             min-height: 100vh;
         }
-
-        /* BİLDİRİM BUTONU */
         .bildirim-btn {
             position: fixed;
             bottom: 20px;
@@ -62,8 +62,6 @@
             transition: transform 0.3s ease;
         }
         .bildirim-btn:hover { transform: scale(1.1); }
-
-        /* DUYURU EKRANI (MODAL) */
         .duyuru-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -168,27 +166,22 @@
     border-left: 4px solid var(--özetpembesi);
     margin-top: 20px;
 }
-
-/* BÖLÜM LİSTESİ KONTEYNIRI */
-/* BÖLÜM LİSTESİ KONTEYNIRI (CEP GÖRÜNÜMÜ) */
 .bolum-listesi { 
     width: 100%; 
     max-width: 900px; 
-    padding: 0; /* Kartların kenarlara tam oturması için sıfırladık */
+    padding: 0;
     display: flex; 
     flex-direction: column; 
     gap: 0;
     font-family: 'PublicaSans', sans-serif; 
     font-style: italic;
 
-    /* --- KRİTİK AYARLAR --- */
-    height: 350px;      /* 5 Bölümün sığacağı yükseklik (Kart başına ~88px) */
-    overflow-y: auto; /* Kaydırma çubuğunun her zaman görünmesi stabilite sağlar */
+
+    height: 350px;     
+    overflow-y: auto;
     background: rgba(0, 0, 0, 0.1); 
     border-radius: 12px;
 }
-
-/* Kaydırma Çubuğu Tasarımı (Görseldeki gibi ince ve zarif) */
 .bolum-listesi::-webkit-scrollbar {
     width: 5px;
 }
@@ -196,21 +189,19 @@
     background: rgba(255, 255, 255, 0.05);
 }
 .bolum-listesi::-webkit-scrollbar-thumb {
-    background: #ffcbdb; /* Lucaenfansub pembesi */
+    background: #ffcbdb;
     border-radius: 10px;
 }
-
-/* KART TASARIMI */
 .bolum-kart {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px; /* Yüksekliği 5 bölüme sabitlemek için ideal padding */
+    padding: 10px 20px;
     text-decoration: none;
     color: #fff;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     transition: 0.3s;
-    min-height: 50px; /* Kartların daralmasını engeller */
+    min-height: 50px; 
 }
 
 .bolum-kart:hover {
@@ -219,9 +210,9 @@
 .bolum-bilgi {
     display: flex;
     flex-direction: column;
-    gap: 2px; /* Yazılar birbirine yaklaşsın */
+    gap: 2px;
 }
-.bolum-no { font-size: 1.1rem; font-weight: bold; } /* Fontu biraz küçülttük */
+.bolum-no { font-size: 1.1rem; font-weight: bold; }
 .bolum-tarih { font-size: 0.8rem; color: #888; }
 
         .izlendi-ikon { width: 24px; height: 24px; opacity: 0; transition: 0.3s; filter: invert(1); }
