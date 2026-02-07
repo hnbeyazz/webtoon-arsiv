@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Merry Marbling - Ana Sayfa</title>
     <link rel="icon" href="/bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" sizes="192x192">
-<link rel="apple-touch-icon" href="/bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png">
+    <link rel="apple-touch-icon" href="/bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@1,100&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png">
@@ -20,11 +20,12 @@
             font-weight: normal;
             font-style: italic;
         }
-:root { color-scheme: light dark;}
-@media (prefers-color-scheme: dark) {
-    body { background-color: #000 !important; }
-    .yeni-etiketi { background-color: #FDB5CE !important; color: #fff !important;}
-    .duyuru-ekran {background-color: white !important; color: #333 !important;} }
+        :root { color-scheme: light dark;}
+        @media (prefers-color-scheme: dark) {
+            body { background-color: #000 !important; }
+            .yeni-etiketi { background-color: #FDB5CE !important; color: #fff !important;}
+            .duyuru-ekran {background-color: white !important; color: #333 !important;} 
+        }
         :root {
             --ana-mavi: #001d3d;
             --baslik-mavi: #90e0ef;
@@ -32,6 +33,18 @@
             --zumrut: #D8E983;
             --özetpembesi: #ffc0cb;
         }
+
+        /* Kar Tuvali Stili */
+        #kar-tuvali {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
         body { 
             margin: 0; 
             background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('media16.jpg');
@@ -137,6 +150,8 @@
             padding: 60px 20px;
             align-items: flex-start; 
             justify-content: center;
+            position: relative;
+            z-index: 10;
         }
 
         .kapak { width: 280px; border-radius: 15px; box-shadow: 0 10px 40px rgba(144, 224, 239, 0.2); }
@@ -161,74 +176,65 @@
             font-size: 1.8em; border-bottom: 2px solid #000000; padding-bottom: 8px; 
             margin-top: 40px; box-sizing: border-box; text-align: left;
             font-family: 'PublicaSans', sans-serif; font-style: italic;
+            position: relative; z-index: 10;
         }
         .ozet-konteynir {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 20px;
-    border-radius: 12px;
-    border-left: 4px solid var(--özetpembesi);
-    margin-top: 20px;
-}
-.bolum-listesi { 
-    width: 100%; 
-    max-width: 900px; 
-    padding: 0;
-    display: flex; 
-    flex-direction: column; 
-    gap: 0;
-    font-family: 'PublicaSans', sans-serif; 
-    font-style: italic;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--özetpembesi);
+            margin-top: 20px;
+        }
+        .bolum-listesi { 
+            width: 100%; 
+            max-width: 900px; 
+            padding: 0;
+            display: flex; 
+            flex-direction: column; 
+            gap: 0;
+            font-family: 'PublicaSans', sans-serif; 
+            font-style: italic;
+            height: 350px;     
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.1); 
+            border-radius: 12px;
+            position: relative;
+            z-index: 10;
+        }
+        .bolum-listesi::-webkit-scrollbar { width: 5px; }
+        .bolum-listesi::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+        .bolum-listesi::-webkit-scrollbar-thumb { background: #ffcbdb; border-radius: 10px; }
+        
+        .bolum-kart {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: 0.3s;
+            min-height: 50px; 
+        }
 
-
-    height: 350px;     
-    overflow-y: auto;
-    background: rgba(0, 0, 0, 0.1); 
-    border-radius: 12px;
-}
-.bolum-listesi::-webkit-scrollbar {
-    width: 5px;
-}
-.bolum-listesi::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-}
-.bolum-listesi::-webkit-scrollbar-thumb {
-    background: #ffcbdb;
-    border-radius: 10px;
-}
-.bolum-kart {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #fff;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    transition: 0.3s;
-    min-height: 50px; 
-}
-
-.bolum-kart:hover {
-    background: rgba(255, 255, 255, 0.05);
-}
-.bolum-bilgi {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-.bolum-no { font-size: 1.1rem; font-weight: bold; }
-.bolum-tarih { font-size: 0.8rem; color: #888; }
+        .bolum-kart:hover { background: rgba(255, 255, 255, 0.05); }
+        .bolum-bilgi { display: flex; flex-direction: column; gap: 2px; }
+        .bolum-no { font-size: 1.1rem; font-weight: bold; }
+        .bolum-tarih { font-size: 0.8rem; color: #888; }
 
         .izlendi-ikon { width: 24px; height: 24px; opacity: 0; transition: 0.3s; filter: invert(1); }
         .izlendi-ikon.aktif { opacity: 0.6; }
 
         .yorum-alani { 
-    width: 90%; 
-    max-width: 900px; 
-    padding: 20px; 
-    margin: 30px auto 50px auto;
-    background: rgba(255, 255, 255, 0.03); 
-    border-radius: 15px;
-    box-sizing: border-box;
+            width: 90%; 
+            max-width: 900px; 
+            padding: 20px; 
+            margin: 30px auto 50px auto;
+            background: rgba(255, 255, 255, 0.03); 
+            border-radius: 15px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 10;
         }
 
         @media (max-width: 600px) {
@@ -242,51 +248,57 @@
 </head>
 
 <body>
+    <canvas id="kar-tuvali"></canvas>
+
     <div class="ana-serbest-logo">
         <a href="index.html"><img src="logo1.2.png" alt="Fansub Logo"></a>
     </div>
+    
     <button class="bildirim-btn" onclick="duyuruAc()">
         <img src="https://cdn-icons-png.flaticon.com/512/1827/1827347.png" width="30" style="filter: invert(1);">
     </button>
+    
     <div class="duyuru-overlay" id="duyuruKutusu">
         <div class="duyuru-ekran">
             <h2>DUYURU</h2>
-            <p>Yeni bölüm 10 Şubat Salı günü gelecek.💤🍙</p>
-            <button class="kapat-btn" onclick="duyuruKapat()">Peki...🙂‍↕️</button>
+            <p>Yeni bölüm yayında!</p>
+            <button class="kapat-btn" onclick="duyuruKapat()">Anladım.</button>
         </div>
     </div>
+    
     <div class="tanitim-alani">
         <img src="tall.jpg" class="kapak" alt="Merry Marbling">
         <div class="detaylar">
             <h1>Merry Marbling</h1>
             <div class="ozet-konteynir">
                 <p class="konu-metni" id="ozetMetin">
-Ian, görünüşte mükemmel bir öğrencidir; nazik, güvenilir ve üstüne üstlük yakışıklıdır. Çocukken yaptığı masum bir iyilik sayesinde "Noel Meleği" olarak tanınmaya başlar. Bu yüzden Yugun, uzun bir hastalık izninden sonra okula döndüğünde, Ian'ın gün boyunca ona yardım etmek için yanında olmasına kimse şaşırmaz.Ian'ın bu melekvari kişiliği sayesinde Yugun ona güvenebileceğini düşünür; ta ki Ian ile annesi arasında geçen bir konuşmaya kulak misafiri olana kadar. Bu konuşma, her şeyin Ian'ın imajını korumak için yaptığı bir plandan ibaret olduğunu ortaya çıkarır. Bu ihanetle küplere binen Yugun, Ian'la yüzleşir ve onun gerçek yüzünü herkese ifşa etmekle tehdit eder.Ancak Ian'ın beklenmedik tepkisi Yugun'un kafasını daha da karıştırır: "Hadi yap. Ama sonrasında olacaklar benim sorumluluğumda değil." Ne de olsa, sözde "Noel Meleği"nden kim nefret edebilir ki? Bu ikili, yağ ile su gibi ayrı mı kalacak? Yoksa birbirlerine karışıp, her ikisinin de hayal edebileceğinden çok daha güzel bir şey mi yaratacaklar?                </p>
+                    Ian, görünüşte mükemmel bir öğrencidir; nazik, güvenilir ve üstüne üstlük yakışıklıdır. Çocukken yaptığı masum bir iyilik sayesinde "Noel Meleği" olarak tanınmaya başlar. Bu yüzden Yugun, uzun bir hastalık izninden sonra okula döndüğünde, Ian'ın gün boyunca ona yardım etmek için yanında olmasına kimse şaşırmaz.Ian'ın bu melekvari kişiliği sayesinde Yugun ona güvenebileceğini düşünür; ta ki Ian ile annesi arasında geçen bir konuşmaya kulak misafiri olana kadar. Bu konuşma, her şeyin Ian'ın imajını korumak için yaptığı bir plandan ibaret olduğunu ortaya çıkarır. Bu ihanetle küplere binen Yugun, Ian'la yüzleşir ve onun gerçek yüzünü herkese ifşa etmekle tehdit eder.Ancak Ian'ın beklenmedik tepkisi Yugun'un kafasını daha da karıştırır: "Hadi yap. Ama sonrasında olacaklar benim sorumluluğumda değil." Ne de olsa, sözde "Noel Meleği"nden kim nefret edebilir ki? Bu ikili, yağ ile su gibi ayrı mı kalacak? Yoksa birbirlerine karışıp, her ikisinin de hayal edebileceğinden çok daha güzel bir şey mi yaratacaklar?
+                </p>
                 <button class="devamini-oku-btn" id="btnOku" onclick="ozetiAc()">Devamını Oku...</button>
             </div>
         </div>
     </div>
+
     <h2 class="liste-baslik">Bölümler</h2>
-    <div style="width: 100%; max-width: 900px; display: flex; justify-content: space-between; align-items: flex-end;">
-</div>
+    
     <div class="bolum-listesi">
-<a href="izle_bolum_10.html" class="bolum-kart" onclick="kaydet('bolum10')">
-    <div class="bolum-bilgi">
-        <span class="bolum-no">10. Bölüm<span class="yeni-etiketi">yakında</span></span>
-        <span class="bolum-tarih">10 Şubat 2026</span>
-    </div>
-    <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum10">
-</a>
+        <a href="izle_bolum_10.html" class="bolum-kart" onclick="kaydet('bolum10')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">10. Bölüm<span class="yeni-etiketi">yeni</span></span>
+                <span class="bolum-tarih">7 Şubat 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum10">
+        </a>
         <a href="izle_bolum_9.html" class="bolum-kart" onclick="kaydet('bolum9')">
             <div class="bolum-bilgi">
-                <span class="bolum-no">9. Bölüm<span class="yeni-etiketi">yeni</span></span>
+                <span class="bolum-no">9. Bölüm</span>
                 <span class="bolum-tarih">2 Şubat 2026</span>
             </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum7">
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum9">
         </a>
         <a href="izle_bolum_8.html" class="bolum-kart" onclick="kaydet('bolum8')">
             <div class="bolum-bilgi">
-                <span class="bolum-no">8. Bölüm </span>
+                <span class="bolum-no">8. Bölüm</span>
                 <span class="bolum-tarih">26 Ocak 2026</span>
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum8">
@@ -341,11 +353,86 @@ Ian, görünüşte mükemmel bir öğrencidir; nazik, güvenilir ve üstüne üs
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum1">
         </a>
     </div>
+
     <div class="yorum-alani">
         <div id="disqus_thread"></div>
     </div>
 
     <script>
+        // --- Kar Efekti Scripti (30 Saniye) ---
+        (function() {
+            const canvas = document.getElementById('kar-tuvali');
+            const ctx = canvas.getContext('2d');
+            let width, height, snowflakes = [];
+            let isStopping = false;
+            let opacity = 1;
+            let speedMultiplier = 1; 
+
+            function resize() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+
+            class Snowflake {
+                constructor() { this.reset(); }
+                reset() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * -height;
+                    this.size = Math.random() * 3 + 1;
+                    this.speed = Math.random() * 1.5 + 0.5;
+                    this.velY = this.speed;
+                    this.velX = Math.random() * 1 - 0.5;
+                    this.alpha = Math.random() * 0.5 + 0.3;
+                }
+                update() {
+                    this.y += this.velY * speedMultiplier;
+                    this.x += this.velX * speedMultiplier;
+                    if (this.y > height && !isStopping) {
+                        this.y = -10;
+                        this.x = Math.random() * width;
+                    }
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha * opacity})`;
+                    ctx.fill();
+                }
+            }
+
+            function init() {
+                for (let i = 0; i < 120; i++) snowflakes.push(new Snowflake());
+                animate();
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                snowflakes.forEach(f => { f.update(); f.draw(); });
+                if (opacity > 0) requestAnimationFrame(animate);
+                else canvas.remove();
+            }
+
+            init();
+
+            setTimeout(() => {
+                isStopping = true;
+                let fadeInterval = setInterval(() => {
+                    speedMultiplier -= 0.01; 
+                    opacity -= 0.015; 
+                    if (opacity <= 0) {
+                        clearInterval(fadeInterval);
+                        opacity = 0;
+                    }
+                }, 100); 
+            }, 30000);
+        })();
+
+        // --- Fonksiyonlar ---
         function ozetiAc() {
             var metin = document.getElementById("ozetMetin");
             var btn = document.getElementById("btnOku");
@@ -353,18 +440,12 @@ Ian, görünüşte mükemmel bir öğrencidir; nazik, güvenilir ve üstüne üs
             btn.innerHTML = metin.classList.contains("acik") ? "Daha Az Gör" : "Devamını Oku...";
         }
 
-        function duyuruAc() {
-            document.getElementById("duyuruKutusu").style.display = "flex";
-        }
-
-        function duyuruKapat() {
-            document.getElementById("duyuruKutusu").style.display = "none";
-        }
+        function duyuruAc() { document.getElementById("duyuruKutusu").style.display = "flex"; }
+        function duyuruKapat() { document.getElementById("duyuruKutusu").style.display = "none"; }
+        
         window.onclick = function(event) {
             var overlay = document.getElementById("duyuruKutusu");
-            if (event.target == overlay) {
-                overlay.style.display = "none";
-            }
+            if (event.target == overlay) overlay.style.display = "none";
         }
 
         function kaydet(id) { localStorage.setItem(id, "true"); }
