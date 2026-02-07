@@ -1,4 +1,4 @@
- @font-face { font-family: 'PublicaSans'; src: url('PublicaSans-Italic.otf') format('opentype'); font-weight: normal; font-style: italic;}
+        @font-face { font-family: 'PublicaSans'; src: url('PublicaSans-Italic.otf') format('opentype'); font-weight: normal; font-style: italic;}
 
         * {
             -webkit-tap-highlight-color: transparent;
@@ -17,7 +17,7 @@
             background-attachment: fixed; 
             background-size: cover; 
             background-position: center; 
-            background-image: url('media17.jpg'); 
+            background-image:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)),url('media17.jpg'); 
             font-family: 'PublicaSans', italic;
         }
 
@@ -68,18 +68,6 @@
             transition: 0.3s ease;
             border: none; 
         }
-        .dogum-gunu-notu {
-    background: rgba(247, 202, 201, 0.8); 
-    border-left: 3px solid #F7CAC9;
-    padding: 15px 20px;
-    margin: -10px 0 25px 0;
-    color: #eee;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    border-radius: 0 10px 10px 0;
-font-family: 'PublicaSans', italic;
-line-height: 20px;
-}
 
         .btn-modern:hover { 
             background-color: #E37383;
