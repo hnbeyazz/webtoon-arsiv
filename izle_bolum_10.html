@@ -24,8 +24,20 @@
             background-attachment: fixed; 
             background-size: cover; 
             background-position: center; 
-            background-image: url('media17.jpg') rgba(0, 0, 0, 0); 
+            background-image: url('media17.jpg'); 
             font-family: 'PublicaSans', italic;
+            overflow-x: hidden;
+        }
+
+        /* Kar Tuvali Stili */
+        #kar-tuvali {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Altındaki elementlere tıklamayı engellemez */
+            z-index: 9999;
         }
 
         .site-header { width: 100%; background: transparent; padding: 40px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
@@ -41,6 +53,8 @@
             padding-left: 10px; 
             padding-right: 10px; 
             box-sizing: border-box; 
+            position: relative;
+            z-index: 10;
         }
         .container img { width: 100%; height: auto; display: block; cursor: pointer; -webkit-user-select: none; -webkit-touch-callout: none; }
 
@@ -75,18 +89,6 @@
             transition: 0.3s ease;
             border: none; 
         }
-        .dogum-gunu-notu {
-    background: rgba(247, 202, 201, 0.8); 
-    border-left: 3px solid #F7CAC9;
-    padding: 15px 20px;
-    margin: -10px 0 25px 0;
-    color: #eee;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    border-radius: 0 10px 10px 0;
-font-family: 'PublicaSans', italic;
-line-height: 20px;
-}
 
         .btn-modern:hover { 
             background-color: #E37383;
@@ -110,23 +112,16 @@ line-height: 20px;
             .logo-sag { margin-right: 15px; }
             .btn-modern { width: 40px; height: 40px; border-radius:6px;}
             .icon-svg { width: 25px; height: 25px; }
-            .nav { 
-                padding-top: 20px;
-                padding-bottom: 30px;
-                text-align: center; 
-                background: transparent; 
-                display: flex;
-                justify-content: center;
-                gap: 5px;
-            }
         }
     </style>
 </head>
 <body>
-      <header class="site-header">
+    <canvas id="kar-tuvali"></canvas>
+
+    <header class="site-header">
         <a href="index.html"> <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol"> </a>
         <div class="logo-konteyner"> <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag"> </div>
-      </header>
+    </header>
 
     <div class="container">
         <nav class="ust-navigasyon">
@@ -145,52 +140,49 @@ line-height: 20px;
                 <option value="izle_bolum_8.html">Bölüm 8</option>
                 <option value="izle_bolum_9.html">Bölüm 9</option>
                 <option value="izle_bolum_10.html" selected>Bölüm 10</option>
-
-                
-
             </select>
         </div>
 
         <div class="bolum-basligi">10. Bölüm</div>
+        
         <img src="1.png"> 
-<img src="bolum_10/1.jpg">
-<img src="bolum_10/2.jpg">
-<img src="bolum_10/3.jpg">
-<img src="bolum_10/4.jpg">
-<img src="bolum_10/5.jpg">
-<img src="bolum_10/6.jpg">
-<img src="bolum_10/7.jpg">
-<img src="bolum_10/8.jpg">
-<img src="bolum_10/9.jpg">
-<img src="bolum_10/10.jpg">
-<img src="bolum_10/11.jpg">
-<img src="bolum_10./Oniki.jpg">
-<img src="bolum_10./Onüç.jpg">
-<img src="bolum_10/12.jpg">
-<img src="bolum_10/13.jpg">
-<img src="bolum_10/14.jpg">
-<img src="bolum_10/15.jpg">
-<img src="bolum_10/16.jpg">
-<img src="bolum_10/17.jpg">
-<img src="bolum_10/18.jpg">
-<img src="bolum_10/19.jpg">
-<img src="bolum_10/20.jpg">
-<img src="bolum_10./21.jpg">
-<img src="bolum_10./22.jpg">
-<img src="bolum_10./23.jpg">
-<img src="bolum_10./24.jpg">
-<img src="bolum_10./25.jpg">
-<img src="bolum_10./26.jpg">
-<img src="bolum_10./27.jpg">
-<img src="bolum_10./28.jpg">
-<img src="bolum_10./29.jpg">
-<img src="bolum_10./30.jpg">
-<img src="bolum_10./31.jpg">
-<img src="bolum_10./32.jpg">
-<img src="bolum_10./33.jpg">
-<img src="bolum_10./34.jpg">
-<img src="bolum_10./35.jpg">
-
+        <img src="bolum_10/1.jpg">
+        <img src="bolum_10/2.jpg">
+        <img src="bolum_10/3.jpg">
+        <img src="bolum_10/4.jpg">
+        <img src="bolum_10/5.jpg">
+        <img src="bolum_10/6.jpg">
+        <img src="bolum_10/7.jpg">
+        <img src="bolum_10/8.jpg">
+        <img src="bolum_10/9.jpg">
+        <img src="bolum_10/10.jpg">
+        <img src="bolum_10/11.jpg">
+        <img src="bolum_10./Oniki.jpg">
+        <img src="bolum_10./Onüç.jpg">
+        <img src="bolum_10/12.jpg">
+        <img src="bolum_10/13.jpg">
+        <img src="bolum_10/14.jpg">
+        <img src="bolum_10/15.jpg">
+        <img src="bolum_10/16.jpg">
+        <img src="bolum_10/17.jpg">
+        <img src="bolum_10/18.jpg">
+        <img src="bolum_10/19.jpg">
+        <img src="bolum_10/20.jpg">
+        <img src="bolum_10./21.jpg">
+        <img src="bolum_10./22.jpg">
+        <img src="bolum_10./23.jpg">
+        <img src="bolum_10./24.jpg">
+        <img src="bolum_10./25.jpg">
+        <img src="bolum_10./26.jpg">
+        <img src="bolum_10./27.jpg">
+        <img src="bolum_10./28.jpg">
+        <img src="bolum_10./29.jpg">
+        <img src="bolum_10./30.jpg">
+        <img src="bolum_10./31.jpg">
+        <img src="bolum_10./32.jpg">
+        <img src="bolum_10./33.jpg">
+        <img src="bolum_10./34.jpg">
+        <img src="bolum_10./35.jpg">
 
         <div class="nav">
             <a href="izle_bolum_9.html" class="btn-modern" title="Önceki Bölüm">
@@ -211,6 +203,96 @@ line-height: 20px;
     <div class="yorum-arkaplan-paneli"> <div id="disqus_thread"></div> </div>
 
     <script>
+        // --- Kar Efekti Scripti ---
+        (function() {
+            const canvas = document.getElementById('kar-tuvali');
+            const ctx = canvas.getContext('2d');
+            let width, height, snowflakes = [];
+            let isStopping = false;
+            let opacity = 1;
+            let speedMultiplier = 1; 
+
+            function resize() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+
+            class Snowflake {
+                constructor() {
+                    this.reset();
+                }
+                reset() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * -height;
+                    this.size = Math.random() * 3 + 1;
+                    this.speed = Math.random() * 1.5 + 0.5;
+                    this.velY = this.speed;
+                    this.velX = Math.random() * 1 - 0.5;
+                    this.alpha = Math.random() * 0.6 + 0.4;
+                }
+                update() {
+                    this.y += this.velY * speedMultiplier;
+                    this.x += this.velX * speedMultiplier;
+
+                    if (this.y > height) {
+                        if (!isStopping) {
+                            this.y = -10;
+                            this.x = Math.random() * width;
+                        }
+                    }
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha * opacity})`;
+                    ctx.fill();
+                }
+            }
+
+            function init() {
+                for (let i = 0; i < 150; i++) {
+                    snowflakes.push(new Snowflake());
+                }
+                animate();
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                snowflakes.forEach(f => {
+                    f.update();
+                    f.draw();
+                });
+                
+                if (opacity > 0) {
+                    requestAnimationFrame(animate);
+                } else {
+                    canvas.remove(); 
+                }
+            }
+
+            init();
+
+            // 10 saniye sonra durma animasyonunu başlat
+            setTimeout(() => {
+                isStopping = true;
+                let fadeInterval = setInterval(() => {
+                    speedMultiplier -= 0.015; 
+                    opacity -= 0.02; 
+                    
+                    if (opacity <= 0) {
+                        clearInterval(fadeInterval);
+                        opacity = 0;
+                    }
+                }, 100); 
+            }, 10000); 
+        })();
+
+        // --- Mevcut Fonksiyonlar ---
         var disqus_config = function () {
             this.page.url = window.location.href; 
             this.page.identifier = 'merry-marbling-bolum-10-ozel'; 
