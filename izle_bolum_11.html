@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bölüm 11</title>
+    <style>
+        @font-face { font-family: 'PublicaSans'; src: url('PublicaSans-Italic.otf') format('opentype'); font-weight: normal; font-style: italic;}
+        
+        body { 
+            margin: 0; display: flex; flex-direction: column; align-items: center; 
+            min-height: 100vh; background-color: #00001a; 
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('media17.jpg'); 
+            background-attachment: fixed; background-size: cover; background-position: center; 
+            font-family: 'PublicaSans', sans-serif;
+            color: white;
+        }
+
+        .site-header { 
+            width: 100%; padding: 40px 0; display: flex; justify-content: space-between; 
+            align-items: center; position: relative; z-index: 1000; 
+        }
+        .site-logo { height: 150px; width: auto; transition: transform 0.3s ease; }
+        .logo-sol { margin-left: 50px; } .logo-sag { margin-right: 50px; }
+
+        /* Geri Sayım Konteyneri */
+        #countdown-container {
+            text-align: center; background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; 
+            width: 90%; max-width: 500px; border: 1px solid rgba(255,255,255,0.2); 
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5); margin: 20px auto;
+        }
+
+        .countdown-title { font-size: 1.4rem; margin-bottom: 20px; color: #ffcbdb; text-shadow: 0 0 10px rgba(255, 203, 219, 0.5); }
+
+        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+        .timer-box {
+            background: rgba(0, 0, 0, 0.4); padding: 15px 5px; border-radius: 12px;
+            border: 1px solid rgba(255, 203, 219, 0.3);
+        }
+
+        .timer-value { display: block; font-size: 2rem; font-weight: bold; color: #81ecec; }
+        .timer-label { font-size: 0.7rem; text-transform: uppercase; color: #aaa; }
+
+        .yorum-arkaplan-paneli { width: 90%; max-width: 900px; padding: 20px; margin: 40px 0; background: rgba(0, 0, 0, 0.3); border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1); }
+
+        @media (max-width: 600px) { 
+            .site-logo { height: 80px; } 
+            .logo-sol { margin-left: 15px; } 
+            .logo-sag { margin-right: 15px; } 
+            .timer-value { font-size: 1.4rem; }
+            .timer-label { font-size: 0.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="index.html"> <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol"> </a>
+        <div class="logo-konteyner"> <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag"> </div>
+    </header>
+
+    <div id="countdown-container">
+        <div class="countdown-title">11. Bölüm Yayınına Kalan Süre</div>
+        <div class="timer-grid">
+            <div class="timer-box">
+                <span class="timer-value" id="days">00</span>
+                <span class="timer-label">Gün</span>
+            </div>
+            <div class="timer-box">
+                <span class="timer-value" id="hours">00</span>
+                <span class="timer-label">Saat</span>
+            </div>
+            <div class="timer-box">
+                <span class="timer-value" id="minutes">00</span>
+                <span class="timer-label">Dakika</span>
+            </div>
+            <div class="timer-box">
+                <span class="timer-value" id="seconds">00</span>
+                <span class="timer-label">Saniye</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="yorum-arkaplan-paneli">
+        <div id="disqus_thread"></div>
+    </div>
+
+    <script>
+       // --- AYARLAR ---
+// Hedef tarih: 12 Şubat 2026, 22:00
+// (Yıl, Ay[0-11], Gün, Saat, Dakika, Saniye)
+const hedefTarih = new Date(2026, 1, 12, 22, 0, 0).getTime(); 
+
+function updateCountdown() {
+    const simdi = new Date().getTime();
+    const fark = hedefTarih - simdi;
+
+    // Süre dolduğunda veya geçtiğinde
+    if (fark <= 0) {
+        document.getElementById('countdown-container').innerHTML = "<div class='countdown-title'>11. Bölüm Yayında! 🎉</div>";
+        return;
+    }
+
+    const gun = Math.floor(fark / (1000 * 60 * 60 * 24));
+    const saat = Math.floor((fark % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const dakika = Math.floor((fark % (1000 * 60 * 60)) / (1000 * 60));
+    const saniye = Math.floor((fark % (1000 * 60)) / 1000);
+
+    document.getElementById('days').innerText = gun < 10 ? '0' + gun : gun;
+    document.getElementById('hours').innerText = saat < 10 ? '0' + saat : saat;
+    document.getElementById('minutes').innerText = dakika < 10 ? '0' + dakika : dakika;
+    document.getElementById('seconds').innerText = saniye < 10 ? '0' + saniye : saniye;
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+      // Disqus Ayarları
+        var disqus_config = function () { 
+            this.page.url = window.location.href; 
+            this.page.identifier = 'merry-marbling-bolum-11-countdown'; 
+        };
+        (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+</body>
+</html>
