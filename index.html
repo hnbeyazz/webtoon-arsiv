@@ -486,6 +486,13 @@
             s.setAttribute('data-timestamp', +new Date());
             (d.head || d.body).appendChild(s);
         })();
+        // URL'de #havva veya %havva kontrolü yapar
+window.addEventListener('load', function() {
+    if (window.location.hash === '#havva' || window.location.href.includes('%havva')) {
+        window.location.href = 'havva.html'; // Hedef sayfanızın adı
+    }
+});
+
     </script>
 </body>
 </html>
