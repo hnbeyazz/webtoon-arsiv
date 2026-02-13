@@ -4,6 +4,7 @@
     <loc>https://hnbeyazz.github.io/webtoon-arsiv/</loc>
     <priority>1.0</priority>
   </url>
+
   <url>
     <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_1.html</loc>
     <priority>0.8</priority>
@@ -12,4 +13,40 @@
     <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_2.html</loc>
     <priority>0.8</priority>
   </url>
-  </urlset>
+  <url>
+    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_3.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_4.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_5.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_6.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_7.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_8.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_9.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_10.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_11.html</loc>
+    <priority>0.8</priority>
+  </url>
+</urlset>
