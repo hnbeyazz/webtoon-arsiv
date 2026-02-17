@@ -6,15 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lucaenfansub - Merry Marbling</title>
     
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "lucaenfansub",
-      "url": "https://hnbeyazz.github.io/webtoon-arsiv/"
-    }
-    </script>
-    
     <link rel="icon" type="image/png" href="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png">
     <link rel="apple-touch-icon" href="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png">
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@1,100&display=swap" rel="stylesheet">
@@ -37,8 +28,7 @@
 
         body { 
             margin: 0; 
-            /* Arka plan karartması 0.3'e düşürüldü */
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('media16.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('media16.jpg');
             background-size: cover; 
             background-position: center; 
             background-repeat: no-repeat;
@@ -53,7 +43,6 @@
             overflow-x: hidden;
         }
 
-        /* Kar Tuvali (Süresiz) */
         #kar-tuvali {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -61,13 +50,13 @@
             z-index: 9999;
         }
 
-        /* Logo ve Bildirim */
+        /* Logo ve Bildirim Butonu */
         .ana-serbest-logo {
             position: absolute;
             top: 20px; left: 20px;
             z-index: 2000;
         }
-        .ana-serbest-logo img { height: 500px; width: auto; transition: 0.4s ease; }
+        .ana-serbest-logo img { height: 500px; width: auto; transition: transform 0.4s ease; }
 
         @media (max-width: 500px) {
             .ana-serbest-logo { top: -100px !important; left: -75px !important; }
@@ -83,7 +72,9 @@
             cursor: pointer; z-index: 3000;
             box-shadow: 0 0 20px rgba(216, 233, 131, 0.4);
             display: flex; align-items: center; justify-content: center;
+            transition: transform 0.3s ease;
         }
+        .bildirim-btn:hover { transform: scale(1.1); }
 
         /* Duyuru Paneli */
         .duyuru-overlay {
@@ -95,82 +86,75 @@
         }
         .duyuru-ekran {
             background: white; color: #333; padding: 40px; border-radius: 15px;
-            width: 320px; text-align: center; font-family: 'PublicaSans', sans-serif;
+            width: 320px; text-align: center;
         }
-        .duyuru-ekran h2 { color: #333; font-style: italic; }
+        .kapat-btn { margin-top: 20px; padding: 10px 25px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer; }
 
-        /* Tanıtım Alanı (Ortalı) */
+        /* Tanıtım Alanı - Ortalama Düzeltmesi */
         .tanitim-alani {
-            margin-top: 180px;
-            display: flex;
-            flex-direction: column; /* Üst üste binmesi için */
-            align-items: center; /* Ortalama */
-            max-width: 900px;
-            padding: 40px 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .tanitim-ust {
-            display: flex;
-            flex-wrap: wrap;
+            margin-top: 180px; 
+            display: flex; 
+            flex-wrap: wrap; 
             gap: 40px;
-            justify-content: center; /* Kartları ortala */
-            align-items: flex-start;
+            max-width: 1000px; 
+            padding: 60px 20px; 
+            position: relative; 
+            z-index: 10;
+            justify-content: center; /* Tanıtım alanını sayfa ortasına hizalar */
         }
-
         .kapak { width: 280px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-        .detaylar { flex: 1; min-width: 320px; text-align: center; } /* Metni ortaladık */
-
-        h1 { font-style: italic; font-size: 3em; margin-bottom: 20px; color: #fff; text-align: center; width: 100%; }
+        .detaylar { flex: 1; min-width: 320px; }
+        
+        h1 { font-style: italic; font-size: 2.5em; margin-bottom: 20px; color: var(--baslik-mavi); }
 
         .ozet-konteynir {
-            background: rgba(255, 255, 255, 0.05); padding: 25px;
-            border-radius: 12px; border-top: 3px solid var(--özetpembesi);
-            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.03); padding: 20px;
+            border-radius: 12px; border-left: 4px solid var(--özetpembesi);
         }
         .konu-metni { 
             line-height: 1.6; font-size: 1.1em; text-align: justify; 
-            max-height: 120px; overflow: hidden; transition: max-height 0.5s ease; font-style: italic;
+            max-height: 100px; overflow: hidden; transition: max-height 0.5s ease; font-style: italic;
         }
-        .konu-metni.acik { max-height: 2000px; }
-        .devamini-oku-btn { background: none; border: none; color: var(--baslik-mavi); cursor: pointer; font-weight: bold; margin-top: 15px; }
+        .konu-metni.acik { max-height: 1000px; }
+        .devamini-oku-btn { background: none; border: none; color: var(--baslik-mavi); cursor: pointer; font-weight: bold; margin-top: 10px; }
 
         /* Bölüm Listesi */
         .liste-baslik { 
             width: 100%; max-width: 900px; font-size: 1.8em; 
-            border-bottom: 2px solid rgba(255,255,255,0.1); 
-            padding-bottom: 10px; margin-top: 50px; font-style: italic;
-            padding-left: 15px; /* Sola çok yaslı durmaması için */
+            border-bottom: 2px solid #333; padding-bottom: 8px; margin-top: 40px; font-style: italic;
+            padding-left: 20px; /* Sola yaslılığı kırmak için boşluk */
             box-sizing: border-box;
         }
         .bolum-listesi { 
-            width: 100%; max-width: 900px; height: 400px; overflow-y: auto; 
-            background: rgba(0, 0, 0, 0.4); border-radius: 12px; margin-bottom: 40px;
-            position: relative; z-index: 10;
+            width: 100%; max-width: 900px; height: 450px; overflow-y: auto; 
+            background: rgba(0, 0, 0, 0.4); border-radius: 12px; margin-bottom: 30px;
+            position: relative; z-index: 10; border: 1px solid rgba(255,255,255,0.05);
         }
         .bolum-kart {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 25px; text-decoration: none; color: #fff;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s;
+            padding: 15px 20px; text-decoration: none; color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: 0.3s;
         }
         .bolum-kart:hover { background: rgba(255, 255, 255, 0.05); }
+        
+        /* Yazılar Sola Yaslı */
+        .bolum-bilgi { text-align: left; }
+        
         .yeni-etiketi {
             background: var(--özetpembesi); color: #333; font-size: 0.7em; padding: 3px 8px;
             border-radius: 4px; margin-left: 10px; text-transform: uppercase; font-weight: bold;
         }
         .sayac-kutusu {
-            font-family: 'Courier New', Courier, monospace; color: var(--özetpembesi);
-            font-weight: bold; text-shadow: 0 0 8px rgba(255, 192, 203, 0.3);
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--özetpembesi); font-size: 0.9em; font-weight: bold;
+            text-shadow: 0 0 8px rgba(255, 192, 203, 0.4);
         }
         .bolum-tarih { font-size: 0.8rem; color: #888; }
         .izlendi-ikon { width: 24px; opacity: 0; filter: invert(1); transition: 0.3s; }
         .izlendi-ikon.aktif { opacity: 0.6; }
 
-        /* Yorumlar */
-        .yorum-alani { width: 90%; max-width: 900px; padding: 20px; margin-bottom: 60px; background: rgba(255, 255, 255, 0.02); border-radius: 15px; position: relative; z-index: 10; }
+        .yorum-alani { width: 90%; max-width: 900px; padding: 20px; margin-bottom: 50px; background: rgba(255, 255, 255, 0.03); border-radius: 15px; position: relative; z-index: 10; }
 
-        /* Kaydırma Çubuğu */
         .bolum-listesi::-webkit-scrollbar { width: 6px; }
         .bolum-listesi::-webkit-scrollbar-thumb { background: var(--özetpembesi); border-radius: 10px; }
     </style>
@@ -190,22 +174,20 @@
     <div class="duyuru-overlay" id="duyuruKutusu">
         <div class="duyuru-ekran">
             <h2>DUYURU</h2>
-            <p>Yeni bölüm ne zaman bende bilmiyorum. 3 günde 2 bölüm attım biraz mola 🙂‍↕️🤲🏻</p>
-            <button class="kapat-btn" style="padding: 10px 20px; cursor: pointer;" onclick="duyuruKapat()">Anladım.</button>
+            <p>12. Bölüm hazırlıkları devam ediyor! Takipte kalın.</p>
+            <button class="kapat-btn" onclick="duyuruKapat()">Kapat</button>
         </div>
     </div>
     
     <div class="tanitim-alani">
-        <h1>Merry Marbling</h1>
-        <div class="tanitim-ust">
-            <img src="tall.jpg" class="kapak" alt="Merry Marbling">
-            <div class="detaylar">
-                <div class="ozet-konteynir">
-                    <p class="konu-metni" id="ozetMetin">
-                        Ian, görünüşte mükemmel bir öğrencidir; nazik, güvenilir ve üstüne üstlük yakışıklıdır. Çocukken yaptığı masum bir iyilik sayesinde "Noel Meleği" olarak tanınmaya başlar. Bu yüzden Yugun, uzun bir hastalık izninden sonra okula döndüğünde, Ian'ın gün boyunca ona yardım etmek için yanında olmasına kimse şaşırmaz. Ian'ın bu melekvari kişiliği sayesinde Yugun ona güvenebileceğini düşünür; ta ki Ian ile annesi arasında geçen bir konuşmaya kulak misafiri olana kadar. Bu konuşma, her şeyin Ian'ın imajını korumak için yaptığı bir plandan ibaret olduğunu ortaya çıkarır. Bu ihanetle küplere binen Yugun, Ian'la yüzleşir ve onun gerçek yüzünü herkese ifşa etmekle tehdit eder. Ancak Ian'ın beklenmedik tepkisi Yugun'un kafasını daha da karıştırır: "Hadi yap. Ama sonrasında olacaklar benim sorumluluğumda değil." Ne de olsa, sözde "Noel Meleği"nden kim nefret edebilir ki? Bu ikili, yağ ile su gibi ayrı mı kalacak? Yoksa birbirlerine karışıp, her ikisinin de hayal edebileceğinden çok daha güzel bir şey mi yaratacaklar?
-                    </p>
-                    <button class="devamini-oku-btn" id="btnOku" onclick="ozetiAc()">Devamını Oku...</button>
-                </div>
+        <img src="tall.jpg" class="kapak" alt="Merry Marbling">
+        <div class="detaylar">
+            <h1>Merry Marbling</h1>
+            <div class="ozet-konteynir">
+                <p class="konu-metni" id="ozetMetin">
+                    Ian, görünüşte mükemmel bir öğrencidir; nazik, güvenilir ve üstüne üstlük yakışıklıdır. Çocukken yaptığı masum bir iyilik sayesinde "Noel Meleği" olarak tanınmaya başlar. Bu yüzden Yugun, uzun bir hastalık izninden sonra okula döndüğünde, Ian'ın gün boyunca ona yardım etmek için yanında olmasına kimse şaşırmaz. Ian'ın bu melekvari kişiliği sayesinde Yugun ona güvenebileceğini düşünür; ta ki Ian ile annesi arasında geçen bir konuşmaya kulak misafiri olana kadar. Bu konuşma, her şeyin Ian'ın imajını korumak için yaptığı bir plandan ibaret olduğunu ortaya çıkarır. Bu ihanetle küplere binen Yugun, Ian'la yüzleşir ve onun gerçek yüzünü herkese ifşa etmekle tehdit eder. Ancak Ian'ın beklenmedik tepkisi Yugun'un kafasını daha da karıştırır: "Hadi yap. Ama sonrasında olacaklar benim sorumluluğumda değil." Ne de olsa, sözde "Noel Meleği"nden kim nefret edebilir ki? Bu ikili, yağ ile su gibi ayrı mı kalacak? Yoksa birbirlerine karışıp, her ikisinin de hayal edebileceğinden çok daha güzel bir şey mi yaratacaklar?
+                </p>
+                <button class="devamini-oku-btn" id="btnOku" onclick="ozetiAc()">Devamını Oku...</button>
             </div>
         </div>
     </div>
@@ -213,33 +195,33 @@
     <h2 class="liste-baslik">Bölümler</h2>
 
     <div class="bolum-listesi">
-        <div class="bolum-kart">
+        <div class="bolum-kart" style="cursor: default;">
             <div class="bolum-bilgi">
-                <span class="bolum-no">12. Bölüm <span class="yeni-etiketi">Yakında</span></span>
-                <span class="bolum-tarih">25 Şubat 2026</span>
+                <span class="bolum-no">12. Bölüm <span class="yeni-etiketi">Yakında</span></span><br>
+                <span class="bolum-tarih">Tahmini: 25 Şubat 2026</span>
             </div>
             <div id="countdown" class="sayac-kutusu">...</div>
         </div>
 
         <a href="izle_bolum_11.html" class="bolum-kart" onclick="kaydet('bolum11')">
             <div class="bolum-bilgi">
-                <span class="bolum-no">11. Bölüm <span class="yeni-etiketi">yeni</span></span>
-                <span class="bolum-tarih">10 Şubat 2026</span>
+                <span class="bolum-no">11. Bölüm <span class="yeni-etiketi">Yeni</span></span><br>
+                <span class="bolum-tarih">12 Şubat 2026</span>
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum11">
         </a>
 
         <script>
-            const data = [
+            const bolumler = [
                 {n:10, t:"7 Şubat"}, {n:9, t:"2 Şubat"}, {n:8, t:"26 Ocak"},
                 {n:7, t:"19 Ocak"}, {n:6, t:"14 Ocak"}, {n:5, t:"9 Ocak"},
                 {n:4, t:"5 Ocak"}, {n:3, t:"2 Ocak"}, {n:2, t:"2 Ocak"}, {n:1, t:"1 Ocak"}
             ];
-            data.forEach(b => {
+            bolumler.forEach(b => {
                 document.write(`
                 <a href="izle_bolum_${b.n}.html" class="bolum-kart" onclick="kaydet('bolum${b.n}')">
                     <div class="bolum-bilgi">
-                        <span class="bolum-no">${b.n}. Bölüm</span>
+                        <span class="bolum-no">${b.n}. Bölüm</span><br>
                         <span class="bolum-tarih">${b.t} 2026</span>
                     </div>
                     <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum${b.n}">
@@ -257,7 +239,7 @@
         (function() {
             const canvas = document.getElementById('kar-tuvali');
             const ctx = canvas.getContext('2d');
-            let width, height, snowflakes = [];
+            let width, height, stars = [];
 
             function resize() {
                 width = window.innerWidth; height = window.innerHeight;
@@ -266,19 +248,17 @@
             window.addEventListener('resize', resize);
             resize();
 
-            class Snowflake {
+            class Star {
                 constructor() { this.reset(); }
                 reset() {
                     this.x = Math.random() * width;
-                    this.y = Math.random() * -height;
-                    this.size = Math.random() * 3 + 1;
-                    this.speed = Math.random() * 1.5 + 0.5;
-                    this.velX = Math.random() * 1 - 0.5;
-                    this.alpha = Math.random() * 0.5 + 0.3;
+                    this.y = Math.random() * height;
+                    this.size = Math.random() * 1.5 + 0.5;
+                    this.speed = Math.random() * 0.8 + 0.2;
+                    this.alpha = Math.random();
                 }
                 update() {
                     this.y += this.speed;
-                    this.x += this.velX;
                     if (this.y > height) this.y = -10;
                 }
                 draw() {
@@ -288,10 +268,11 @@
                     ctx.fill();
                 }
             }
-            for (let i = 0; i < 100; i++) snowflakes.push(new Snowflake());
+
+            for(let i=0; i<100; i++) stars.push(new Star());
             function animate() {
                 ctx.clearRect(0, 0, width, height);
-                snowflakes.forEach(f => { f.update(); f.draw(); });
+                stars.forEach(s => { s.update(); s.draw(); });
                 requestAnimationFrame(animate);
             }
             animate();
@@ -301,7 +282,7 @@
         function updateCountdown() {
             const hedef = new Date("Feb 25, 2026 18:00:00").getTime();
             const fark = hedef - new Date().getTime();
-            if (fark < 0) { document.getElementById("countdown").innerHTML = "YAYINDA!"; return; }
+            if (fark < 0) { document.getElementById("countdown").innerHTML = "BÖLÜM YAYINDA!"; return; }
             const g = Math.floor(fark / (1000 * 60 * 60 * 24));
             const s = Math.floor((fark % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const d = Math.floor((fark % (1000 * 60 * 60)) / (1000 * 60));
@@ -311,7 +292,7 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // --- Diğer Fonksiyonlar ---
+        // --- UI Fonksiyonları ---
         function ozetiAc() {
             var metin = document.getElementById("ozetMetin");
             metin.classList.toggle("acik");
@@ -330,12 +311,12 @@
             }
         };
 
-        // --- Disqus (Senin Özel Yapın) ---
+        // Disqus
         var disqus_config = function () {
-            this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/index.html'; 
-            this.page.identifier = 'merry-marbling-ana-sayfa'; 
+            this.page.url = window.location.href;
+            this.page.identifier = 'merry-marbling-ana-sayfa';
         };
-        (function() { 
+        (function() {
             var d = document, s = d.createElement('script');
             s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
             s.setAttribute('data-timestamp', +new Date());
