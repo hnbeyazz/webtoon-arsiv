@@ -16,13 +16,10 @@
     </script>
     
     <link rel="icon" type="image/png" href="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png">
-    <link rel="shortcut icon" href="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png">
     <link rel="apple-touch-icon" href="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png">
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@1,100&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Shadows+Into+Light&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
     <style>
         @font-face {
             font-family: 'PublicaSans';
@@ -30,36 +27,20 @@
             font-weight: normal;
             font-style: italic;
         }
-        :root { color-scheme: light dark;}
-        @media (prefers-color-scheme: dark) {
-            body { background-color: #000 !important; }
-            .yeni-etiketi { background-color: #FDB5CE !important; color: #fff !important;}
-            .duyuru-ekran {background-color: white !important; color: #333 !important;} 
-        }
+
         :root {
             --ana-mavi: #001d3d;
             --baslik-mavi: #90e0ef;
-            --arka-plan: #FFFFFF;
             --zumrut: #D8E983;
             --özetpembesi: #ffc0cb;
         }
 
-        /* Kar Tuvali Stili */
-        #kar-tuvali {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-        }
-
         body { 
             margin: 0; 
-            background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('media16.jpg');
+            /* Arka plan karartması 0.3'e düşürüldü */
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('media16.jpg');
             background-size: cover; 
-            background-position: fixed; 
+            background-position: center; 
             background-repeat: no-repeat;
             background-color: #000; 
             background-attachment: fixed; 
@@ -69,191 +50,129 @@
             flex-direction: column; 
             align-items: center; 
             min-height: 100vh;
+            overflow-x: hidden;
         }
+
+        /* Kar Tuvali (Süresiz) */
+        #kar-tuvali {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Logo ve Bildirim */
+        .ana-serbest-logo {
+            position: absolute;
+            top: 20px; left: 20px;
+            z-index: 2000;
+        }
+        .ana-serbest-logo img { height: 500px; width: auto; transition: 0.4s ease; }
+
+        @media (max-width: 500px) {
+            .ana-serbest-logo { top: -100px !important; left: -75px !important; }
+            .ana-serbest-logo img { height: 350px; }
+        }
+
         .bildirim-btn {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 60px;
-            height: 60px;
+            bottom: 20px; left: 20px;
+            width: 60px; height: 60px;
             background-color: var(--zumrut);
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            z-index: 3000;
-            box-shadow: 0 0 20px rgba(0, 184, 148, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
+            border-radius: 50%; border: none;
+            cursor: pointer; z-index: 3000;
+            box-shadow: 0 0 20px rgba(216, 233, 131, 0.4);
+            display: flex; align-items: center; justify-content: center;
         }
-        .bildirim-btn:hover { transform: scale(1.1); }
+
+        /* Duyuru Paneli */
         .duyuru-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.85);
-            display: none;
-            align-items: center;
-            justify-content: center;
+            display: none; align-items: center; justify-content: center;
             z-index: 4000;
         }
         .duyuru-ekran {
-            background: white;
-            color: #333;
-            padding: 40px;
-            border-radius: 15px;
-            width: 320px;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+            background: white; color: #333; padding: 40px; border-radius: 15px;
+            width: 320px; text-align: center; font-family: 'PublicaSans', sans-serif;
         }
-        .duyuru-ekran h2 { color: var(--zumrut); margin-top: 0; letter-spacing: 1px; font-family: 'PublicaSans', sans-serif; font-style: italic;}
-        .duyuru-ekran p { font-size: 1.1em; line-height: 1.5; margin: 20px 0;font-family: 'PublicaSans', sans-serif; font-style: italic;}
-        .kapat-btn {
-            padding: 10px 25px;
-            background: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+        .duyuru-ekran h2 { color: #333; font-style: italic; }
 
-        .ana-serbest-logo {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 2000;
-        }
-
-        .ana-serbest-logo img {
-            height: 500px;
-            width: auto;
-            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @media (max-width: 500px) {
-            .ana-serbest-logo { top: -100px !important; left: -75px !important; }
-            .ana-serbest-logo img { height: 350px; display: block; top: -90px; }
-        }
-
-        .yeni-etiketi {
-            background: #FDB5CE; 
-            color: #fff;
-            font-size: 0.7em;
-            font-family: PublicaSans, italic;
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin-left: 10px;
-            text-transform: uppercase;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-            display: inline-block;
-            vertical-align: middle;
-        }
-
+        /* Tanıtım Alanı (Ortalı) */
         .tanitim-alani {
             margin-top: 180px;
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 40px;
-            max-width: 1000px; 
-            padding: 60px 20px;
-            align-items: flex-start; 
-            justify-content: center;
+            display: flex;
+            flex-direction: column; /* Üst üste binmesi için */
+            align-items: center; /* Ortalama */
+            max-width: 900px;
+            padding: 40px 20px;
             position: relative;
             z-index: 10;
         }
 
-        .kapak { width: 280px; border-radius: 15px; box-shadow: 0 10px 40px rgba(144, 224, 239, 0.2); }
-        .detaylar { flex: 1; min-width: 320px; text-align: left; }
-
-        h1 { 
-            font-family: 'PublicaSans', sans-serif; font-style: italic;
-            color: #ffffff; font-size: 2.5em; margin-bottom: 40px;
+        .tanitim-ust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center; /* Kartları ortala */
+            align-items: flex-start;
         }
 
-        .konu-metni { 
-            line-height: 1.5; color: #ffffff; font-size: 1.1em; text-align: justify; 
-            max-height: 100px; overflow: hidden; font-family: 'PublicaSans', sans-serif; font-style: italic;
-            transition: max-height 0.5s ease; 
-        }
+        .kapak { width: 280px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        .detaylar { flex: 1; min-width: 320px; text-align: center; } /* Metni ortaladık */
 
-        .konu-metni.acik { max-height: 1000px; }
-        .devamini-oku-btn { background: none; border: none; color: var(--baslik-mavi); font-weight: bold; cursor: pointer; padding: 10px 0; font-size: 1em; }
+        h1 { font-style: italic; font-size: 3em; margin-bottom: 20px; color: #fff; text-align: center; width: 100%; }
 
-        .liste-baslik { 
-            width: 100%; max-width: 900px; padding: 0 6px; color: #fff; 
-            font-size: 1.8em; border-bottom: 2px solid #000000; padding-bottom: 8px; 
-            margin-top: 40px; box-sizing: border-box; text-align: left;
-            font-family: 'PublicaSans', sans-serif; font-style: italic;
-            position: relative; z-index: 10;
-        }
         .ozet-konteynir {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid var(--özetpembesi);
-            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.05); padding: 25px;
+            border-radius: 12px; border-top: 3px solid var(--özetpembesi);
+            margin-top: 10px;
+        }
+        .konu-metni { 
+            line-height: 1.6; font-size: 1.1em; text-align: justify; 
+            max-height: 120px; overflow: hidden; transition: max-height 0.5s ease; font-style: italic;
+        }
+        .konu-metni.acik { max-height: 2000px; }
+        .devamini-oku-btn { background: none; border: none; color: var(--baslik-mavi); cursor: pointer; font-weight: bold; margin-top: 15px; }
+
+        /* Bölüm Listesi */
+        .liste-baslik { 
+            width: 100%; max-width: 900px; font-size: 1.8em; 
+            border-bottom: 2px solid rgba(255,255,255,0.1); 
+            padding-bottom: 10px; margin-top: 50px; font-style: italic;
+            padding-left: 15px; /* Sola çok yaslı durmaması için */
+            box-sizing: border-box;
         }
         .bolum-listesi { 
-            width: 100%; 
-            max-width: 900px; 
-            padding: 0;
-            display: flex; 
-            flex-direction: column; 
-            gap: 0;
-            font-family: 'PublicaSans', sans-serif; 
-            font-style: italic;
-            height: 350px;     
-            overflow-y: auto;
-            background: rgba(0, 0, 0, 0.1); 
-            border-radius: 12px;
-            position: relative;
-            z-index: 10;
+            width: 100%; max-width: 900px; height: 400px; overflow-y: auto; 
+            background: rgba(0, 0, 0, 0.4); border-radius: 12px; margin-bottom: 40px;
+            position: relative; z-index: 10;
         }
-        .bolum-listesi::-webkit-scrollbar { width: 5px; }
-        .bolum-listesi::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
-        .bolum-listesi::-webkit-scrollbar-thumb { background: #ffcbdb; border-radius: 10px; }
-        
         .bolum-kart {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: #fff;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            transition: 0.3s;
-            min-height: 50px; 
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 25px; text-decoration: none; color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s;
         }
-
         .bolum-kart:hover { background: rgba(255, 255, 255, 0.05); }
-        .bolum-bilgi { display: flex; flex-direction: column; gap: 2px; }
-        .bolum-no { font-size: 1.1rem; font-weight: bold; }
+        .yeni-etiketi {
+            background: var(--özetpembesi); color: #333; font-size: 0.7em; padding: 3px 8px;
+            border-radius: 4px; margin-left: 10px; text-transform: uppercase; font-weight: bold;
+        }
+        .sayac-kutusu {
+            font-family: 'Courier New', Courier, monospace; color: var(--özetpembesi);
+            font-weight: bold; text-shadow: 0 0 8px rgba(255, 192, 203, 0.3);
+        }
         .bolum-tarih { font-size: 0.8rem; color: #888; }
-
-        .izlendi-ikon { width: 24px; height: 24px; opacity: 0; transition: 0.3s; filter: invert(1); }
+        .izlendi-ikon { width: 24px; opacity: 0; filter: invert(1); transition: 0.3s; }
         .izlendi-ikon.aktif { opacity: 0.6; }
 
-        .yorum-alani { 
-            width: 90%; 
-            max-width: 900px; 
-            padding: 20px; 
-            margin: 30px auto 50px auto;
-            background: rgba(255, 255, 255, 0.03); 
-            border-radius: 15px;
-            box-sizing: border-box;
-            position: relative;
-            z-index: 10;
-        }
+        /* Yorumlar */
+        .yorum-alani { width: 90%; max-width: 900px; padding: 20px; margin-bottom: 60px; background: rgba(255, 255, 255, 0.02); border-radius: 15px; position: relative; z-index: 10; }
 
-        @media (max-width: 600px) {
-            .tanitim-alani { margin-top: 100px; }
-            h1 { font-size: 3em; text-align: center; }
-            .kapak { width: 100%; max-width: 250px; margin: 0 auto; display: block; }
-            .detaylar { text-align: center; min-width: 100%; }
-            .bolum-bilgi { text-align: left !important; }
-        }
+        /* Kaydırma Çubuğu */
+        .bolum-listesi::-webkit-scrollbar { width: 6px; }
+        .bolum-listesi::-webkit-scrollbar-thumb { background: var(--özetpembesi); border-radius: 10px; }
     </style>
 </head>
 
@@ -272,19 +191,21 @@
         <div class="duyuru-ekran">
             <h2>DUYURU</h2>
             <p>Yeni bölüm ne zaman bende bilmiyorum. 3 günde 2 bölüm attım biraz mola 🙂‍↕️🤲🏻</p>
-            <button class="kapat-btn" onclick="duyuruKapat()">Anladım.</button>
+            <button class="kapat-btn" style="padding: 10px 20px; cursor: pointer;" onclick="duyuruKapat()">Anladım.</button>
         </div>
     </div>
     
     <div class="tanitim-alani">
-        <img src="tall.jpg" class="kapak" alt="Merry Marbling">
-        <div class="detaylar">
-            <h1>Merry Marbling</h1>
-            <div class="ozet-konteynir">
-                <p class="konu-metni" id="ozetMetin">
-                    Ian, görünüşte mükemmel bir öğrencidir; nazik, güvenilir ve üstüne üstlük yakışıklıdır. Çocukken yaptığı masum bir iyilik sayesinde "Noel Meleği" olarak tanınmaya başlar. Bu yüzden Yugun, uzun bir hastalık izninden sonra okula döndüğünde, Ian'ın gün boyunca ona yardım etmek için yanında olmasına kimse şaşırmaz.Ian'ın bu melekvari kişiliği sayesinde Yugun ona güvenebileceğini düşünür; ta ki Ian ile annesi arasında geçen bir konuşmaya kulak misafiri olana kadar. Bu konuşma, her şeyin Ian'ın imajını korumak için yaptığı bir plandan ibaret olduğunu ortaya çıkarır. Bu ihanetle küplere binen Yugun, Ian'la yüzleşir ve onun gerçek yüzünü herkese ifşa etmekle tehdit eder.Ancak Ian'ın beklenmedik tepkisi Yugun'un kafasını daha da karıştırır: "Hadi yap. Ama sonrasında olacaklar benim sorumluluğumda değil." Ne de olsa, sözde "Noel Meleği"nden kim nefret edebilir ki? Bu ikili, yağ ile su gibi ayrı mı kalacak? Yoksa birbirlerine karışıp, her ikisinin de hayal edebileceğinden çok daha güzel bir şey mi yaratacaklar?
-                </p>
-                <button class="devamini-oku-btn" id="btnOku" onclick="ozetiAc()">Devamını Oku...</button>
+        <h1>Merry Marbling</h1>
+        <div class="tanitim-ust">
+            <img src="tall.jpg" class="kapak" alt="Merry Marbling">
+            <div class="detaylar">
+                <div class="ozet-konteynir">
+                    <p class="konu-metni" id="ozetMetin">
+                        Ian, görünüşte mükemmel bir öğrencidir; nazik, güvenilir ve üstüne üstlük yakışıklıdır. Çocukken yaptığı masum bir iyilik sayesinde "Noel Meleği" olarak tanınmaya başlar. Bu yüzden Yugun, uzun bir hastalık izninden sonra okula döndüğünde, Ian'ın gün boyunca ona yardım etmek için yanında olmasına kimse şaşırmaz. Ian'ın bu melekvari kişiliği sayesinde Yugun ona güvenebileceğini düşünür; ta ki Ian ile annesi arasında geçen bir konuşmaya kulak misafiri olana kadar. Bu konuşma, her şeyin Ian'ın imajını korumak için yaptığı bir plandan ibaret olduğunu ortaya çıkarır. Bu ihanetle küplere binen Yugun, Ian'la yüzleşir ve onun gerçek yüzünü herkese ifşa etmekle tehdit eder. Ancak Ian'ın beklenmedik tepkisi Yugun'un kafasını daha da karıştırır: "Hadi yap. Ama sonrasında olacaklar benim sorumluluğumda değil." Ne de olsa, sözde "Noel Meleği"nden kim nefret edebilir ki? Bu ikili, yağ ile su gibi ayrı mı kalacak? Yoksa birbirlerine karışıp, her ikisinin de hayal edebileceğinden çok daha güzel bir şey mi yaratacaklar?
+                    </p>
+                    <button class="devamini-oku-btn" id="btnOku" onclick="ozetiAc()">Devamını Oku...</button>
+                </div>
             </div>
         </div>
     </div>
@@ -292,121 +213,56 @@
     <h2 class="liste-baslik">Bölümler</h2>
 
     <div class="bolum-listesi">
-                <a href="izle_bolum_12.html" class="bolum-kart" onclick="kaydet('bolum12')">
+        <div class="bolum-kart">
             <div class="bolum-bilgi">
-                <span class="bolum-no">12. Bölüm<span class="yeni-etiketi">Yakında</span></span>
+                <span class="bolum-no">12. Bölüm <span class="yeni-etiketi">Yakında</span></span>
                 <span class="bolum-tarih">25 Şubat 2026</span>
             </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum12">
-        </a>
+            <div id="countdown" class="sayac-kutusu">...</div>
+        </div>
+
         <a href="izle_bolum_11.html" class="bolum-kart" onclick="kaydet('bolum11')">
             <div class="bolum-bilgi">
-                <span class="bolum-no">11. Bölüm<span class="yeni-etiketi">yeni</span></span>
+                <span class="bolum-no">11. Bölüm <span class="yeni-etiketi">yeni</span></span>
                 <span class="bolum-tarih">10 Şubat 2026</span>
             </div>
             <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum11">
         </a>
 
-        <a href="izle_bolum_10.html" class="bolum-kart" onclick="kaydet('bolum10')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">10. Bölüm</span>
-                <span class="bolum-tarih">7 Şubat 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum10">
-        </a>
+        <script>
+            const data = [
+                {n:10, t:"7 Şubat"}, {n:9, t:"2 Şubat"}, {n:8, t:"26 Ocak"},
+                {n:7, t:"19 Ocak"}, {n:6, t:"14 Ocak"}, {n:5, t:"9 Ocak"},
+                {n:4, t:"5 Ocak"}, {n:3, t:"2 Ocak"}, {n:2, t:"2 Ocak"}, {n:1, t:"1 Ocak"}
+            ];
+            data.forEach(b => {
+                document.write(`
+                <a href="izle_bolum_${b.n}.html" class="bolum-kart" onclick="kaydet('bolum${b.n}')">
+                    <div class="bolum-bilgi">
+                        <span class="bolum-no">${b.n}. Bölüm</span>
+                        <span class="bolum-tarih">${b.t} 2026</span>
+                    </div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum${b.n}">
+                </a>`);
+            });
+        </script>
+    </div>
 
-        <a href="izle_bolum_9.html" class="bolum-kart" onclick="kaydet('bolum9')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">9. Bölüm</span>
-                <span class="bolum-tarih">2 Şubat 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum9">
-        </a>
-
-        <a href="izle_bolum_8.html" class="bolum-kart" onclick="kaydet('bolum8')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">8. Bölüm</span>
-                <span class="bolum-tarih">26 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum8">
-        </a>
-
-        <a href="izle_bolum_7.html" class="bolum-kart" onclick="kaydet('bolum7')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">7. Bölüm</span>
-                <span class="bolum-tarih">19 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum7">
-        </a>
-
-        <a href="izle_bolum_6.html" class="bolum-kart" onclick="kaydet('bolum6')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">6. Bölüm</span>
-                <span class="bolum-tarih">14 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum6">
-        </a>
-
-        <a href="izle_bolum_5.html" class="bolum-kart" onclick="kaydet('bolum5')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">5. Bölüm</span>
-                <span class="bolum-tarih">9 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum5">
-        </a>
-
-        <a href="izle_bolum_4.html" class="bolum-kart" onclick="kaydet('bolum4')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">4. Bölüm</span>
-                <span class="bolum-tarih">5 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum4">
-        </a>
-
-        <a href="izle_bolum_3.html" class="bolum-kart" onclick="kaydet('bolum3')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">3. Bölüm</span>
-                <span class="bolum-tarih">2 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum3">
-        </a>
-
-        <a href="izle_bolum_2.html" class="bolum-kart" onclick="kaydet('bolum2')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">2. Bölüm</span>
-                <span class="bolum-tarih">2 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum2">
-        </a>
-
-        <a href="izle_bolum_1.html" class="bolum-kart" onclick="kaydet('bolum1')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">1. Bölüm</span>
-                <span class="bolum-tarih">1 Ocak 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum1">
-        </a>
-    </div> <div class="yorum-alani">
+    <div class="yorum-alani">
         <div id="disqus_thread"></div>
     </div>
 
     <script>
-        // --- Kar Efekti Scripti (30 Saniye) ---
+        // --- Kar Efekti (Süresiz) ---
         (function() {
             const canvas = document.getElementById('kar-tuvali');
             const ctx = canvas.getContext('2d');
             let width, height, snowflakes = [];
-            let isStopping = false;
-            let opacity = 1;
-            let speedMultiplier = 1; 
 
             function resize() {
-                width = window.innerWidth;
-                height = window.innerHeight;
-                canvas.width = width;
-                canvas.height = height;
+                width = window.innerWidth; height = window.innerHeight;
+                canvas.width = width; canvas.height = height;
             }
-
             window.addEventListener('resize', resize);
             resize();
 
@@ -417,99 +273,74 @@
                     this.y = Math.random() * -height;
                     this.size = Math.random() * 3 + 1;
                     this.speed = Math.random() * 1.5 + 0.5;
-                    this.velY = this.speed;
                     this.velX = Math.random() * 1 - 0.5;
                     this.alpha = Math.random() * 0.5 + 0.3;
                 }
                 update() {
-                    this.y += this.velY * speedMultiplier;
-                    this.x += this.velX * speedMultiplier;
-                    if (this.y > height && !isStopping) {
-                        this.y = -10;
-                        this.x = Math.random() * width;
-                    }
+                    this.y += this.speed;
+                    this.x += this.velX;
+                    if (this.y > height) this.y = -10;
                 }
                 draw() {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha * opacity})`;
+                    ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
                     ctx.fill();
                 }
             }
-
-            function init() {
-                for (let i = 0; i < 120; i++) snowflakes.push(new Snowflake());
-                animate();
-            }
-
+            for (let i = 0; i < 100; i++) snowflakes.push(new Snowflake());
             function animate() {
                 ctx.clearRect(0, 0, width, height);
                 snowflakes.forEach(f => { f.update(); f.draw(); });
-                if (opacity > 0) requestAnimationFrame(animate);
-                else canvas.remove();
+                requestAnimationFrame(animate);
             }
-
-            init();
-
-            setTimeout(() => {
-                isStopping = true;
-                let fadeInterval = setInterval(() => {
-                    speedMultiplier -= 0.01; 
-                    opacity -= 0.015; 
-                    if (opacity <= 0) {
-                        clearInterval(fadeInterval);
-                        opacity = 0;
-                    }
-                }, 100); 
-            }, 30000);
+            animate();
         })();
 
-        // --- Fonksiyonlar ---
+        // --- Geri Sayım ---
+        function updateCountdown() {
+            const hedef = new Date("Feb 25, 2026 18:00:00").getTime();
+            const fark = hedef - new Date().getTime();
+            if (fark < 0) { document.getElementById("countdown").innerHTML = "YAYINDA!"; return; }
+            const g = Math.floor(fark / (1000 * 60 * 60 * 24));
+            const s = Math.floor((fark % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const d = Math.floor((fark % (1000 * 60 * 60)) / (1000 * 60));
+            const sn = Math.floor((fark % (1000 * 60)) / 1000);
+            document.getElementById("countdown").innerHTML = `${g}g ${s}s ${d}d ${sn}s`;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // --- Diğer Fonksiyonlar ---
         function ozetiAc() {
             var metin = document.getElementById("ozetMetin");
-            var btn = document.getElementById("btnOku");
             metin.classList.toggle("acik");
-            btn.innerHTML = metin.classList.contains("acik") ? "Daha Az Gör" : "Devamını Oku...";
+            document.getElementById("btnOku").innerText = metin.classList.contains("acik") ? "Daha Az Gör" : "Devamını Oku...";
         }
-
         function duyuruAc() { document.getElementById("duyuruKutusu").style.display = "flex"; }
         function duyuruKapat() { document.getElementById("duyuruKutusu").style.display = "none"; }
-        
-        window.onclick = function(event) {
-            var overlay = document.getElementById("duyuruKutusu");
-            if (event.target == overlay) overlay.style.display = "none";
-        }
-
         function kaydet(id) { localStorage.setItem(id, "true"); }
 
         window.onload = function() {
-            const bolumler = ['bolum1', 'bolum2', 'bolum3', 'bolum4', 'bolum5', 'bolum6', 'bolum7', 'bolum8', 'bolum9', 'bolum10'];
-            bolumler.forEach(id => {
-                if (localStorage.getItem(id) === "true") {
-                    const icon = document.getElementById("icon-" + id);
+            for(let i=1; i<=11; i++) {
+                if (localStorage.getItem('bolum'+i) === "true") {
+                    const icon = document.getElementById("icon-bolum"+i);
                     if (icon) icon.classList.add("aktif");
                 }
-            });
+            }
         };
 
+        // --- Disqus (Senin Özel Yapın) ---
         var disqus_config = function () {
             this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/index.html'; 
             this.page.identifier = 'merry-marbling-ana-sayfa'; 
         };
-
         (function() { 
             var d = document, s = d.createElement('script');
             s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
             s.setAttribute('data-timestamp', +new Date());
             (d.head || d.body).appendChild(s);
         })();
-        // URL'de #havva veya %havva kontrolü yapar
-window.addEventListener('load', function() {
-    if (window.location.hash === '#havva' || window.location.href.includes('%havva')) {
-        window.location.href = 'havva.html'; // Hedef sayfanızın adı
-    }
-});
-
     </script>
 </body>
 </html>
