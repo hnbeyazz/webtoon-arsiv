@@ -63,18 +63,28 @@
             .ana-serbest-logo img { height: 350px; }
         }
 
-        .bildirim-btn {
-            position: fixed;
-            bottom: 20px; left: 20px;
-            width: 60px; height: 60px;
-            background-color: var(--zumrut);
-            border-radius: 50%; border: none;
-            cursor: pointer; z-index: 3000;
-            box-shadow: 0 0 20px rgba(216, 233, 131, 0.4);
-            display: flex; align-items: center; justify-content: center;
-            transition: transform 0.3s ease;
-        }
-        .bildirim-btn:hover { transform: scale(1.1); }
+.bildirim-btn {
+    position: fixed;
+    bottom: 20px; left: 20px;
+    width: 60px; height: 60px;
+    
+    /* Yumuşak Pembe Gradient */
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    
+    /* Pembe Işıma (Glow) Efekti */
+    box-shadow: 0 0 20px rgba(238, 156, 167, 0.6), 0 0 40px rgba(238, 156, 167, 0.3);
+    
+    border-radius: 50%; border: none;
+    cursor: pointer; z-index: 3000;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bildirim-btn:hover { 
+    transform: scale(1.1);
+    /* Üzerine gelince ışımayı biraz daha artırır */
+    box-shadow: 0 0 30px rgba(238, 156, 167, 0.8);
+}
 
         /* Duyuru Paneli */
         .duyuru-overlay {
