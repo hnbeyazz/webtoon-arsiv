@@ -82,11 +82,8 @@
 
 .bildirim-btn:hover { 
     transform: scale(1.1);
-    /* Üzerine gelince ışımayı biraz daha artırır */
     box-shadow: 0 0 30px rgba(238, 156, 167, 0.8);
 }
-
-        /* Duyuru Paneli */
         .duyuru-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -99,8 +96,6 @@
             width: 320px; text-align: center;
         }
         .kapat-btn { margin-top: 20px; padding: 10px 25px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer; }
-
-        /* Tanıtım Alanı - Ortalama Düzeltmesi */
         .tanitim-alani {
             margin-top: 180px; 
             display: flex; 
@@ -115,8 +110,8 @@
         }
         .kapak { width: 280px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
         .detaylar { flex: 1; min-width: 320px; }
-        
         h1 { font-style: italic; 
+            font-family: sans-serif;
         font-size: 2.5em; 
         margin-bottom: 20px; 
         color: var(--baslik-mavi);
@@ -129,9 +124,13 @@
             border-radius: 12px; border-left: 4px solid var(--özetpembesi);
         }
         .konu-metni { 
-            line-height: 1.6; font-size: 1.1em; text-align: justify; 
-            max-height: 100px; overflow: hidden; transition: max-height 0.5s ease; font-style: italic;
-        }
+            font-family: sans-serif;
+            line-height: 1.6; 
+            font-size: 1.1em; 
+            text-align: justify; 
+            max-height: 100px; 
+            overflow: hidden; 
+            transition: max-height 0.5s ease;}
         .konu-metni.acik { max-height: 1000px; }
         .devamini-oku-btn { background: none; border: none; color: var(--baslik-mavi); cursor: pointer; font-weight: bold; margin-top: 10px; }
 
