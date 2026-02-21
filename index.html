@@ -50,7 +50,13 @@
             z-index: 9999;
         }
 
-        /* Logo ve Bildirim Butonu */
+        #konfeti-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 10001;
+        }
+
         .ana-serbest-logo {
             position: absolute;
             top: 20px; left: 20px;
@@ -63,27 +69,18 @@
             .ana-serbest-logo img { height: 350px; }
         }
 
-.bildirim-btn {
-    position: fixed;
-    bottom: 20px; left: 20px;
-    width: 60px; height: 60px;
-    
-    /* Yumuşak Pembe Gradient */
-    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-    
-    /* Pembe Işıma (Glow) Efekti */
-    box-shadow: 0 0 20px rgba(238, 156, 167, 0.6), 0 0 40px rgba(238, 156, 167, 0.3);
-    
-    border-radius: 50%; border: none;
-    cursor: pointer; z-index: 3000;
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        .bildirim-btn {
+            position: fixed;
+            bottom: 20px; left: 20px;
+            width: 60px; height: 60px;
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+            box-shadow: 0 0 20px rgba(238, 156, 167, 0.6);
+            border-radius: 50%; border: none;
+            cursor: pointer; z-index: 3000;
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.3s ease;
+        }
 
-.bildirim-btn:hover { 
-    transform: scale(1.1);
-    box-shadow: 0 0 30px rgba(238, 156, 167, 0.8);
-}
         .duyuru-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -91,13 +88,44 @@
             display: none; align-items: center; justify-content: center;
             z-index: 4000;
         }
+
         .duyuru-ekran {
             background: white; color: #333; padding: 40px; border-radius: 15px;
             width: 320px; text-align: center;
         }
-        .kapat-btn { margin-top: 20px; padding: 10px 25px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer; }
+
+        .yeni-bolum-modal {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            z-index: 10002;
+            text-align: center;
+            color: #333;
+            display: none;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 280px;
+        }
+
+        .yeni-bolum-modal.aktif {
+            display: block !important;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .oku-btn {
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+            color: white; border: none; padding: 12px 25px;
+            border-radius: 25px; cursor: pointer; font-weight: bold;
+            text-decoration: none; display: inline-block; margin-top: 15px;
+        }
+
         .tanitim-alani {
-            margin-top: 180px; 
+            margin-top: 130px; 
             display: flex; 
             flex-wrap: wrap; 
             gap: 40px;
@@ -106,115 +134,52 @@
             position: relative; 
             z-index: 10;
             justify-content: center;
-            margin-top: 130px;
         }
+
         .kapak { width: 280px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
         .detaylar { flex: 1; min-width: 320px; }
-        h1 { font-style: italic; 
-            font-family: sans-serif;
-        font-size: 2.5em; 
-        margin-bottom: 20px; 
-        color: var(--baslik-mavi);
-        justify-content: center; 
-        display: flex;
-    margin-top: 1px;}
+        h1 { font-style: italic; font-family: sans-serif; font-size: 2.5em; margin-bottom: 20px; color: var(--baslik-mavi); display: flex; justify-content: center; }
 
         .ozet-konteynir {
             background: rgba(255, 255, 255, 0.03); padding: 20px;
             border-radius: 12px; border-left: 4px solid var(--özetpembesi);
         }
-        /* Yeni Bölüm Popup (Açılır Pencere) */
-.yeni-bolum-modal {
-    position: fixed;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 15px 50px rgba(0,0,0,0.5);
-    z-index: 10000;
-    text-align: center;
-    color: #333;
-    display: none; /* Başlangıçta gizli */
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    width: 280px;
-}
 
-.yeni-bolum-modal.aktif {
-    display: block;
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.yeni-bolum-modal h2 { margin-top: 0; color: #ee9ca7; }
-.yeni-bolum-modal p { font-family: sans-serif; font-weight: bold; }
-
-.oku-btn {
-    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-    color: white; border: none; padding: 12px 25px;
-    border-radius: 25px; cursor: pointer; font-weight: bold;
-    text-decoration: none; display: inline-block; margin-top: 15px;
-}
-
-/* Konfeti için Canvas */
-#konfeti-canvas {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 10001;
-}
         .konu-metni { 
-            font-family: sans-serif;
-            line-height: 1.5; 
-            font-size: 1.1em; 
-            text-align: justify; 
-            max-height: 100px; 
-            overflow: hidden; 
-            transition: max-height 0.5s ease;}
+            font-family: sans-serif; line-height: 1.5; font-size: 1.1em; 
+            text-align: justify; max-height: 100px; overflow: hidden; 
+            transition: max-height 0.5s ease;
+        }
         .konu-metni.acik { max-height: 1000px; }
         .devamini-oku-btn { background: none; border: none; color: var(--baslik-mavi); cursor: pointer; font-weight: bold; margin-top: 10px; }
 
-        /* Bölüm Listesi */
         .liste-baslik { 
             width: 100%; max-width: 900px; font-size: 1.8em; 
             border-bottom: 2px solid #333; padding-bottom: 8px; margin-top: 40px; font-style: italic;
-            padding-left: 20px; /* Sola yaslılığı kırmak için boşluk */
-            box-sizing: border-box;
+            padding-left: 20px; box-sizing: border-box;
         }
+
         .bolum-listesi { 
             width: 100%; max-width: 900px; height: 450px; overflow-y: auto; 
             background: rgba(0, 0, 0, 0.4); border-radius: 12px; margin-bottom: 30px;
             position: relative; z-index: 10; border: 1px solid rgba(255,255,255,0.05);
         }
+
         .bolum-kart {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 20px; text-decoration: none; color: #fff;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: 0.3s;
         }
+
         .bolum-kart:hover { background: rgba(255, 255, 255, 0.05); }
-        
-        /* Yazılar Sola Yaslı */
-        .bolum-bilgi { text-align: left; }
-        
-        .yeni-etiketi {
-            background: var(--özetpembesi); color: #333; font-size: 0.7em; padding: 3px 8px;
-            border-radius: 4px; margin-left: 10px; text-transform: uppercase; font-weight: bold;
-        }
-        .sayac-kutusu {
-            font-family: 'Courier New', Courier, monospace;
-            color: var(--özetpembesi); font-size: 0.9em; font-weight: bold;
-            text-shadow: 0 0 8px rgba(255, 192, 203, 0.4);
-        }
+        .yeni-etiketi { background: var(--özetpembesi); color: #333; font-size: 0.7em; padding: 3px 8px; border-radius: 4px; margin-left: 10px; text-transform: uppercase; font-weight: bold; }
         .bolum-tarih { font-size: 0.8rem; color: #888; }
         .izlendi-ikon { width: 24px; opacity: 0; filter: invert(1); transition: 0.3s; }
         .izlendi-ikon.aktif { opacity: 0.6; }
-
-        .yorum-alani { width: 90%; max-width: 900px; padding: 20px; margin-bottom: 50px; background: rgba(255, 255, 255, 0.03); border-radius: 15px; position: relative; z-index: 10; }
-
+        
         .bolum-listesi::-webkit-scrollbar { width: 6px; }
         .bolum-listesi::-webkit-scrollbar-thumb { background: var(--özetpembesi); border-radius: 10px; }
+        .yorum-alani { width: 90%; max-width: 900px; padding: 20px; margin-bottom: 50px; background: rgba(255, 255, 255, 0.03); border-radius: 15px; position: relative; z-index: 10; }
     </style>
 </head>
 
@@ -222,13 +187,13 @@
     <canvas id="kar-tuvali"></canvas>
     <canvas id="konfeti-canvas"></canvas>
 
-<div id="yeniBolumModal" class="yeni-bolum-modal">
-    <h2>🎉 12. Bölüm Yayında!</h2>
-    <p> 9 günlük aradan sonra yeniden bir aradayız! </p>
-    <a href="izle_bolum_12.html" class="oku-btn">HEMEN OKU</a>
-    <br>
-    <button onclick="modalKapat()" style="background:none; border:none; color:#888; margin-top:15px; cursor:pointer; font-size:0.8em;">Kapat</button>
-</div>
+    <div id="yeniBolumModal" class="yeni-bolum-modal">
+        <h2 style="color: #ee9ca7;">🎉 12. Bölüm Yayında!</h2>
+        <p style="font-family: sans-serif; font-weight: bold;">9 günlük aradan sonra Merry Marbling kaldığıyerden devam ediyor!</p>
+        <a href="izle_bolum_12.html" class="oku-btn">HEMEN OKU</a>
+        <br>
+        <button onclick="modalKapat()" style="background:none; border:none; color:#888; margin-top:15px; cursor:pointer; font-size:0.8em;">Kapat</button>
+    </div>
 
     <div class="ana-serbest-logo">
         <a href="index.html"><img src="logo1.2.png" alt="Fansub Logo"></a>
@@ -241,8 +206,8 @@
     <div class="duyuru-overlay" id="duyuruKutusu">
         <div class="duyuru-ekran">
             <h2>DUYURU</h2>
-            <p>12. Bölüm hazırlıkları devam ediyor! Takipte kalın.</p>
-            <button class="kapat-btn" onclick="duyuruKapat()">Kapat</button>
+            <p>12. Bölüm yayına girdi! İyi okumalar dileriz.</p>
+            <button onclick="duyuruKapat()" style="padding: 10px 20px; cursor:pointer;">Kapat</button>
         </div>
     </div>
     
@@ -252,7 +217,7 @@
             <h1>Merry Marbling</h1>
             <div class="ozet-konteynir">
                 <p class="konu-metni" id="ozetMetin">
-                    Ian, görünüşte mükemmel bir öğrencidir; nazik, güvenilir ve üstüne üstlük yakışıklıdır. Çocukken yaptığı masum bir iyilik sayesinde "Noel Meleği" olarak tanınmaya başlar. Bu yüzden Yugun, uzun bir hastalık izninden sonra okula döndüğünde, Ian'ın gün boyunca ona yardım etmek için yanında olmasına kimse şaşırmaz. Ian'ın bu melekvari kişiliği sayesinde Yugun ona güvenebileceğini düşünür; ta ki Ian ile annesi arasında geçen bir konuşmaya kulak misafiri olana kadar. Bu konuşma, her şeyin Ian'ın imajını korumak için yaptığı bir plandan ibaret olduğunu ortaya çıkarır. Bu ihanetle küplere binen Yugun, Ian'la yüzleşir ve onun gerçek yüzünü herkese ifşa etmekle tehdit eder. Ancak Ian'ın beklenmedik tepkisi Yugun'un kafasını daha da karıştırır: "Hadi yap. Ama sonrasında olacaklar benim sorumluluğumda değil." Ne de olsa, sözde "Noel Meleği"nden kim nefret edebilir ki? Bu ikili, yağ ile su gibi ayrı mı kalacak? Yoksa birbirlerine karışıp, her ikisinin de hayal edebileceğinden çok daha güzel bir şey mi yaratacaklar?
+                    Ian, görünüşte mükemmel bir öğrencidir; nazik, güvenilir ve üstüne üstlük yakışıklıdır... (Özetin devamı)
                 </p>
                 <button class="devamini-oku-btn" id="btnOku" onclick="ozetiAc()">Devamını Oku...</button>
             </div>
@@ -261,39 +226,40 @@
 
     <h2 class="liste-baslik">Bölümler</h2>
 
-<div class="bolum-listesi"> <a href="izle_bolum_12.html" class="bolum-kart" onclick="kaydet('bolum12')">
-        <div class="bolum-bilgi">
-            <span class="bolum-no">12. Bölüm <span class="yeni-etiketi">Yeni</span></span><br>
-            <span class="bolum-tarih">21 Şubat 2026</span>
-        </div>
-        <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum12">
-    </a>
+    <div class="bolum-listesi">
+        <a href="izle_bolum_12.html" class="bolum-kart" onclick="kaydet('bolum12')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">12. Bölüm <span class="yeni-etiketi">Yeni</span></span><br>
+                <span class="bolum-tarih">21 Şubat 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum12">
+        </a>
 
-    <a href="izle_bolum_11.html" class="bolum-kart" onclick="kaydet('bolum11')">
-        <div class="bolum-bilgi">
-            <span class="bolum-no">11. Bölüm</span><br>
-            <span class="bolum-tarih">12 Şubat 2026</span>
-        </div>
-        <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum11">
-    </a>
+        <a href="izle_bolum_11.html" class="bolum-kart" onclick="kaydet('bolum11')">
+            <div class="bolum-bilgi">
+                <span class="bolum-no">11. Bölüm</span><br>
+                <span class="bolum-tarih">12 Şubat 2026</span>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum11">
+        </a>
 
-    <script>
-        const bolumler = [
-            {n:10, t:"7 Şubat"}, {n:9, t:"2 Şubat"}, {n:8, t:"26 Ocak"},
-            {n:7, t:"19 Ocak"}, {n:6, t:"14 Ocak"}, {n:5, t:"9 Ocak"},
-            {n:4, t:"5 Ocak"}, {n:3, t:"2 Ocak"}, {n:2, t:"2 Ocak"}, {n:1, t:"1 Ocak"}
-        ];
-        bolumler.forEach(b => {
-            document.write(`
-            <a href="izle_bolum_${b.n}.html" class="bolum-kart" onclick="kaydet('bolum${b.n}')">
-                <div class="bolum-bilgi">
-                    <span class="bolum-no">${b.n}. Bölüm</span><br>
-                    <span class="bolum-tarih">${b.t} 2026</span>
-                </div>
-                <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum${b.n}">
-            </a>`);
-        });
-    </script>
+        <script>
+            const bolumler = [
+                {n:10, t:"7 Şubat"}, {n:9, t:"2 Şubat"}, {n:8, t:"26 Ocak"},
+                {n:7, t:"19 Ocak"}, {n:6, t:"14 Ocak"}, {n:5, t:"9 Ocak"},
+                {n:4, t:"5 Ocak"}, {n:3, t:"2 Ocak"}, {n:2, t:"2 Ocak"}, {n:1, t:"1 Ocak"}
+            ];
+            bolumler.forEach(b => {
+                document.write(`
+                <a href="izle_bolum_${b.n}.html" class="bolum-kart" onclick="kaydet('bolum${b.n}')">
+                    <div class="bolum-bilgi">
+                        <span class="bolum-no">${b.n}. Bölüm</span><br>
+                        <span class="bolum-tarih">${b.t} 2026</span>
+                    </div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum${b.n}">
+                </a>`);
+            });
+        </script>
     </div>
 
     <div class="yorum-alani">
@@ -301,19 +267,17 @@
     </div>
 
     <script>
-        // --- Kar Efekti (Süresiz) ---
+        // --- Kar Efekti ---
         (function() {
             const canvas = document.getElementById('kar-tuvali');
             const ctx = canvas.getContext('2d');
             let width, height, stars = [];
-
             function resize() {
                 width = window.innerWidth; height = window.innerHeight;
                 canvas.width = width; canvas.height = height;
             }
             window.addEventListener('resize', resize);
             resize();
-
             class Star {
                 constructor() { this.reset(); }
                 reset() {
@@ -323,18 +287,12 @@
                     this.speed = Math.random() * 0.8 + 0.2;
                     this.alpha = Math.random();
                 }
-                update() {
-                    this.y += this.speed;
-                    if (this.y > height) this.y = -10;
-                }
+                update() { this.y += this.speed; if (this.y > height) this.y = -10; }
                 draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
-                    ctx.fill();
+                    ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`; ctx.fill();
                 }
             }
-
             for(let i=0; i<100; i++) stars.push(new Star());
             function animate() {
                 ctx.clearRect(0, 0, width, height);
@@ -344,21 +302,53 @@
             animate();
         })();
 
-        // --- Geri Sayım ---
-        function updateCountdown() {
-            const hedef = new Date("Feb 25, 2026 18:00:00").getTime();
-            const fark = hedef - new Date().getTime();
-            if (fark < 0) { document.getElementById("countdown").innerHTML = "BÖLÜM YAYINDA!"; return; }
-            const g = Math.floor(fark / (1000 * 60 * 60 * 24));
-            const s = Math.floor((fark % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const d = Math.floor((fark % (1000 * 60 * 60)) / (1000 * 60));
-            const sn = Math.floor((fark % (1000 * 60)) / 1000);
-            document.getElementById("countdown").innerHTML = `${g}g ${s}s ${d}d ${sn}s`;
+        // --- Konfeti Efekti ---
+        function konfetiPatlat() {
+            const canvas = document.getElementById('konfeti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            let particles = [];
+            const colors = ['#ffdde1', '#ee9ca7', '#90e0ef', '#D8E983', '#ffffff'];
+            for (let i = 0; i < 100; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    size: Math.random() * 7 + 3,
+                    speed: Math.random() * 5 + 2,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    angle: Math.random() * 6.28
+                });
+            }
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach((p, i) => {
+                    p.y += p.speed; p.x += Math.sin(p.angle) * 2;
+                    ctx.fillStyle = p.color; ctx.fillRect(p.x, p.y, p.size, p.size);
+                    if (p.y > canvas.height) particles[i].y = -10;
+                });
+                requestAnimationFrame(draw);
+            }
+            draw();
+            setTimeout(() => { canvas.style.display = 'none'; }, 6000);
         }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
 
-        // --- UI Fonksiyonları ---
+        // --- Sayfa Yüklendiğinde ---
+        window.addEventListener('load', () => {
+            // İzlendi Kontrolü
+            for(let i=1; i<=12; i++) {
+                if (localStorage.getItem('bolum'+i) === "true") {
+                    const icon = document.getElementById("icon-bolum"+i);
+                    if (icon) icon.classList.add("aktif");
+                }
+            }
+            // Pop-up ve Konfeti
+            setTimeout(() => {
+                document.getElementById('yeniBolumModal').classList.add('aktif');
+                konfetiPatlat();
+            }, 1000);
+        });
+
+        // --- Diğer Fonksiyonlar ---
         function ozetiAc() {
             var metin = document.getElementById("ozetMetin");
             metin.classList.toggle("acik");
@@ -367,15 +357,7 @@
         function duyuruAc() { document.getElementById("duyuruKutusu").style.display = "flex"; }
         function duyuruKapat() { document.getElementById("duyuruKutusu").style.display = "none"; }
         function kaydet(id) { localStorage.setItem(id, "true"); }
-
-        window.onload = function() {
-            for(let i=1; i<=11; i++) {
-                if (localStorage.getItem('bolum'+i) === "true") {
-                    const icon = document.getElementById("icon-bolum"+i);
-                    if (icon) icon.classList.add("aktif");
-                }
-            }
-        };
+        function modalKapat() { document.getElementById('yeniBolumModal').classList.remove('aktif'); }
 
         // Disqus
         var disqus_config = function () {
@@ -388,56 +370,6 @@
             s.setAttribute('data-timestamp', +new Date());
             (d.head || d.body).appendChild(s);
         })();
-        // Konfeti Efekti
-function konfetiPatlat() {
-    const canvas = document.getElementById('konfeti-canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let particles = [];
-    const colors = ['#ffdde1', '#ee9ca7', '#90e0ef', '#D8E983', '#ffffff'];
-
-    for (let i = 0; i < 100; i++) {
-        particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height - canvas.height,
-            size: Math.random() * 7 + 3,
-            speed: Math.random() * 5 + 2,
-            color: colors[Math.floor(Math.random() * colors.length)],
-            angle: Math.random() * 6.28
-        });
-    }
-
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach((p, i) => {
-            p.y += p.speed;
-            p.x += Math.sin(p.angle) * 2;
-            ctx.fillStyle = p.color;
-            ctx.fillRect(p.x, p.y, p.size, p.size);
-            if (p.y > canvas.height) particles[i].y = -10;
-        });
-        requestAnimationFrame(draw);
-    }
-    draw();
-    
-    // 5 saniye sonra konfetiyi durdur (isteğe bağlı)
-    setTimeout(() => { canvas.style.display = 'none'; }, 5000);
-}
-
-// Sayfa yüklendiğinde çalıştır
-window.addEventListener('load', () => {
-    // 1 saniye gecikmeyle açalım ki sayfa tam yüklensin
-    setTimeout(() => {
-        document.getElementById('yeniBolumModal').classList.add('aktif');
-        konfetiPatlat();
-    }, 1000);
-});
-
-function modalKapat() {
-    document.getElementById('yeniBolumModal').classList.remove('aktif');
-}
     </script>
 </body>
 </html>
