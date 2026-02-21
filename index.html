@@ -210,39 +210,39 @@
 
     <h2 class="liste-baslik">Bölümler</h2>
 
-        <a href="izle_bolum_12.html" class="bolum-kart" onclick="kaydet('bolum12')">
-            <div class="bolum-bilgi">
-                <span class="bolum-no">12. Bölüm <span class="yeni-etiketi">Yeni</span></span><br>
-                <span class="bolum-tarih">21 Şubat 2026</span>
-            </div>
-            <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum11">
-        </a>
+<div class="bolum-listesi"> <a href="izle_bolum_12.html" class="bolum-kart" onclick="kaydet('bolum12')">
+        <div class="bolum-bilgi">
+            <span class="bolum-no">12. Bölüm <span class="yeni-etiketi">Yeni</span></span><br>
+            <span class="bolum-tarih">21 Şubat 2026</span>
+        </div>
+        <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum12">
+    </a>
 
-<a href="izle_bolum_11.html" class="bolum-kart" onclick="kaydet('bolum11')">
-    <div class="bolum-bilgi">
-        <span class="bolum-no">11. Bölüm</span><br>
-        <span class="bolum-tarih">12 Şubat 2026</span>
-    </div>
-    <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum11">
-</a>
+    <a href="izle_bolum_11.html" class="bolum-kart" onclick="kaydet('bolum11')">
+        <div class="bolum-bilgi">
+            <span class="bolum-no">11. Bölüm</span><br>
+            <span class="bolum-tarih">12 Şubat 2026</span>
+        </div>
+        <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum11">
+    </a>
 
-        <script>
-            const bolumler = [
-                {n:10, t:"7 Şubat"}, {n:9, t:"2 Şubat"}, {n:8, t:"26 Ocak"},
-                {n:7, t:"19 Ocak"}, {n:6, t:"14 Ocak"}, {n:5, t:"9 Ocak"},
-                {n:4, t:"5 Ocak"}, {n:3, t:"2 Ocak"}, {n:2, t:"2 Ocak"}, {n:1, t:"1 Ocak"}
-            ];
-            bolumler.forEach(b => {
-                document.write(`
-                <a href="izle_bolum_${b.n}.html" class="bolum-kart" onclick="kaydet('bolum${b.n}')">
-                    <div class="bolum-bilgi">
-                        <span class="bolum-no">${b.n}. Bölüm</span><br>
-                        <span class="bolum-tarih">${b.t} 2026</span>
-                    </div>
-                    <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum${b.n}">
-                </a>`);
-            });
-        </script>
+    <script>
+        const bolumler = [
+            {n:10, t:"7 Şubat"}, {n:9, t:"2 Şubat"}, {n:8, t:"26 Ocak"},
+            {n:7, t:"19 Ocak"}, {n:6, t:"14 Ocak"}, {n:5, t:"9 Ocak"},
+            {n:4, t:"5 Ocak"}, {n:3, t:"2 Ocak"}, {n:2, t:"2 Ocak"}, {n:1, t:"1 Ocak"}
+        ];
+        bolumler.forEach(b => {
+            document.write(`
+            <a href="izle_bolum_${b.n}.html" class="bolum-kart" onclick="kaydet('bolum${b.n}')">
+                <div class="bolum-bilgi">
+                    <span class="bolum-no">${b.n}. Bölüm</span><br>
+                    <span class="bolum-tarih">${b.t} 2026</span>
+                </div>
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107044.png" class="izlendi-ikon" id="icon-bolum${b.n}">
+            </a>`);
+        });
+    </script>
     </div>
 
     <div class="yorum-alani">
