@@ -123,6 +123,48 @@
             background: rgba(255, 255, 255, 0.03); padding: 20px;
             border-radius: 12px; border-left: 4px solid var(--özetpembesi);
         }
+        /* Yeni Bölüm Popup (Açılır Pencere) */
+.yeni-bolum-modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+    z-index: 10000;
+    text-align: center;
+    color: #333;
+    display: none; /* Başlangıçta gizli */
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 280px;
+}
+
+.yeni-bolum-modal.aktif {
+    display: block;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.yeni-bolum-modal h2 { margin-top: 0; color: #ee9ca7; }
+.yeni-bolum-modal p { font-family: sans-serif; font-weight: bold; }
+
+.oku-btn {
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    color: white; border: none; padding: 12px 25px;
+    border-radius: 25px; cursor: pointer; font-weight: bold;
+    text-decoration: none; display: inline-block; margin-top: 15px;
+}
+
+/* Konfeti için Canvas */
+#konfeti-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 10001;
+}
         .konu-metni { 
             font-family: sans-serif;
             line-height: 1.5; 
@@ -178,6 +220,15 @@
 
 <body>
     <canvas id="kar-tuvali"></canvas>
+    <canvas id="konfeti-canvas"></canvas>
+
+<div id="yeniBolumModal" class="yeni-bolum-modal">
+    <h2>🎉 Sürpriz!</h2>
+    <p>12. Bölüm Yayında!</p>
+    <a href="izle_bolum_12.html" class="oku-btn">HEMEN OKU</a>
+    <br>
+    <button onclick="modalKapat()" style="background:none; border:none; color:#888; margin-top:15px; cursor:pointer; font-size:0.8em;">Kapat</button>
+</div>
 
     <div class="ana-serbest-logo">
         <a href="index.html"><img src="logo1.2.png" alt="Fansub Logo"></a>
@@ -337,6 +388,56 @@
             s.setAttribute('data-timestamp', +new Date());
             (d.head || d.body).appendChild(s);
         })();
+        // Konfeti Efekti
+function konfetiPatlat() {
+    const canvas = document.getElementById('konfeti-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particles = [];
+    const colors = ['#ffdde1', '#ee9ca7', '#90e0ef', '#D8E983', '#ffffff'];
+
+    for (let i = 0; i < 100; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height - canvas.height,
+            size: Math.random() * 7 + 3,
+            speed: Math.random() * 5 + 2,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            angle: Math.random() * 6.28
+        });
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p, i) => {
+            p.y += p.speed;
+            p.x += Math.sin(p.angle) * 2;
+            ctx.fillStyle = p.color;
+            ctx.fillRect(p.x, p.y, p.size, p.size);
+            if (p.y > canvas.height) particles[i].y = -10;
+        });
+        requestAnimationFrame(draw);
+    }
+    draw();
+    
+    // 5 saniye sonra konfetiyi durdur (isteğe bağlı)
+    setTimeout(() => { canvas.style.display = 'none'; }, 5000);
+}
+
+// Sayfa yüklendiğinde çalıştır
+window.addEventListener('load', () => {
+    // 1 saniye gecikmeyle açalım ki sayfa tam yüklensin
+    setTimeout(() => {
+        document.getElementById('yeniBolumModal').classList.add('aktif');
+        konfetiPatlat();
+    }, 1000);
+});
+
+function modalKapat() {
+    document.getElementById('yeniBolumModal').classList.remove('aktif');
+}
     </script>
 </body>
 </html>
