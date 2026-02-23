@@ -108,7 +108,7 @@
             display: none;
             opacity: 0;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            width: 280px;
+            width: 300px;
         }
 
         .yeni-bolum-modal.aktif {
@@ -186,14 +186,32 @@
 <body>
     <canvas id="kar-tuvali"></canvas>
     <canvas id="konfeti-canvas"></canvas>
-
+    
     <div id="yeniBolumModal" class="yeni-bolum-modal">
-        <h2 style="color: #ee9ca7;">🎉 12. Bölüm Yayında!</h2>
-        <p style="font-family: sans-serif; font-weight: bold;">9 günlük aradan sonra Merry Marbling kaldığı yerden devam ediyor!</p>
-        <a href="izle_bolum_12.html" class="oku-btn">HEMEN OKU</a>
-        <br>
-        <button onclick="modalKapat()" style="background:none; border:none; color:#888; margin-top:15px; cursor:pointer; font-size:0.8em;">Kapat</button>
+        <div id="anketIcerik">
+            <h2 style="color: #ee9ca7;">Küçük Bir Soru ✨</h2>
+            <p style="font-family: sans-serif; font-size: 0.9em; line-height: 1.4; margin-bottom: 20px;">
+                13. bölümü 24/02/26 tarihinde yüklememi ister misiniz!<br>
+                <small>(Eğer cevabınız ''Evet'' olursa 14. bölüm için en az 10 gün beklemeniz gerekir.)</small>
+            </p>
+            
+            <button onclick="anketGonder('Evet')" class="oku-btn" style="width: 100%; margin-bottom: 10px;">Evet, Hemen Gelsin!</button>
+            <button onclick="anketGonder('Hayır')" class="oku-btn" style="width: 100%; background: linear-gradient(135deg, #90e0ef, #00b4d8);">Hayır, Bekleyebilirim</button>
+            
+            <button onclick="modalKapat()" style="background:none; border:none; color:#888; margin-top:15px; cursor:pointer; font-size:0.8em;">Belki Daha Sonra</button>
+        </div>
+
+        <div id="anketTesekkur" style="display: none;">
+            <h2 style="color: #ee9ca7;">Teşekkürler!</h2>
+            <p style="font-family: sans-serif;">Geri bildirimin kaydedildi. Keyifli okumalar!</p>
+            <button onclick="modalKapat()" class="oku-btn">Kapat</button>
+        </div>
     </div>
+
+    <form id="gizliForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeOQSVfRfMpq8EYhEX4OjlCHZpiURupn5uXonCknsYMZZphHw/formResponse" method="POST" target="gizli_iframe" style="display:none;">
+        <input type="hidden" name="entry.1464932873" id="formSecenek">
+    </form>
+    <iframe name="gizli_iframe" style="display:none;"></iframe>
 
     <div class="ana-serbest-logo">
         <a href="index.html"><img src="logo1.2.png" alt="Fansub Logo"></a>
@@ -341,25 +359,47 @@
                     if (icon) icon.classList.add("aktif");
                 }
             }
-            // Pop-up ve Konfeti
-            setTimeout(() => {
-                document.getElementById('yeniBolumModal').classList.add('aktif');
-                konfetiPatlat();
-            }, 1000);
+            
+            // Anket Kontrolü ve Konfeti
+            if(localStorage.getItem('anketKatildi_v13') !== 'true') {
+                setTimeout(() => {
+                    document.getElementById('yeniBolumModal').classList.add('aktif');
+                    konfetiPatlat();
+                }, 1000);
+            }
         });
 
-        // --- Diğer Fonksiyonlar ---
+        // --- Anket Gönderim Fonksiyonu ---
+        function anketGonder(deger) {
+            // 1. Gizli formun içine seçilen değeri yaz
+            document.getElementById('formSecenek').value = deger;
+            
+            // 2. Formu sessizce gönder
+            document.getElementById('gizliForm').submit();
+            
+            // 3. Arayüzü değiştir
+            document.getElementById('anketIcerik').style.display = 'none';
+            document.getElementById('anketTesekkur').style.display = 'block';
+            
+            // 4. Kullanıcıya bir daha sorma (v13 etiketi ile kaydediyoruz)
+            localStorage.setItem('anketKatildi_v13', 'true');
+        }
+
+        function modalKapat() { 
+            document.getElementById('yeniBolumModal').classList.remove('aktif'); 
+        }
+
         function ozetiAc() {
             var metin = document.getElementById("ozetMetin");
             metin.classList.toggle("acik");
             document.getElementById("btnOku").innerText = metin.classList.contains("acik") ? "Daha Az Gör" : "Devamını Oku...";
         }
+
         function duyuruAc() { document.getElementById("duyuruKutusu").style.display = "flex"; }
         function duyuruKapat() { document.getElementById("duyuruKutusu").style.display = "none"; }
         function kaydet(id) { localStorage.setItem(id, "true"); }
-        function modalKapat() { document.getElementById('yeniBolumModal').classList.remove('aktif'); }
 
-        // Disqus
+        // --- Disqus Ayarları ---
         var disqus_config = function () {
             this.page.url = window.location.href;
             this.page.identifier = 'merry-marbling-ana-sayfa';
