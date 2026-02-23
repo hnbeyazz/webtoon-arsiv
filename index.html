@@ -208,10 +208,6 @@
         </div>
     </div>
 
-<form id="gizliForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeOQSVfRfMpq8EYhEX4OjlCHZpiURupn5uXonCknsYMZZphHw/formResponse" method="POST" target="gizli_iframe" style="display:none;">        <input type="hidden" name="entry.1464932873" id="formSecenek">
-    </form>
-    <iframe name="gizli_iframe" style="display:none;"></iframe>
-
     <div class="ana-serbest-logo">
         <a href="index.html"><img src="logo1.2.png" alt="Fansub Logo"></a>
     </div>
@@ -359,7 +355,7 @@
                 }
             }
             
-            // Anket Kontrolü ve Konfeti
+            // Anket Kontrolü (v13 için)
             if(localStorage.getItem('anketKatildi_v13') !== 'true') {
                 setTimeout(() => {
                     document.getElementById('yeniBolumModal').classList.add('aktif');
@@ -368,19 +364,19 @@
             }
         });
 
-        // --- Anket Gönderim Fonksiyonu ---
+        // --- GARANTİLİ ANKET GÖNDERİMİ ---
         function anketGonder(deger) {
-            // 1. Gizli formun içine seçilen değeri yaz
-            document.getElementById('formSecenek').value = deger;
+            // Kullanıcının cevabını linke ekle
+            const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeOQSVfRfMpq8EYhEX4OjlCHZpiURupn5uXonCknsYMZZphHw/viewform?usp=pp_url&entry.1464932873=" + encodeURIComponent(deger);
             
-            // 2. Formu sessizce gönder
-            document.getElementById('gizliForm').submit();
+            // Formu yeni sekmede aç (Cevap seçilmiş olarak gider)
+            window.open(formUrl, '_blank');
             
-            // 3. Arayüzü değiştir
+            // Sitedeki modalı teşekkür ekranına çevir
             document.getElementById('anketIcerik').style.display = 'none';
             document.getElementById('anketTesekkur').style.display = 'block';
             
-            // 4. Kullanıcıya bir daha sorma (v13 etiketi ile kaydediyoruz)
+            // Tarayıcı hafızasına kaydet (Bir daha sorma)
             localStorage.setItem('anketKatildi_v13', 'true');
         }
 
@@ -398,7 +394,7 @@
         function duyuruKapat() { document.getElementById("duyuruKutusu").style.display = "none"; }
         function kaydet(id) { localStorage.setItem(id, "true"); }
 
-        // --- Disqus Ayarları ---
+        // --- Disqus ---
         var disqus_config = function () {
             this.page.url = window.location.href;
             this.page.identifier = 'merry-marbling-ana-sayfa';
