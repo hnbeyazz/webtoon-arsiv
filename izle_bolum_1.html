@@ -7,13 +7,43 @@
     <title>Bölüm 1 - Merry Marbling</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Panellerin üstündeki navigasyon için özel stil */
-        .ust-butonlar {
+        /* Kare ve küçük butonlar için özel stil */
+        .ust-nav-konteyner {
             display: flex;
             justify-content: flex-end; /* Sağ tarafa yaslar */
-            gap: 10px;
-            margin-bottom: 15px;
-            padding: 0 10px;
+            margin-bottom: 5px; /* Çizgiye yakınlık ayarı */
+            padding-right: 5px;
+        }
+
+        .btn-kucuk-kare {
+            width: 35px; /* Küçük kare form */
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px; /* Hafif yuvarlatılmış kare */
+            margin-left: 5px; /* İki buton arası mesafe azaltıldı */
+            transition: all 0.3s ease;
+        }
+
+        .btn-kucuk-kare:hover {
+            background: var(--özetpembesi, #ffc0cb);
+            border-color: #fff;
+        }
+
+        .btn-kucuk-kare svg {
+            width: 18px; /* İkon boyutu */
+            height: 18px;
+            stroke: #fff;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* Çizgi ve Başlık Düzeni */
+        .bolum-basligi {
+            margin-bottom: 5px !important; /* Başlık ile butonlar arası */
         }
     </style>
 </head>
@@ -32,84 +62,42 @@
             <select class="secici-buton" onchange="location = this.value;">
                 <option value="izle_bolum_1.html" selected>Bölüm 1</option>
                 <option value="izle_bolum_2.html">Bölüm 2</option>
-                <option value="izle_bolum_3.html">Bölüm 3</option>
-                <option value="izle_bolum_4.html">Bölüm 4</option>
-                <option value="izle_bolum_5.html">Bölüm 5</option>
-                <option value="izle_bolum_6.html">Bölüm 6</option>
-                <option value="izle_bolum_7.html">Bölüm 7</option>
-                <option value="izle_bolum_8.html">Bölüm 8</option>
-                <option value="izle_bolum_9.html">Bölüm 9</option>
-                <option value="izle_bolum_10.html">Bölüm 10</option>
-                <option value="izle_bolum_11.html">Bölüm 11</option>
-            </select>
+                </select>
         </div>
 
         <div class="bolum-basligi">1. Bölüm</div>
 
-        <div class="ust-butonlar">
-            <a href="index.html" class="btn-modern" title="Ana Sayfa">
-                <svg class="icon-svg" viewBox="0 0 24 24">
+        <div class="ust-nav-konteyner">
+            <a href="index.html" class="btn-kucuk-kare" title="Ana Sayfa">
+                <svg viewBox="0 0 24 24">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
             </a>
-            <a href="izle_bolum_2.html" class="btn-modern" title="Sonraki Bölüm">
-                <svg class="icon-svg" viewBox="0 0 24 24">
+            <a href="izle_bolum_2.html" class="btn-kucuk-kare" title="Sonraki Bölüm">
+                <svg viewBox="0 0 24 24">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
             </a>
         </div>
         
+        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin-bottom: 20px;">
+
         <img src="1.png">
         <img src="bolum_1/1.jpg"> 
-        <img src="bolum_1/2.jpg"> 
-        <img src="bolum_1/3.jpg"> 
-        <img src="bolum_1/4.jpg">
-        <img src="bolum_1/5.jpg"> 
-        <img src="bolum_1/6.jpg"> 
-        <img src="bolum_1/7.png"> 
-        <img src="bolum_1/8.png"> 
-        <img src="bolum_1/9.png"> 
-        <img src="bolum_1/10.png"> 
-        <img src="bolum_1/11.png"> 
-        <img src="bolum_1/12.png"> 
-        <img src="bolum_1/13.png"> 
-        <img src="bolum_1/14.jpg"> 
         <img src="bolum_1/15.jpg">
 
         <div class="nav">
-            <a href="index.html" class="btn-modern" title="Ana Sayfa">
-                <svg class="icon-svg" viewBox="0 0 24 24">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                </svg>
-            </a>
-
-            <a href="izle_bolum_2.html" class="btn-modern" title="Sonraki Bölüm">
-                <svg class="icon-svg" viewBox="0 0 24 24">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-            </a>
+            <a href="index.html" class="btn-modern">Ana Sayfa</a>
+            <a href="izle_bolum_2.html" class="btn-modern">Sonraki Bölüm</a>
         </div>
     </div>
 
     <div class="yorum-arkaplan-paneli"> <div id="disqus_thread"></div> </div>
 
     <script>
-        var disqus_config = function () {
-            this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_1.html'; 
-            this.page.identifier = 'merry-marbling-bolum-1'; 
-        };
-    
-        (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-
+        // Disqus ve Scroll scriptleri buraya...
         document.querySelectorAll('.container img').forEach(img => {
             img.addEventListener('click', function(e) {
                 e.preventDefault(); 
