@@ -24,6 +24,7 @@
             --baslik-mavi: #90e0ef;
             --zumrut: #D8E983;
             --özetpembesi: #ffc0cb;
+            --canli-pembe: #ee9ca7;
         }
 
         body { 
@@ -90,38 +91,33 @@
         }
 
         .duyuru-ekran {
-            background: white; color: #333; padding: 40px; border-radius: 15px;
+            background: white; color: #000; padding: 40px; border-radius: 15px;
             width: 320px; text-align: center;
         }
 
-        .yeni-bolum-modal {
-            position: fixed;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%) scale(0.8);
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
-            z-index: 10002;
-            text-align: center;
-            color: #333;
-            display: none;
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            width: 300px;
+        .duyuru-ekran h2 {
+            color: var(--canli-pembe);
+            margin-top: 0;
         }
 
-        .yeni-bolum-modal.aktif {
-            display: block !important;
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
+
+        .anladim-btn {
+            background: var(--canli-pembe);
+            color: white; 
+            border: none; 
+            padding: 12px 25px;
+            border-radius: 25px; /* Yuvarlatılmış köşeler */
+            cursor: pointer; 
+            font-weight: bold;
+            text-decoration: none; 
+            display: inline-block; 
+            margin-top: 15px;
+            width: 100%;
+            transition: opacity 0.3s ease;
         }
 
-        .oku-btn {
-            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-            color: white; border: none; padding: 12px 25px;
-            border-radius: 25px; cursor: pointer; font-weight: bold;
-            text-decoration: none; display: inline-block; margin-top: 15px;
+        .anladim-btn:hover {
+            opacity: 0.9;
         }
 
         .tanitim-alani {
@@ -186,27 +182,6 @@
 <body>
     <canvas id="kar-tuvali"></canvas>
     <canvas id="konfeti-canvas"></canvas>
-    
-    <div id="yeniBolumModal" class="yeni-bolum-modal">
-        <div id="anketIcerik">
-            <h2 style="color: #ee9ca7;">Küçük Bir Soru ✨</h2>
-            <p style="font-family: sans-serif; font-size: 0.9em; line-height: 1.4; margin-bottom: 20px;">
-                13. bölümü 24/02/26 tarihinde yüklememi ister misiniz!<br>
-                <small>(Eğer cevabınız ''Evet'' olursa 14. bölüm için en az 10 gün beklemeniz gerekir.)</small>
-            </p>
-            
-            <button onclick="anketGonder('Evet')" class="oku-btn" style="width: 100%; margin-bottom: 10px;">Evet, Hemen Gelsin!</button>
-            <button onclick="anketGonder('Hayır')" class="oku-btn" style="width: 100%; background: linear-gradient(135deg, #90e0ef, #00b4d8);">Hayır, Bekleyebilirim</button>
-            
-            <button onclick="modalKapat()" style="background:none; border:none; color:#888; margin-top:15px; cursor:pointer; font-size:0.8em;">Belki Daha Sonra</button>
-        </div>
-
-        <div id="anketTesekkur" style="display: none;">
-            <h2 style="color: #ee9ca7;">Teşekkürler!</h2>
-            <p style="font-family: sans-serif;">Geri bildirimin kaydedildi. Keyifli okumalar!</p>
-            <button onclick="modalKapat()" class="oku-btn">Kapat</button>
-        </div>
-    </div>
 
     <div class="ana-serbest-logo">
         <a href="index.html"><img src="logo1.2.png" alt="Fansub Logo"></a>
@@ -219,8 +194,9 @@
     <div class="duyuru-overlay" id="duyuruKutusu">
         <div class="duyuru-ekran">
             <h2>DUYURU</h2>
-            <p>12. Bölüm yayına girdi! İyi okumalar dileriz.</p>
-            <button onclick="duyuruKapat()" style="padding: 10px 20px; cursor:pointer;">Kapat</button>
+            <p style="font-family: sans-serif;">Sitenin asıl sahibinin kim olduğunu anlamışsınızdır. Normalde planlarım farklıydı ama o 7 Mart için 3 bölüm istedi. Nedenini veya zorluğunu sorgulamayı bırakalı çok oldu. O yüzden 7 Mart'ta 3 bölüm gelecek. Anlayışınız için teşekkürler.
+</p>
+            <button onclick="duyuruKapat()" class="anladim-btn" style="width: auto;">Anladım</button>
         </div>
     </div>
     
@@ -315,70 +291,19 @@
             animate();
         })();
 
-        // --- Konfeti Efekti ---
-        function konfetiPatlat() {
-            const canvas = document.getElementById('konfeti-canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-            let particles = [];
-            const colors = ['#ffdde1', '#ee9ca7', '#90e0ef', '#D8E983', '#ffffff'];
-            for (let i = 0; i < 100; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height - canvas.height,
-                    size: Math.random() * 7 + 3,
-                    speed: Math.random() * 5 + 2,
-                    color: colors[Math.floor(Math.random() * colors.length)],
-                    angle: Math.random() * 6.28
-                });
-            }
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach((p, i) => {
-                    p.y += p.speed; p.x += Math.sin(p.angle) * 2;
-                    ctx.fillStyle = p.color; ctx.fillRect(p.x, p.y, p.size, p.size);
-                    if (p.y > canvas.height) particles[i].y = -10;
-                });
-                requestAnimationFrame(draw);
-            }
-            draw();
-            setTimeout(() => { canvas.style.display = 'none'; }, 6000);
-        }
-
         // --- Sayfa Yüklendiğinde ---
         window.addEventListener('load', () => {
-            // İzlendi Kontrolü
             for(let i=1; i<=12; i++) {
                 if (localStorage.getItem('bolum'+i) === "true") {
                     const icon = document.getElementById("icon-bolum"+i);
                     if (icon) icon.classList.add("aktif");
                 }
             }
-            
-            // Anket Kontrolü (v13 için)
-            if(localStorage.getItem('anketKatildi_v13') !== 'true') {
-                setTimeout(() => {
-                    document.getElementById('yeniBolumModal').classList.add('aktif');
-                    konfetiPatlat();
-                }, 1000);
-            }
+            setTimeout(() => {
+                document.getElementById('yeniBolumModal').classList.add('aktif');
+                konfetiPatlat();
+            }, 1000);
         });
-
-        // --- GARANTİLİ ANKET GÖNDERİMİ ---
-        function anketGonder(deger) {
-            // Kullanıcının cevabını linke ekle
-            const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeOQSVfRfMpq8EYhEX4OjlCHZpiURupn5uXonCknsYMZZphHw/viewform?usp=pp_url&entry.1464932873=" + encodeURIComponent(deger);
-            
-            // Formu yeni sekmede aç (Cevap seçilmiş olarak gider)
-            window.open(formUrl, '_blank');
-            
-            // Sitedeki modalı teşekkür ekranına çevir
-            document.getElementById('anketIcerik').style.display = 'none';
-            document.getElementById('anketTesekkur').style.display = 'block';
-            
-            // Tarayıcı hafızasına kaydet (Bir daha sorma)
-            localStorage.setItem('anketKatildi_v13', 'true');
-        }
 
         function modalKapat() { 
             document.getElementById('yeniBolumModal').classList.remove('aktif'); 
@@ -394,7 +319,6 @@
         function duyuruKapat() { document.getElementById("duyuruKutusu").style.display = "none"; }
         function kaydet(id) { localStorage.setItem(id, "true"); }
 
-        // --- Disqus ---
         var disqus_config = function () {
             this.page.url = window.location.href;
             this.page.identifier = 'merry-marbling-ana-sayfa';
