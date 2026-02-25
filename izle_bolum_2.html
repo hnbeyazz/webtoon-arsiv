@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="logo1.2.png">
-    <title>Bölüm 3 - Merry Marbling</title>
+    <title>Bölüm 2 - Merry Marbling</title>
     <style> 
         @font-face { 
             font-family: 'PublicaSans'; 
@@ -29,6 +29,7 @@
             background-attachment: fixed; 
             background-size: cover; 
             background-position: center; 
+            /* Arka plan Bölüm 1 ile eşitlendi */
             background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('media17.jpg'); 
             font-family: 'PublicaSans', sans-serif;
             font-style: italic;
@@ -52,14 +53,14 @@
         .secici-konteyner { display: flex; gap: 12px; margin-bottom: 25px; }
         .secici-buton { background: #1a1d22; color: #ccc; border: 1px solid #333; padding: 10px 15px; border-radius: 6px; font-family: inherit; cursor: pointer; flex: 1; max-width: 200px; }
 
-        /* Başlık ve Buton Alanı - Çizgisiz Tıpatıp Aynı */
+        /* Başlık ve Buton Alanı - Çizgi Tamamen Kaldırıldı */
         .baslik-ve-butonlar {
             display: flex;
             justify-content: space-between; 
             align-items: flex-end; 
             padding-bottom: 8px;
             margin-bottom: 25px;
-            border-bottom: none !important; 
+            border-bottom: none !important; /* Çizgi kesinlikle yok */
         }
 
         .bolum-basligi { 
@@ -68,7 +69,7 @@
             color: #fff; 
             letter-spacing: 1px;
             margin: 0; 
-            border-bottom: none !important;
+            border-bottom: none !important; /* Etikete özel çizgi ihtimalini de sildik */
         }
 
         .ust-buton-grubu { display: flex; gap: 3px; }
@@ -113,14 +114,14 @@
 
     <div class="container">
         <nav class="ust-navigasyon">
-            <a href="index.html">Ana Sayfa</a> / <a href="index.html">Merry Marbling</a> / <span>Bölüm 3</span>
+            <a href="index.html">Ana Sayfa</a> / <a href="index.html">Merry Marbling</a> / <span>Bölüm 2</span>
         </nav>
 
         <div class="secici-konteyner">
             <select class="secici-buton" onchange="location = this.value;">
                 <option value="izle_bolum_1.html">Bölüm 1</option>
-                <option value="izle_bolum_2.html">Bölüm 2</option>
-                <option value="izle_bolum_3.html" selected>Bölüm 3</option>
+                <option value="izle_bolum_2.html" selected>Bölüm 2</option>
+                <option value="izle_bolum_3.html">Bölüm 3</option>
                 <option value="izle_bolum_4.html">Bölüm 4</option>
                 <option value="izle_bolum_5.html">Bölüm 5</option>
                 <option value="izle_bolum_6.html">Bölüm 6</option>
@@ -129,19 +130,20 @@
                 <option value="izle_bolum_9.html">Bölüm 9</option>
                 <option value="izle_bolum_10.html">Bölüm 10</option>
                 <option value="izle_bolum_11.html">Bölüm 11</option>
-                <option value="izle_bolum_12.html">Bölüm 12</option> </select>
+                                <option value="izle_bolum_12.html">Bölüm 12</option>
+            </select>
         </div>
 
         <div class="baslik-ve-butonlar">
-            <h1 class="bolum-basligi">3. Bölüm</h1>
+            <h1 class="bolum-basligi">2. Bölüm</h1>
             <div class="ust-buton-grubu">
-                <a href="izle_bolum_2.html" class="btn1-modern" title="Önceki Bölüm">
+                <a href="izle_bolum_1.html" class="btn1-modern" title="Önceki Bölüm">
                     <svg class="icon-svg" viewBox="0 0 24 24">
                         <line x1="19" y1="12" x2="5" y2="12"></line>
                         <polyline points="12 19 5 12 12 5"></polyline>
                     </svg>
                 </a>
-                <a href="izle_bolum_4.html" class="btn1-modern" title="Sonraki Bölüm">
+                <a href="izle_bolum_3.html" class="btn1-modern" title="Sonraki Bölüm">
                     <svg class="icon-svg" viewBox="0 0 24 24">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
@@ -152,28 +154,26 @@
 
         <div class="paneller">
             <img src="1.png">
-            <img src="bolum_3/1.jpg"> 
-            <img src="bolum_3/2.jpg"> 
-            <img src="bolum_3/3.jpg"> 
-            <img src="bolum_3/4.jpg">
-            <img src="bolum_3/5.jpg"> 
-            <img src="bolum_3/6.jpg"> 
-            <img src="bolum_3/7.jpg"> 
-            <img src="bolum_3/8.jpg"> 
-            <img src="bolum_3/9.jpg"> 
-            <img src="bolum_3/10.jpg"> 
-            <img src="bolum_3/11.jpg"> 
-            <img src="bolum_3/12.jpg"> 
+            <img src="bolum_2/1.jpg"> 
+            <img src="bolum_2/2.jpg"> 
+            <img src="bolum_2/3.jpg"> 
+            <img src="bolum_2/4.jpg">
+            <img src="bolum_2/5.jpg"> 
+            <img src="bolum_2/6.jpg"> 
+            <img src="bolum_2/7.jpg"> 
+            <img src="bolum_2/8.jpg"> 
+            <img src="bolum_2/9.jpg"> 
+            <img src="bolum_2/10.jpg"> 
         </div>
 
         <div class="alt-nav">
-            <a href="izle_bolum_2.html" class="btn1-modern" title="Önceki Bölüm">
+            <a href="izle_bolum_1.html" class="btn1-modern" title="Önceki Bölüm">
                 <svg class="icon-svg" viewBox="0 0 24 24">
                     <line x1="19" y1="12" x2="5" y2="12"></line>
                     <polyline points="12 19 5 12 12 5"></polyline>
                 </svg>
             </a>
-            <a href="izle_bolum_4.html" class="btn1-modern" title="Sonraki Bölüm">
+            <a href="izle_bolum_3.html" class="btn1-modern" title="Sonraki Bölüm">
                 <svg class="icon-svg" viewBox="0 0 24 24">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
@@ -188,8 +188,8 @@
 
     <script>
         var disqus_config = function () {
-            this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_3.html'; 
-            this.page.identifier = 'merry-marbling-bolum-3'; 
+            this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_2.html'; 
+            this.page.identifier = 'merry-marbling-bolum-2'; 
         };
     
         (function() { 
