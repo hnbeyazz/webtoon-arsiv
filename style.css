@@ -1,103 +1,182 @@
-        @font-face { font-family: 'PublicaSans'; src: url('PublicaSans-Italic.otf') format('opentype'); font-weight: normal; font-style: italic;}
+/* Lucaenfansub - Merkezi Stil Dosyası
+    Güncelleme: Bölüm Görünümü ve Hizalama Onarımı
+*/
 
-        * {
-            -webkit-tap-highlight-color: transparent;
-            outline: none;
-            -ms-touch-action: manipulation;
-            touch-action: manipulation;
-        }
+@font-face { 
+    font-family: 'PublicaSans'; 
+    src: url('PublicaSans-Italic.otf') format('opentype'); 
+    font-weight: normal; 
+    font-style: italic;
+}
 
-        body { 
-            margin: 0;  
-            display: flex;  
-            flex-direction: column; 
-            align-items: center; 
-            min-height: 100vh; 
-            background-color: #00001a;
-            background-attachment: fixed; 
-            background-size: cover; 
-            background-position: center; 
-            background-image:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)),url('media17.jpg'); 
-            font-family: 'PublicaSans', italic;
-        }
+* {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .site-header { width: 100%; background: transparent; padding: 40px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
-        .site-logo { height: 200px; width: auto; display: block; transition: transform 0.3s ease; }
-        .logo-sol { margin-left: 50px; }
-        .logo-sag { margin-right: 50px; }
+body { 
+    display: flex;  
+    flex-direction: column; 
+    align-items: center; 
+    min-height: 100vh; 
+    background-color: #00001a;
+    background-attachment: fixed; 
+    background-size: cover; 
+    background-position: center; 
+    font-family: 'PublicaSans', sans-serif;
+    overflow-x: hidden;
+    color: #fff;
+}
 
-        .container { 
-            width: 100%; 
-            max-width: 800px; 
-            background: transparent; 
-            margin-top: 0; 
-            padding-left: 10px; 
-            padding-right: 10px; 
-            box-sizing: border-box; 
-        }
-        .container img { width: 100%; height: auto; display: block; cursor: pointer; -webkit-user-select: none; -webkit-touch-callout: none; }
+/* --- ÜST BOŞLUK VE LOGO DÜZENLEME --- */
+.site-header { 
+    width: 100%; 
+    background: transparent; 
+    padding: 10px 0 !important; /* Üstteki dev boşluğu sildik */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    position: relative; 
+    z-index: 1000; 
+}
 
-        .ust-navigasyon { width: 100%; color: #666; font-size: 0.9em; margin-bottom: 15px; text-align: left; }
-        .ust-navigasyon a { color: #888; text-decoration: none; transition: 0.3s; }
-        .ust-navigasyon a:hover { color: #fff; }
+.site-logo { 
+    height: 110px !important; /* Logoları makul boyuta çektik */
+    width: auto; 
+    display: block; 
+    transition: transform 0.3s ease; 
+}
 
-        .secici-konteyner { display: flex; gap: 12px; margin-bottom: 25px; width: 100%; }
-        .secici-buton { background: #1a1d22; color: #ccc; border: 1px solid #333; padding: 10px 15px; border-radius: 6px; font-family: inherit; font-size: 0.95em; cursor: pointer; flex: 1; max-width: 200px; }
+.logo-sol { margin-left: 30px; }
+.logo-sag { margin-right: 30px; }
 
-        .bolum-basligi { width: 100%; text-align: left; padding: 10px 0 10px 0; font-size: 1.8em; font-weight: bold; color: #fff; border-bottom: 1px solid #333; margin-bottom: 25px; letter-spacing: 1px; }
-        .nav { 
-            padding-top: 20px;
-            padding-bottom: 30px;
-            text-align: center; 
-            background: transparent; 
-            display: flex;
-            justify-content: center;
-            font-family: PublicaSans, italic;
-            gap: 5px;
-        }
+/* --- KONTEYNER VE İÇERİK --- */
+.container { 
+    width: 100%; 
+    max-width: 800px; 
+    background: transparent; 
+    padding: 0 15px; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* HER ŞEYİ SOLA YASLAR */
+}
 
-        .btn-modern { 
-            width: 50px; 
-            height: 50px; 
-            background-color: #F7CAC9;
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            border-radius: 10px;
-            text-decoration: none; 
-            transition: 0.3s ease;
-            border: none; 
-        }
+.container img { 
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    cursor: pointer; 
+    margin-bottom: 0;
+}
 
-        .btn-modern:hover { 
-            background-color: #E37383;
-            transform: scale(1.03);
-        }
-        .icon-svg {
-            width: 20px;
-            height: 20px;
-            fill: none;
-            stroke: #ffffff; 
-            stroke-width: 2.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
+/* --- NAVİGASYON VE BAŞLIK --- */
+.ust-navigasyon { 
+    width: 100%; 
+    color: #888; 
+    font-size: 0.85em; 
+    margin-bottom: 10px; 
+    text-align: left; 
+}
 
-        .yorum-arkaplan-paneli { width: 100%; max-width: 800px; margin: 40px auto; padding: 40px 20px; box-sizing: border-box; border-radius: 15px; min-height: 600px; background-image: url('yorum.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: rgba(0, 0, 0, 0.6); background-blend-mode: darken; border: 1px solid #333; }
+.ust-navigasyon a { color: #666; text-decoration: none; transition: 0.3s; }
+.ust-navigasyon a:hover { color: #fff; }
 
-        @media (max-width: 600px) { 
-            .site-logo { height: 80px; }
-            .logo-sol { margin-left: 15px; }
-            .logo-sag { margin-right: 15px; }
-            .btn-modern { width: 40px; height: 40px; border-radius:6px;}
-            .icon-svg { width: 25px; height: 25px; }
-            .nav { 
-                padding-top: 20px;
-                padding-bottom: 30px;
-                text-align: center; 
-                background: transparent; 
-                display: flex;
-                justify-content: center;
-                gap: 5px;
-            }
-        }
+.bolum-basligi { 
+    width: 100%; 
+    text-align: left; 
+    padding: 10px 0; 
+    font-size: 1.8em; 
+    font-weight: bold; 
+    color: #fff; 
+    border-bottom: 1px solid #333; 
+    margin-bottom: 20px; 
+    letter-spacing: 1px;
+}
+
+/* --- SEÇİCİ (SELECT) KUTUSU --- */
+.secici-konteyner { 
+    display: flex; 
+    width: 100%; 
+    margin-bottom: 20px;
+}
+
+.secici-buton { 
+    background: #1a1d22; 
+    color: #ccc; 
+    border: 1px solid #333; 
+    padding: 10px; 
+    border-radius: 6px; 
+    font-family: inherit;
+    width: 180px;
+}
+
+/* --- BUTONLAR (FOTOĞRAFTAKİ GİBİ SOLA YASLI VE PEMBE) --- */
+.nav { 
+    padding: 20px 0 40px 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start !important; /* BUTONLARI SOLA YASLAR */
+    gap: 12px;
+}
+
+.btn-modern, .btn1-modern { 
+    width: 50px !important; 
+    height: 50px !important; 
+    background-color: #F7CAC9 !important; /* PEMBE RENK SABİTLENDİ */
+    display: flex !important; 
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 10px !important;
+    text-decoration: none; 
+    border: none !important;
+    transition: 0.3s ease;
+}
+
+.btn-modern:hover, .btn1-modern:hover { 
+    background-color: #E37383 !important; 
+    transform: scale(1.05);
+}
+
+.icon-svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: #ffffff; 
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* --- KAR EFEKTİ KANVASI --- */
+#snowCanvas, #kar-tuvali {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* --- YORUM PANELİ --- */
+.yorum-arkaplan-paneli { 
+    width: 100%; 
+    max-width: 800px; 
+    margin: 40px auto; 
+    padding: 20px; 
+    border-radius: 15px; 
+    background-color: rgba(0, 0, 0, 0.6); 
+    border: 1px solid #333; 
+}
+
+/* --- MOBİL UYUMLULUK --- */
+@media (max-width: 600px) { 
+    .site-logo { height: 70px !important; }
+    .logo-sol { margin-left: 15px; }
+    .logo-sag { margin-right: 15px; }
+    .site-header { padding: 5px 0 !important; }
+    .btn-modern, .btn1-modern { width: 45px !important; height: 45px !important; }
+}
