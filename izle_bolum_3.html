@@ -5,110 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="logo1.2.png">
     <title>Bölüm 3 - Merry Marbling</title>
-    <style> 
-        @font-face { 
-            font-family: 'PublicaSans'; 
-            src: url('PublicaSans-Italic.otf') format('opentype'); 
-            font-weight: normal; 
-            font-style: italic;
-        }
-
-        * {
-            -webkit-tap-highlight-color: transparent;
-            outline: none;
-            box-sizing: border-box;
-        }
-
-        body { 
-            margin: 0;  
-            display: flex;  
-            flex-direction: column; 
-            align-items: center; 
-            min-height: 100vh; 
-            background-color: #00001a;
-            background-attachment: fixed; 
-            background-size: cover; 
-            background-position: center; 
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('media17.jpg'); 
-            font-family: 'PublicaSans', sans-serif;
-            font-style: italic;
-        }
-
-        /* Header */
-        .site-header { width: 100%; padding: 40px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
-        .site-logo { height: 200px; width: auto; display: block; }
-        .logo-sol { margin-left: 50px; }
-        .logo-sag { margin-right: 50px; }
-
-        /* Container & Images */
-        .container { width: 100%; max-width: 800px; padding: 0 10px; }
-        .paneller img { width: 100%; height: auto; display: block; cursor: pointer; }
-
-        /* Navigasyon */
-        .ust-navigasyon { color: #666; font-size: 0.9em; margin-bottom: 15px; text-align: left; }
-        .ust-navigasyon a { color: #888; text-decoration: none; transition: 0.3s; }
-        .ust-navigasyon a:hover { color: #fff; }
-
-        .secici-konteyner { display: flex; gap: 12px; margin-bottom: 25px; }
-        .secici-buton { background: #1a1d22; color: #ccc; border: 1px solid #333; padding: 10px 15px; border-radius: 6px; font-family: inherit; cursor: pointer; flex: 1; max-width: 200px; }
-
-        /* Başlık ve Buton Alanı - Çizgisiz Tıpatıp Aynı */
-        .baslik-ve-butonlar {
-            display: flex;
-            justify-content: space-between; 
-            align-items: flex-end; 
-            padding-bottom: 8px;
-            margin-bottom: 25px;
-            border-bottom: none !important; 
-        }
-
-        .bolum-basligi { 
-            font-size: 1.8em; 
-            font-weight: bold; 
-            color: #fff; 
-            letter-spacing: 1px;
-            margin: 0; 
-            border-bottom: none !important;
-        }
-
-        .ust-buton-grubu { display: flex; gap: 3px; }
-
-        /* Buton Stilleri */
-        .btn1-modern { 
-            width: 40px; 
-            height: 40px; 
-            background-color: #F7CAC9;
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            border-radius: 8px;
-            text-decoration: none; 
-            transition: 0.3s ease;
-        }
-
-        .btn1-modern:hover { background-color: #E37383; transform: scale(1.05); }
-        
-        /* Alt Navigasyon */
-        .alt-nav { padding: 40px 0; display: flex; justify-content: center; gap: 3px; }
-
-        .icon-svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-
-        .yorum-arkaplan-paneli { width: 100%; max-width: 800px; margin: 40px auto; padding: 40px 20px; border-radius: 15px; min-height: 600px; background-image: url('yorum.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: rgba(0, 0, 0, 0.6); background-blend-mode: darken; border: 1px solid #333; }
-
-        @media (max-width: 600px) { 
-            .site-logo { height: 80px; }
-            .logo-sol { margin-left: 15px; }
-            .logo-sag { margin-right: 15px; }
-            .bolum-basligi { font-size: 1.4em; }
-            .btn1-modern { width: 35px; height: 35px; }
-        }
-    </style>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <canvas id="snowCanvas"></canvas>
 
     <header class="site-header">
-        <a href="index.html"><img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol"></a>
-        <div class="logo-konteyner"><img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag"></div>
+        <a href="index.html"><img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Logo Sol" class="site-logo logo-sol"></a>
+        <div class="logo-konteyner"><img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Logo Sağ" class="site-logo logo-sag"></div>
     </header>
 
     <div class="container">
@@ -117,35 +22,17 @@
         </nav>
 
         <div class="secici-konteyner">
-            <select class="secici-buton" onchange="location = this.value;">
-                <option value="izle_bolum_1.html">Bölüm 1</option>
-                <option value="izle_bolum_2.html">Bölüm 2</option>
-                <option value="izle_bolum_3.html" selected>Bölüm 3</option>
-                <option value="izle_bolum_4.html">Bölüm 4</option>
-                <option value="izle_bolum_5.html">Bölüm 5</option>
-                <option value="izle_bolum_6.html">Bölüm 6</option>
-                <option value="izle_bolum_7.html">Bölüm 7</option>
-                <option value="izle_bolum_8.html">Bölüm 8</option>
-                <option value="izle_bolum_9.html">Bölüm 9</option>
-                <option value="izle_bolum_10.html">Bölüm 10</option>
-                <option value="izle_bolum_11.html">Bölüm 11</option>
-                <option value="izle_bolum_12.html">Bölüm 12</option> </select>
+            <select class="secici-buton" onchange="location = this.value;"></select>
         </div>
 
         <div class="baslik-ve-butonlar">
             <h1 class="bolum-basligi">3. Bölüm</h1>
             <div class="ust-buton-grubu">
                 <a href="izle_bolum_2.html" class="btn1-modern" title="Önceki Bölüm">
-                    <svg class="icon-svg" viewBox="0 0 24 24">
-                        <line x1="19" y1="12" x2="5" y2="12"></line>
-                        <polyline points="12 19 5 12 12 5"></polyline>
-                    </svg>
+                    <svg class="icon-svg" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                 </a>
                 <a href="izle_bolum_4.html" class="btn1-modern" title="Sonraki Bölüm">
-                    <svg class="icon-svg" viewBox="0 0 24 24">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
+                    <svg class="icon-svg" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </a>
             </div>
         </div>
@@ -168,16 +55,10 @@
 
         <div class="alt-nav">
             <a href="izle_bolum_2.html" class="btn1-modern" title="Önceki Bölüm">
-                <svg class="icon-svg" viewBox="0 0 24 24">
-                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                    <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
+                <svg class="icon-svg" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
             </a>
             <a href="izle_bolum_4.html" class="btn1-modern" title="Sonraki Bölüm">
-                <svg class="icon-svg" viewBox="0 0 24 24">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
+                <svg class="icon-svg" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
         </div>
     </div>
@@ -186,9 +67,11 @@
         <div id="disqus_thread"></div>
     </div>
 
+    <script src="ayarlar.js"></script>
+
     <script>
         var disqus_config = function () {
-            this.page.url = 'https://hnbeyazz.github.io/webtoon-arsiv/izle_bolum_3.html'; 
+            this.page.url = window.location.href; 
             this.page.identifier = 'merry-marbling-bolum-3'; 
         };
     
@@ -201,7 +84,6 @@
 
         document.querySelectorAll('.paneller img').forEach(img => {
             img.addEventListener('click', function(e) {
-                e.preventDefault(); 
                 window.scrollBy({ top: window.innerHeight * 0.7, behavior: 'smooth' });
             });
         });
