@@ -1,6 +1,4 @@
-/* Lucaenfansub - Merkezi Stil Dosyası
-    Güncelleme: Bölüm Görünümü ve Hizalama Onarımı
-*/
+/* Lucaenfansub - Onarılmış Stil Dosyası */
 
 @font-face { 
     font-family: 'PublicaSans'; 
@@ -26,157 +24,114 @@ body {
     background-attachment: fixed; 
     background-size: cover; 
     background-position: center; 
+    /* Arka plan buraya sabitlendi, HTML içinde body'ye eklediğin görsel bunu tamamlar */
     font-family: 'PublicaSans', sans-serif;
     overflow-x: hidden;
     color: #fff;
 }
 
-/* --- ÜST BOŞLUK VE LOGO DÜZENLEME --- */
+/* --- ÜST BÖLÜM VE LOGO --- */
 .site-header { 
     width: 100%; 
     background: transparent; 
-    padding: 10px 0 !important; /* Üstteki dev boşluğu sildik */
+    padding: 10px 0 !important; 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    position: relative; 
     z-index: 1000; 
 }
 
 .site-logo { 
-    height: 110px !important; /* Logoları makul boyuta çektik */
+    height: 100px !important; 
     width: auto; 
-    display: block; 
-    transition: transform 0.3s ease; 
 }
 
 .logo-sol { margin-left: 30px; }
 .logo-sag { margin-right: 30px; }
 
-/* --- KONTEYNER VE İÇERİK --- */
+/* --- KONTEYNER --- */
 .container { 
     width: 100%; 
     max-width: 800px; 
     background: transparent; 
-    padding: 0 15px; 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* HER ŞEYİ SOLA YASLAR */
+    padding: 0 15px;
 }
 
 .container img { 
     width: 100%; 
     height: auto; 
     display: block; 
-    cursor: pointer; 
-    margin-bottom: 0;
 }
 
-/* --- NAVİGASYON VE BAŞLIK --- */
-.ust-navigasyon { 
-    width: 100%; 
-    color: #888; 
-    font-size: 0.85em; 
-    margin-bottom: 10px; 
-    text-align: left; 
-}
-
-.ust-navigasyon a { color: #666; text-decoration: none; transition: 0.3s; }
-.ust-navigasyon a:hover { color: #fff; }
-
-.bolum-basligi { 
-    width: 100%; 
-    text-align: left; 
-    padding: 10px 0; 
-    font-size: 1.8em; 
-    font-weight: bold; 
-    color: #fff; 
-    border-bottom: 1px solid #333; 
-    margin-bottom: 20px; 
-    letter-spacing: 1px;
-}
-
-/* --- SEÇİCİ (SELECT) KUTUSU --- */
-.secici-konteyner { 
-    display: flex; 
-    width: 100%; 
+/* --- BAŞLIK VE ÜST BUTONLAR (SAĞA YASLI) --- */
+.baslik-ve-butonlar {
+    display: flex;
+    justify-content: space-between; /* Başlık sola, butonlar sağa */
+    align-items: flex-end;
+    width: 100%;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
     margin-bottom: 20px;
 }
 
-.secici-buton { 
-    background: #1a1d22; 
-    color: #ccc; 
-    border: 1px solid #333; 
-    padding: 10px; 
-    border-radius: 6px; 
-    font-family: inherit;
-    width: 180px;
+.bolum-basligi { 
+    font-size: 1.8em; 
+    font-weight: bold; 
+    color: #fff;
+    margin: 0;
 }
 
-/* --- BUTONLAR (FOTOĞRAFTAKİ GİBİ SOLA YASLI VE PEMBE) --- */
+.ust-buton-grubu {
+    display: flex;
+    gap: 10px;
+    margin-left: auto; /* Buton grubunu en sağa iter */
+}
+
+/* --- ALT NAVİGASYON (ORTALI) --- */
 .nav { 
-    padding: 20px 0 40px 0;
+    padding: 30px 0 50px 0;
     width: 100%;
     display: flex;
-    justify-content: flex-start !important; /* BUTONLARI SOLA YASLAR */
-    gap: 12px;
+    justify-content: center !important; /* ALT BUTONLARI ORTALAR */
+    gap: 15px;
 }
 
+/* --- ORTAK BUTON STİLİ (PEMBE) --- */
 .btn-modern, .btn1-modern { 
     width: 50px !important; 
     height: 50px !important; 
-    background-color: #F7CAC9 !important; /* PEMBE RENK SABİTLENDİ */
-    display: flex !important; 
+    background-color: #F7CAC9 !important; 
+    display: inline-flex !important; 
     justify-content: center; 
     align-items: center; 
     border-radius: 10px !important;
     text-decoration: none; 
     border: none !important;
-    transition: 0.3s ease;
+    flex-shrink: 0; /* Butonların ezilmesini önler */
 }
 
 .btn-modern:hover, .btn1-modern:hover { 
     background-color: #E37383 !important; 
-    transform: scale(1.05);
 }
 
 .icon-svg {
     width: 24px;
     height: 24px;
-    fill: none;
     stroke: #ffffff; 
     stroke-width: 2.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    fill: none;
 }
 
-/* --- KAR EFEKTİ KANVASI --- */
-#snowCanvas, #kar-tuvali {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-}
+/* --- DİĞER AYARLAR --- */
+.ust-navigasyon { width: 100%; color: #888; margin-bottom: 10px; }
+.ust-navigasyon a { color: #666; text-decoration: none; }
 
-/* --- YORUM PANELİ --- */
-.yorum-arkaplan-paneli { 
-    width: 100%; 
-    max-width: 800px; 
-    margin: 40px auto; 
-    padding: 20px; 
-    border-radius: 15px; 
-    background-color: rgba(0, 0, 0, 0.6); 
-    border: 1px solid #333; 
-}
+.secici-konteyner { margin-bottom: 20px; }
+.secici-buton { background: #1a1d22; color: #ccc; padding: 10px; border-radius: 6px; border: 1px solid #333; }
 
-/* --- MOBİL UYUMLULUK --- */
+/* --- MOBİL --- */
 @media (max-width: 600px) { 
-    .site-logo { height: 70px !important; }
-    .logo-sol { margin-left: 15px; }
-    .logo-sag { margin-right: 15px; }
-    .site-header { padding: 5px 0 !important; }
-    .btn-modern, .btn1-modern { width: 45px !important; height: 45px !important; }
+    .site-logo { height: 60px !important; }
+    .btn-modern, .btn1-modern { width: 42px !important; height: 42px !important; }
+    .bolum-basligi { font-size: 1.4em; }
 }
