@@ -3,130 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo1.2.png">
     <title>Bölüm 9 - Merry Marbling</title>
+    
+    <link rel="stylesheet" href="style.css">
+
     <style>
-        @font-face { font-family: 'PublicaSans'; src: url('PublicaSans-Italic.otf') format('opentype'); font-weight: normal; font-style: italic;}
-
-        * {
-            -webkit-tap-highlight-color: transparent;
-            outline: none;
-            -ms-touch-action: manipulation;
-            touch-action: manipulation;
-        }
-
-        body { 
-            margin: 0;  
-            display: flex;  
-            flex-direction: column; 
-            align-items: center; 
-            min-height: 100vh; 
-            background-color: #00001a;
-            background-attachment: fixed; 
-            background-size: cover; 
-            background-position: center; 
-            background-image: url('media17.jpg'); 
+        /* Sadece senin gönderdiğin doğum günü notu stili */
+        .dogum-gunu-notu {
+            background: rgba(247, 202, 201, 0.8); 
+            border-left: 3px solid #F7CAC9;
+            padding: 15px 20px;
+            margin: -10px 0 25px 0;
+            color: #eee;
+            font-size: 0.95rem;
+            line-height: 20px;
+            border-radius: 0 10px 10px 0;
             font-family: 'PublicaSans', italic;
         }
-
-        .site-header { width: 100%; background: transparent; padding: 40px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
-        .site-logo { height: 200px; width: auto; display: block; transition: transform 0.3s ease; }
-        .logo-sol { margin-left: 50px; }
-        .logo-sag { margin-right: 50px; }
-
-        .container { 
-            width: 100%; 
-            max-width: 800px; 
-            background: transparent; 
-            margin-top: 0; 
-            padding-left: 10px; 
-            padding-right: 10px; 
-            box-sizing: border-box; 
-        }
-        .container img { width: 100%; height: auto; display: block; cursor: pointer; -webkit-user-select: none; -webkit-touch-callout: none; }
-
-        .ust-navigasyon { width: 100%; color: #666; font-size: 0.9em; margin-bottom: 15px; text-align: left; }
-        .ust-navigasyon a { color: #888; text-decoration: none; transition: 0.3s; }
-        .ust-navigasyon a:hover { color: #fff; }
-
-        .secici-konteyner { display: flex; gap: 12px; margin-bottom: 25px; width: 100%; }
-        .secici-buton { background: #1a1d22; color: #ccc; border: 1px solid #333; padding: 10px 15px; border-radius: 6px; font-family: inherit; font-size: 0.95em; cursor: pointer; flex: 1; max-width: 200px; }
-
-        .bolum-basligi { width: 100%; text-align: left; padding: 10px 0 10px 0; font-size: 1.8em; font-weight: bold; color: #fff; border-bottom: 1px solid #333; margin-bottom: 25px; letter-spacing: 1px; }
-        .nav { 
-            padding-top: 20px;
-            padding-bottom: 30px;
-            text-align: center; 
-            background: transparent; 
-            display: flex;
-            justify-content: center;
-            font-family: PublicaSans, italic;
-            gap: 5px;
-        }
-
-        .btn-modern { 
-            width: 50px; 
-            height: 50px; 
-            background-color: #F7CAC9;
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            border-radius: 10px;
-            text-decoration: none; 
-            transition: 0.3s ease;
-            border: none; 
-        }
-        .dogum-gunu-notu {
-    background: rgba(247, 202, 201, 0.8); 
-    border-left: 3px solid #F7CAC9;
-    padding: 15px 20px;
-    margin: -10px 0 25px 0;
-    color: #eee;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    border-radius: 0 10px 10px 0;
-font-family: 'PublicaSans', italic;
-line-height: 20px;
-}
-
-        .btn-modern:hover { 
-            background-color: #E37383;
-            transform: scale(1.03);
-        }
-        .icon-svg {
-            width: 20px;
-            height: 20px;
-            fill: none;
-            stroke: #ffffff; 
-            stroke-width: 2.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .yorum-arkaplan-paneli { width: 100%; max-width: 800px; margin: 40px auto; padding: 40px 20px; box-sizing: border-box; border-radius: 15px; min-height: 600px; background-image: url('yorum.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: rgba(0, 0, 0, 0.6); background-blend-mode: darken; border: 1px solid #333; }
-
-        @media (max-width: 600px) { 
-            .site-logo { height: 80px; }
-            .logo-sol { margin-left: 15px; }
-            .logo-sag { margin-right: 15px; }
-            .btn-modern { width: 40px; height: 40px; border-radius:6px;}
-            .icon-svg { width: 25px; height: 25px; }
-            .nav { 
-                padding-top: 20px;
-                padding-bottom: 30px;
-                text-align: center; 
-                background: transparent; 
-                display: flex;
-                justify-content: center;
-                gap: 5px;
-            }
-        }
+        /* Bölüm 9'a özel arka plan */
+        body { background-image: url('media17.jpg'); }
     </style>
 </head>
 <body>
-      <header class="site-header">
-        <a href="index.html"> <img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Sol Logo" class="site-logo logo-sol"> </a>
-        <div class="logo-konteyner"> <img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Sağ Logo" class="site-logo logo-sag"> </div>
-      </header>
+    <canvas id="snowCanvas"></canvas>
+
+    <header class="site-header">
+        <a href="index.html"><img src="bde76bbd2219b950f8260f7a1e7c8f95-removebg-preview.png" alt="Logo Sol" class="site-logo logo-sol"></a>
+        <div class="logo-konteyner"><img src="bcece9b4e9950676edf34fe974961d5b-removebg-preview.png" alt="Logo Sağ" class="site-logo logo-sag"></div>
+    </header>
 
     <div class="container">
         <nav class="ust-navigasyon">
@@ -134,80 +39,58 @@ line-height: 20px;
         </nav>
 
         <div class="secici-konteyner">
-            <select class="secici-buton" onchange="location = this.value;">
-                <option value="izle_bolum_1.html">Bölüm 1</option>
-                <option value="izle_bolum_2.html">Bölüm 2</option>
-                <option value="izle_bolum_3.html">Bölüm 3</option>
-                <option value="izle_bolum_4.html">Bölüm 4</option>
-                <option value="izle_bolum_5.html">Bölüm 5</option>
-                <option value="izle_bolum_6.html">Bölüm 6</option>
-                <option value="izle_bolum_7.html">Bölüm 7</option>
-                <option value="izle_bolum_8.html">Bölüm 8</option>
-                <option value="izle_bolum_9.html" selected>Bölüm 9</option>
-                <option value="izle_bolum_10.html">Bölüm 10</option>
-                                <option value="izle_bolum_11.html">Bölüm 11</option>
-
-            </select>
+            <select class="secici-buton" onchange="location = this.value;"></select>
         </div>
 
-        <div class="bolum-basligi">9. Bölüm</div>
+        <div class="baslik-ve-butonlar">
+            <h1 class="bolum-basligi">9. Bölüm</h1>
+            <div class="ust-buton-grubu">
+                <a href="izle_bolum_8.html" class="btn1-modern" title="Önceki Bölüm">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </a>
+                <a href="izle_bolum_10.html" class="btn1-modern" title="Sonraki Bölüm">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </div>
+
         <div class="dogum-gunu-notu">
-    <strong></strong> Doğum günümün şerefine bölümü 3 gün önce yayınlamaya karar verdim! 🎉 Bu özel günün ilk dakikalarında yanımda olduğun için teşekkür ederim.
-</div>
-        <img src="1.png"> 
-<img src="bolum_9/1.jpg">
-<img src="bolum_9/2.jpg">
-<img src="bolum_9/3.jpg">
-<img src="bolum_9/4.jpg">
-<img src="bolum_9/5.jpg">
-<img src="bolum_9/6.jpg">
-<img src="bolum_9/7.jpg">
-<img src="bolum_9/8.jpg">
-<img src="bolum_9/9.jpg">
-<img src="bolum_9/10.jpg">
-<img src="bolum_9/11.jpg">
-<img src="bolum_9/12.jpg">
-<img src="bolum_9/13.jpg">
-<img src="bolum_9/14.jpg">
-<img src="bolum_9/15.jpg">
-<img src="bolum_9/16.jpg">
-<img src="bolum_9/17.jpg">
-<img src="bolum_9/18.jpg">
-<img src="bolum_9/19.jpg">
-<img src="bolum_9/20.jpg">
-<img src="bolum_9/21.jpg">
-<img src="bolum_9/22.jpg">
-<img src="bolum_9/23.jpg">
-<img src="bolum_9/24.jpg">
-<img src="bolum_9/25.jpg">
-<img src="bolum_9/26.jpg">
-<img src="bolum_9/27.jpg">
+            🎉 Doğum günümün şerefine bölümü 3 gün önce yayınlamaya karar verdim! Bu özel günün ilk dakikalarında yanımda olduğun için teşekkür ederim.
+        </div>
 
-        <div class="nav">
-            <a href="izle_bolum_8.html" class="btn-modern" title="Önceki Bölüm">
-                <svg class="icon-svg" viewBox="0 0 24 24">
-                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                    <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
+        <div class="paneller">
+            <img src="1.png"> 
+            <img src="bolum_9/1.jpg"><img src="bolum_9/2.jpg"><img src="bolum_9/3.jpg"><img src="bolum_9/4.jpg">
+            <img src="bolum_9/5.jpg"><img src="bolum_9/6.jpg"><img src="bolum_9/7.jpg"><img src="bolum_9/8.jpg">
+            <img src="bolum_9/9.jpg"><img src="bolum_9/10.jpg"><img src="bolum_9/11.jpg"><img src="bolum_9/12.jpg">
+            <img src="bolum_9/13.jpg"><img src="bolum_9/14.jpg"><img src="bolum_9/15.jpg"><img src="bolum_9/16.jpg">
+            <img src="bolum_9/17.jpg"><img src="bolum_9/18.jpg"><img src="bolum_9/19.jpg"><img src="bolum_9/20.jpg">
+            <img src="bolum_9/21.jpg"><img src="bolum_9/22.jpg"><img src="bolum_9/23.jpg"><img src="bolum_9/24.jpg">
+            <img src="bolum_9/25.jpg"><img src="bolum_9/26.jpg"><img src="bolum_9/27.jpg">
+        </div>
+
+        <div class="alt-nav">
+            <a href="izle_bolum_8.html" class="btn1-modern" title="Önceki Bölüm">
+                <svg class="icon-svg" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
             </a>
-
-            <a href="izle_bolum_10.html" class="btn-modern" title="Sonraki Bölüm">
-                <svg class="icon-svg" viewBox="0 0 24 24">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
+            <a href="izle_bolum_10.html" class="btn1-modern" title="Sonraki Bölüm">
+                <svg class="icon-svg" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
         </div>
     </div>
 
-    <div class="yorum-arkaplan-paneli"> <div id="disqus_thread"></div> </div>
+    <div class="yorum-arkaplan-paneli">
+        <div id="disqus_thread"></div>
+    </div>
+
+    <script src="ayarlar.js"></script>
 
     <script>
         var disqus_config = function () {
             this.page.url = window.location.href; 
-            // BURAYI "bolum-9-ozel" YAPTIK Kİ 7 İLE KARIŞMASIN
             this.page.identifier = 'merry-marbling-bolum-9-ozel'; 
         };
+    
         (function() { 
             var d = document, s = d.createElement('script');
             s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
@@ -215,17 +98,11 @@ line-height: 20px;
             (d.head || d.body).appendChild(s);
         })();
 
-        // Resim tıklama kaydırma efekti
-        document.querySelectorAll('.container img').forEach(img => {
+        document.querySelectorAll('.paneller img').forEach(img => {
             img.addEventListener('click', function(e) {
-                e.preventDefault(); 
-                window.scrollBy({
-                    top: window.innerHeight * 0.7,
-                    behavior: 'smooth'
-                });
+                window.scrollBy({ top: window.innerHeight * 0.7, behavior: 'smooth' });
             });
         });
     </script>
-    <script id="dsq-count-scr" src="//https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/count.js" async></script>
 </body>
 </html>
