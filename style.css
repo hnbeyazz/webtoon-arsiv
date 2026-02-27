@@ -1,5 +1,3 @@
-/* Lucaenfansub - Onarılmış Stil Dosyası */
-
 @font-face { 
     font-family: 'PublicaSans'; 
     src: url('PublicaSans-Italic.otf') format('opentype'); 
@@ -20,122 +18,95 @@ body {
     flex-direction: column; 
     align-items: center; 
     min-height: 100vh; 
-    justify-content: flex-start;
     background-color: #00001a;
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('media17.jpg');
     background-attachment: fixed; 
     background-size: cover; 
     background-position: center; 
-    /* Arka plan buraya sabitlendi, HTML içinde body'ye eklediğin görsel bunu tamamlar */
     font-family: 'PublicaSans', sans-serif;
     overflow-x: hidden;
     color: #fff;
-    margin: 0;
-    background-image: url('media17.jpg');
 }
-
-/* --- ÜST BÖLÜM VE LOGO --- */
 .site-header { 
     width: 100%; 
     background: transparent; 
-    padding: 0 !important; 
+    padding: 5px 0 !important; 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
+    position: relative;
     z-index: 1000; 
-    
 }
 
 .site-logo { 
-    height: 100px !important; 
+    height: 90px !important; 
     width: auto; 
 }
 
-.logo-sol { margin-left: 30px; }
-.logo-sag { margin-right: 30px; }
+.logo-sol { margin-left: 20px; }
+.logo-sag { margin-right: 20px; }
 
-/* --- KONTEYNER --- */
 .container { 
     width: 100%; 
     max-width: 800px; 
     background: transparent; 
     padding: 0 15px;
 }
-
-.container img { 
-    width: 100%; 
-    height: auto; 
-    display: block; 
-}
-
-/* --- BAŞLIK VE ÜST BUTONLAR (SAĞA YASLI) --- */
 .baslik-ve-butonlar {
     display: flex;
-    justify-content: space-between; /* Başlık sola, butonlar sağa */
-    align-items: flex-end;
+    justify-content: space-between; 
+    align-items: center; 
     width: 100%;
-    border-bottom: 1px solid #333;
-    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 15px 0;
     margin-bottom: 20px;
 }
 
-.bolum-basligi { 
-    font-size: 1.8em; 
-    font-weight: bold; 
-    color: #fff;
-    margin: 0;
-}
+.bolum-basligi { font-size: 1.8em; font-weight: bold; margin: 0; }
 
 .ust-buton-grubu {
     display: flex;
     gap: 10px;
-    margin-left: auto; /* Buton grubunu en sağa iter */
 }
 
-/* --- ALT NAVİGASYON (ORTALI) --- */
-.nav { 
-    padding: 30px 0 50px 0;
+/* --- ALT BUTONLAR (ORTALI) --- */
+.alt-nav { 
+    padding: 40px 0 60px 0;
     width: 100%;
     display: flex;
-    justify-content: center !important; /* ALT BUTONLARI ORTALAR */
-    gap: 15px;
+    justify-content: center !important; 
+    gap: 20px;
 }
 
-/* --- ORTAK BUTON STİLİ (PEMBE) --- */
-.btn-modern, .btn1-modern { 
+/* PEMBE BUTONLAR */
+.btn1-modern { 
     width: 50px !important; 
     height: 50px !important; 
     background-color: #F7CAC9 !important; 
     display: inline-flex !important; 
     justify-content: center; 
     align-items: center; 
-    border-radius: 10px !important;
+    border-radius: 12px !important;
     text-decoration: none; 
     border: none !important;
-    flex-shrink: 0; /* Butonların ezilmesini önler */
+    transition: 0.3s;
 }
 
-.btn-modern:hover, .btn1-modern:hover { 
-    background-color: #E37383 !important; 
+.btn1-modern:hover { background-color: #E37383 !important; transform: translateY(-2px); }
+
+.icon-svg { width: 24px; height: 24px; stroke: #fff; stroke-width: 2.5; fill: none; }
+
+/* Disqus Paneli */
+.yorum-arkaplan-paneli { 
+    width: 100%; 
+    max-width: 800px; 
+    margin: 50px auto; 
+    padding: 20px; 
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
 }
 
-.icon-svg {
-    width: 24px;
-    height: 24px;
-    stroke: #ffffff; 
-    stroke-width: 2.5;
-    fill: none;
-}
-
-/* --- DİĞER AYARLAR --- */
-.ust-navigasyon { width: 100%; color: #888; margin-bottom: 10px; }
-.ust-navigasyon a { color: #666; text-decoration: none; }
-
-.secici-konteyner { margin-bottom: 20px; }
-.secici-buton { background: #1a1d22; color: #ccc; padding: 10px; border-radius: 6px; border: 1px solid #333; }
-
-/* --- MOBİL --- */
 @media (max-width: 600px) { 
     .site-logo { height: 60px !important; }
-    .btn-modern, .btn1-modern { width: 42px !important; height: 42px !important; }
-    .bolum-basligi { font-size: 1.4em; }
+    .bolum-basligi { font-size: 1.3em; }
 }
