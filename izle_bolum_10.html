@@ -157,22 +157,19 @@
         })();
 
         // --- Disqus ve Resim Kaydırma ---
-        var disqus_config = function () {
-            this.page.url = window.location.href; 
-            this.page.identifier = 'merry-marbling-bolum-10-ozel'; 
-        };
-        (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://https-hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
+        // --- Disqus Düzeltilmiş Hali ---
+var disqus_config = function () {
+    this.page.url = window.location.href; 
+    this.page.identifier = 'merry-marbling-bolum-10-ozel'; 
+};
 
-        document.querySelectorAll('.paneller img').forEach(img => {
-            img.addEventListener('click', function(e) {
-                window.scrollBy({ top: window.innerHeight * 0.7, behavior: 'smooth' });
-            });
-        });
+(function() { 
+    var d = document, s = d.createElement('script');
+    // BURAYI DÜZELTTİM:
+    s.src = 'https://hnbeyazz-github-io-webtoon-arsiv.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
     </script>
 </body>
 </html>
