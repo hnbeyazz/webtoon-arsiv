@@ -1,112 +1,163 @@
+
 @font-face { 
     font-family: 'PublicaSans'; 
     src: url('PublicaSans-Italic.otf') format('opentype'); 
     font-weight: normal; 
     font-style: italic;
 }
-
 * {
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body { 
-    display: flex;  
-    flex-direction: column; 
-    align-items: center; 
-    min-height: 100vh; 
     background-color: #00001a;
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('media17.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('media17.jpg');
     background-attachment: fixed; 
     background-size: cover; 
     background-position: center; 
     font-family: 'PublicaSans', sans-serif;
-    overflow-x: hidden;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px;
+    margin: 0;
+    padding: 0;
+    align-items: flex-start;
 }
+#snowCanvas, #kar-tuvali {
+    position: fixed !important; /* Sayfadaki hiçbir şeyi itmez, havada asılı kalır */
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important; /* Ekran genişliği kadar */
+    height: 100vh !important; /* Ekran yüksekliği kadar */
+    pointer-events: none; /* Resimlere tıklamanı engellemez */
+    z-index: 9999; /* Her şeyin en üstünde ama boşluk yaratmaz */
+}
+
 .site-header { 
     width: 100%; 
-    background: transparent; 
-    padding: 5px 0 !important; 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    position: relative;
-    z-index: 1000; 
+    padding: 10px 20px;
+    z-index: 100;
+    position: absolute; /* veya fixed */
+    top: 0;
+    margin-top: 0 !important;
+    padding-top: 5px !important;
+    left: 0;
+    right: 0;
+}
+@media (max-width: 600px) { 
+    .site-logo { height: 60px; }
+    .bolum-basligi { font-size: 1.3em; }
+    .site-header { padding: 5px 10px; }
+    .container { margin-top: 80px; } /* ← bunu ekle */
 }
 
 .site-logo { 
-    height: 90px !important; 
-    width: auto; 
+    height: 160px; 
+    width: auto;
+    display: block;
+    margin-top: 0px;
+    display: block;
+    vertical-align: top;
 }
-
-.logo-sol { margin-left: 20px; }
-.logo-sag { margin-right: 20px; }
-
 .container { 
     width: 100%; 
     max-width: 800px; 
-    background: transparent; 
     padding: 0 15px;
+    margin-top: 180px; 
 }
+.ust-navigasyon { 
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+.ust-navigasyon a {
+    color: #888 !important; 
+    text-decoration: none !important; 
+    margin-top: 0px;
+}
+.ust-navigasyon a:hover { color: #fff !important; }
 .baslik-ve-butonlar {
     display: flex;
     justify-content: space-between; 
     align-items: center; 
     width: 100%;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
     padding: 15px 0;
-    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 10px;
 }
 
-.bolum-basligi { font-size: 1.8em; font-weight: bold; margin: 0; }
+.bolum-basligi { font-size: 1.8em; font-weight: bold; }
 
-.ust-buton-grubu {
-    display: flex;
-    gap: 10px;
-}
-
-/* --- ALT BUTONLAR (ORTALI) --- */
-.alt-nav { 
-    padding: 40px 0 60px 0;
-    width: 100%;
-    display: flex;
-    justify-content: center !important; 
-    gap: 20px;
-}
-
-/* PEMBE BUTONLAR */
+.ust-buton-grubu { display: flex; gap: 10px; }
 .btn1-modern { 
-    width: 50px !important; 
-    height: 50px !important; 
+    width: 45px; 
+    height: 45px; 
     background-color: #F7CAC9 !important; 
-    display: inline-flex !important; 
+    display: inline-flex; 
     justify-content: center; 
     align-items: center; 
-    border-radius: 12px !important;
-    text-decoration: none; 
-    border: none !important;
+    border-radius: 10px;
     transition: 0.3s;
+    gap: 0px;
 }
 
-.btn1-modern:hover { background-color: #E37383 !important; transform: translateY(-2px); }
+.btn1-modern:hover { background-color: #E37383 !important; transform: scale(1.05); }
 
-.icon-svg { width: 24px; height: 24px; stroke: #fff; stroke-width: 2.5; fill: none; }
+.icon-svg { 
+    width: 24px; 
+    height: 24px; 
+    stroke: #ffffff !important;
+    stroke-width: 2.5;
+    fill: none;
+    display: block;
+}
+.paneller {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
-/* Disqus Paneli */
+.paneller img { 
+    width: 100% !important; 
+    height: auto !important; 
+    display: block; 
+}
+
+/* 8. ALT NAV (ORTALI) */
+.alt-nav { 
+    padding: 20px 0;
+    display: flex;
+    justify-content: center; 
+    gap: 3px;
+}
+
+/* 9. DISQUS */
 .yorum-arkaplan-paneli { 
     width: 100%; 
     max-width: 800px; 
-    margin: 50px auto; 
+    margin: 40px auto; 
     padding: 20px; 
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 15px;
 }
 
+/* MOBİL AYARLAR */
 @media (max-width: 600px) { 
-    .site-logo { height: 60px !important; }
+    .site-logo { height: 60px; }
     .bolum-basligi { font-size: 1.3em; }
+    .site-header { padding: 5px 10px; }
 }
