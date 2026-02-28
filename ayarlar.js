@@ -12,36 +12,92 @@ const bolumler = [
     { no: 11, url: "izle_bolum_11.html" },
     { no: 12, url: "izle_bolum_12.html" }
 ];
+
 function menuyuHazirla() {
-    const select = document.querySelector('.secici-buton');
-    if(!select) return;
-    
-    bolumler.forEach(b => {
-        const opt = document.createElement('option');
-        opt.value = b.url;
-        opt.text = "Bölüm " + b.no;
-        if(window.location.pathname.includes(b.url)) opt.selected = true;
-        select.appendChild(opt);
+    const butonGrubu = document.querySelector('.ust-buton-grubu');
+    if (!butonGrubu) return;
+
+    const konteyner = document.createElement('div');
+    konteyner.className = 'secici-konteyner';
+    konteyner.innerHTML = `
+        <div class="hamburger-buton" onclick="var d=document.querySelector('.secici-dropdown'); if(d) d.classList.toggle('acik')">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <line x1="3" y1="6" x2="21" y2="6" stroke-linecap="round"></line>
+                <line x1="3" y1="12" x2="21" y2="12" stroke-linecap="round"></line>
+                <line x1="3" y1="18" x2="21" y2="18" stroke-linecap="round"></line>
+            </svg>
+            <div class="secici-dropdown">
+                <div class="secici-liste"></div>
+            </div>
+        </div>
+    `;
+
+    butonGrubu.insertBefore(konteyner, butonGrubu.firstChild);
+
+    const liste = konteyner.querySelector('.secici-liste');
+    bolumler.slice().reverse().forEach(b => {
+        const a = document.createElement('a');
+        a.href = b.url;
+        a.textContent = "Bölüm " + b.no;
+        if (window.location.pathname.includes(b.url)) {
+            a.classList.add('aktif');
+        }
+        liste.appendChild(a);
+    });
+
+    document.addEventListener('click', e => {
+        if (!e.target.closest('.secici-konteyner')) {
+            const dropdown = document.querySelector('.secici-dropdown');
+            if (dropdown) dropdown.classList.remove('acik');
+        }
     });
 }
+
 function karBaslat() {
-    const canvas = document.getElementById('snowCanvas');
-    if(!canvas) return;
+    const canvas = document.getElementById('snowCanvas') || document.getElementById('kar-tuvali');
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    let w = window.innerWidth, h = window.innerHeight;
-    canvas.width = w; canvas.height = h;
-    let flakes = [];
-    for(let i=0; i<100; i++) flakes.push({x: Math.random()*w, y: Math.random()*h, r: Math.random()*3+1, d: Math.random()*1});
-    function draw() {
-        ctx.clearRect(0,0,w,h); ctx.fillStyle = "rgba(255,255,255,0.7)"; ctx.beginPath();
-        for(let f of flakes) { ctx.moveTo(f.x, f.y); ctx.arc(f.x, f.y, f.r, 0, Math.PI*2); }
-        ctx.fill();
-        for(let f of flakes) { f.y += f.d**2 + 1; if(f.y > h) { f.y = -10; f.x = Math.random()*w; } }
+    let width, height, stars = [];
+
+    function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
     }
-    setInterval(draw, 30);
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Star {
+        constructor() { this.reset(); }
+        reset() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.size = Math.random() * 1.5 + 0.5;
+            this.speed = Math.random() * 0.8 + 0.2;
+            this.alpha = Math.random();
+        }
+        update() { this.y += this.speed; if (this.y > height) this.y = -10; }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < 100; i++) stars.push(new Star());
+
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+        stars.forEach(s => { s.update(); s.draw(); });
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 }
 
-// SAYFA AÇILDIĞINDA ÇALIŞTIR
 window.addEventListener('DOMContentLoaded', () => {
     menuyuHazirla();
     karBaslat();

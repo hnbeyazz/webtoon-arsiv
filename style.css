@@ -11,7 +11,9 @@
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
-
+* {
+    color-scheme: dark;
+}
 html {
     width: 100%;
     height: 100%;
@@ -88,8 +90,7 @@ body {
 
 .bolum-basligi { font-size: 1.8em; font-weight: bold; }
 
-.ust-buton-grubu { display: flex; gap: 4px; }
-.btn1-modern { 
+.ust-buton-grubu { display: flex; gap: 4px; align-items: center; }.btn1-modern { 
     width: 45px; 
     height: 45px; 
     background-color: #F7CAC9 !important; 
@@ -165,4 +166,57 @@ body {
 .secici-buton:hover {
     background-color: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.4);
+}
+.secici-konteyner {
+    position: relative;
+    display: inline-block;
+}
+
+.hamburger-buton {
+    width: 45px;
+    height: 45px;
+    background: transparent;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.secici-dropdown {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: rgba(20, 20, 40, 0.97);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    min-width: 180px;
+    z-index: 10000;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.secici-dropdown.acik {
+    display: block;
+}
+
+.secici-liste a {
+    display: block;
+    padding: 10px 16px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9em;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.secici-liste a:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.secici-liste a.aktif {
+    background: rgba(247,202,201,0.2);
+    color: #F7CAC9;
 }
