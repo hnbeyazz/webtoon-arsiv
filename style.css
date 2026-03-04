@@ -12,7 +12,7 @@
     -webkit-tap-highlight-color: transparent;
 }
 * {
-    color-scheme: dark;
+    color-scheme: only light;
 }
 html {
     width: 100%;
