@@ -230,23 +230,22 @@
         <script>
             const urlParams = new URLSearchParams(window.location.search);
             const adminModu = urlParams.get('ozel') === 'lucaen2222#';
-            const bolumler = [
-                {n:15, t:"4 Mart", kilitli: true},
-                {n:14, t:"4 Mart", kilitli: true},
-                {n:13, t:"4 Mart", kilitli: true},
-                {n:12, t:"21 Şubat", yeni: true},
-                {n:11, t:"12 Şubat"},
-                {n:10, t:"7 Şubat"}, {n:9, t:"2 Şubat"}, {n:8, t:"26 Ocak"},
-                {n:7, t:"19 Ocak"}, {n:6, t:"14 Ocak"}, {n:5, t:"9 Ocak"},
-                {n:4, t:"5 Ocak"}, {n:3, t:"2 Ocak"}, {n:2, t:"2 Ocak"}, {n:1, t:"1 Ocak"}
-            ];
+const bolumler = [
+    {n:15, t:"4 Mart", yeni: true},
+    {n:14, t:"4 Mart", yeni: true},
+    {n:13, t:"4 Mart", yeni: true},
+    {n:12, t:"21 Şubat"},
+    {n:11, t:"12 Şubat"},
+    {n:10, t:"7 Şubat"}, {n:9, t:"2 Şubat"}, {n:8, t:"26 Ocak"},
+    {n:7, t:"19 Ocak"}, {n:6, t:"14 Ocak"}, {n:5, t:"9 Ocak"},
+    {n:4, t:"5 Ocak"}, {n:3, t:"2 Ocak"}, {n:2, t:"2 Ocak"}, {n:1, t:"1 Ocak"}
+];
             bolumler.forEach(b => {
                 const kilitliMi = b.kilitli && !adminModu;
                 const link = kilitliMi ? "javascript:void(0)" : `izle_bolum_${b.n}.html`;
                 const kartClass = kilitliMi ? "bolum-kart kilitli" : "bolum-kart";
                 const tiklama = kilitliMi ? `onclick="alert('Bu bölüm gizli! 🔒')"` : `onclick="kaydet('bolum${b.n}')"`;
-                const yeniEtiketi = (b.yeni || (b.kilitli && adminModu)) ? '<span class="yeni-etiketi">Yeni</span>' : '';
-
+const yeniEtiketi = b.yeni ? '<span class="yeni-etiketi">Yeni</span>' : '';
                 document.write(`
                 <a href="${link}" class="${kartClass}" ${tiklama}>
                     <div class="bolum-bilgi">

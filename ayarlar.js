@@ -14,9 +14,9 @@ const bolumler = [
     { no: 10, url: "izle_bolum_10.html" },
     { no: 11, url: "izle_bolum_11.html" },
     { no: 12, url: "izle_bolum_12.html" },
-    { no: 13, url: "izle_bolum_13.html", kilitli: true },
-    { no: 14, url: "izle_bolum_14.html", kilitli: true },
-    { no: 15, url: "izle_bolum_15.html", kilitli: true }
+    { no: 13, url: "izle_bolum_13.html" },
+    { no: 14, url: "izle_bolum_14.html" },
+    { no: 15, url: "izle_bolum_15.html" }
 ];
 
 function menuyuHazirla() {
