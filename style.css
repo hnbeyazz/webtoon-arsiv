@@ -56,14 +56,15 @@ body {
     width: 100%;
     background: transparent;
     align-self: stretch;
-    padding: 0;
+    padding: 15px 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     position: relative;        /* sayfayı kaydırınca da köşede kalsın */
     top: 0;
     left: 0;
-    z-index: 1000; }
+    z-index: 1000; 
+}
 .site-logo {
     height: 120px;
     width: auto;
@@ -85,7 +86,7 @@ body {
     width: 100%;
     max-width: 800px;
     padding: 0 15px;
-    margin-top: 0;   
+    margin-top: 20px;   
     z-index: 10;
 }
 .ust-navigasyon { 
@@ -212,6 +213,8 @@ body {
     border-radius: 12px;
     min-width: 200px;
     z-index: 10002;
+    max-height: 280px;     /* ← yaklaşık 6 bölüm */
+    overflow-y: auto; 
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
