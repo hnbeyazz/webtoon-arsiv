@@ -37,13 +37,13 @@ body {
     align-items: flex-start;
 }
 #snowCanvas, #kar-tuvali {
-    position: fixed !important; /* Sayfadaki hiçbir şeyi itmez, havada asılı kalır */
-    top: 0 !important;
-    left: 0 !important;
-    width: 100vw !important; /* Ekran genişliği kadar */
-    height: 100vh !important; /* Ekran yüksekliği kadar */
-    pointer-events: none; /* Resimlere tıklamanı engellemez */
-    z-index: 9999; /* Her şeyin en üstünde ama boşluk yaratmaz */
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* KRİTİK: Kar tanelerine değil, altındaki resme tıklamanı sağlar */
+    z-index: 50; /* Düşük bir rakam veriyoruz ki butonlar bunun üstüne çıkabilsin */
 }
 
         .site-header { width: 100%; background: transparent; padding: 40px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; }
@@ -62,6 +62,7 @@ body {
     max-width: 800px; 
     padding: 0 15px;
     margin-top: 110px; 
+    z-index: 10;
 }
 .ust-navigasyon { 
     padding: 5px 0;
@@ -170,33 +171,36 @@ body {
 .secici-konteyner {
     position: relative;
     display: inline-block;
+    z-index: 10001; /* Kar tuvali 9999, bu ondan yüksek olmalı */
 }
 
 .hamburger-buton {
     width: 45px;
     height: 45px;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.1); /* Tam şeffaf yerine hafif bir zemin */
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    position: relative;
+    transition: 0.3s;
+}
+.hamburger-buton:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .secici-dropdown {
     display: none;
     position: absolute;
-    top: 110%;
-    left: 0;
-    background: rgba(20, 20, 40, 0.97);
+    top: 50px; /* Butonun hemen altına */
+    right: 0;   /* Sola değil sağa yasla ki ekrandan taşmasın */
+    background: rgba(20, 20, 40, 0.98);
     border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 10px;
-    overflow: hidden;
-    min-width: 180px;
-    z-index: 10000;
-    max-height: 300px;
-    overflow-y: auto;
+    border-radius: 12px;
+    min-width: 200px;
+    z-index: 10002;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .secici-dropdown.acik {
